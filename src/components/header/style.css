@@ -1,0 +1,8 @@
+
+.navigation-bar .menu ul li {
+    padding: 0 10px;
+}
+
+.navigation-bar .menu .nested-list li{
+    padding: 0 0 10px 0;
+}

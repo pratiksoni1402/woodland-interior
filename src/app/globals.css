@@ -1,7 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+html{
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -33,6 +37,12 @@
     --ring: 0 0% 3.9%;
  
     --radius: 0.5rem;
+
+    --light: #54595f;
+    --dark: #7f5539;
+
+    --theme: #ddb892;
+    
   }
  
   .dark {

@@ -7,6 +7,7 @@ import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { UserCircle2 } from 'lucide-react';
 import './style.css'
+import MobileMenu from "./mobile-menu"
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -19,18 +20,18 @@ import {
 const Navbar = () => {
 
     return (
-        <div className="navigation-bar bg-[#e6ccb2] py-3">
+        <div className="navigation-bar bg-[#faf2ec] py-3">
 
-            <div className=" container navbar-wrapper flex justify-between ">
+            <div className=" container navbar-wrapper flex justify-between items-center ">
                 <div className="logo">
-                    <Image src="/images/logo.png" alt="logo" width={50} height={30} />
+                    <Image src="/uploads/images/logos/logo.png" alt="logo" width={208} height={30} />
                 </div>
-                <div className="menu">
+                <div className="menu lg:block md:hidden sm:hidden hidden">
                     <NavigationMenu>
                         <NavigationMenuList>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/home">
+                                    <Link href="/">
                                         Home
                                     </Link>
                                 </NavigationMenuLink>
@@ -102,6 +103,9 @@ const Navbar = () => {
                         </NavigationMenuList>
                     </NavigationMenu>
 
+                </div>
+                <div className="mobile-menu lg:hidden md:block sm:block">
+                    <MobileMenu />
                 </div>
             </div>
         </div>

@@ -69,10 +69,10 @@ export default function MobileMenu() {
                         </Link>
                     </div>
                 </div>
-                <div className='side-menu pl-3'>
-                    <Sheet>
+                <div className='side-menu'>
+                    <Sheet className='bg-[#faf2ec]'>
                         <SheetTrigger asChild>
-                            <Button variant="outline triger-button"><Menu /></Button>
+                            <Button variant="outline triger-button" className='px-0'><Menu /></Button>
                         </SheetTrigger>
                         <SheetContent>
                             <SheetHeader>

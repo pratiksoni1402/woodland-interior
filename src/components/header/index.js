@@ -51,16 +51,16 @@ const Navbar = () => {
                                     </ul>
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink>
-                                    <Link href="/home" asChild>
+                            {/* <NavigationMenuItem>
+                                <NavigationMenuLink asChild>
+                                    <Link href="/home">
                                         Build Your Own
                                     </Link>
                                 </NavigationMenuLink>
-                            </NavigationMenuItem>
+                            </NavigationMenuItem> */}
                             <NavigationMenuItem>
-                                <NavigationMenuLink>
-                                    <Link href="/home" asChild>
+                                <NavigationMenuLink asChild>
+                                    <Link href="/home">
                                         Stories
                                     </Link>
                                 </NavigationMenuLink>
@@ -100,6 +100,7 @@ const Navbar = () => {
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
+
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>

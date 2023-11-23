@@ -102,7 +102,6 @@ const Navbar = () => {
                             </NavigationMenuItem>
                         </NavigationMenuList>
                     </NavigationMenu>
-
                 </div>
                 <div className="mobile-menu lg:hidden md:block sm:block">
                     <MobileMenu />

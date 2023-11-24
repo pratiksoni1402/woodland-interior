@@ -60,42 +60,42 @@ const Navbar = () => {
                             </NavigationMenuItem> */}
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/home">
+                                    <Link href="/stories">
                                         Stories
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/home">
+                                    <Link href="/about-us">
                                         About Us
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/home">
+                                    <Link href="/contact">
                                         Contact
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/home">
+                                    <Link href="/wishlist">
                                         <Heart />
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/home">
+                                    <Link href="/cart">
                                         <ShoppingCart />
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/home">
+                                    <Link href="/auth">
                                         <UserCircle2 />
                                     </Link>
                                 </NavigationMenuLink>

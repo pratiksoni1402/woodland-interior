@@ -53,19 +53,24 @@ export default function MobileMenu() {
         <div className='mobile-menu-wrapper'>
             <div className='inner-content-wrapper flex items-center'>
                 <div className='inner-wrapper flex'>
-                    <div>
-                        <Link href="/home">
+                    <div className='pr-4'>
+                        <Link href="/wishlist" className='relative'>
                             <Heart />
+                            <div className='absolute text-[10px] top-[-10px] right-[-7px] bg-white rounded-full p-[2px]'>10</div>
+
                         </Link>
                     </div>
-                    <div>
-                        <Link href="/home">
+                    <div className='pr-4'>
+                        <Link href="/home" className='relative'>
                             <ShoppingCart />
+                            <div className='absolute text-[10px] top-[-10px] right-[-7px] bg-white rounded-full p-[2px]'>10</div>
+
                         </Link>
                     </div>
-                    <div>
+                    <div className='pr-4'>
                         <Link href="/home">
                             <UserCircle2 />
+
                         </Link>
                     </div>
                 </div>
@@ -143,17 +148,17 @@ export default function MobileMenu() {
                                             </DropdownMenuContent>
                                         </DropdownMenu>
                                     </div>
+                                    {/*<div>*/}
+                                    {/*    <Link href='/'>Build Your Own</Link>*/}
+                                    {/*</div>*/}
                                     <div>
-                                        <Link href='/'>Build Your Own</Link>
+                                        <Link href='/stories'>Stories</Link>
                                     </div>
                                     <div>
-                                        <Link href='/'>Stories</Link>
+                                        <Link href='/about-us'>About Us</Link>
                                     </div>
                                     <div>
-                                        <Link href='/'>About Us</Link>
-                                    </div>
-                                    <div>
-                                        <Link href='/'>Contact</Link>
+                                        <Link href='/contact'>Contact</Link>
                                     </div>
                                 </div>
                             </div>

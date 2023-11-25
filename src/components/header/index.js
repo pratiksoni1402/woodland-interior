@@ -20,7 +20,7 @@ import {
 const Navbar = () => {
 
     return (
-        <div className="navigation-bar bg-[#faf2ec] py-3">
+        <div className="navigation-bar bg-[#faf2ec] py-3 sticky top-0 z-10">
 
             <div className=" container navbar-wrapper flex justify-between items-center ">
                 <div className="logo">
@@ -81,15 +81,18 @@ const Navbar = () => {
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/wishlist">
+                                    <Link href="/wishlist" className='relative'>
                                         <Heart />
+                                        <div className='absolute text-[10px] top-[-10px] right-[-7px] bg-white rounded-full p-[2px]'>10</div>
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/cart">
+                                    <Link href="/cart" className='relative'>
                                         <ShoppingCart />
+                                        <div className='absolute text-[10px] top-[-10px] right-[-7px] bg-white rounded-full p-[2px]'>10</div>
+
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>

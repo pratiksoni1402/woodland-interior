@@ -83,7 +83,7 @@ const Navbar = () => {
                                 <NavigationMenuLink asChild>
                                     <Link href="/wishlist" className='relative'>
                                         <Heart />
-                                        <div className='absolute text-[10px] top-[-10px] right-[-7px] bg-white rounded-full p-[2px]'>10</div>
+                                        <div className='absolute text-[10px] top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full py-[2px] px-1'>10</div>
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
@@ -91,8 +91,7 @@ const Navbar = () => {
                                 <NavigationMenuLink asChild>
                                     <Link href="/cart" className='relative'>
                                         <ShoppingCart />
-                                        <div className='absolute text-[10px] top-[-10px] right-[-7px] bg-white rounded-full p-[2px]'>10</div>
-
+                                        <div className='absolute text-[10px] top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full py-[2px] px-1'>10</div>
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>

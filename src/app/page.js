@@ -138,7 +138,6 @@ export default function Home() {
                             <div className="detail">
                                 <p>
                                     Welcome to our furniture haven, where we merge artistry, comfort, and functionality to create pieces that transform spaces into living experiences. Discover our curated collections, each a testament to the timeless elegance and quality craftsmanship we stand for. Whether youre drawn to the clean lines of Modern Minimalism, the rustic allure of Natural Wood, or the enduring charm of Classic Elegance, our creations promise to breathe life into your home.
-    
                                 </p>
                             </div>
                         </div>

@@ -12,6 +12,7 @@ export async function GET(request) {
 
     console.log('Hello from the server', { categories })
     return Response.json({ categories })
+    
 }
 
 

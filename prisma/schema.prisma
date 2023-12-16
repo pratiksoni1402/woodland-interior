@@ -21,8 +21,11 @@ model Customers {
     lastname    String @db.VarChar(20)
     email       String @db.VarChar(50)
     password    String @db.VarChar(50)
-
+    createdon   DateTime @default(now())
+    updatedat   DateTime @updatedAt
 
     @@map("customers")
 }
+
+
 

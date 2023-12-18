@@ -1,13 +1,27 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './style.css'
-import axios from 'axios';
-const Register = () => {
+
+export default function Register(){
+    // const onSubmit = data => console.log(data);
+    // console.log(errors);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = data => console.log(data);
-    console.log(errors);
+    const onSubmit = (data) => {
+      axios.post('/api/register', data)
+        .then(response => {
+          // Handle success
+          console.log('Registration successful', response.data);
+        })
+        .catch(error => {
+          // Handle error
+          console.error('Registration error', error);
+        });
+    };
+  
+  
+
     return (
         <div className='user-registration'>
             <div className='heading text-center text-2xl text-[#54595f] py-5'>
@@ -28,4 +42,3 @@ const Register = () => {
     )
 }
 
-export default Register;

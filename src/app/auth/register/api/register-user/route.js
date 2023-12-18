@@ -1,12 +1,12 @@
 import { prisma } from '@/db'
-export async function POST() {
+export async function POST(request) {
     let customers = await prisma.credentials.create(
         {
-            customers:{
-                firstname: '',
-                lastname: '',
-                email: '',
-                password: '',
+            data:{
+                firstname: request.body.data,
+                lastname: request.body.data,
+                email: request.body.data,
+                password: request.body.data,
             },
         }
     )

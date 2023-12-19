@@ -4,9 +4,23 @@ import './style.css'
 import axios from 'axios';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = () =>{
-        axios.post()
+    const onSubmit = (data) => {
+        axios.post('/api/login-user', data)
+            .then(response => {
+                const user = response.data
+                console.log(user)
+                // if(){
+                //     alert("login successfull")
+                // }else{
+                //     alert("Incorrect username and password")
+                // }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("An error occurred while logging in. Please try again.");
+            });
     }
+    
 
     return (
         <div className="user-login">

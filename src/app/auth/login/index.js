@@ -1,10 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './style.css'
+import axios from 'axios';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
-    console.log(errors);
+    const onSubmit = () =>{
+        axios.post()
+    }
 
     return (
         <div className="user-login">
@@ -14,8 +16,8 @@ const Login = () => {
             </div>
             <div className='login-form'>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input type="text" placeholder="Email" {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
-                    <input type="password" placeholder="Password" {...register("Password", { required: true })} />
+                    <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                    <input type="password" placeholder="Password" {...register("password", { required: true })} />
                     <button type='submit'>Login</button>
                 </form>
             </div>

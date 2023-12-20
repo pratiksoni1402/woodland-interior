@@ -40,7 +40,7 @@ const Navbar = () => {
                             <NavigationMenuItem>
                                 <NavigationMenuTrigger className='bg-transparent hover:bg-transparent text-lg leading-7'>Shop</NavigationMenuTrigger>
                                 <NavigationMenuContent>
-                                    <ul className="nested-list bg-white px-4 py-2 w-40">
+                                    <ul className="nested-list bg-[#faf2ec] px-4 py-2 w-40">
                                         <li><Link href='#home'>Seating</Link></li>
                                         <li><Link href='#home'>Desks</Link></li>
                                         <li><Link href='#home'>Table</Link></li>
@@ -77,7 +77,7 @@ const Navbar = () => {
                                 <NavigationMenuLink asChild>
                                     <Link href="/wishlist" className='relative'>
                                         <Heart />
-                                        <div className='absolute text-[10px] top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full py-[2px] px-1'>10</div>
+                                        <div className='absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]'>0</div>
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
@@ -85,7 +85,7 @@ const Navbar = () => {
                                 <NavigationMenuLink asChild>
                                     <Link href="/cart" className='relative'>
                                         <ShoppingCart />
-                                        <div className='absolute text-[10px] top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full py-[2px] px-1'>10</div>
+                                        <div className='absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]'>0</div>
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>

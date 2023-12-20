@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link'
+import './style.css'
 import Image from "next/image";
 import Logo from '../../../public/uploads/images/logos/footer.png'
 const footer = () => {
@@ -8,7 +9,7 @@ const footer = () => {
             <footer className='container'>
                 <div className='upper-footer pb-10 pt-20 border-b'>
                     <div className='upper-footer-wrapper grid lg:grid-cols-4 md:grid-cols-3 gap-10 lg:justify-between md:justify-evenly'>
-                        <div>
+                        <div className='flex items-center text-[#54595f] text-sm'>
                             <ul>
                                 <li><Link href='/stories'>Stories</Link></li>
                                 <li><Link href='/about-us'>About</Link></li>
@@ -16,7 +17,7 @@ const footer = () => {
                                 <li><Link href='/'>Home</Link></li>
                             </ul>
                         </div>
-                        <div>
+                        <div className='flex items-center text-[#54595f] text-sm'>
                             <ul>
                                 <li>Our Workshop</li>
                                 <li>Sardarpura B Road</li>
@@ -24,7 +25,7 @@ const footer = () => {
                                 <li>Pincode - 342008</li>
                             </ul>
                         </div>
-                        <div>
+                        <div className='flex items-center text-[#54595f] text-sm'>
                             <ul>
                                 <li>Timing</li>
                                 <li>Monday to Friday - 9AM - 9PM</li>

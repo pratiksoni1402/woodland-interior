@@ -90,6 +90,26 @@ html{
     @apply bg-background text-foreground;
   }
 }
+/* width */
+::-webkit-scrollbar {
+  width: 11px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #3c2f27;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b2937e;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:#b2937e;
+}
 
 /* Homepage Style start */
 .homepage .banner-wrapper .content-wrapper .banner-title{
@@ -97,8 +117,6 @@ html{
   position: absolute;
   top: 50%;
   left: 50%;
-  font-size: 55px;
-  line-height: 60px;
   transform: translate(-50%, -50%);
   text-align: center;
   font-family: 'Crimson Pro', serif;
@@ -108,74 +126,7 @@ html{
 .homepage .banner-wrapper .content-wrapper .banner {
   filter: brightness(50%);
 }
-/* Product Showcase Section  */
-.homepage .timber-furniture {
-    background-color: #faf2ec;
-    padding: 70px 0;
-}
 
-.homepage .timber-furniture .product-description {
-    font-family: 'Crimson Pro', serif;
-    font-size: 32px;
-    line-height: 32px;
-    color: #54595F;
-}
-
-.homepage .timber-furniture .visit-store {
-    margin-top: 30px;
-}
-
-.homepage .timber-furniture .visit-store a {
-    border: 1px solid black;
-    padding: 12px 24px;
-    font-size: 15px;
-    font-family: 'Crimson Pro', serif;
-    color: #54595F;
-    background-color: transparent;
-    display: inline-block;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.homepage .timber-furniture .visit-store a:hover {
-    color: #FFFFFF;
-    background-color: #3c2f27;
-    border: 1px solid #3c2f27;
-    transition: .4s all;
-}
-
-/* Product Description Section end  */
-
-/* Product Showcase Section   */
-/* .homepage .product-showcase {
-  background-color: #faf2ec;
-  padding-bottom: 80px;
-
-}
-
-.homepage .product-showcase a {
-  text-decoration: none;
-  display: block;
-}
-
-.homepage .product-showcase a .product-wrapper .product-image img:hover {
-  transform: scale(1.2);
-  transition: .5s all;
-}
-
-.homepage .product-showcase a .product-wrapper .product-description {
-  font-family: 'Crimson Pro', serif;
-  font-size: 32px;
-  color: #54595F;
-}
-
-.homepage .product-showcase a .product-wrapper:hover .product-description {
-  color: #3c2f27;
-  font-weight: 600;
-  transition: .3s all;
-} */
-
-/* Product Showcase Section end */
 
 /* Our experts section Styling */
 .homepage .our-expert .content-wrapper .showcase img{
@@ -206,8 +157,6 @@ html{
 .homepage .custom-service .description .tagline span {
   color: white;
   font-family: minion-pro-display;
-  font-size: 50px;
-  line-height: 60px;
   font-weight: normal !important;
 }
 

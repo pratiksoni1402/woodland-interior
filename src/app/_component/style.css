@@ -1,0 +1,35 @@
+/* Product Showcase Section  */
+.visit-shop .timber-furniture {
+    background-color: #faf2ec;
+
+}
+.visit-shop .timber-furniture .product-description {
+    font-family: 'Crimson Pro', serif;
+
+    color: #54595F;
+}
+
+.visit-shop .timber-furniture .visit-store {
+    margin-top: 30px;
+}
+
+.visit-shop .timber-furniture .visit-store a {
+    border: 1px solid black;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-family: 'Crimson Pro', serif;
+    color: #54595F;
+    background-color: transparent;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.visit-shop .timber-furniture .visit-store a:hover {
+    color: #FFFFFF;
+    background-color: #3c2f27;
+    border: 1px solid #3c2f27;
+    transition: .4s all;
+}
+
+/* Product Description Section end  */

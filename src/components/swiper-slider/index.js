@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -17,22 +18,22 @@ export default function SwiperSlider() {
   return (
     <div className="image-carousel">
       <container>
-        <div className="carousel-heading text-center">
+        <div className="carousel-heading text-center md:text-[36px] md:leading-8 text-xl leading-8">
           Whatever You Envision, We Deliver – Your Ideal Interior Awaits!
         </div>
 
         <div className="carousel grid grid-cols-1">
-          <Swiper className="container"
+          <Swiper className="container product-swiper"
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={50}
-            slidesPerView={3}
+            // slidesPerView={3}
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            autoplay={{ delay: 5000 }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
+            autoplay={{ pauseOnMouseEnter: true }}
+            // onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={() => console.log("slide change")}
             breakpoints={{
               280: {
                 width: 280,

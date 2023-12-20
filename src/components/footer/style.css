@@ -1,0 +1,16 @@
+/* Upper Footer Styling */
+.footer-section footer .upper-footer ul li a{
+    line-height: 24px;
+}
+
+.footer-section footer .upper-footer ul li a:hover{
+    color: black;
+}
+/* End */
+
+/* Lower Footer */
+.footer-section footer .lower-footer .lower-footer-wrapper div{
+    color: #54595f;
+    font-size: 12px;
+}
+/* End */

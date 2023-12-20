@@ -20,7 +20,7 @@ import {
 const Navbar = () => {
 
     return (
-        <div className="navigation-bar bg-[#faf2ec] py-3 sticky top-0 z-10">
+        <div className="navigation-bar bg-[#faf2ec] h-[75px] py-4 sticky top-0 z-10">
 
             <div className=" container navbar-wrapper flex justify-between items-center ">
                 <div className="logo">
@@ -31,14 +31,14 @@ const Navbar = () => {
                         <NavigationMenuList>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/">
+                                    <Link href="/"  className="text-lg leading-7">
                                         Home
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
 
                             <NavigationMenuItem>
-                                <NavigationMenuTrigger className='bg-transparent hover:bg-transparent'>Shop</NavigationMenuTrigger>
+                                <NavigationMenuTrigger className='bg-transparent hover:bg-transparent text-lg leading-7'>Shop</NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <ul className="nested-list bg-white px-4 py-2 w-40">
                                         <li><Link href='#home'>Seating</Link></li>
@@ -51,29 +51,23 @@ const Navbar = () => {
                                     </ul>
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
-                            {/* <NavigationMenuItem>
-                                <NavigationMenuLink asChild>
-                                    <Link href="/home">
-                                        Build Your Own
-                                    </Link>
-                                </NavigationMenuLink>
-                            </NavigationMenuItem> */}
+                            
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/stories">
+                                    <Link href="/stories"  className="text-lg leading-7">
                                         Stories
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/about-us">
+                                    <Link href="/about-us"  className="text-lg leading-7">
                                         About Us
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <NavigationMenuLink asChild>
+                                <NavigationMenuLink asChild  className="text-lg leading-7">
                                     <Link href="/contact">
                                         Contact
                                     </Link>

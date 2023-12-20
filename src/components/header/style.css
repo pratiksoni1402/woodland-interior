@@ -1,3 +1,95 @@
+/* Navbar Styling */
+
+.navigation-bar .navbar-wrapper .menu nav ul li  {
+    color: #54595f;
+    font-family: 'Crimson Pro', serif;
+    
+}
+
+.navbar-expand-lg  .selected {
+    position: relative;
+}
+
+
+.navbar-expand-lg .navbar-nav .nav-links.scrolled {
+    color: white;
+}
+
+.navigation-bar .navbar-wrapper .menu nav ul li:hover {
+    color: black;
+    transition: .5s;
+    cursor: pointer;
+}
+.navigation-bar .navbar-wrapper .menu nav ul li button{
+    padding: 0;
+    background-color: transparent;
+}
+.navbar-expand-lg .navbar-nav a {
+    text-decoration: none;
+    position: relative;
+
+}
+
+.navigation-bar .navbar-wrapper .menu nav ul li::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 0px;
+    background-color: #54595f;
+    transition: width 0.3s ease, transform 0.3s ease;
+    transform-origin: left center;
+}
+
+.navigation-bar .navbar-wrapper .menu nav ul li:hover::after {
+    width: 100%;
+    transform: scaleX(1);
+
+}
+
+.navbar .nav .nav-link .nav-item .dropdown-toggle::after {
+    display: none;
+
+}
+
+.navbar .nav .nav-links-dropdown:hover .dropdown-menu {
+    display: block;
+    background-color: #faf2ec;
+    border-radius: 0;
+    width: 200px;
+    border-radius: 15px;
+}
+
+.navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item {
+    color: #54595f;
+    font-family: 'Crimson Pro', serif;
+    font-size: 20px;
+    line-height: 28.8px;
+
+}
+
+
+.navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: transparent;
+    color: black;
+
+}
+
+.navbar .navbar-toggler {
+    padding: 0 0 0 15px;
+    font-size: 18px;
+    line-height: 1;
+    color: #54595f;
+    background-color: transparent;
+    border: none;
+    transition: none;
+}
+
+.navbar .navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+}
+/* End */
 
 .navigation-bar .menu ul li {
     padding: 0 10px;
@@ -6,3 +98,6 @@
 .navigation-bar .menu .nested-list li{
     padding: 0 0 10px 0;
 }
+/* End */
+
+

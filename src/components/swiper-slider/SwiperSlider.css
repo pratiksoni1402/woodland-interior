@@ -1,0 +1,71 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* End */
+.image-carousel {
+  padding:  0;
+  background-color: #faf2ec;
+}
+
+.image-carousel .carousel-heading {
+  font-family: 'Crimson Pro', serif;
+  font-size: 32px;
+  color: #59545f;
+  padding-bottom: 30px;
+}
+
+.image-carousel .carousel .title {
+  font-family: 'Crimson Pro', serif;
+  font-size: 18px;
+  color: #59545f;
+  line-height: 29px;
+  padding: 5px 0 50px 0;
+
+}
+
+.image-carousel .carousel .swiper-scrollbar {
+  display: none;
+}
+
+.image-carousel .carousel .swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: 47%;
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  bottom: 50%;
+  transform: translate(0%, -50%);
+  /* display: none; */
+  font-weight: 900;
+}
+
+.image-carousel .carousel .swiper-button-next {
+  position: absolute;
+  top: 47%;
+  font-weight: 900;
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  bottom: 50%;
+  transform: translate(0%, -50%);
+  /* display: none; */
+}
+.image-carousel .carousel .swiper-pagination .swiper-pagination-bullet{
+  margin: 0px 10px;
+  
+}
+
+.image-carousel .carousel .swiper-pagination .swiper-pagination-bullet-active {
+  /* opacity: var(--swiper-pagination-bullet-opacity, 1); */
+  background: #3c2f27
+}

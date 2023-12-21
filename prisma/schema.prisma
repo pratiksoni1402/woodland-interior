@@ -7,6 +7,7 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+// Get product category model
 model Category {
     id    Int     @id @default(autoincrement())
     name  String  @db.VarChar(10)
@@ -14,7 +15,9 @@ model Category {
 
     @@map("categories")
 }
+// End
 
+// New user registration Model
 model Credentials {
     id Int      @id @default(autoincrement())
     firstname   String @db.VarChar(20)
@@ -25,5 +28,22 @@ model Credentials {
 
     @@map("customers")
 }
+// End
+
+// Contact Us Model
+model Userquery {
+    id Int @id @default(autoincrement())
+    firstname String @db.VarChar(20)
+    lastname String @db.VarChar(20)
+    email String @db.VarChar(50)
+    subject String @db.VarChar(50)
+    message String @db.VarChar(500)
+
+    @@map("contact_us")
+}
+// End
+
+
+
 
 

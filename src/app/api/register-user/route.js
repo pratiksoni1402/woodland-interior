@@ -1,6 +1,5 @@
 import { prisma } from '@/db'
 export async function POST(req) {
-    // const { firstname, lastname, email, password } = req.body;
     const formdata = await req.json()
     let customers = await prisma.credentials.create(
         {

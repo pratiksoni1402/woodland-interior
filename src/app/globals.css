@@ -1,12 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Global CSS */
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baskervville&display=swap');
 /* End */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 *{
   margin: 0;
@@ -167,12 +168,6 @@ html{
   text-align: center;
   width: 100%;
   z-index: 1;
-}
-
-.homepage .custom-service .description .tagline span {
-  color: white;
-  font-family: minion-pro-display;
-  font-weight: normal !important;
 }
 
 .homepage .custom-service .description .visit-us a {

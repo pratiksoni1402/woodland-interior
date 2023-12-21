@@ -1,47 +1,40 @@
 import React from "react";
 import ContactForm from "@/components/contact-form";
-import { Phone } from 'lucide-react';
-import { MapPinned } from 'lucide-react';
-import { Mail } from 'lucide-react';
+import { Phone } from "lucide-react";
+import { MapPinned } from "lucide-react";
+import { Mail } from "lucide-react";
 
-import './style.css'
+import "./style.css";
 const contactPage = () => {
-    return (
-        <div className="contact-page bg-[#faf2ec] py-12">
-            <div className="heading container text-center pb-5 text-5xl text-[#54595f]">
-                <h1>Get in Touch!</h1>
-            </div>
-            <div className="content-wrapper container grid md:grid-cols-2 sm:grid-cols-1 gap-24">
-                <div className="form-wrapper">
-                    <ContactForm />
-                </div>
-                <div className="communication flex flex-col text-[#54595f] justify-center items-center gap-10">
-                    <div className="">
-                        <div className="flex justify-center pb-1">
-                            <MapPinned />
-                        </div>
-                        <address>
-                            Sardarpura B Road <br />
-                            Near Goru Sweets <br />
-                            Pin Code -342008
-                        </address>
-                    </div>
-                    <div className="">
-                        <div className="flex justify-center pb-1">
-                            <Phone />
-                        </div>
-                        <p>+91 98745 63210</p>
-                    </div>
-                    <div className="">
-                        <div className="flex justify-center pb-1">
-                            <Mail />
-                        </div>
-                        <p>info@woodland-interiors.com</p>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="contact-page bg-[#faf2ec] py-12">
+      {/* Banner Image Section Start */}
+      <section className="banner-image-wrapper">
+        <div
+          className="banner-image"
+          style={{
+            backgroundImage: "url('/uploads/images/contactus/contact-us.jpg')",
+            width: "100%",
+            height: "85vh",
+            marginTop: "-80px",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover ",
+          }}
+        ></div>
+      </section>
+      {/* End */}
+      <div className="heading container text-center py-5 text-4xl text-[#54595f]">
+        <h1>Customer Support</h1>
+        <p className="text-lg text-[#54595f] pt-4 lg:w-1/2 md:w-3/4 w-full mx-auto text-justify font-roboto">We are here to assist you. Please fill out the form below, and our dedicated support team will get back to you as soon as possible.</p>
+      </div>
+      <div className="content-wrapper container grid grid-cols-1">
+        <div className="form-wrapper lg:w-1/2 md:w-3/4 w-full mx-auto">
+          <ContactForm />
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default contactPage;

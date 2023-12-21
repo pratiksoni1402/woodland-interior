@@ -9,11 +9,7 @@ const Login = () => {
             .then(response => {
                 const user = response.data
                 console.log(user)
-                // if(){
-                //     alert("login successfull")
-                // }else{
-                //     alert("Incorrect username and password")
-                // }
+            
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -32,7 +28,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
                     <input type="password" placeholder="Password" {...register("password", { required: true })} />
-                    <button type='submit'>Login</button>
+                    <button type='submit' className='text-[#54595f]'>Login</button>
                 </form>
             </div>
         </div>

@@ -10,24 +10,11 @@ export default function Bedroom() {
               <div className="content-wrapper h-full flex items-center">
                 <div>
                   <div className="title font-crimson text-[#54595f] text-4xl py-4">
-                    Bedroom Furniture
+                    Dining Tables
                   </div>
                   <div className="description">
                     <p className="text-justify text-[#54595f] font-roboto leading-6 text-base">
-                      Indulge in the warmth and comfort of our exquisite wooden
-                      beds, where dreams find their perfect sanctuary. Crafted
-                      with passion and precision, each bed is a symphony of
-                      natural beauty and timeless design. Carefully selected
-                      hardwoods are transformed into works of art, boasting not
-                      only durability but also a graceful aesthetic that
-                      complements any bedroom. Whether you envision a modern
-                      minimalist retreat or a cozy rustic haven, our diverse
-                      collection offers a range of styles to suit your unique
-                      taste. Immerse yourself in the embrace of natures finest
-                      materials, where every curve and joint tells a story of
-                      exceptional craftsmanship. Our wooden beds are more than
-                      just pieces of furniture; they are a promise of restful
-                      nights and cherished mornings.
+                    Elevate Your Dining Experience: Discover Exquisite Dining Tables at Our Showcase! Immerse yourself in a world of sophistication and functionality as you explore our curated collection of dining table products. From sleek modern designs to timeless classics, each piece is meticulously crafted to add a touch of elegance to your dining space. Unleash your creativity and transform your dining area into a stylish haven with our diverse range of high-quality tables. Whether you prefer minimalist chic or opulent charm, our selection caters to diverse tastes. Explore the fusion of form and function – redefine your dining space with our exceptional tables.
                     </p>
                   </div>
                 </div>
@@ -37,13 +24,11 @@ export default function Bedroom() {
               <div className="Image-wrapper">
                 <div className="image">
                   <Image
-                    src="/uploads/images/shop/bedroom/banner.jpg"
+                    src="/uploads/images/shop/dining-tables/banner.jpg"
                     alt=""
                     width={640}
                     height={853}
-                    // layout="fill"
                     quality={100}
-                    // objectFit="contain"
                   />
                 </div>
               </div>

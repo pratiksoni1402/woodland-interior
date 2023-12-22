@@ -41,13 +41,10 @@ const Navbar = () => {
                                 <NavigationMenuTrigger className='bg-transparent hover:bg-transparent text-lg leading-7'>Shop</NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <ul className="nested-list bg-[#faf2ec] px-4 py-2 w-40">
-                                        <li><Link href='#home'>Seating</Link></li>
-                                        <li><Link href='#home'>Desks</Link></li>
-                                        <li><Link href='#home'>Table</Link></li>
-                                        <li><Link href='/shop/bedroom'>Beds</Link></li>
-                                        <li><Link href='#home'>Kitchen</Link></li>
-                                        <li><Link href='#home'>Outdoor</Link></li>
-                                        {/* <li><Link href='#home'>All</Link></li> */}
+                                        <li><Link href='/shop/bedroom'>Bedroom</Link></li>
+                                        <li><Link href='/shop/dining-tables'>Dining Tables</Link></li>
+                                        <li><Link href='/shop/sofa-sets'>Sofa Sets</Link></li>
+                                        <li><Link href='/shop/outdoor'>Outdoor</Link></li>
                                     </ul>
                                 </NavigationMenuContent>
                             </NavigationMenuItem>

@@ -10,24 +10,11 @@ export default function Bedroom() {
               <div className="content-wrapper h-full flex items-center">
                 <div>
                   <div className="title font-crimson text-[#54595f] text-4xl py-4">
-                    Bedroom Furniture
+                    Sofa Sets
                   </div>
                   <div className="description">
                     <p className="text-justify text-[#54595f] font-roboto leading-6 text-base">
-                      Indulge in the warmth and comfort of our exquisite wooden
-                      beds, where dreams find their perfect sanctuary. Crafted
-                      with passion and precision, each bed is a symphony of
-                      natural beauty and timeless design. Carefully selected
-                      hardwoods are transformed into works of art, boasting not
-                      only durability but also a graceful aesthetic that
-                      complements any bedroom. Whether you envision a modern
-                      minimalist retreat or a cozy rustic haven, our diverse
-                      collection offers a range of styles to suit your unique
-                      taste. Immerse yourself in the embrace of natures finest
-                      materials, where every curve and joint tells a story of
-                      exceptional craftsmanship. Our wooden beds are more than
-                      just pieces of furniture; they are a promise of restful
-                      nights and cherished mornings.
+                    Unwind in Style discover the Ultimate Comfort with Our Sofa Sets! Immerse yourself in the art of relaxation with our thoughtfully curated collection of sofa sets. From contemporary chic to timeless classics, each piece is a testament to craftsmanship and comfort. Explore a world of design diversity, where plush seating meets exquisite aesthetics. Elevate your living space with our exclusive range of sofa sets that seamlessly balance style and functionality. Whether you prefer sleek modern lines or the warmth of traditional designs, our collection has something for every taste. Dive into a realm of luxury and transform your living room into a haven of comfort and sophistication.
                     </p>
                   </div>
                 </div>
@@ -37,13 +24,11 @@ export default function Bedroom() {
               <div className="Image-wrapper">
                 <div className="image">
                   <Image
-                    src="/uploads/images/shop/bedroom/banner.jpg"
+                    src="/uploads/images/shop/sofa-sets/banner.jpg"
                     alt=""
                     width={640}
                     height={853}
-                    // layout="fill"
                     quality={100}
-                    // objectFit="contain"
                   />
                 </div>
               </div>

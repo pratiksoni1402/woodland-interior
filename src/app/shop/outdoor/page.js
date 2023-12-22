@@ -10,24 +10,11 @@ export default function Bedroom() {
               <div className="content-wrapper h-full flex items-center">
                 <div>
                   <div className="title font-crimson text-[#54595f] text-4xl py-4">
-                    Bedroom Furniture
+                    Outdoor
                   </div>
                   <div className="description">
                     <p className="text-justify text-[#54595f] font-roboto leading-6 text-base">
-                      Indulge in the warmth and comfort of our exquisite wooden
-                      beds, where dreams find their perfect sanctuary. Crafted
-                      with passion and precision, each bed is a symphony of
-                      natural beauty and timeless design. Carefully selected
-                      hardwoods are transformed into works of art, boasting not
-                      only durability but also a graceful aesthetic that
-                      complements any bedroom. Whether you envision a modern
-                      minimalist retreat or a cozy rustic haven, our diverse
-                      collection offers a range of styles to suit your unique
-                      taste. Immerse yourself in the embrace of natures finest
-                      materials, where every curve and joint tells a story of
-                      exceptional craftsmanship. Our wooden beds are more than
-                      just pieces of furniture; they are a promise of restful
-                      nights and cherished mornings.
+                    Elevate Your Space with Our Outdoor Furniture Collection! Step into a world of alfresco elegance with our handpicked outdoor furniture range. Each piece is a harmonious blend of durability and design, crafted to enhance your outdoor living experience. Explore a diverse array of styles, from contemporary chic to rustic charm, designed to complement any outdoor setting. Immerse yourself in the beauty of open-air relaxation as you browse our curated collection of outdoor furniture. Create an oasis in your backyard with our thoughtfully designed pieces that withstand the elements without compromising on style. Transform your outdoor space into a retreat of comfort and sophistication with our exclusive selection. Whether you envision a cozy patio or a sprawling garden retreat, our outdoor furniture promises to bring your vision to life.
                     </p>
                   </div>
                 </div>
@@ -37,13 +24,11 @@ export default function Bedroom() {
               <div className="Image-wrapper">
                 <div className="image">
                   <Image
-                    src="/uploads/images/shop/bedroom/banner.jpg"
+                    src="/uploads/images/shop/outdoor/banner.jpg"
                     alt=""
                     width={640}
                     height={853}
-                    // layout="fill"
                     quality={100}
-                    // objectFit="contain"
                   />
                 </div>
               </div>

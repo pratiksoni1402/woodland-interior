@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Bedroom() {
   return (
-    <div className="bedroom-products bg-[#faf2ec]">
+    <div className="sofaset-products-page
+     bg-[#faf2ec]">
       <div className="container">
         <div className="page-banner py-5">
           <div className="grid grid-cols-12 gap-10">

@@ -44,10 +44,10 @@ const Navbar = () => {
                                         <li><Link href='#home'>Seating</Link></li>
                                         <li><Link href='#home'>Desks</Link></li>
                                         <li><Link href='#home'>Table</Link></li>
-                                        <li><Link href='#home'>Beds</Link></li>
+                                        <li><Link href='/shop/bedroom'>Beds</Link></li>
                                         <li><Link href='#home'>Kitchen</Link></li>
-                                        <li><Link href='#home'>Accessories</Link></li>
-                                        <li><Link href='#home'>All</Link></li>
+                                        <li><Link href='#home'>Outdoor</Link></li>
+                                        {/* <li><Link href='#home'>All</Link></li> */}
                                     </ul>
                                 </NavigationMenuContent>
                             </NavigationMenuItem>

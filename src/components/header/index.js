@@ -49,13 +49,13 @@ const Navbar = () => {
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
                             
-                            <NavigationMenuItem>
+                            {/* <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
                                     <Link href="/stories"  className="text-lg leading-7">
                                         Stories
                                     </Link>
                                 </NavigationMenuLink>
-                            </NavigationMenuItem>
+                            </NavigationMenuItem> */}
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
                                     <Link href="/about-us"  className="text-lg leading-7">

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+
 export default function Bedroom() {
+
   return (
     <div className="sofaset-products-page
      bg-[#faf2ec]">

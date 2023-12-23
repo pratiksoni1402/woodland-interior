@@ -30,6 +30,17 @@ model Credentials {
 }
 // End
 
+// Bedroom Product
+model Bedroomproduct {
+    id Int @id @default(autoincrement())
+    image String @db.VarChar(100)
+    name String @db.VarChar(250)
+    price Int @db.Int
+
+    @@map("bedroom")
+}
+// End
+
 // Contact Us Model
 model Userquery {
     id Int @id @default(autoincrement())

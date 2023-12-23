@@ -1,6 +1,20 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 export default function Bedroom() {
+  const [product, Setproduct] = useState();
+
+  useEffect(() => {
+    axios.get("/api/get-bproduct").then((response) => {
+      Setproduct(response.data.bproduct);
+      console.log(response);
+    })
+    .catch((error)=>{
+      console.log("Error in fetching data", error)
+    })
+  });
+
   return (
     <div className="bedroom-products-page bg-[#faf2ec]">
       <div className="container">
@@ -58,17 +72,13 @@ export default function Bedroom() {
         <div className="product-listing-section py-10">
           <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
             <div className="product-wrapper">
-              <Link href="">
-                <div className="product-image">
-                    <Image src='/uploads/images/shop/bedroom/bed.jpg' width={400} height={400} alt='Oak Bed' />
-                </div>
-                <div className="detail text-center">
-                    <div className="title">
-                        Lorem ipsum
-                    </div>
-                    <div className="price">$5000</div>
-                </div>
-              </Link>
+              {
+                product.map((bproduct)=>(
+                  <Link key={bproduct.id}>
+                      
+                  </Link>
+                ))
+              }
             </div>
           </div>
         </div>

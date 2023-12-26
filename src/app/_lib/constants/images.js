@@ -16,7 +16,7 @@ export const CONTACT_MEDIA_URL = '/uploads/images/contact/'
 // End
 
 // Bedroom Product Images
-export const BPRODUCT_MEDIA_URL = '/uploads/images/shop/bedroom/products'
+export const BEDROOM_PRODUCT_MEDIA_URL = '/uploads/images/shop/bedroom/products'
 // End
 
 // Dinning Table Product Images

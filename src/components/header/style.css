@@ -5,6 +5,9 @@
     font-family: 'Crimson Pro', serif;
     
 }
+.navigation-bar .navbar-wrapper .menu nav ul li a{
+    display: block;
+}
 
 .navbar-expand-lg  .selected {
     position: relative;

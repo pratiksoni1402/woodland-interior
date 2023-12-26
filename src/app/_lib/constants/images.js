@@ -23,11 +23,12 @@ export const BEDROOM_PRODUCT_MEDIA_URL = '/uploads/images/shop/bedroom/products'
 export const DINE_TABLE_MEDIA_URL = '/uploads/images/shop/dining-tables/products'
 // End
 
-// Bedroom Product Images
+// Sofa Sets Product Images
+export const SOFA_SETS_MEDIA_URL = '/uploads/images/shop/sofa-sets/products'
+// End
+
+// Outdoor Product Images
 export const OUTDOOR_MEDIA_URL = '/uploads/images/shop/outdoor/products'
 // End
 
-// Bedroom Product Images
-export const SOFA_SETS_MEDIA_URL = '/uploads/images/shop/sofa-sets/products'
-// End
 

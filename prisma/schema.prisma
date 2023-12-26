@@ -30,7 +30,7 @@ model Credentials {
 }
 // End
 
-// Bedroom Product
+// Bedroom Product Listing
 model Bedroomproduct {
     id Int @id @default(autoincrement())
     image String @db.VarChar(100)
@@ -40,6 +40,36 @@ model Bedroomproduct {
     @@map("bedroom")
 }
 // End
+
+// Dining Table Product Listing
+model Diningproducts {
+    id Int @id @default(autoincrement())
+    image String @db.VarChar(50)
+    name String @db.VarChar(250)
+    price Int @db.Int
+
+    @@map("dining_tables")
+}
+
+// Sofa Sets Product Listing
+model Sofasetproducts {
+    id Int @id @default(autoincrement())
+    image String @db.VarChar(100)
+    name String @db.VarChar(250)
+    price Int @db.Int
+
+    @@map("sofasets")
+}
+
+// Outdoor Product Listing
+model Outdoorproducts {
+    id Int @id @default(autoincrement())
+    image String @db.VarChar(100)
+    name String @db.VarChar(250)
+    price Int @db.Int
+
+    @@map("outdoor")
+}
 
 // Contact Us Model
 model Userquery {

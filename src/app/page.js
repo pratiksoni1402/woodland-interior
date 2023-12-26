@@ -17,7 +17,7 @@ export default function Home() {
           <div
             className="banner w-full"
             style={{
-              backgroundImage: 'url("/uploads/images/homepage/kitchen.jpg")',
+              backgroundImage: 'url("/uploads/images/homepage/main-banner.jpg")',
               width: "100%",
               height: "100vh",
               backgroundPosition: "bottom center",
@@ -43,7 +43,7 @@ export default function Home() {
               <video src="/uploads/images/homepage/warehouse.mp4" autoPlay loop></video>
             </div>
             <div className="description flex flex-col justify-center px-4 py-4">
-              <div className="title text-[#54595f] text-2xl font-medium py-3 font-crimson">Our Wareshouse</div>
+              <div className="title text-[#54595f] text-2xl font-medium py-3 font-crimson">Our Warehouse</div>
               <div className="detail">
                 <p className="text-justify text-[#54595f] font-roboto">
                   Welcome to our furniture haven, where we merge artistry,

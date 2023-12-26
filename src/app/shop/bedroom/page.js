@@ -7,6 +7,11 @@ import { IndianRupee } from 'lucide-react';
 import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 export default function Bedroom() {
     const [products, setProducts] = useState();
+    cont [banner, setBanner] =useState();
+
+    useEffect(()=>{
+        axios.get("/api/bedroom-banner")
+    })
 
     useEffect(() => {
         axios.get("/api/get-bproduct")
@@ -73,10 +78,8 @@ export default function Bedroom() {
                 </div>
                 <div className="product-listing-section py-10">
                     <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
-                        {/* <div className="product-wrapper"> */}
-
                         {products && products.map((product) => (
-                            <Link href='/' key={product.id} className="my-4 group ">
+                            <Link href={`/shop/bedroom/${product.id}`} key={product.id} className="my-4 group ">
                                 <div className="product-image overflow-hidden">
                                     <Image src={`${BEDROOM_PRODUCT_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300" />
                                 </div>
@@ -89,8 +92,6 @@ export default function Bedroom() {
                                 </div>
                             </Link>
                         ))}
-
-                        {/* </div> */}
                     </div>
                 </div>
             </div>

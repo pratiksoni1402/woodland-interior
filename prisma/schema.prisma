@@ -7,6 +7,14 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+// Home Page Images 
+model Homepage{
+    id Int @id @default(autoincrement())
+    image String @db.VarChar(50)
+
+    @@map("homepage")
+}
+
 // Get product category model
 model Category {
     id    Int     @id @default(autoincrement())

@@ -7,11 +7,6 @@ import { IndianRupee } from 'lucide-react';
 import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 export default function Bedroom() {
     const [products, setProducts] = useState();
-    cont [banner, setBanner] =useState();
-
-    useEffect(()=>{
-        axios.get("/api/bedroom-banner")
-    })
 
     useEffect(() => {
         axios.get("/api/get-bproduct")

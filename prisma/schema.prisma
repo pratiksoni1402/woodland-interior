@@ -44,6 +44,8 @@ model Bedroomproduct {
     image String @db.VarChar(100)
     name String @db.VarChar(250)
     price Int @db.Int
+    sku String @db.VarChar(50)
+    description String @db.Text
 
     @@map("bedroom")
 }

@@ -28,7 +28,7 @@ export default function Detail({params}){
     return(
         <div className="product-detail-page bg-[#faf2ec]">
             <div className="container">
-                <div className="product-wrapper py-10">
+                <div className="product-wrapper py-10 border-t ">
                     <div className="grid grid-cols-12">
                         <div className="col-span-8">
                             <div className="left-section">

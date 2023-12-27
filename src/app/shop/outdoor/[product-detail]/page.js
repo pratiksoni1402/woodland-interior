@@ -1,29 +1,31 @@
-'use client'
+"use client"
 import axios from "axios";
-import Image from "next/image";
-import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { MoonLoader } from 'react-spinners';
 import { IndianRupee } from 'lucide-react';
 import { Heart } from 'lucide-react';
 import { Button } from "@/components/ui/button"
 import { ShoppingBag } from 'lucide-react';
-export default function Detailpage({ params }) {
-    const [productDetail, setProductDetail] = useState(null);
-    useEffect(() => {
-        axios.get(`/api/bedroom-detail/${params['product-detail']}`)
-            .then((response) => {
-                setProductDetail(response.data.product_detail)
-                console.log(response)
-            })
-            .catch((error) => {
-                console.log("Error occured while fetching product detail", error)
-            })
-    }, [params]);
+import Image from "next/image";
+import { OUTDOOR_MEDIA_URL } from '@/app/_lib/constants/images';
+export default function Detail({params}){
+    const [productDetail, setProductDetail] = useState();
+    useEffect(()=>{
+        axios.get(`/api/outdoor-page/${params['product-detail']}`)
+        .then((response)=>{
+            setProductDetail(response.data.product_detail)
+        })
+        .catch((error)=>{
+            console.log("Error Occured", error)
+        });
+    }, [params])
+
     if (!productDetail) {
-        return <div className='loading'><MoonLoader color="#3c2f27" /></div>;
+        return <div className='loading h-screen w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
+        </div>;
     }
-    return (
+
+    return(
         <div className="product-detail-page bg-[#faf2ec]">
             <div className="container">
                 <div className="product-wrapper py-10">
@@ -31,7 +33,7 @@ export default function Detailpage({ params }) {
                         <div className="col-span-8">
                             <div className="left-section">
                                 <div className="product-image">
-                                    <Image src={`${BEDROOM_PRODUCT_MEDIA_URL}/${productDetail?.image}`} width={500} height={500} alt={productDetail?.name} />
+                                    <Image src={`${OUTDOOR_MEDIA_URL}/${productDetail?.image}`} width={500} height={500} alt={productDetail?.name} />
                                 </div>
                             </div>
                         </div>

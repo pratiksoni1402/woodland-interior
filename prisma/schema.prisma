@@ -57,6 +57,8 @@ model Diningproducts {
     image String @db.VarChar(50)
     name String @db.VarChar(250)
     price Int @db.Int
+    sku String @db.VarChar(50)
+    description String @db.Text
 
     @@map("dining_tables")
 }
@@ -67,6 +69,8 @@ model Sofasetproducts {
     image String @db.VarChar(100)
     name String @db.VarChar(250)
     price Int @db.Int
+    sku String @db.VarChar(15)
+    description String @db.Text
 
     @@map("sofasets")
 }
@@ -77,6 +81,8 @@ model Outdoorproducts {
     image String @db.VarChar(100)
     name String @db.VarChar(250)
     price Int @db.Int
+    sku String @db.VarChar(20)
+    description String @db.Text
 
     @@map("outdoor")
 }

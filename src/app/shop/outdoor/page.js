@@ -58,7 +58,7 @@ export default function Outdoor() {
                 <div className="product-listing-section py-10">
                     <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
                         {products && products.map((product) => (
-                            <Link href='/' key={product.id} className="my-4 group ">
+                            <Link href={`/shop/outdoor/${product.id}`} key={product.id} className="my-4 group ">
                                 <div className="product-image overflow-hidden">
                                     <Image src={`${OUTDOOR_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300" />
                                 </div>

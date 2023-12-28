@@ -35,13 +35,13 @@ export default function Detail({params}){
                         <div className="col-span-4">
                             <div className="right-section">
                                 <div className="detail-wrapper">
-                                    <div className="variation font-roboto text-sm text-[#3c2f27]">
+                                    <div className="variation font-roboto text-sm text-[#3c2f27] pb-2">
                                         <span className="caption">SKU:</span><span className="value">{productDetail?.sku}</span>
                                     </div>
-                                    <div className="product-name text-[#3c2f27] font-semibold font-crimson text-2xl">
+                                    <div className="product-name text-[#3c2f27] font-semibold font-crimson text-2xl pb-2">
                                         {productDetail?.name}
                                     </div>
-                                    <div className="description text-[#3c2f27] text-sm py-2 font-roboto">
+                                    <div className="description text-[#3c2f27] text-sm pb-2 font-roboto">
                                         {productDetail?.description}
                                     </div>
                                     <div className="pricing flex items-center  text-[#3c2f27] font-semibold font-crimson text-lg">

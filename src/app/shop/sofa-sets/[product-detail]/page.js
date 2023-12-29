@@ -8,9 +8,14 @@ import { ShoppingBag } from 'lucide-react';
 import Image from "next/image";
 import { SOFA_SETS_MEDIA_URL } from '@/app/_lib/constants/images';
 import { useEffect, useState } from "react"
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Detail({ params }) {
     const [productDetail, setProductdetail] = useState();
+    const [count, setCount] = useState(1);
+    const [price, setPrice] = useState();
+
+    // Getting Product Data from API
     useEffect(() => {
         axios.get(`/api/sofaset-page/${params['product-detail']}`)
             .then((response) => {
@@ -20,11 +25,53 @@ export default function Detail({ params }) {
                 console.log("Error in fetching data", error)
             })
     }, [params])
+    // End
 
+    // Updating Price Based on Product Quantity
+    useEffect(()=>{
+        const price = productDetail?.price * count
+        setPrice(price)  
+    }, [count, productDetail])
+
+
+    // Display spinner Until Data is Getting Ready
     if (!productDetail) {
         return <div className='loading h-screen bg-[#faf2ec]  w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
         </div>;
     }
+    // End
+
+    // Increasing Product Quantity
+    const handleIncrement = () =>{
+        if(count < 10){
+            setCount((prevCount) => prevCount + 1)
+        }else{
+            toast.error("Only 10 Sets are allowed to buy", {
+                duration: 8000,
+                style: {
+                    border: '1px solid #3c2f27',
+                    padding: '16px',
+                    color: '#faf2ec',
+                    backgroundColor: '#3c2f27',
+                },
+                iconTheme: {
+                    primary: '#faf2ec',
+                    secondary: '#3c2f27',
+                },
+            });
+        }
+    }
+    // End
+
+    // Decreasing Product Quantity
+    const handleDecrement = () =>{
+        if(count > 1){
+            setCount((prevCount) => prevCount - 1)
+        }
+    }
+
+    
+
 
     return (
         <div className="product-detail-page bg-[#faf2ec]">
@@ -51,17 +98,20 @@ export default function Detail({ params }) {
                                         {productDetail?.description}
                                     </div>
                                     <div className="pricing flex items-center  text-[#3c2f27] font-semibold font-crimson text-lg">
-                                        <span> <IndianRupee width={18} /></span><span>{productDetail?.price}</span>
+                                        <span> <IndianRupee width={18} /></span><span>{price}</span>
                                         <span className="text-xs px-1">(inclusive of all taxes)</span>
                                     </div>
                                 </div>
                                 <div className="actions">
                                     <div className="quantity py-3 ">
                                         <div className="pb-1 text-xs text-[#3c2f27] font-roboto">Quantity:</div>
+                                        <div>
+                                            <Toaster/>
+                                        </div>
                                         <div className="flex items-center">
-                                            <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">+</Button>
-                                            <span className="px-7 border-[#3c2f27] border h-10 flex items-center border-r-0 border-l-0">1</span>
-                                            <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">-</Button>
+                                            <Button onClick={handleIncrement} variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">+</Button>
+                                            <span className="px-7 border-[#3c2f27] border h-10 flex items-center border-r-0 border-l-0">{count}</span>
+                                            <Button onClick={handleDecrement} variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">-</Button>
                                         </div>
                                     </div>
                                     <div className="wishlist py-3">

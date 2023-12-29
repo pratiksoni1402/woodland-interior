@@ -24,11 +24,11 @@ export default function Outdoor() {
                         <div className="col-span-8">
                             <div className="content-wrapper h-full flex items-center">
                                 <div>
-                                    <div className="title font-crimson text-[#54595f] text-4xl py-4">
+                                    <div className="title font-crimson text-[#3c2f27] font-medium  text-4xl py-4">
                                         Outdoor
                                     </div>
                                     <div className="description">
-                                        <p className="text-justify text-[#54595f] font-roboto leading-6 text-base">
+                                        <p className="text-justify text-[#4f4537] font-roboto leading-6 text-base">
                                             Elevate Your Space with Our Outdoor Furniture Collection! Step into a world of alfresco elegance with our handpicked outdoor furniture range. Each piece is a harmonious blend of durability and design, crafted to enhance your outdoor living experience. Explore a diverse array of styles, from contemporary chic to rustic charm, designed to complement any outdoor setting. Immerse yourself in the beauty of open-air relaxation as you browse our curated collection of outdoor furniture. Create an oasis in your backyard with our thoughtfully designed pieces that withstand the elements without compromising on style. Transform your outdoor space into a retreat of comfort and sophistication with our exclusive selection. Whether you envision a cozy patio or a sprawling garden retreat, our outdoor furniture promises to bring your vision to life.
                                         </p>
                                     </div>

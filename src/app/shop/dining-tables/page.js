@@ -3,7 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { IndianRupee } from 'lucide-react';
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "../../components/ui/skeleton"
 import { DINE_TABLE_MEDIA_URL } from "@/app/_lib/constants/images";
 import { useEffect, useState } from "react";
 export default function Dining() {
@@ -22,7 +22,7 @@ export default function Dining() {
 
     if (!products) {
         return <div className="skeleton flex items-center space-x-4">
-            <Skeleton className="h-12 w-12 rounded-full" />
+            <Skeleton className="h-12 w-12 rounded-full" /> 
             <div className="space-y-2">
                 <Skeleton className="h-4 w-[250px]" />
                 <Skeleton className="h-4 w-[200px]" />
@@ -37,11 +37,11 @@ export default function Dining() {
                         <div className="col-span-8">
                             <div className="content-wrapper h-full flex items-center">
                                 <div>
-                                    <div className="title font-crimson text-[#54595f] text-4xl py-4">
+                                    <div className="title font-crimson text-[#3c2f27] font-medium  text-4xl py-4">
                                         Dining Tables
                                     </div>
                                     <div className="description">
-                                        <p className="text-justify text-[#54595f] font-roboto leading-6 text-base">
+                                        <p className="text-justify text-[#4f4537]  font-roboto leading-6 text-base">
                                             Elevate Your Dining Experience: Discover Exquisite Dining Tables at Our Showcase! Immerse yourself in a world of sophistication and functionality as you explore our curated collection of dining table products. From sleek modern designs to timeless classics, each piece is meticulously crafted to add a touch of elegance to your dining space. Unleash your creativity and transform your dining area into a stylish haven with our diverse range of high-quality tables. Whether you prefer minimalist chic or opulent charm, our selection caters to diverse tastes. Explore the fusion of form and function – redefine your dining space with our exceptional tables.
                                         </p>
                                     </div>

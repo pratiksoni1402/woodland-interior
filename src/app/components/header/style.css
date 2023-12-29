@@ -1,7 +1,7 @@
 /* Navbar Styling */
 
 .navigation-bar .navbar-wrapper .menu nav ul li  {
-    color: #54595f;
+    color: #4f4537;
     font-family: 'Crimson Pro', serif;
     
 }
@@ -19,13 +19,15 @@
 }
 
 .navigation-bar .navbar-wrapper .menu nav ul li:hover {
-    color: black;
-    transition: .5s;
+    color: #3c2f27;
+    transition: .3s;
     cursor: pointer;
 }
 .navigation-bar .navbar-wrapper .menu nav ul li button{
     padding: 0;
     background-color: transparent;
+    color: #4f4537;
+
 }
 .navbar-expand-lg .navbar-nav a {
     text-decoration: none;
@@ -63,7 +65,7 @@
 }
 
 .navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item {
-    color: #54595f;
+    color: #4f4537;
     font-family: 'Crimson Pro', serif;
     font-size: 20px;
     line-height: 28.8px;
@@ -73,7 +75,7 @@
 
 .navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item:hover {
     background-color: transparent;
-    color: black;
+    color: #3c2f27;
 
 }
 

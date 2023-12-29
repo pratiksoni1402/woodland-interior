@@ -3,7 +3,7 @@ import axios from "axios";
 import { MoonLoader } from 'react-spinners';
 import { IndianRupee } from 'lucide-react';
 import { Heart } from 'lucide-react';
-import { Button } from "@/components/ui/button"
+import { Button } from "../../../components/ui/button"
 import { ShoppingBag } from 'lucide-react';
 import Image from "next/image";
 import { SOFA_SETS_MEDIA_URL } from '@/app/_lib/constants/images';

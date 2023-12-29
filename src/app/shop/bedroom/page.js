@@ -27,11 +27,11 @@ export default function Bedroom() {
                         <div className="md:col-span-8 sm:col-span-12 col-span-12 md:order-1 sm:order-2 order-2">
                             <div className="content-wrapper h-full flex items-center">
                                 <div>
-                                    <div className="title font-crimson text-[#54595f] text-4xl md:py-4 py-2">
+                                    <div className="title font-crimson text-[#3c2f27] font-medium text-4xl md:py-4 py-2">
                                         Bedroom Furniture
                                     </div>
                                     <div className="description">
-                                        <p className="text-justify text-[#54595f] font-roboto leading-6 text-base">
+                                        <p className="text-justify  text-[#4f4537]  font-roboto leading-6 text-base">
                                             Indulge in the warmth and comfort of our exquisite wooden
                                             beds, where dreams find their perfect sanctuary. Crafted
                                             with passion and precision, each bed is a symphony of

@@ -4,7 +4,7 @@ import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { UserCircle2 } from 'lucide-react';
 import './style.css'
-import { Button } from "@/components/ui/button"
+import { Button } from "../../ui/button"
 import {
     Cloud,
     CreditCard,
@@ -35,7 +35,7 @@ import {
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "../../ui/dropdown-menu"
 
 import { Menu } from 'lucide-react';
 import {
@@ -47,7 +47,7 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
-} from "@/components/ui/sheet"
+} from "../../ui/sheet"
 export default function MobileMenu() {
     return (
         <div className='mobile-menu-wrapper'>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import SwiperSlider from "@/components/swiper-slider";
+import SwiperSlider from "../app/components/swiper-slider";
 import Visitshop from "./_component";
 import Link from "next/link";
 

@@ -27,11 +27,11 @@ export default function Bedroom() {
                         <div className="col-span-8">
                             <div className="content-wrapper h-full flex items-center">
                                 <div>
-                                    <div className="title font-crimson text-[#54595f] text-4xl py-4">
+                                    <div className="title font-crimson text-[#3c2f27] font-medium text-4xl py-4">
                                         Sofa Sets
                                     </div>
                                     <div className="description">
-                                        <p className="text-justify text-[#54595f] font-roboto leading-6 text-base">
+                                        <p className="text-justify text-[#4f4537] font-roboto leading-6 text-base">
                                             Unwind in Style discover the Ultimate Comfort with Our Sofa Sets! Immerse yourself in the art of relaxation with our thoughtfully curated collection of sofa sets. From contemporary chic to timeless classics, each piece is a testament to craftsmanship and comfort. Explore a world of design diversity, where plush seating meets exquisite aesthetics. Elevate your living space with our exclusive range of sofa sets that seamlessly balance style and functionality. Whether you prefer sleek modern lines or the warmth of traditional designs, our collection has something for every taste. Dive into a realm of luxury and transform your living room into a haven of comfort and sophistication.
                                         </p>
                                     </div>

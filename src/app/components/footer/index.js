@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link'
 import './style.css'
 import Image from "next/image";
-import Logo from '../../../public/uploads/images/logos/footer.png'
+import Logo from '../../../../public/uploads/images/logos/footer.png'
 const footer = () => {
     return (
         <div className='footer-section bg-white'>

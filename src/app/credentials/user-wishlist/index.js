@@ -33,7 +33,7 @@ export default function Wishlist(){
                                         </div>
                                     )}
                                     <div className='product'>
-                                        <div className="grid grid-cols-12">
+                                        <div className="grid grid-cols-12 gap-3">
                                             <div className="xl:col-span-3 sm:col-span-2 col-span-12">
                                                 <div className='image'>
                                                     <Image src="/uploads/images/shop/bedroom/products/image1.jpg" alt='Storage' width={150} height={150} />
@@ -50,8 +50,9 @@ export default function Wishlist(){
                                                 </div>
                                             </div>
                                             <div className="sm:col-span-2 col-span-12">
-                                                <div className='amount'>
-                                                    <span className='constant'><IndianRupee /><span className='variation'>10,000</span></span>
+                                                <div className='amount flex justify-end'>
+                                                    <div className='constant'><IndianRupee /></div>
+                                                    <div className='variation'>10000</div>
                                                 </div>
                                             </div>
                                         </div>

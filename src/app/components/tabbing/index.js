@@ -12,6 +12,9 @@ import { Label } from "../../components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
 import Profile from "@/app/credentials/user-profile";
 import Wishlist from "@/app/credentials/user-wishlist";
+import History from "@/app/credentials/user-history";
+import Resetpassword from "@/app/credentials/reset-password";
+import { Deleteaccount } from "@/app/credentials/account-deletion";
 export function Tabbing() {
   return (
     <Tabs defaultValue="account">
@@ -20,19 +23,19 @@ export function Tabbing() {
           <TabsTrigger value="account" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
             Edit Profile
           </TabsTrigger>
-          <TabsTrigger value="password" className="col-span-2 rounded-none hover:bg-white hover:text-black mx-1">
+          <TabsTrigger value="wishlist" className="col-span-2 rounded-none hover:bg-white hover:text-black mx-1">
             My Wishlist
           </TabsTrigger>
-          <TabsTrigger value="desks" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
+          <TabsTrigger value="history" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
             Order History
           </TabsTrigger>
-          <TabsTrigger value="tables" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
+          <TabsTrigger value="taxation" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
           GST Details
           </TabsTrigger>
-          <TabsTrigger value="outdoor" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
+          <TabsTrigger value="change-password" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
           Change Password
           </TabsTrigger>
-          <TabsTrigger value="kitchen" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
+          <TabsTrigger value="account-deletion" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
             Account Deletion
           </TabsTrigger>
         </TabsList>
@@ -43,22 +46,30 @@ export function Tabbing() {
             <Profile />
           </div>
         </TabsContent>
-        <TabsContent value="password">
+        <TabsContent value="wishlist">
           <div>
             <Wishlist/>
           </div>
         </TabsContent>
-        <TabsContent value="desks">
-          <div>Coming Soon</div>
+        <TabsContent value="history">
+          <div>
+            <History/>
+          </div>
         </TabsContent>
-        <TabsContent value="tables">
-          <div>Coming Soon</div>
+        <TabsContent value="taxation">
+          <div>
+            GST Details 
+          </div>
         </TabsContent>
-        <TabsContent value="kitchen">
-          <div>Coming Soon</div>
+        <TabsContent value="change-password">
+          <div>
+            <Resetpassword/>
+          </div>
         </TabsContent>
-        <TabsContent value="outdoor">
-          <div>Coming Soon</div>
+        <TabsContent value="account-deletion">
+          <div>
+            <Deleteaccount/>
+          </div>
         </TabsContent>
       </div>
     </Tabs>

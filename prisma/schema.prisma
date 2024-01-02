@@ -109,7 +109,7 @@ model Customerprofile{
 // Countries
 model Countries{
     id Int @id @default(autoincrement())
-    country_name String @db.VarChar(50)
+    name String @db.VarChar(50)
 
     @@map("countries")
 }
@@ -118,7 +118,7 @@ model Countries{
 // State
 model Indianstates{
     id Int @id @default(autoincrement())
-    state_name String @db.VarChar(50)
+    name String @db.VarChar(50)
 
     @@map("indian_states")
 }

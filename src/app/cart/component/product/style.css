@@ -1,0 +1,30 @@
+.product-wrapper  .my-items .product-wrapper .buttons button:hover{
+    color: white;
+    background: #3c2f27;
+}
+
+
+.product-wrapper  .my-items .product-wrapper .image img{
+    width: 100%;
+}
+
+.product-wrapper  .my-items .product-wrapper .description .title{
+    color: #59545f;
+    font-size: 18px;
+    font-family: minion-pro-display;
+    line-height: 24px;
+    padding-bottom: 8px;
+}
+
+.product-wrapper  .my-items .product-wrapper .description .constant svg{
+    color: #59545f;
+    font-family: minion-pro;
+    padding: 8px 0;
+    width: 100%;
+}
+
+.product-wrapper  .my-items .product-wrapper .product .account .variation{
+    width: 100%;
+}
+
+

@@ -25,7 +25,7 @@ export default function History() {
                                 {isHovered && (
                                     <div className='buttons absolute z-10 text-center top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
                                         {/* Add your buttons here */}
-                                        <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none w-56'>View</Button>
+                                        <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] inline-block rounded-none w-56'>View</Button>
                                     </div>
                                 )}
                                 <div className='product'>

@@ -88,6 +88,42 @@ model Outdoorproducts {
     @@map("outdoor")
 }
 
+// Customer Profile
+model Customerprofile{
+    id Int @id @default(autoincrement())
+    firstname String @db.VarChar(20)
+    lastname String @db.VarChar(20)
+    email String @db.VarChar(50)
+    addresslineone String @db.VarChar(100)
+    addresslinetwo String? @db.VarChar(100)
+    country String @db.VarChar(50)
+    state String @db.VarChar(50)
+    city String @db.VarChar(40)
+    phonenumber Int @db.Int
+    pincode Int @db.Int
+
+    @@map("customer_profile")
+}
+// End
+
+// Countries
+model Countries{
+    id Int @id @default(autoincrement())
+    country_name String @db.VarChar(50)
+
+    @@map("countries")
+}
+// End
+
+// State
+model Indianstates{
+    id Int @id @default(autoincrement())
+    state_name String @db.VarChar(50)
+
+    @@map("indian_states")
+}
+// End
+
 // Contact Us Model
 model Userquery {
     id Int @id @default(autoincrement())

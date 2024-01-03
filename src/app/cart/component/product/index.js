@@ -5,8 +5,8 @@ import { IndianRupee } from "lucide-react"
 import { useState } from "react"
 import './style.css'
 export default function Product() {
-    const [isHovered, setIsHovered] = useState(false);
 
+    const [isHovered, setIsHovered] = useState(false);
     const handleMouseEnter = () => {
         setIsHovered(true);
     };
@@ -22,7 +22,7 @@ export default function Product() {
                         <div className='product-wrapper mb-10 relative' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                             {isHovered && (
                                 <div className='buttons absolute z-10 text-center top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
-        
+
                                     <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>View</Button>
                                     <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>Move to wishlist</Button>
                                     <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>Remove from cart</Button>
@@ -42,7 +42,7 @@ export default function Product() {
                                             <div className='title'>
                                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ratione asperiores velit esse praesentium architecto maiores eos nisi nihil quam.
                                             </div>
-                                            <div className='constant'>Product SKU: <span className='variation'>TIM0358-B</span></div>
+                                            <div className='constant'>SKU: <span className='variation'></span></div>
                                             <div className='constant'>Material: <span className='variation'>Timber</span></div>
                                         </div>
                                     </div>

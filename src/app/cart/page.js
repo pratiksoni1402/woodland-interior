@@ -1,7 +1,9 @@
 import './style.css'
 import Product from './component/product';
 import Pricing from './component/pricing';
+
 export default function Cart(){
+    
     return (
         <div className='shopping-bag-page bg-[#faf2ec]'>
             <div className='container'>

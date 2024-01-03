@@ -26,8 +26,9 @@ export default function Pricing(){
                     </div>
                 </div>
                 <div className="place-order text-center w-full ">
-                    <Button type="submit" className="w-full ">Place Order</Button>
+                    <Button type="submit" className="w-full bg-[#b2937e] rounded-none hover:bg-[#3c2f27]">Place Order</Button>
                 </div>
+                 
             </div>
         </div>
     )

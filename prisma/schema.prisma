@@ -32,7 +32,7 @@ model Credentials {
     firstname   String @db.VarChar(20)
     lastname    String @db.VarChar(20)
     email       String @db.VarChar(50)
-    password    String @db.VarChar(50)
+    password    String @db.VarChar(500)
     createdon   DateTime @default(now())
 
     @@map("customers")

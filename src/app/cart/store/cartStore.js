@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
-const useAddToCart = create((set) => ({
-    count: 0,
+const useCartStore = create((set) => ({
+    cart: [],
     increment: () => set((state) => ({count: state.count + 1})),
-    
+    addToCart: (product) => set((state) => ({ cart: [...state.cart, product] })),
 }))
 
-export default useAddToCart;
+export default useCartStore;

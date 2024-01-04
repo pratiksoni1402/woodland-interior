@@ -17,6 +17,11 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "../ui/navigation-menu"
+import {
+    Avatar,
+    AvatarFallback,
+    AvatarImage,
+  } from "./../ui/avatar"
 import useWishlistStore from "@/app/store/store"
 const Navbar = () => {
     const wishlistcount = useWishlistStore((state) => state.count);
@@ -33,7 +38,7 @@ const Navbar = () => {
                         <NavigationMenuList>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/"  className="text-lg leading-7">
+                                    <Link href="/" className="text-lg leading-7">
                                         Home
                                     </Link>
                                 </NavigationMenuLink>
@@ -51,13 +56,13 @@ const Navbar = () => {
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
-                                    <Link href="/about-us"  className="text-lg leading-7">
+                                    <Link href="/about-us" className="text-lg leading-7">
                                         About Us
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <NavigationMenuLink asChild  className="text-lg leading-7">
+                                <NavigationMenuLink asChild className="text-lg leading-7">
                                     <Link href="/contact">
                                         Contact
                                     </Link>
@@ -82,7 +87,10 @@ const Navbar = () => {
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild>
                                     <Link href="/auth">
-                                        <UserCircle2 />
+                                        <Avatar>
+                                            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                                            <AvatarFallback>CN</AvatarFallback>
+                                        </Avatar>
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>

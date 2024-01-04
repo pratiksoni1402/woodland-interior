@@ -43,7 +43,7 @@ const ContactForm = () => {
                         <input type="text" placeholder="How did you find us ?" {...register("subject", { required: true })} />
                         <textarea placeholder="Enter your Message Here" {...register("message", { required: true })} style={{ height: "180px" }} />
 
-                        <button type="submit" className="bg-white border px-6 py-3 w-full border-[#54595f] rounded hover:bg-[#3c2f27] hover:text-[#faf2ec] font-roboto hover:transition-all hover:duration-300 text-[#54595f]">Submit</button>
+                        <button type="submit" className="bg-white border px-6 py-3 w-full border-[#54595f] rounded-none hover:bg-[#3c2f27] hover:text-[#faf2ec] font-roboto hover:transition-all hover:duration-300 text-[#54595f]">Submit</button>
                         <Toaster/>
                     </form>
                 </div>

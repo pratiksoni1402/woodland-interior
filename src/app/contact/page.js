@@ -10,7 +10,7 @@ const contactPage = () => {
         <div
           className="banner-image"
           style={{
-            backgroundImage: "url('/uploads/images/contactus/contact-us.jpg')",
+            backgroundImage: "url('/uploads/images/contact/contact-us.jpg')",
             width: "100%",
             height: "85vh",
             marginTop: "-80px",

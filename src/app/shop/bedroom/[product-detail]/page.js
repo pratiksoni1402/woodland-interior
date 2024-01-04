@@ -10,16 +10,20 @@ import { Button } from "../../../components/ui/button"
 import { ShoppingBag } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 import useWishlistStore from "@/app/store/store";
-
+import useCartStore from "@/app/cart/store/cartStore";
 export default function Detailpage({ params }) {
+    
     const [productDetail, setProductDetail] = useState(null);
     const [count, setCount] = useState(1);
     const [price, setPrice] = useState();
     const incrementWishlistCount = useWishlistStore((state) => state.increment);
+    const addToCart = useCartStore(state => state.add)
     
     // Getting Product Data From API
     useEffect(() => {
-        axios.get(`/api/bedroom-detail/${params['product-detail']}`)
+        axios.get(`/api/bedroom-detail/${params['product-detail']}`, {
+
+        })
             .then((response) => {
                 setProductDetail(response.data.product_detail)
                 console.log(response)
@@ -79,6 +83,26 @@ export default function Detailpage({ params }) {
     }
     // End
 
+     // Add to Cart
+     const addToCartHandler = () => {
+        addToCart(productDetail.id); 
+        toast.success("Product added to the cart!", {
+            duration: 3000,
+            style: {
+                border: '1px solid #3c2f27',
+                padding: '16px',
+                color: '#faf2ec',
+                backgroundColor: '#3c2f27',
+            },
+            iconTheme: {
+                primary: '#faf2ec',
+                secondary: '#3c2f27',
+            },
+        });
+    };
+    // End
+
+
     return (
         <div className="product-detail-page bg-[#faf2ec]">
             <div className="container">
@@ -126,7 +150,7 @@ export default function Detailpage({ params }) {
                                         </Button>
                                     </div>
                                     <div className="cart py-3">
-                                        <Button variant="outline" className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12">ADD TO BAG
+                                        <Button variant="outline" onClick={addToCartHandler} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12">ADD TO BAG
                                             <span className="px-2"><ShoppingBag width={18} /></span>
                                         </Button>
                                     </div>

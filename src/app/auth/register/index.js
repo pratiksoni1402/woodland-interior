@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import './style.css'
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-
+import { UserPlus } from 'lucide-react';
 export default function Register() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -73,7 +73,7 @@ export default function Register() {
           <div className='error-occured text-xs text-red-600 font-roboto font-semibold mt-[-10px] mb-[10px]'>{Error}</div>
           <input type="password" placeholder="Confirm Password" {...register("cnfpassword", { required: true })} />
           <div className='error-occured text-xs text-red-600 font-roboto font-semibold mt-[-10px] mb-[10px]'>{Error}</div>
-          <button type='submit' className='w-full p-3 mt-4 mb-3 border border-[#b2937e] hover:bg-[#3c2f27] hover:border-[#3c2f27] bg-[#b2937e] text-[#faf2ec]'>Sign Up</button>
+          <button type='submit' className="w-full p-3 mt-4 mb-3 border hover:border-[#b2937e] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">Sign Up <UserPlus /></button>
         </form>
       </div>
     </div>

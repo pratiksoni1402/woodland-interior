@@ -103,8 +103,8 @@ export default function Profile() {
 
                         </div>
                         <div className='grid grid-cols-2 gap-3'>
-                            <input type="text" placeholder="pincode" {...register("pincode", { required: true })} />
-                            <input type="text" placeholder="phonenumber" {...register("phonenumber", { required: true })} />
+                            <input type="text" placeholder="Pincode" {...register("pincode", { required: true })} />
+                            <input type="text" placeholder="Phonenumber" {...register("phonenumber", { required: true })} />
                         </div>
                         <div className='text-center py-8'>
                             <Button type='submit' className="w-full border border-[#3c2f27] bg-transparent text-[#3c2f27 rounded-none font-roboto hover:bg-[#3c2f27] hover:text-[#faf2ec]">UPDATE PROFILE</Button>

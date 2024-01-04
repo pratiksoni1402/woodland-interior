@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import './style.css'
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { LogIn } from 'lucide-react';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
@@ -52,7 +53,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
                     <input type="password" placeholder="Password" {...register("password", { required: true })} />
-                    <button type='submit' className='w-full p-3 mt-4 mb-3 border border-[#b2937e] hover:bg-[#3c2f27] hover:border-[#3c2f27] bg-[#b2937e] text-[#faf2ec]'>Login</button>
+                    <button type='submit' className="w-full p-3 mt-4 mb-3 border hover:border-[#b2937e] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">Login  <LogIn /></button>
                 </form>
             </div>
         </div>

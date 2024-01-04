@@ -2,9 +2,23 @@
 import Image from "next/image"
 import { Button } from "@/app/components/ui/button"
 import { IndianRupee } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import axios from "axios"
 import './style.css'
-export default function Product() {
+import useCartStore from "../../store/cartStore"
+export default function Product({ params }) {
+    const cartProduct = useCartStore((state) => state.products);
+    const [product, setProduct] = useState()
+
+    useEffect(() => {
+        axios.post(`/api/cart-items/${params}`)
+            .then((response) => {
+                setProduct(response.data.product)
+            })
+            .catch((error) => {
+                console.log("Error Occured", error)
+            })
+    }, [params])
 
     const [isHovered, setIsHovered] = useState(false);
     const handleMouseEnter = () => {
@@ -42,7 +56,7 @@ export default function Product() {
                                             <div className='title'>
                                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ratione asperiores velit esse praesentium architecto maiores eos nisi nihil quam.
                                             </div>
-                                            <div className='constant'>SKU: <span className='variation'></span></div>
+                                            <div className='constant'>SKU: <span className='variation'>{cartProduct.sku}</span></div>
                                             <div className='constant'>Material: <span className='variation'>Timber</span></div>
                                         </div>
                                     </div>

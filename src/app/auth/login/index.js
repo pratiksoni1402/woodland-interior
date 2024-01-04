@@ -2,21 +2,45 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import './style.css'
 import axios from 'axios';
+import toast from 'react-hot-toast';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         axios.post('/api/login-user', data)
             .then(response => {
-                const user = response.data
-                console.log(user)
-            
+                toast.success("Login Successfull", {
+                    duration: 3000,
+                    style: {
+                        border: '1px solid #3c2f27',
+                        padding: '16px',
+                        color: '#faf2ec',
+                        backgroundColor: '#3c2f27',
+                    },
+                    iconTheme: {
+                        primary: '#faf2ec',
+                        secondary: '#3c2f27',
+                    },
+                })
+
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert("An error occurred while logging in. Please try again.");
+                toast.error("Incorrect Email or Password!", {
+                    duration: 10000,
+                    style: {
+                        border: '1px solid #3c2f27',
+                        padding: '16px',
+                        color: '#faf2ec',
+                        backgroundColor: '#3c2f27',
+                    },
+                    iconTheme: {
+                        primary: '#faf2ec',
+                        secondary: '#3c2f27',
+                    },
+                })
             });
     }
-    
+
 
     return (
         <div className="user-login">
@@ -28,7 +52,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
                     <input type="password" placeholder="Password" {...register("password", { required: true })} />
-                    <button type='submit' className='text-[#54595f]'>Login</button>
+                    <button type='submit' className='w-full p-3 mt-4 mb-3 border border-[#b2937e] hover:bg-[#3c2f27] hover:border-[#3c2f27] bg-[#b2937e] text-[#faf2ec]'>Login</button>
                 </form>
             </div>
         </div>

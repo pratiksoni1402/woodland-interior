@@ -6,7 +6,7 @@ export async function POST(req) {
         const formData = await req.json();
 
         // Hash the password using bcrypt
-        const saltRounds = 10; // You may adjust this value based on your security requirements
+        const saltRounds = 10; // Adjust this value based on your security requirements
         const hashedPassword = await bcrypt.hash(formData.password, saltRounds);
 
         // Save the hashed password in the database
@@ -19,8 +19,8 @@ export async function POST(req) {
             },
         });
 
-        console.log('Hello from the Auth', { customer });
-        return Response.json({ customer });
+        // console.log('Hello from the Auth', { customer });
+        return Response.json({ });
 
     } catch (error) {
 

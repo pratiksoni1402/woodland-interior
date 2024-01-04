@@ -3,22 +3,7 @@
     padding:  10px;
     margin: 0 0 10px 0;
     border: 1px solid #54595f;
-    border-radius: 5px;
-}
-
-.user-login .login-form form button{
-    width: 100%;
-    padding:  10px;
-    margin: 0 0 10px 0;
-    border: 1px solid #54595f;
-    border-radius: 5px;
-}
-
-.user-login .login-form form button:hover{
-    color: white;
-    background-color: #b2937e;
-    border: 1px solid #b2937e;
-    transition: .3s;
+    border-radius: 0px;
 }
 
 .user-login .login-form form input:focus{

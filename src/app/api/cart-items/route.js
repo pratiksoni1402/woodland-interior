@@ -1,12 +1,14 @@
 import prisma from "@/db";
 export async function POST(request, {params}){
-    let product = await prisma.bedroomproduct.findUnique({
+    let products = await prisma.bedroomproduct.findMany({
         where:{
             // sku: 'BED-VEL-MIN-6P',
-            id: 5,
+            id: {
+                in: [8]
+            },
         },
     })
-    console.log("Product fetched", {product})
-    return Response.json({product})
+    console.log("Product fetched", {products})
+    return Response.json({products})
 
 }

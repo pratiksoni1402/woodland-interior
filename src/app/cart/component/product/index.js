@@ -6,19 +6,20 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import './style.css'
 import useCartStore from "../../store/cartStore"
-export default function Product({ params }) {
+export default function Product() {
     const cartProduct = useCartStore((state) => state.products);
     const [product, setProduct] = useState()
 
     useEffect(() => {
-        axios.post(`/api/cart-items/${params}`)
+        axios.post(`/api/cart-items/${cartProduct}`)
             .then((response) => {
-                setProduct(response.data.product)
+                setProduct(response.data.products)
+                console.log(response)
             })
             .catch((error) => {
                 console.log("Error Occured", error)
             })
-    }, [params])
+    }, [cartProduct])
 
     const [isHovered, setIsHovered] = useState(false);
     const handleMouseEnter = () => {

@@ -7,11 +7,13 @@ import axios from "axios"
 import './style.css'
 import useCartStore from "../../store/cartStore"
 export default function Product() {
-    const cartProduct = useCartStore((state) => state.products);
-    const [product, setProduct] = useState()
+    const cartProducts = useCartStore((state) => state.products);
+    // const [product, setProduct] = useState()
 
     useEffect(() => {
-        axios.post(`/api/cart-items/${cartProduct}`)
+        axios.post(`/api/cart-items`, {
+            products: cartProducts
+        })
             .then((response) => {
                 setProduct(response.data.products)
                 console.log(response)
@@ -19,7 +21,7 @@ export default function Product() {
             .catch((error) => {
                 console.log("Error Occured", error)
             })
-    }, [cartProduct])
+    })
 
     const [isHovered, setIsHovered] = useState(false);
     const handleMouseEnter = () => {
@@ -29,6 +31,7 @@ export default function Product() {
     const handleMouseLeave = () => {
         setIsHovered(false);
     };
+
     return (
         <div className="product-wrapper border-t border-b border-[#b2937e] pt-10">
             <div className="grid grid-col-1">
@@ -57,7 +60,7 @@ export default function Product() {
                                             <div className='title'>
                                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ratione asperiores velit esse praesentium architecto maiores eos nisi nihil quam.
                                             </div>
-                                            <div className='constant'>SKU: <span className='variation'>{cartProduct.sku}</span></div>
+                                            <div className='constant'>SKU: <span className='variation'>hjkhkjh</span></div>
                                             <div className='constant'>Material: <span className='variation'>Timber</span></div>
                                         </div>
                                     </div>

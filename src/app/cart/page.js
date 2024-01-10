@@ -20,7 +20,7 @@ export default function Cart(){
                             </div>
                         </div>
                         <div className='col-span-3'>
-                            <div className='left-section '>
+                            <div className='left-section sticky top-24'>
                                 <div className='pricing'>
                                     <Pricing/>
                                 </div>

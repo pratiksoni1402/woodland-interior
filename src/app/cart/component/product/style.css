@@ -8,13 +8,6 @@
     width: 100%;
 }
 
-.product-wrapper  .my-items .product-wrapper .description .title{
-    color: #59545f;
-    font-size: 18px;
-    font-family: minion-pro-display;
-    line-height: 24px;
-    padding-bottom: 8px;
-}
 
 .product-wrapper  .my-items .product-wrapper .description .constant svg{
     color: #59545f;

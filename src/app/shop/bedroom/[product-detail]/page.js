@@ -12,13 +12,13 @@ import toast, { Toaster } from 'react-hot-toast';
 import useWishlistStore from "@/app/store/store";
 import useCartStore from "@/app/cart/store/cartStore";
 export default function Detailpage({ params }) {
-    
+
     const [productDetail, setProductDetail] = useState(null);
     const [count, setCount] = useState(1);
     const [price, setPrice] = useState();
     const incrementWishlistCount = useWishlistStore((state) => state.increment);
     const addToCart = useCartStore(state => state.add)
-    
+
     // Getting Product Data From API
     useEffect(() => {
         axios.get(`/api/bedroom-detail/${params['product-detail']}`, {
@@ -35,9 +35,12 @@ export default function Detailpage({ params }) {
     // End
 
     // Updating Price According to Quantity
-    useEffect(()=>{
-        const price = productDetail?.price * count
-        setPrice(price)
+    useEffect(() => {
+        if (productDetail) {
+            const price = (productDetail?.price)* count
+            setPrice(price)
+        }
+
     }, [count, productDetail])
     // End
 
@@ -78,14 +81,14 @@ export default function Detailpage({ params }) {
     }
 
     // Add to Wishlist
-    const addToWishlist = () =>{
+    const addToWishlist = () => {
         incrementWishlistCount();
     }
     // End
 
-     // Add to Cart
-     const addToCartHandler = () => {
-        addToCart(productDetail.id); 
+    // Add to Cart
+    const addToCartHandler = () => {
+        addToCart(productDetail.id);
         toast.success("Product added to the cart!", {
             duration: 3000,
             style: {
@@ -128,8 +131,10 @@ export default function Detailpage({ params }) {
                                         {productDetail?.description}
                                     </div>
                                     <div className="pricing flex items-center  text-[#3c2f27] font-semibold font-crimson text-lg">
-                                        <span> <IndianRupee width={18} /></span><span>{price}</span>
-                                        <span className="text-xs px-1">(inclusive of all taxes)</span>
+                                        <span><IndianRupee width={18} /></span>
+                                        <span>{price}</span>
+
+                                        <span className="text-xs px-1"> inclusive of all taxes</span>
                                     </div>
                                 </div>
                                 <div className="actions">
@@ -157,6 +162,7 @@ export default function Detailpage({ params }) {
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

@@ -134,7 +134,7 @@ export default function Detailpage({ params }) {
                                         <span><IndianRupee width={18} /></span>
                                         <span>{price}</span>
 
-                                        <span className="text-xs px-1"> inclusive of all taxes</span>
+                                        <span className="text-xs px-1"> (inclusive of all taxes)</span>
                                     </div>
                                 </div>
                                 <div className="actions">
@@ -154,6 +154,7 @@ export default function Detailpage({ params }) {
                                             <span className="px-2"><Heart width={18} /></span>
                                         </Button>
                                     </div>
+
                                     <div className="cart py-3">
                                         <Button variant="outline" onClick={addToCartHandler} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12">ADD TO BAG
                                             <span className="px-2"><ShoppingBag width={18} /></span>

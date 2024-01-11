@@ -1,6 +1,4 @@
 import React from "react";
-import './style.css'
-
 const stories = () =>{
     return(
         <div>

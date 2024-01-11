@@ -192,6 +192,29 @@ html{
 
 /* End */
 
+/* Product Showcase Section  */
+.visit-shop .timber-furniture {
+  @apply bg-[#faf2ec]
+
+}
+.visit-shop .timber-furniture .product-description {
+  @apply font-crimson text-[#54595f]
+}
+
+.visit-shop .timber-furniture .visit-store {
+  @apply mt-8
+}
+
+.visit-shop .timber-furniture .visit-store a {
+  @apply inline-block no-underline rounded
+}
+
+.visit-shop .timber-furniture .visit-store a:hover {
+  @apply text-[#faf2ec] bg-[#3c2f27] border border-[#3c2f27] duration-300
+}
+
+/* Product Description Section end  */
+
 /* User Profile Component */
 .user-profile-component .content-wrapper .form-wrapper form input{
   @apply w-full my-[10px] h-12 px-3 outline-0 border border-[#d3d3d3] 
@@ -204,15 +227,219 @@ html{
 
 .user-profile-component .content-wrapper .form-wrapper form select{
   @apply h-12 my-3 border border-gray-500 bg-white px-3
-  /* height: 50px;
-  margin: 10px 0;
-  border: 1px solid lightgray;
-  background: white;
-  padding: 0 10px; */
+  
 }
 
 .user-profile-component .content-wrapper .form-wrapper form select:focus{
-  @apply outline-1 outline-[#3c2f27]
-  /* border: 1px solid transparent; */
+  @apply outline-1 outline-[#3c2f27] border border-[#3c2f27]
+
 }
 /* End */
+
+/* Password Reset  */
+.change-password-form .form-wrapper form input{
+ @apply w-full my-[10px] h-12 px-3 outline-0 border border-[#d3d3d3] 
+
+}
+
+.change-password-form .form-wrapper form input:focus{
+  @apply outline-1 outline-[#3c2f27] border border-transparent
+}
+
+.change-password-form .form-wrapper form select{
+  @apply h-12 my-3 border border-gray-500 bg-white px-3
+
+}
+
+.change-password-form .form-wrapper form select:focus{
+  @apply outline-1 outline-[#3c2f27] border border-[#3c2f27]
+
+}
+/* End */
+
+/* Swiper  */
+
+.image-carousel {
+ @apply pb-[30px] bg-[#faf2ec]
+}
+
+.image-carousel .carousel-heading {
+  @apply font-crimson text-[#54595f] pt-[30px] pb-5 px-0
+  
+}
+
+.image-carousel .carousel .title {
+  @apply font-crimson text-lg text-[#54595f] leading-7 pt-1 pb-12 px-0
+ 
+}
+
+.image-carousel .carousel .product-swiper .swiper-wrapper{
+  @apply py-0 px-20
+}
+
+.image-carousel .carousel .product-swiper .swiper-wrapper img{
+  @apply w-full
+}
+
+.image-carousel .carousel .swiper-scrollbar {
+  @apply hidden
+}
+
+.image-carousel .carousel .swiper-button-prev, .swiper-button-next {
+  @apply absolute top-[47%] z-10 cursor-pointer flex items-center justify-center text-white bottom-[50%] translate-y-[-50%] font-extrabold
+  
+}
+
+.image-carousel .carousel .swiper-button-next {
+  @apply absolute top-[47%] z-10 cursor-pointer flex items-center justify-center text-white bottom-[50%] translate-y-[-50%] font-extrabold 
+
+
+}
+.image-carousel .carousel .swiper-pagination .swiper-pagination-bullet{
+ @apply  my-0 mx-[10px];
+  
+}
+
+.image-carousel .carousel .swiper-pagination .swiper-pagination-bullet-active {
+  @apply bg-[#3c2f27]
+}
+/* End */
+
+/* Contact Form */
+.contact-page .content-wrapper .form-wrapper form input,
+textarea {
+  @apply w-full my-3 mx-0 h-10 border border-black rounded-none py-0 px-3 outline-0
+    
+}
+
+.contact-page .content-wrapper .form-wrapper form input:focus,
+textarea:focus {
+    @apply border border-[#3c2f27]
+}
+/* End */
+
+/* User Register  Form */
+.user-registration .register-form form input{
+  @apply w-full p-3 mb-3 border border-[#54595f] rounded-none
+}
+
+.user-registration .register-form form input:focus{
+  @apply outline-0 border border-[#3c2f27] duration-300
+
+}
+/* End */
+
+/* Login Form */
+.user-login .login-form form input{
+  @apply  w-full p-3 mb-3 border border-[#54595f] rounded-none
+}
+
+.user-login .login-form form input:focus{
+ @apply outline-0 border border-[#3c2f27] duration-300
+}
+/* End */
+
+
+/* Navigation Styling */
+.navigation-bar .navbar-wrapper .menu nav ul li  {
+  @apply text-[#4f4537] font-crimson
+  
+}
+.navigation-bar .navbar-wrapper .menu nav ul li a{
+  @apply block
+}
+
+.navbar-expand-lg  .selected {
+  @apply relative
+}
+
+.navbar-expand-lg .navbar-nav .nav-links.scrolled {
+  @apply text-white
+}
+
+.navigation-bar .navbar-wrapper .menu nav ul li:hover {
+  @apply text-[#3c2f27] cursor-pointer duration-300
+
+}
+.navigation-bar .navbar-wrapper .menu nav ul li button{
+  @apply p-0 bg-transparent text-[#4f4537]
+
+}
+.navbar-expand-lg .navbar-nav a {
+  @apply relative no-underline
+
+}
+
+.navigation-bar .navbar-wrapper .menu nav ul li::after {
+  /* @apply block h-[2px] w-0 bg-[#54595f]  origin-left transform scale-x-0 transition-all duration-300 ease-in-out before:contents-[''] */
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0px;
+  background-color: #3c2f27;
+  transition: width 0.3s ease, transform 0.3s ease;
+  transform-origin: left center;
+}
+
+.navigation-bar .navbar-wrapper .menu nav ul li:hover::after {
+  @apply w-full scale-x-100
+
+}
+
+.navbar .nav .nav-link .nav-item .dropdown-toggle::after {
+  @apply hidden
+
+}
+
+.navbar .nav .nav-links-dropdown:hover .dropdown-menu {
+  @apply block bg-[#faf2ec] rounded-none w-48 
+}
+
+.navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item {
+ @apply text-[#4f4537] font-crimson text-base leading-7
+
+}
+
+.navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item:hover {
+  @apply bg-transparent text-[#3c2f27]
+
+}
+
+.navbar .navbar-toggler {
+  @apply pl-4 text-lg leading-3 text-[#54595f] bg-transparent border-none transition-none
+}
+
+.navbar .navbar-toggler:focus {
+  @apply no-underline outline-0 shadow-none
+
+}
+
+.navigation-bar .menu ul li {
+  @apply py-0 px-3
+}
+
+.navigation-bar .menu .nested-list li{
+  @apply pb-3
+}
+/* End */
+
+/* Upper Footer Styling */
+.footer-section footer .upper-footer ul li a{
+  @apply leading-6
+}
+
+.footer-section footer .upper-footer ul li a:hover{
+  @apply text-[#3c2f27]
+}
+/* End */
+
+/* Lower Footer */
+.footer-section footer .lower-footer .lower-footer-wrapper div{
+  @apply text-[#4f4537] text-xs
+}
+/* End */
+
+
+
+
+

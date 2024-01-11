@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { UserCircle2 } from 'lucide-react';
-import './style.css'
 import { Button } from "../../ui/button"
 import {
     Cloud,

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import './style.css'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { LogIn } from 'lucide-react';

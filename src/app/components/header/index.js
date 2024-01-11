@@ -5,8 +5,6 @@ import Link from "next/link"
 import React from "react"
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
-import { UserCircle2 } from 'lucide-react';
-import './style.css'
 import MobileMenu from "./mobile-menu"
 import {
     NavigationMenu,

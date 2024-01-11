@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import './style.css'
 export default function Visitshop() {
   
   return (
@@ -10,7 +9,7 @@ export default function Visitshop() {
           Crafted Elegance: Timber Furniture for Timeless Spaces
         </div>
         <div className="visit-store text-center">
-          <Link href="/all-products" className="font-roboto py-3 px-6 text-sm bg-transparent text-[#54595f] border border-[#54595f]">VISIT SHOP</Link>
+          <Link href="/all-products"  className="font-roboto py-3 px-6 text-sm bg-transparent text-[#54595f] border border-[#54595f]">VISIT SHOP</Link>
         </div>
       </section>
     </div>

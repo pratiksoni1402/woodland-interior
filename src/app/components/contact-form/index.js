@@ -1,7 +1,6 @@
 'use client'
 import React from "react";
 import { useForm } from 'react-hook-form';
-import './style.css'
 import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
 const ContactForm = () => {

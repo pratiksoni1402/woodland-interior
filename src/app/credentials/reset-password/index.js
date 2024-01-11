@@ -16,6 +16,7 @@ export default function Resetpassword() {
                     <input type="password" placeholder="Confirm Password" {...register("Confirm Password", { required: true, maxLength: 20 })} />
 
                     <Button type='submit' className='uppercase mt-5 mb-10 bg-transparent border-[#3c2f27] border text-[#3c2f27] font-roboto rounded-none hover:bg-[#3c2f27] hover:text-[#faf2ec]'>update password</Button>
+                    
                 </form>
             </div>
         </div>

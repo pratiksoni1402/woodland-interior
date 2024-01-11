@@ -1,7 +1,5 @@
 import React from "react";
 import ContactForm from "../components/contact-form";
-
-import "./style.css";
 const contactPage = () => {
   return (
     <div className="contact-page bg-[#faf2ec] py-12">

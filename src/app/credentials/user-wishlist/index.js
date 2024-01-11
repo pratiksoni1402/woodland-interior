@@ -1,7 +1,6 @@
 'use client'
 import Image from "next/image"
 import { IndianRupee } from "lucide-react"
-import './style.css'
 import { Button } from "@/app/components/ui/button"
 import { useState } from "react"
 export default function Wishlist(){
@@ -26,9 +25,11 @@ export default function Wishlist(){
                                         <div className='buttons absolute z-10 text-center top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
                                             {/* Add your buttons here */}
                                             
-                                                <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>View</Button>
-                                                <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>Move to Cart</Button>
-                                                <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>Delete from Wishlist</Button>
+                                                <Button className='border hover:bg-[#3c2f27] hover:text-[#faf2ec]  border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block font-roboto text-sm  rounded-none'>View</Button>
+
+                                                <Button className='border hover:bg-[#3c2f27] hover:text-[#faf2ec]  border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block font-roboto text-sm  rounded-none'>Move to Cart</Button>
+
+                                                <Button className='border hover:bg-[#3c2f27] hover:text-[#faf2ec]  border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block font-roboto text-sm  rounded-none'>Delete from Wishlist</Button>
                                             
                                         </div>
                                     )}
@@ -42,7 +43,7 @@ export default function Wishlist(){
                                             </div>
                                             <div className="xl:col-span-7 sm:col-span-8 col-span-12">
                                                 <div className='description'>
-                                                    <div className='title'>
+                                                    <div className='title text-[#3c2f27] font-semibold font-crimson text-xl pb-3'>
                                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ratione asperiores velit esse praesentium architecto maiores eos nisi nihil quam.
                                                     </div>
                                                     <div className='constant'>Product SKU: <span className='variation'>TIM0358-B</span></div>

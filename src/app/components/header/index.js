@@ -23,9 +23,11 @@ import {
     AvatarImage,
   } from "./../ui/avatar"
 import useWishlistStore from "@/app/store/store"
+import useCartStore from "@/app/cart/store/cartStore"
 const Navbar = () => {
     const wishlistcount = useWishlistStore((state) => state.count);
-
+    const cartCount = useCartStore((state) => state.products)
+    console.log(cartCount)
     return (
         <div className="navigation-bar bg-[#faf2ec] h-[75px] py-4 sticky top-0 z-10">
 
@@ -80,7 +82,7 @@ const Navbar = () => {
                                 <NavigationMenuLink asChild>
                                     <Link href="/cart" className='relative'>
                                         <ShoppingCart />
-                                        <div className='absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]'>0</div>
+                                        <div className='absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]'>{cartCount.length}</div>
                                     </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>

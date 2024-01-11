@@ -73,7 +73,7 @@ export default function Profile() {
 
 
     return (
-        <div className="user-profile-component">
+        <div className="user-profile-component ">
             <div className="content-wrapper">
                 <div className="form-wrapper flex justify-center">
                     <form onSubmit={handleSubmit(onSubmit)} className='w-3/4'>

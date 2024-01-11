@@ -4,12 +4,13 @@ import { Button } from "@/app/components/ui/button"
 import { IndianRupee } from "lucide-react"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import './style.css'
+import Link from "next/link"
 import useCartStore from "../../store/cartStore"
 import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images"
 export default function Product() {
    const cartProducts = useCartStore((state) => state.products);
    const [products, setProducts] = useState([])
+   console.log(products.length)
 
    // Getting Data From API
    useEffect(() => {
@@ -52,9 +53,13 @@ export default function Product() {
                      >
                         {hoveredProductId === product.id && (
                            <div className='buttons absolute z-10 text-center top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
-                              <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>View</Button>
-                              <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>Move to wishlist</Button>
-                              <Button className='border border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>Remove from cart</Button>
+
+                              <Link href={`/shop/bedroom/${product.id}`} className='border hover:bg-[#3c2f27] hover:text-[#faf2ec] font-roboto text-sm border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>View</Link>
+
+                              <Button className='border hover:bg-[#3c2f27] hover:text-[#faf2ec]  border-[#3c2f27] py-2 px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block font-roboto text-sm  rounded-none'>Move to wishlist</Button>
+
+                              <Button className='border border-[#3c2f27] py-2 font-roboto  hover:bg-[#3c2f27] hover:text-[#faf2ec] text-sm px-[10px] text-[#3c2f27] my-[5px] bg-[#faf2ec] w-full inline-block rounded-none'>Remove from cart</Button>
+
                            </div>
                         )}
                         <div className='product py-10'>
@@ -75,8 +80,8 @@ export default function Product() {
                               </div>
                               <div className="sm:col-span-2 col-span-12">
                                  <div className='amount flex justify-end'>
-                                    <div className='constant'><IndianRupee width={20} /></div>
-                                    <div className='variation'>{product.price}</div>
+                                    <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee width={20} /></div>
+                                    <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.price}</div>
                                  </div>
                               </div>
                            </div>

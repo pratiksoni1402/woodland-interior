@@ -1,7 +1,6 @@
 'use client'
 import Image from "next/image"
 import { IndianRupee } from "lucide-react"
-import './style.css'
 import { Button } from "@/app/components/ui/button"
 import { useState } from "react"
 export default function History() {

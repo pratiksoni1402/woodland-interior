@@ -2,7 +2,6 @@
 import { Button } from '@/app/components/ui/button';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import './style.css'
 export default function Resetpassword() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);

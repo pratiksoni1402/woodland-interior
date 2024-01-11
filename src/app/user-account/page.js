@@ -1,5 +1,4 @@
 import React from "react"
-import './style.css'
 import { Tabbing } from "../components/tabbing"
 export default function MyAccount() {
     return (

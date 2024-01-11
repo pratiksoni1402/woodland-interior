@@ -37,7 +37,7 @@ export default function Detailpage({ params }) {
     // Updating Price According to Quantity
     useEffect(() => {
         if (productDetail) {
-            const price = (productDetail?.price)* count
+            const price = (productDetail?.price) * count
             setPrice(price)
         }
 
@@ -162,7 +162,7 @@ export default function Detailpage({ params }) {
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

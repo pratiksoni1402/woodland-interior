@@ -2,9 +2,10 @@
 import prisma from "@/db";
 export async function POST(request) {
     let requestdata = await request.json()
+    console.log(requestdata.productid)
     const cartproduct = await prisma.cartitems.create({
         data: {
-            productid: requestdata.productid,
+            productid: requestdata.id,
             sku: requestdata.sku,
             quantity: requestdata.quantity,
         },

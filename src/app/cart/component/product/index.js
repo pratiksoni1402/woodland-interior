@@ -8,23 +8,31 @@ import Link from "next/link"
 import useCartStore from "../../store/cartStore"
 import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images"
 export default function Product() {
-   const cartProducts = useCartStore((state) => state.products);
+   // const cartProducts = useCartStore((state) => state.products);
    const [products, setProducts] = useState([])
    console.log(products.length)
 
    // Getting Data From API
-   useEffect(() => {
-      axios.post(`/api/cart-items`, {
-         products: cartProducts
-      })
-         .then((response) => {
-            setProducts(response.data.products)
-            console.log("Got Data from API", response.data.products)
+
+      useEffect(() =>{
+         axios.get('/api/cart-items/get-data')
+         .then((response) =>{
+            setProducts(response.data.cartdata)
+            console.log(response.data.cartdata)
          })
-         .catch((error) => {
-            console.log("Error Occured", error)
-         })
-   }, [cartProducts])
+      }, [])
+   // useEffect(() => {
+   //    axios.post(`/api/cart-items`, {
+   //       products: cartProducts
+   //    })
+   //       .then((response) => {
+   //          setProducts(response.data.products)
+   //          console.log("Got Data from API", response.data.products)
+   //       })
+   //       .catch((error) => {
+   //          console.log("Error Occured", error)
+   //       })
+   // }, [cartProducts])
    // End
 
    // Showing Option on Product Hover 

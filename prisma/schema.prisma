@@ -5,12 +5,11 @@ generator client {
 datasource db {
     provider = "mysql"
     url      = env("DATABASE_URL")
-    
 }
 
 // Home Page Images 
-model Homepage{
-    id Int @id @default(autoincrement())
+model Homepage {
+    id    Int    @id @default(autoincrement())
     image String @db.VarChar(50)
 
     @@map("homepage")
@@ -18,47 +17,52 @@ model Homepage{
 
 // Get product category model
 model Category {
-    id    Int     @id @default(autoincrement())
-    name  String  @db.VarChar(10)
-    image String  @db.VarChar(100)
+    id    Int    @id @default(autoincrement())
+    name  String @db.VarChar(10)
+    image String @db.VarChar(100)
 
     @@map("categories")
 }
+
 // End
 
 // New user registration Model
 model Credentials {
-    id Int      @id @default(autoincrement())
-    firstname   String @db.VarChar(20)
-    lastname    String @db.VarChar(20)
-    email       String @db.VarChar(50)
-    password    String @db.VarChar(500)
-    createdon   DateTime @default(now())
+    id        Int      @id @default(autoincrement())
+    firstname String   @db.VarChar(20)
+    lastname  String   @db.VarChar(20)
+    email     String   @db.VarChar(50)
+    password  String   @db.VarChar(500)
+    createdon DateTime @default(now())
 
     @@map("customers")
 }
+
 // End
 
 // Bedroom Product Listing
 model Bedroomproduct {
-    id Int @id @default(autoincrement())
-    image String @db.VarChar(100)
-    name String @db.VarChar(250)
-    price Int @db.Int
-    sku String @db.VarChar(50)
-    description String @db.Text
+    id          Int         @id @default(autoincrement())
+    image       String      @db.VarChar(100)
+    name        String      @db.VarChar(250)
+    price       Int         @db.Int
+    sku         String      @db.VarChar(50)
+    description String      @db.Text
+    Cartitems   Cartitems[]
+    Wishlist    Wishlist[]
 
     @@map("bedroom")
 }
+
 // End
 
 // Dining Table Product Listing
 model Diningproducts {
-    id Int @id @default(autoincrement())
-    image String @db.VarChar(50)
-    name String @db.VarChar(250)
-    price Int @db.Int
-    sku String @db.VarChar(50)
+    id          Int    @id @default(autoincrement())
+    image       String @db.VarChar(50)
+    name        String @db.VarChar(250)
+    price       Int    @db.Int
+    sku         String @db.VarChar(50)
     description String @db.Text
 
     @@map("dining_tables")
@@ -66,11 +70,11 @@ model Diningproducts {
 
 // Sofa Sets Product Listing
 model Sofasetproducts {
-    id Int @id @default(autoincrement())
-    image String @db.VarChar(100)
-    name String @db.VarChar(250)
-    price Int @db.Int
-    sku String @db.VarChar(15)
+    id          Int    @id @default(autoincrement())
+    image       String @db.VarChar(100)
+    name        String @db.VarChar(250)
+    price       Int    @db.Int
+    sku         String @db.VarChar(15)
     description String @db.Text
 
     @@map("sofasets")
@@ -78,66 +82,88 @@ model Sofasetproducts {
 
 // Outdoor Product Listing
 model Outdoorproducts {
-    id Int @id @default(autoincrement())
-    image String @db.VarChar(100)
-    name String @db.VarChar(250)
-    price Int @db.Int
-    sku String @db.VarChar(20)
+    id          Int    @id @default(autoincrement())
+    image       String @db.VarChar(100)
+    name        String @db.VarChar(250)
+    price       Int    @db.Int
+    sku         String @db.VarChar(20)
     description String @db.Text
 
     @@map("outdoor")
 }
 
 // Customer Profile
-model Customerprofile{
-    id Int @id @default(autoincrement())
-    firstname String @db.VarChar(20)
-    lastname String @db.VarChar(20)
-    email String @db.VarChar(50)
-    addresslineone String @db.VarChar(100)
+model Customerprofile {
+    id             Int     @id @default(autoincrement())
+    firstname      String  @db.VarChar(20)
+    lastname       String  @db.VarChar(20)
+    email          String  @db.VarChar(50)
+    addresslineone String  @db.VarChar(100)
     addresslinetwo String? @db.VarChar(100)
-    country String @db.VarChar(50)
-    state String @db.VarChar(50)
-    city String @db.VarChar(40)
-    phonenumber Int @db.Int
-    pincode Int @db.Int
+    country        String  @db.VarChar(50)
+    state          String  @db.VarChar(50)
+    city           String  @db.VarChar(40)
+    phonenumber    Int     @db.Int
+    pincode        Int     @db.Int
 
     @@map("customer_profile")
 }
+
 // End
 
 // Countries
-model Countries{
-    id Int @id @default(autoincrement())
+model Countries {
+    id   Int    @id @default(autoincrement())
     name String @db.VarChar(50)
 
     @@map("countries")
 }
+
 // End
 
 // State
-model Indianstates{
-    id Int @id @default(autoincrement())
+model Indianstates {
+    id   Int    @id @default(autoincrement())
     name String @db.VarChar(50)
 
     @@map("indian_states")
 }
+
 // End
 
 // Contact Us Model
 model Userquery {
-    id Int @id @default(autoincrement())
+    id        Int    @id @default(autoincrement())
     firstname String @db.VarChar(20)
-    lastname String @db.VarChar(20)
-    email String @db.VarChar(50)
-    subject String @db.VarChar(50)
-    message String @db.VarChar(500)
+    lastname  String @db.VarChar(20)
+    email     String @db.VarChar(50)
+    subject   String @db.VarChar(50)
+    message   String @db.VarChar(500)
 
     @@map("contact_us")
 }
+
 // End
 
+// CartItems Model
+model Cartitems {
+    id        Int    @id @default(autoincrement())
+    productid Int    @db.Int
+    sku       String @db.VarChar(50)
+    quantity  Int    @db.Int
+    bedroomproduct Bedroomproduct @relation(fields: [productid], references: [id])
 
+    @@map("cart_items")
+}
+// End
 
+// Wishlist Model
+model Wishlist {
+    id        Int    @id @default(autoincrement())
+    productid Int    @db.Int
+    sku       String @db.VarChar(50)
+    quantity  Int    @db.Int
+    bedroomproduct Bedroomproduct @relation(fields: [productid], references: [id])
 
-
+    @@map("wishlist_items")
+}

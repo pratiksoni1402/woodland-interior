@@ -17,9 +17,3 @@ export async function getSessionId() {
 
     return session.id
 }
-
-// export async function post(req, res) {
-//     const session = getIronSession(req, res, { password: "...", cookieName: "..." });
-//     session.username = "Alison";
-//     await session.save();
-// }

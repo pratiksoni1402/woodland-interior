@@ -113,15 +113,15 @@ export default function Detailpage({ params }) {
       <div className="product-detail-page bg-[#faf2ec]">
          <div className="container">
             <div className="product-wrapper py-10 border-t">
-               <div className="grid grid-cols-12">
-                  <div className="col-span-8">
-                     <div className="left-section">
+               <div className="grid grid-cols-12 gap-5">
+                  <div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-5 col-span-12">
+                     <div className="left-section sticky top-10">
                         <div className="product-image">
-                           <Image src={`${BEDROOM_PRODUCT_MEDIA_URL}/${productDetail?.image}`} width={500} height={500} alt={productDetail?.name} />
+                           <Image src={`${BEDROOM_PRODUCT_MEDIA_URL}/${productDetail?.image}`} width={600} height={600} alt={productDetail?.name} />
                         </div>
                      </div>
                   </div>
-                  <div className="col-span-4">
+                  <div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-7 col-span-12">
                      <div className="right-section">
                         <div className="detail-wrapper">
                            <div className="variation font-roboto text-sm text-[#3c2f27]">

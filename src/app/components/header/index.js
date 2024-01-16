@@ -22,6 +22,7 @@ import {
 } from "./../ui/avatar"
 import useWishlistStore from "@/app/store/store"
 // import useCartStore from "@/app/cart/store/cartStore"
+import { useCart } from "@/app/cart/store/cartStore"
 const Navbar = () => {
    const wishlistcount = useWishlistStore((state) => state.count);
    // const cartCount = useCartStore((state) => state.products)

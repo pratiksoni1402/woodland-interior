@@ -2,6 +2,7 @@ import prisma from "@/db";
 export async function GET() {
     let cartdata = await prisma.cartitems.findMany({
         select: {
+            id: true,
             productid: true,
             sku: true,
             quantity: true,
@@ -10,6 +11,7 @@ export async function GET() {
                     name: true,
                     description: true,
                     image: true,
+                    price: true,
                 },
             },
         },

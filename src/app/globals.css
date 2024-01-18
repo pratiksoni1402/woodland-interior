@@ -421,8 +421,23 @@ textarea:focus {
 /* End */
 
 /* Shipping Details Form */
+
 .shipping-details-form form input[type=text]{
-  @apply w-full
+  @apply w-full p-3 mb-3 border border-[#54595f] rounded-none
+}
+
+.shipping-details-form form select{
+  @apply h-12 my-3 border border-gray-500 bg-white px-3
+  
+}
+
+.shipping-details-form  form select:focus{
+  @apply outline-1 outline-[#3c2f27] border border-[#3c2f27]
+
+}
+
+.change-password-form .form-wrapper form input:focus{
+  @apply outline-1 outline-[#3c2f27] rounded-none
 }
 
 

@@ -13,12 +13,12 @@ export default function Cart(){
                         </div>
                     </div>
                     <div className='grid grid-cols-12 gap-5'>
-                        <div className='col-span-9'>
+                        <div className='xl:col-span-9 lg:col-span-9 md:col-span-12 sm:col-span-12 col-span-12'>
                             <div className='right-section '>
                                 <Product />
                             </div>
                         </div>
-                        <div className='col-span-3'>
+                        <div className='xl:col-span-3 lg:col-span-3 md:col-span-12 sm:col-span-12 col-span-12'>
                             <div className='left-section sticky top-24'>
                                 <div className='pricing'>
                                     <Pricing/>

@@ -78,14 +78,14 @@ export default function Detail({ params }) {
             <div className="container">
                 <div className="product-wrapper py-10 border-t">
                     <div className="grid grid-cols-12 gap-7">
-                        <div className="lg:col-span-8 md:col-span-7 sm:col-span-6 col-span-12">
+                        <div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-5 col-span-12">
                             <div className="left-section">
                                 <div className="product-image">
-                                    <Image src={`${SOFA_SETS_MEDIA_URL}/${productDetail?.image}`} width={500} height={500} alt={productDetail?.name} />
+                                    <Image src={`${SOFA_SETS_MEDIA_URL}/${productDetail?.image}`} width={600} height={600} alt={productDetail?.name} />
                                 </div>
                             </div>
                         </div>
-                        <div className="lg:col-span-4 md:col-span-5 sm:col-span-6 col-span-12">
+                        <div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-7 col-span-12">
                             <div className="right-section">
                                 <div className="detail-wrapper">
                                     <div className="variation font-roboto text-sm text-[#3c2f27] pb-2">

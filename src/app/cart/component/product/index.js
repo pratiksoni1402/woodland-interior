@@ -26,7 +26,6 @@ export default function Product() {
                throw error;
             })
    });
-   // console.log(totalproducts.length()
    // End
 
    return (

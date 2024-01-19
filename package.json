@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.8.0",
@@ -27,6 +28,7 @@
     "iron-session": "^8.0.1",
     "lucide-react": "^0.291.0",
     "mongodb": "^6.3.0",
+    "mysql2": "^3.7.1",
     "next": "^14.0.4",
     "nextjs-toploader": "^1.6.4",
     "postcss-loader": "^7.3.3",
@@ -35,6 +37,7 @@
     "react-hook-form": "^7.48.2",
     "react-hot-toast": "^2.4.1",
     "react-lazy-load": "^4.0.1",
+    "react-query-devtools": "^2.6.3",
     "react-spinners": "^0.13.8",
     "sharp": "^0.33.1",
     "swiper": "^11.0.5",

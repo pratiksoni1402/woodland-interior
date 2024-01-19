@@ -9,8 +9,8 @@ import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images"
 import { useQuery } from "@tanstack/react-query"
 
 export default function Product() {
-
-   // Implementing Using TanStack 
+   
+   //Get All Products
    const { isPending, data: totalproducts, error } = useQuery({
       queryKey: ['product'],
       queryFn: () =>
@@ -28,13 +28,35 @@ export default function Product() {
    });
    // End
 
+   // Delete Product From Cart
+   // const {isdeleting, data:remove, error:deleting} = useQuery({
+   //    queryKey: ['removeproduct'],
+   //    enabled: false,
+   //    queryFn: () =>
+   //       axios.delete('/api/cart-items/delete-item', data)
+   // })
+
+   function deletefromcart(id) {
+      console.log(id)
+      axios.post('/api/cart-items/delete-item', {id})
+         .then((response) => {
+            console.log("Product deleted from cart successfully", response.data.deleteproduct)
+         })
+         .catch((error) => {
+            console.log("Error occured", error)
+         })
+   }
+
+
+
    return (
       <div className="product-wrapper ">
          <div className="grid grid-col-1">
             <div className="col">
                <div className='my-items border-t border-[#b2937e] '>
                   {totalproducts?.map((product) => (
-                     <div className='product py-10' key={product.id}>
+
+                     <div className='product py-10 border-b border-[#b2937e]' key={product.id}>
                         <div className="grid grid-cols-12 gap-3">
                            <div className="xl:col-span-3 lg:col-span-3 sm:col-span-4 col-span-12">
                               <Image src={`${BEDROOM_PRODUCT_MEDIA_URL}/${product.bedroomproduct.image}`} alt={product.name} height={250} width={250} className="sm:w-[250px] w-full" />
@@ -62,6 +84,14 @@ export default function Product() {
                               <div className='amount flex justify-end'>
                                  <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee width={20} /></div>
                                  <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.bedroomproduct.price}</div>
+                              </div>
+                              <div className="actions flex flex-col justify-end pt-20">
+                                 <Link href={`/shop/bedroom/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
+
+                                 <Button className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
+
+                                 <Button onClick={() => deletefromcart(product.id)} className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27'>Delete from cart</Button>
+
                               </div>
                            </div>
                         </div>

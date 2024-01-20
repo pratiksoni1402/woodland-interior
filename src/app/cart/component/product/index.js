@@ -1,15 +1,28 @@
 "use client"
 import Image from "next/image"
-import { Button } from "@/app/components/ui/button"
+import { Button } from "./../../../components/ui/button"
 import { IndianRupee } from "lucide-react"
-import { useEffect, useState } from "react"
 import axios from "axios"
 import Link from "next/link"
 import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images"
 import { useQuery } from "@tanstack/react-query"
-
+import { Toaster } from "react-hot-toast"
+import {
+   AlertDialog,
+   AlertDialogAction,
+   AlertDialogCancel,
+   AlertDialogContent,
+   AlertDialogDescription,
+   AlertDialogFooter,
+   AlertDialogHeader,
+   AlertDialogTitle,
+   AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import toast from "react-hot-toast"
+import { useState } from "react"
 export default function Product() {
-   
+   const [loading, setLoading] = useState(false);
+
    //Get All Products
    const { isPending, data: totalproducts, error } = useQuery({
       queryKey: ['product'],
@@ -29,23 +42,32 @@ export default function Product() {
    // End
 
    // Delete Product From Cart
-   // const {isdeleting, data:remove, error:deleting} = useQuery({
-   //    queryKey: ['removeproduct'],
-   //    enabled: false,
-   //    queryFn: () =>
-   //       axios.delete('/api/cart-items/delete-item', data)
-   // })
-
-   function deletefromcart(id) {
-      console.log(id)
-      axios.post('/api/cart-items/delete-item', {id})
+   function cnfdelete(id) {
+      axios.post('/api/cart-items/delete-item', { id })
          .then((response) => {
-            console.log("Product deleted from cart successfully", response.data.deleteproduct)
+            console.log("Product deleted successfully", response.data.deleteproduct)
+            toast.success('Product deleted successfully', {
+               duration: 8000,
+               style: {
+                  border: '1px solid #3c2f27',
+                  padding: '16px',
+                  color: '#faf2ec',
+                  backgroundColor: '#3c2f27',
+                  width: '500px',
+               },
+               iconTheme: {
+                  primary: '#faf2ec',
+                  secondary: '#3c2f27',
+               },
+            })
          })
          .catch((error) => {
             console.log("Error occured", error)
          })
    }
+   // End
+
+
 
 
 
@@ -54,6 +76,7 @@ export default function Product() {
          <div className="grid grid-col-1">
             <div className="col">
                <div className='my-items border-t border-[#b2937e] '>
+                  <Toaster />
                   {totalproducts?.map((product) => (
 
                      <div className='product py-10 border-b border-[#b2937e]' key={product.id}>
@@ -90,7 +113,24 @@ export default function Product() {
 
                                  <Button className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
 
-                                 <Button onClick={() => deletefromcart(product.id)} className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27'>Delete from cart</Button>
+                                 {/* <Button onClick={() => deletefromcart(product.id)} className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27'>Delete from cart</Button> */}
+                                 <AlertDialog className='rounded-none'>
+                                    <AlertDialogTrigger asChild>
+                                       <Button className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from cart</Button>
+                                    </AlertDialogTrigger>
+                                    <AlertDialogContent>
+                                       <AlertDialogHeader>
+                                          <AlertDialogTitle>Remove Product?</AlertDialogTitle>
+                                          <AlertDialogDescription className='font-roboto'>
+                                             Are you sure you want to delete this product from your cart!
+                                          </AlertDialogDescription>
+                                       </AlertDialogHeader>
+                                       <AlertDialogFooter>
+                                          <AlertDialogCancel className='hover:duration-300 rounded-none bg-transparent text-[#3c2f27] border-[#3c2f27] hover:bg-[#b2937e] hover:border-[#b2937e] hover:text-[white]'>Cancel</AlertDialogCancel>
+                                          <AlertDialogAction onClick={() => cnfdelete(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>Delete</AlertDialogAction>
+                                       </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                 </AlertDialog>
 
                               </div>
                            </div>

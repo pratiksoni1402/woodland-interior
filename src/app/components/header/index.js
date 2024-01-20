@@ -20,10 +20,22 @@ import {
    AvatarFallback,
    AvatarImage,
 } from "./../ui/avatar"
+import { useQuery } from "@tanstack/react-query"
 import useWishlistStore from "@/app/store/store"
-// import useCartStore from "@/app/cart/store/cartStore"
-import { useCart } from "@/app/cart/store/cartStore"
+import axios from "axios"
+// import { useCart } from "@/app/cart/store/cartStore"
+
 const Navbar = () => {
+   const { isPending, data:count, error } = useQuery({
+      queryKey: ['totalcount'],
+      queryFn: () =>
+         axios.get('/api/cart-items/get-count')
+         .then((response) =>{
+            console.log(response.data.productcount)
+            return response.data.productcount
+         })
+
+   });
    const wishlistcount = useWishlistStore((state) => state.count);
    // const cartCount = useCartStore((state) => state.products)
    // console.log(cartCount)
@@ -81,7 +93,7 @@ const Navbar = () => {
                         <NavigationMenuLink asChild>
                            <Link href="/cart" className='relative'>
                               <ShoppingCart />
-                              <div className='absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]'>0</div>
+                              <div className='absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]'>{count}</div>
                            </Link>
                         </NavigationMenuLink>
                      </NavigationMenuItem>

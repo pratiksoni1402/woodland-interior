@@ -1,6 +1,6 @@
 'use client'
 import React from "react"
-import { Button } from "./../../../components/ui/button";
+import { Button } from "./../../components/ui/button";
 import { useForm } from 'react-hook-form';
 export default function Shippingdetail() {
    const { register, handleSubmit, formState: { errors } } = useForm();

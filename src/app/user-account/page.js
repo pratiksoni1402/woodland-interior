@@ -1,5 +1,5 @@
 import React from "react"
-import { Tabbing } from "../components/tabbing"
+import { Tabbing } from "./../components/tabbing"
 export default function MyAccount() {
     return (
         <div className="my-account-page bg-[#faf2ec]">

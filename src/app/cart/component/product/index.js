@@ -82,7 +82,7 @@ export default function Product() {
                      <div className='product py-10 border-b border-[#b2937e]' key={product.id}>
                         <div className="grid grid-cols-12 gap-3">
                            <div className="xl:col-span-3 lg:col-span-3 sm:col-span-4 col-span-12">
-                              <Image src={`${BEDROOM_PRODUCT_MEDIA_URL}/${product.bedroomproduct.image}`} alt={product.name} height={250} width={250} className="sm:w-[250px] w-full" />
+                              <Image src={`${BEDROOM_PRODUCT_MEDIA_URL}/${product.bedroomproduct.image}`} alt={product.bedroomproduct.name} height={250} width={250} className="sm:w-[250px] w-full" />
                            </div>
                            <div className="xl:col-span-7 lg:col-span-7 sm:col-span-6 col-span-12">
                               <div className='description'>

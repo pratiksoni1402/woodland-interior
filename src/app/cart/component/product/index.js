@@ -17,7 +17,7 @@ import {
    AlertDialogHeader,
    AlertDialogTitle,
    AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+} from "./../../../components/ui/alert-dialog"
 import toast from "react-hot-toast"
 import { useState } from "react"
 export default function Product() {

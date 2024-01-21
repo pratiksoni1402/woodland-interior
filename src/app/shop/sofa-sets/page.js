@@ -23,7 +23,7 @@ export default function Bedroom() {
      bg-[#faf2ec]">
             <div className="container">
                 <div className="page-banner py-5">
-                    <div className="grid grid-cols-12 gap-10">
+                    <div className="grid grid-cols-12 md:gap-10 sm:gap-5 gap-0">
                         <div className="col-span-8">
                             <div className="content-wrapper h-full flex items-center">
                                 <div>

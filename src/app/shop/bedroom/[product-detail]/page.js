@@ -6,18 +6,15 @@ import { useEffect, useState } from "react"
 import { MoonLoader } from 'react-spinners';
 import { IndianRupee } from 'lucide-react';
 import { Heart } from 'lucide-react';
-import { Button } from "../../../components/ui/button"
+import { Button }  from './../../../components/ui/button'
 import { ShoppingBag } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
-import useWishlistStore from "@/app/store/store";
-// import useCartStore from "@/app/cart/store/cartStore";
+
 export default function Detailpage({ params }) {
    const [productDetail, setProductDetail] = useState(null);
    const [count, setCount] = useState(1);
    const [price, setPrice] = useState();
-   const incrementWishlistCount = useWishlistStore((state) => state.increment);
-   // const addToCart = useCartStore(state => state.add)
-
+   
    // Getting Product Data From API
    useEffect(() => {
       axios.get(`/api/bedroom-detail/${params['product-detail']}`, {
@@ -79,46 +76,68 @@ export default function Detailpage({ params }) {
       }
    }
 
-   // Add to Wishlist
-   const addToWishlist = () => {
-      incrementWishlistCount();
-   }
-   // End
 
    // Add to Cart
    const addToCartHandler = () => {
-      // addToCart(productDetail.id);
-
-      // Getting id and sku of product
-      const {id, sku } = productDetail;
-      console.log(sku)
-
       // Hitting API
-      axios.post('/api/cart-items/set-data',{
+      axios.post('/api/cart-items/set-data', {
          id,
          sku,
          quantity: count,
       })
-      .then((response)=>{
-         toast.success("Product added to cart", {
-            duration: 8000,
-            style: {
-                border: '1px solid #3c2f27',
-                padding: '16px',
-                color: '#faf2ec',
-                backgroundColor: '#3c2f27',
-            },
-            iconTheme: {
-                primary: '#faf2ec',
-                secondary: '#3c2f27',
-            },
-        });
-      })
-      .catch((error)=>{
-         console.log("Error", error)
-      })
+         .then((response) => {
+            toast.success("Product added to cart", {
+               duration: 8000,
+               style: {
+                  border: '1px solid #3c2f27',
+                  padding: '16px',
+                  color: '#faf2ec',
+                  backgroundColor: '#3c2f27',
+               },
+               iconTheme: {
+                  primary: '#faf2ec',
+                  secondary: '#3c2f27',
+               },
+            });
+         })
+         .catch((error) => {
+            console.log("Error", error)
+         })
    };
    // End
+
+   //Add to Wishlist
+   // const {id, sku} = productDetail;
+   // console.log("testing data",id, sku)
+
+   const addToWishlistHandler = () =>{
+      const {id, sku} = productDetail;
+      console.log("this is id to wishlist", id)
+      console.log('this is sku to wishlist', sku)
+      
+      axios.post('/api/wishlist-items/set-data', {
+         id,
+         sku,
+      })
+      .then((response) =>{
+         toast.success("Product added to wishlist", {
+            duration: 8000,
+            style: {
+               border: '1px solid #3c2f27',
+               padding: '16px',
+               color: '#faf2ec',
+               backgroundColor: '#3c2f27',
+            },
+            iconTheme: {
+               primary: '#faf2ec',
+               secondary: '#3c2f27',
+            },
+         });
+      })
+      .catch((error) =>{
+         console.log("Error Occured", error)
+      })
+   }
 
 
    return (
@@ -165,7 +184,7 @@ export default function Detailpage({ params }) {
                               </div>
                            </div>
                            <div className="wishlist py-3">
-                              <Button variant="outline" onClick={addToWishlist} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12">ADD TO WISHLIST
+                              <Button variant="outline" onClick={addToWishlistHandler}  className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12">ADD TO WISHLIST
                                  <span className="px-2"><Heart width={18} /></span>
                               </Button>
                            </div>
@@ -178,6 +197,7 @@ export default function Detailpage({ params }) {
                         </div>
                      </div>
                   </div>
+                  
 
                </div>
             </div>

@@ -23,12 +23,12 @@ export default function Bedroom() {
         <div className="bedroom-products-page bg-[#faf2ec]">
             <div className="container">
                 <div className="page-banner py-5">
-                    <div className="grid grid-cols-12 gap-10">
+                    <div className="grid grid-cols-12 md:gap-10 sm:gap-5 gap-0" >
                         <div className="md:col-span-8 sm:col-span-12 col-span-12 md:order-1 sm:order-2 order-2">
                             <div className="content-wrapper h-full flex items-center">
                                 <div>
                                     <div className="title font-crimson text-[#3c2f27] font-medium text-4xl md:py-4 py-2">
-                                        Bedroom Furniture
+                                        <h1>Bedroom Furniture</h1>
                                     </div>
                                     <div className="description">
                                         <p className="text-justify  text-[#4f4537]  font-roboto leading-6 text-base">
@@ -60,6 +60,7 @@ export default function Bedroom() {
                                         width={640}
                                         height={853}
                                         quality={100}
+                                        className="sm:w-[640px] w-full"
                                     />
                                 </div>
                             </div>
@@ -72,7 +73,7 @@ export default function Bedroom() {
                     </span>
                 </div>
                 <div className="product-listing-section py-10">
-                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
+                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-5">
                         {products && products.map((product) => (
                             <Link href={`/shop/bedroom/${product.id}`} key={product.id} className="my-4 group ">
                                 <div className="product-image overflow-hidden">

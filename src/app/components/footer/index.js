@@ -7,7 +7,7 @@ const footer = () => {
         <div className='footer-section bg-white'>
             <footer className='container'>
                 <div className='upper-footer pb-10 pt-20 border-b'>
-                    <div className='upper-footer-wrapper grid lg:grid-cols-4 md:grid-cols-3 gap-10 lg:justify-between md:justify-evenly'>
+                    <div className='upper-footer-wrapper grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-10 lg:justify-between md:justify-evenly'>
                         <div className='flex items-center text-[#54595f] text-sm font-roboto'>
                             <ul>
                                 <li><Link href='/stories'>Stories</Link></li>

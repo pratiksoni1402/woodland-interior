@@ -21,9 +21,7 @@ import {
    AvatarImage,
 } from "./../ui/avatar"
 import { useQuery } from "@tanstack/react-query"
-import useWishlistStore from "@/app/store/store"
 import axios from "axios"
-// import { useCart } from "@/app/cart/store/cartStore"
 
 const Navbar = () => {
    const { isPending, data:count, error } = useQuery({
@@ -36,9 +34,17 @@ const Navbar = () => {
          })
 
    });
-   const wishlistcount = useWishlistStore((state) => state.count);
-   // const cartCount = useCartStore((state) => state.products)
-   // console.log(cartCount)
+
+   const {pending, data:wishlisttotal, iserror} =useQuery({
+      queryKey: ['wishlistcount'],
+      queryFn: () =>
+         axios.get('/api/wishlist-items/get-count')
+         .then((response) => {
+            console.log(response.data.totalcount)
+            return response.data.totalcount
+         })
+   })
+   
    return (
       <div className="navigation-bar bg-[#faf2ec] h-[75px] py-4 sticky top-0 z-10">
 
@@ -85,7 +91,7 @@ const Navbar = () => {
                         <NavigationMenuLink asChild>
                            <Link href="/wishlist" className='relative'>
                               <Heart />
-                              <div className='absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]'>{wishlistcount}</div>
+                              <div className='absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]'>{wishlisttotal}</div>
                            </Link>
                         </NavigationMenuLink>
                      </NavigationMenuItem>

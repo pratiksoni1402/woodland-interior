@@ -162,7 +162,6 @@ model Wishlist {
     id        Int    @id @default(autoincrement())
     productid Int    @db.Int
     sku       String @db.VarChar(50)
-    quantity  Int    @db.Int
     bedroomproduct Bedroomproduct @relation(fields: [productid], references: [id])
 
     @@map("wishlist_items")

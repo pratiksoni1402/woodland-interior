@@ -1,5 +1,5 @@
 'use client'
-import { Button } from '@/app/components/ui/button';
+import { Button } from './../../components/ui/button';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 export default function Resetpassword() {

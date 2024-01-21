@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button } from '@/app/components/ui/button';
+import { Button } from './../../components/ui/button';
 import axios from 'axios';
 import toast, { Toast, Toaster } from 'react-hot-toast';
 export default function Profile() {

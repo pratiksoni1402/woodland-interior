@@ -25,6 +25,7 @@ export default function Product() {
     queryFn: () =>
       axios.get('/api/wishlist-items/get-data')
         .then((response) => {
+          console.log(response.data.getallproduct)
           return response.data.getallproduct
         })
         .catch((error) => {

@@ -79,6 +79,7 @@ export default function Detailpage({ params }) {
 
    // Add to Cart
    const addToCartHandler = () => {
+      const {id, sku} =productDetail;
       // Hitting API
       axios.post('/api/cart-items/set-data', {
          id,

@@ -1,12 +1,12 @@
 "use client"
-import Image from "next/image"
-import { Button } from "./../../../components/ui/button"
-import { IndianRupee } from "lucide-react"
-import axios from "axios"
-import Link from "next/link"
-import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images"
-import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { Toaster } from "react-hot-toast"
+import Image from "next/image";
+import { Button } from "./../../../components/ui/button";
+import { IndianRupee } from "lucide-react";
+import axios from "axios";
+import Link from "next/link";
+import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
 import {
    AlertDialog,
    AlertDialogAction,
@@ -17,9 +17,10 @@ import {
    AlertDialogHeader,
    AlertDialogTitle,
    AlertDialogTrigger,
-} from "./../../../components/ui/alert-dialog"
-import toast from "react-hot-toast"
-import { useState } from "react"
+} from "./../../../components/ui/alert-dialog";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import { ClipLoader } from "react-spinners";
 export default function Product() {
    const [loading, setLoading] = useState(false);
    const queryClient = useQueryClient();
@@ -32,19 +33,20 @@ export default function Product() {
             .then((response) => {
                // console.log(response.data.cartdata)
                return response.data.cartdata
-               
+
             })
             .catch((error) => {
                console.error("Error fetching data:", error);
                throw error;
             })
-         });
-         // End
-         
-         // Delete Product From Cart
-         function cnfdelete(id) {
-            axios.post('/api/cart-items/delete-item', { id })
-            .then((response) => {
+   });
+   // End
+
+   // Delete Product From Cart
+   function cnfdelete(id) {
+      setLoading(true);
+      axios.post('/api/cart-items/delete-item', { id })
+         .then((response) => {
             queryClient.invalidateQueries('product');
             console.log("Product deleted successfully", response.data.deleteproduct)
             toast.success('Product deleted successfully', {
@@ -64,6 +66,9 @@ export default function Product() {
          })
          .catch((error) => {
             console.log("Error occured", error)
+         })
+         .finally(() => {
+            setLoading(false);
          })
    }
    // End
@@ -114,7 +119,6 @@ export default function Product() {
 
                                  <Button className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
 
-                                 {/* <Button onClick={() => deletefromcart(product.id)} className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27'>Delete from cart</Button> */}
                                  <AlertDialog className='rounded-none'>
                                     <AlertDialogTrigger asChild>
                                        <Button className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from cart</Button>
@@ -128,7 +132,15 @@ export default function Product() {
                                        </AlertDialogHeader>
                                        <AlertDialogFooter>
                                           <AlertDialogCancel className='hover:duration-300 rounded-none bg-transparent text-[#3c2f27] border-[#3c2f27] hover:bg-[#b2937e] hover:border-[#b2937e] hover:text-[white]'>Cancel</AlertDialogCancel>
-                                          <AlertDialogAction onClick={() => cnfdelete(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>Delete</AlertDialogAction>
+                                          <AlertDialogAction onClick={() => cnfdelete(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>
+                                             {
+                                                loading ? (
+                                                   <ClipLoader color="#3c2f27" />
+                                                ) : (
+                                                   'Delete'
+                                                )
+                                             }
+                                          </AlertDialogAction>
                                        </AlertDialogFooter>
                                     </AlertDialogContent>
                                  </AlertDialog>

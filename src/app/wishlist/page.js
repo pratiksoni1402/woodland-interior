@@ -5,7 +5,7 @@ import { IndianRupee } from "lucide-react";
 import axios from "axios";
 import Link from "next/link";
 import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import {
   AlertDialog,
@@ -19,7 +19,9 @@ import {
   AlertDialogTrigger,
 } from "./../components/ui/alert-dialog";
 export default function Product() {
+  const queryClient = useQueryClient();
 
+  // Get all products from wishlist table
   const { isPending, data: allproducts, error } = useQuery({
     queryKey: ['productslist'],
     queryFn: () =>
@@ -31,8 +33,24 @@ export default function Product() {
         .catch((error) => {
           console.log("Error Occured", error)
         })
-  })
+      })
+      // End
+      
+      // Delete product from wishlist table
+      const deleteproduct = (id) =>{
+    // console.log("Hello", { id })
+    axios.post('/api/wishlist-items/delete-item', { id })
+    .then((response) =>{
+      console.log('Product deleted successfully' ,response.data.deleteitem)
+      queryClient.invalidateQueries('productlist');
+    })
+    .catch((error) =>{
+      console.log("Error Occured while deleting product", error)
+    })
+  }
+  // End
 
+  // End
 
   return (
     <div className="product-wrapper bg-[#faf2ec] pb-20">
@@ -85,7 +103,7 @@ export default function Product() {
                           </AlertDialogHeader>
                           <AlertDialogFooter>
                             <AlertDialogCancel className='hover:duration-300 rounded-none bg-transparent text-[#3c2f27] border-[#3c2f27] hover:bg-[#b2937e] hover:border-[#b2937e] hover:text-[white]'>Cancel</AlertDialogCancel>
-                            <AlertDialogAction className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>Delete</AlertDialogAction>
+                            <AlertDialogAction onClick={() => deleteproduct(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>Delete</AlertDialogAction>
                           </AlertDialogFooter>
                         </AlertDialogContent>
                       </AlertDialog>

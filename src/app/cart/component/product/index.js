@@ -5,7 +5,7 @@ import { IndianRupee } from "lucide-react"
 import axios from "axios"
 import Link from "next/link"
 import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images"
-import { useQuery } from "@tanstack/react-query"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { Toaster } from "react-hot-toast"
 import {
    AlertDialog,
@@ -22,6 +22,7 @@ import toast from "react-hot-toast"
 import { useState } from "react"
 export default function Product() {
    const [loading, setLoading] = useState(false);
+   const queryClient = useQueryClient();
 
    //Get All Products
    const { isPending, data: totalproducts, error } = useQuery({
@@ -30,21 +31,21 @@ export default function Product() {
          axios.get('/api/cart-items/get-data')
             .then((response) => {
                // console.log(response.data.cartdata)
-
                return response.data.cartdata
-
+               
             })
             .catch((error) => {
                console.error("Error fetching data:", error);
                throw error;
             })
-   });
-   // End
-
-   // Delete Product From Cart
-   function cnfdelete(id) {
-      axios.post('/api/cart-items/delete-item', { id })
-         .then((response) => {
+         });
+         // End
+         
+         // Delete Product From Cart
+         function cnfdelete(id) {
+            axios.post('/api/cart-items/delete-item', { id })
+            .then((response) => {
+            queryClient.invalidateQueries('product');
             console.log("Product deleted successfully", response.data.deleteproduct)
             toast.success('Product deleted successfully', {
                duration: 8000,

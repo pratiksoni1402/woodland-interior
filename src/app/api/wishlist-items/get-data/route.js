@@ -5,6 +5,7 @@ export async function GET() {
             id: true,
             productid: true,
             sku: true,
+            quantity: true,
             bedroomproduct: {
                 select: {
                     name: true,

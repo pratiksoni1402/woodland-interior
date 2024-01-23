@@ -9,11 +9,13 @@ import { Heart } from 'lucide-react';
 import { Button }  from './../../../components/ui/button'
 import { ShoppingBag } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
+import { ClipLoader } from "react-spinners";
 
 export default function Detailpage({ params }) {
    const [productDetail, setProductDetail] = useState(null);
    const [count, setCount] = useState(1);
    const [price, setPrice] = useState();
+   const [loading, setLoading] = useState(false);
    
    // Getting Product Data From API
    useEffect(() => {
@@ -79,38 +81,41 @@ export default function Detailpage({ params }) {
 
    // Add to Cart
    const addToCartHandler = () => {
-      const {id, sku} =productDetail;
-      // Hitting API
-      axios.post('/api/cart-items/set-data', {
-         id,
-         sku,
-         quantity: count,
-      })
-         .then((response) => {
-            toast.success("Product added to cart", {
-               duration: 8000,
-               style: {
-                  border: '1px solid #3c2f27',
-                  padding: '16px',
-                  color: '#faf2ec',
-                  backgroundColor: '#3c2f27',
-               },
-               iconTheme: {
-                  primary: '#faf2ec',
-                  secondary: '#3c2f27',
-               },
+      if (!loading) {
+         setLoading(true);
+         const { id, sku } = productDetail;
+         // Hitting API
+         axios.post('/api/cart-items/set-data', {
+            id,
+            sku,
+            quantity: count,
+         })
+            .then((response) => {
+               toast.success("Product added to cart", {
+                  duration: 8000,
+                  style: {
+                     border: '1px solid #3c2f27',
+                     padding: '16px',
+                     color: '#faf2ec',
+                     backgroundColor: '#3c2f27',
+                  },
+                  iconTheme: {
+                     primary: '#faf2ec',
+                     secondary: '#3c2f27',
+                  },
+               });
+            })
+            .catch((error) => {
+               console.log("Error", error);
+            })
+            .finally(() => {
+               setLoading(false);
             });
-         })
-         .catch((error) => {
-            console.log("Error", error)
-         })
+      }
    };
    // End
 
    //Add to Wishlist
-   // const {id, sku} = productDetail;
-   // console.log("testing data",id, sku)
-
    const addToWishlistHandler = () =>{
       const {id, sku} = productDetail;
       console.log("this is id to wishlist", id)
@@ -119,6 +124,7 @@ export default function Detailpage({ params }) {
       axios.post('/api/wishlist-items/set-data', {
          id,
          sku,
+         quantity: count,
       })
       .then((response) =>{
          toast.success("Product added to wishlist", {
@@ -185,14 +191,21 @@ export default function Detailpage({ params }) {
                               </div>
                            </div>
                            <div className="wishlist py-3">
-                              <Button variant="outline" onClick={addToWishlistHandler}  className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12">ADD TO WISHLIST
-                                 <span className="px-2"><Heart width={18} /></span>
+                              <Button variant="outline" onClick={addToWishlistHandler}  className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12">Add to wishlist
+                                 {/* <span className="px-2"><Heart width={18} /></span> */}
                               </Button>
                            </div>
 
                            <div className="cart py-3">
-                              <Button variant="outline" onClick={addToCartHandler} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12">ADD TO BAG
-                                 <span className="px-2"><ShoppingBag width={18} /></span>
+                              <Button variant="outline" onClick={addToCartHandler} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12">
+                                 {
+                                    loading ? (
+                                       <ClipLoader color="#3c2f27" />
+                                    ): (
+                                       "Add to cart"
+                                    )
+                                 }
+                                 {/* <span className="px-2"><ShoppingBag width={18} /></span> */}
                               </Button>
                            </div>
                         </div>

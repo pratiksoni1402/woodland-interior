@@ -6,7 +6,7 @@ import axios from "axios";
 import Link from "next/link";
 import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -33,30 +33,47 @@ export default function Product() {
         .catch((error) => {
           console.log("Error Occured", error)
         })
-      })
-      // End
-      
-      // Delete product from wishlist table
-      const deleteproduct = (id) =>{
-    // console.log("Hello", { id })
+  })
+  // End
+
+  // Delete product from wishlist table
+  const deleteproduct = (id) => {
+
     axios.post('/api/wishlist-items/delete-item', { id })
-    .then((response) =>{
-      console.log('Product deleted successfully' ,response.data.deleteitem)
-      queryClient.invalidateQueries('productlist');
-    })
-    .catch((error) =>{
-      console.log("Error Occured while deleting product", error)
-    })
+      .then((response) => {
+        console.log('Product deleted successfully', response.data.deleteitem)
+        queryClient.invalidateQueries('productlist');
+      })
+      .catch((error) => {
+        console.log("Error Occured while deleting product", error)
+      })
   }
   // End
 
+  // Move product to Cart Table
+  const movetocart = (productid, quantity, sku, id) => {
+    axios.post('/api/cart-items/from-wishlist', {
+      productid,
+      quantity,
+      sku,
+    })
+      .then((response) => {
+        console.log("Product moved to cart Successfully")
+        deleteproduct(id)
+        queryClient.invalidateQueries('productlist');
+        toast.success("Success")
+      })
+      .catch((error) => {
+        console.log("Error", error)
+      })
+  }
   // End
 
   return (
     <div className="product-wrapper bg-[#faf2ec] pb-20">
       <div className="container">
         <div className="heading font-crimson text-4xl text-[#3c2f27] pt-10 pb-5  border-t">
-              <h1>Your Wishlist</h1>
+          <h1>Your Wishlist</h1>
         </div>
         <div className='my-items border-t border-[#b2937e] '>
           <Toaster />
@@ -87,9 +104,8 @@ export default function Product() {
                     <div className="actions flex flex-col justify-end sm:pt-20 pt-0">
                       <Link href={`/shop/bedroom/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
 
-                      <Button className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Cart</Button>
+                      <Button onClick={() => movetocart(product.productid, product.quantity, product.sku, product.id)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Cart</Button>
 
-                      {/* <Button onClick={() => deletefromcart(product.id)} className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27'>Delete from cart</Button> */}
                       <AlertDialog className='rounded-none'>
                         <AlertDialogTrigger asChild>
                           <Button className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from wishlist</Button>
@@ -114,7 +130,7 @@ export default function Product() {
             ))}
         </div>
         {
-          allproducts?.map((items) =>(
+          allproducts?.map((items) => (
             console.log(items.sku)
           ))
         }

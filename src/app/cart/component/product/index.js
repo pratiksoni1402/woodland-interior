@@ -25,7 +25,7 @@ export default function Product() {
    const [loading, setLoading] = useState(false);
    const queryClient = useQueryClient();
 
-   //Get All Products
+   //Get All Products from Cart Table
    const { isPending, data: totalproducts, error } = useQuery({
       queryKey: ['product'],
       queryFn: () =>
@@ -42,40 +42,46 @@ export default function Product() {
    });
    // End
 
-   // Delete Product From Cart
+   // Delete Product From Cart Table
    function cnfdelete(id) {
       setLoading(true);
       axios.post('/api/cart-items/delete-item', { id })
          .then((response) => {
-            queryClient.invalidateQueries('product');
             console.log("Product deleted successfully", response.data.deleteproduct)
-            toast.success('Product deleted successfully', {
-               duration: 8000,
-               style: {
-                  border: '1px solid #3c2f27',
-                  padding: '16px',
-                  color: '#faf2ec',
-                  backgroundColor: '#3c2f27',
-                  width: '500px',
-               },
-               iconTheme: {
-                  primary: '#faf2ec',
-                  secondary: '#3c2f27',
-               },
-            })
          })
          .catch((error) => {
             console.log("Error occured", error)
          })
          .finally(() => {
             setLoading(false);
+            queryClient.invalidateQueries('product');
          })
    }
    // End
 
+   // Move To Wishlist Table
+   const movetowishlist = (productid, sku, id) =>{
+      axios.post('/api/wishlist-items/from-cart', {
+         productid,
+         sku,
+      })
+      .then((response) =>{
+         console.log('Product Moved Successfully',response.data.fromcart)
+         cnfdelete(id)
+         toast.success("Product Moved Successfully")
+         
+         
+      })
+      .catch((error) =>{
+         console.log("Error", error)
+      })
+      .finally(() =>{
+         queryClient.invalidateQueries('product');
 
+      })
+   }
 
-
+   // End
 
    return (
       <div className="product-wrapper ">
@@ -117,7 +123,7 @@ export default function Product() {
                               <div className="actions flex flex-col justify-end pt-20">
                                  <Link href={`/shop/bedroom/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
 
-                                 <Button className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
+                                 <Button onClick={() => movetowishlist(product.productid, product.sku, product.id)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
 
                                  <AlertDialog className='rounded-none'>
                                     <AlertDialogTrigger asChild>

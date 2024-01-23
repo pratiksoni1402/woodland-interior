@@ -124,6 +124,7 @@ export default function Detailpage({ params }) {
       axios.post('/api/wishlist-items/set-data', {
          id,
          sku,
+         quantity: count,
       })
       .then((response) =>{
          toast.success("Product added to wishlist", {

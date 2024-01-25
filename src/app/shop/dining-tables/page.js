@@ -1,11 +1,11 @@
 'use client'
 import axios from "axios";
-import Image from "next/image";
 import Link from "next/link";
 import { IndianRupee } from 'lucide-react';
 import { Skeleton } from "../../components/ui/skeleton"
 import { DINE_TABLE_MEDIA_URL } from "@/app/_lib/constants/images";
 import { useEffect, useState } from "react";
+import LazyImage from "@/app/components/lazy-loading/lazy-image";
 export default function Dining() {
     const [products, setProducts] = useState();
 
@@ -32,7 +32,7 @@ export default function Dining() {
     return (
         <div className="dining-table-products-page bg-[#faf2ec]">
             <div className="container">
-                <div className="page-banner py-5">
+                <div className="page-banner py-5 border-t">
                     <div className="grid grid-cols-12 md:gap-10 sm:gap-5 gap-0">
                         <div className="col-span-8">
                             <div className="content-wrapper h-full flex items-center">
@@ -50,8 +50,8 @@ export default function Dining() {
                         </div>
                         <div className="col-span-4">
                             <div className="Image-wrapper">
-                                <div className="image">
-                                    <Image
+                                <div className="image relative h-[553px]">
+                                    <LazyImage
                                         src="/uploads/images/shop/dining-tables/banner.jpg"
                                         alt=""
                                         width={640}
@@ -72,8 +72,8 @@ export default function Dining() {
                     <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
                         {products && products.map((product) => (
                             <Link href={`/shop/dining-tables/${product.id}`} key={product.id} className="my-4 group ">
-                                <div className="product-image overflow-hidden">
-                                    <Image src={`${DINE_TABLE_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300" />
+                                <div className="product-image overflow-hidden relative h-[327px]">
+                                    <LazyImage src={`${DINE_TABLE_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300" />
                                 </div>
                                 <div className="detail text-center text-sm text-[#54595f] font-roboto group-hover:text-[#3c2f27] group-hover:font-bold transition duration-150">
                                     <div className="p-2">{product.name}</div>

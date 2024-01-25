@@ -1,10 +1,10 @@
 'use client'
 import axios from "axios";
-import Image from "next/image";
 import Link from "next/link";
 import { IndianRupee } from 'lucide-react';
 import { OUTDOOR_MEDIA_URL } from "@/app/_lib/constants/images";
 import { useEffect, useState } from "react";
+import LazyImage from "@/app/components/lazy-loading/lazy-image";
 export default function Outdoor() {
     const [products, setProducts] = useState();
     useEffect(() => {
@@ -19,7 +19,7 @@ export default function Outdoor() {
     return (
         <div className="outdoor-products-page bg-[#faf2ec]">
             <div className="container">
-                <div className="page-banner py-5">
+                <div className="page-banner py-5 border-t">
                     <div className="grid grid-cols-12 md:gap-10 sm:gap-5 gap-0">
                         <div className="col-span-8">
                             <div className="content-wrapper h-full flex items-center">
@@ -37,8 +37,8 @@ export default function Outdoor() {
                         </div>
                         <div className="col-span-4">
                             <div className="Image-wrapper">
-                                <div className="image">
-                                    <Image
+                                <div className="image relative h-[553px]">
+                                    <LazyImage
                                         src="/uploads/images/shop/outdoor/banner.jpg"
                                         alt=""
                                         width={640}
@@ -59,8 +59,8 @@ export default function Outdoor() {
                     <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
                         {products && products.map((product) => (
                             <Link href={`/shop/outdoor/${product.id}`} key={product.id} className="my-4 group ">
-                                <div className="product-image overflow-hidden">
-                                    <Image src={`${OUTDOOR_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300" />
+                                <div className="product-image overflow-hidden relative h-[327px]">
+                                    <LazyImage src={`${OUTDOOR_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300" />
                                 </div>
                                 <div className="detail text-center text-sm text-[#54595f] font-roboto group-hover:text-[#3c2f27] group-hover:font-bold transition duration-150">
                                     <div className="p-2">{product.name}</div>

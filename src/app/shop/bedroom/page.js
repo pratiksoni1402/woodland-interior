@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { IndianRupee } from 'lucide-react';
 import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
+import LazyImage from "@/app/components/lazy-loading/lazy-image";
+
 export default function Bedroom() {
     const [products, setProducts] = useState();
 
@@ -19,8 +21,9 @@ export default function Bedroom() {
             });
     }, []);
 
+
     return (
-        <div className="bedroom-products-page bg-[#faf2ec]">
+        <div className="bedroom-products-page bg-[#faf2ec] border-t">
             <div className="container">
                 <div className="page-banner py-5">
                     <div className="grid grid-cols-12 md:gap-10 sm:gap-5 gap-0" >
@@ -53,7 +56,7 @@ export default function Bedroom() {
                         </div>
                         <div className="md:col-span-4 sm:col-span-12 col-span-12 md:order-2 sm:order-1 order-1">
                             <div className="Image-wrapper h-full flex items-center">
-                                <div className="image">
+                                <div className="image relative">
                                     <Image
                                         src="/uploads/images/shop/bedroom/banner.jpg"
                                         alt=""
@@ -76,8 +79,8 @@ export default function Bedroom() {
                     <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-5">
                         {products && products.map((product) => (
                             <Link href={`/shop/bedroom/${product.id}`} key={product.id} className="my-4 group ">
-                                <div className="product-image overflow-hidden">
-                                    <Image src={`${BEDROOM_PRODUCT_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300" />
+                                <div className="product-image overflow-hidden relative h-[327px]">
+                                    <LazyImage src={`${BEDROOM_PRODUCT_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300" />
                                 </div>
                                 <div className="detail text-center text-sm text-[#54595f] font-roboto group-hover:text-[#3c2f27] group-hover:font-bold transition duration-150">
                                     <div className="p-2">{product.name}</div>

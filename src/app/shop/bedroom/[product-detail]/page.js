@@ -10,6 +10,8 @@ import { Button }  from './../../../components/ui/button'
 import { ShoppingBag } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 import { ClipLoader } from "react-spinners";
+import { useQuery } from "@tanstack/react-query";
+import LazyImage from "@/app/components/lazy-loading/lazy-image";
 
 export default function Detailpage({ params }) {
    const [productDetail, setProductDetail] = useState(null);
@@ -32,6 +34,7 @@ export default function Detailpage({ params }) {
    }, [params]);
    // End
 
+   
    // Updating Price According to Quantity
    useEffect(() => {
       if (productDetail) {
@@ -154,8 +157,8 @@ export default function Detailpage({ params }) {
                <div className="grid grid-cols-12 gap-5">
                   <div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-5 col-span-12">
                      <div className="left-section sticky top-10">
-                        <div className="product-image">
-                           <Image src={`${BEDROOM_PRODUCT_MEDIA_URL}/${productDetail?.image}`} width={600} height={600} alt={productDetail?.name} />
+                        <div className="product-image relative h-[600px]">
+                           <LazyImage src={`${BEDROOM_PRODUCT_MEDIA_URL}/${productDetail?.image}`} width={600} height={600} alt={productDetail?.name} />
                         </div>
                      </div>
                   </div>
@@ -205,7 +208,6 @@ export default function Detailpage({ params }) {
                                        "Add to cart"
                                     )
                                  }
-                                 {/* <span className="px-2"><ShoppingBag width={18} /></span> */}
                               </Button>
                            </div>
                         </div>

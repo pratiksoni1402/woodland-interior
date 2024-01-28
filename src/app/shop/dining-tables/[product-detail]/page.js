@@ -9,6 +9,7 @@ import axios from "axios"
 import { DINE_TABLE_MEDIA_URL } from '@/app/_lib/constants/images';
 import { useEffect, useState } from "react"
 import toast, { Toaster } from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query';
 
 export default function Detailpage({params}){
     const [productDetail, setProductDetail] = useState();
@@ -26,14 +27,23 @@ export default function Detailpage({params}){
         });
     }, [params])
     // End
-
+    
     // Updating Price Based on Product Quantity
     useEffect(()=>{
         const price = productDetail?.price * count
         setPrice(price)
     }, [count, productDetail])
     // End
+    
+    const {isPending, data:dineproduct, error, refetch} = useQuery({
+        queryKey:['dineitem'],
+        enabled: false,
+        queryFn: () => 
+            axios.get('/api/cart-item/set-data', {
+                id,
 
+            })
+    })
     // Display Spinner Until Data is Getting Ready
     if (!productDetail) {
         return <div className='loading bg-[#faf2ec]  h-screen w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
@@ -70,6 +80,10 @@ export default function Detailpage({params}){
         }
     }
 
+    // Adding Product to cart Table
+    
+
+    // End
     return (
         <div className="product-detail-page bg-[#faf2ec]">
             <div className="container">
@@ -117,7 +131,7 @@ export default function Detailpage({params}){
                                         </Button>
                                     </div>
                                     <div className="cart py-3">
-                                        <Button variant="outline" className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12">ADD TO BAG
+                                        <Button variant="outline" onClick={() => refetch(productDetail.id)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12">ADD TO BAG
                                             <span className="px-2"><ShoppingBag width={18} /></span>
                                         </Button>
                                     </div>

@@ -25,15 +25,10 @@ export default function Product() {
   const { isPending, data: allproducts, error } = useQuery({
     queryKey: ['productslist'],
     queryFn: () =>
-      axios.get('/api/wishlist-items/get-data', {
-        headers:{
-          next:{
-            revalidate: 10,
-          }, 
-        },
-      })
+      axios.get('/api/wishlist-items/get-data')
         .then((response) => {
-          console.log(response.data.getallproduct)
+          // console.log(response.data.getallproduct)
+          queryClient.invalidateQueries('productlist')
           return response.data.getallproduct
         })
         .catch((error) => {

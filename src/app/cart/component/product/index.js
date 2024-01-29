@@ -59,30 +59,6 @@ export default function Product() {
    }
    // End
 
-   // Move To Wishlist Table
-   const movetowishlist = (productid, sku, id) =>{
-      axios.post('/api/wishlist-items/from-cart', {
-         productid,
-         sku,
-      })
-      .then((response) =>{
-         console.log('Product Moved Successfully',response.data.fromcart)
-         cnfdelete(id)
-         toast.success("Product Moved Successfully")
-         
-         
-      })
-      .catch((error) =>{
-         console.log("Error", error)
-      })
-      .finally(() =>{
-         queryClient.invalidateQueries('product');
-
-      })
-   }
-
-   // End
-
    return (
       <div className="product-wrapper ">
          <div className="grid grid-col-1">
@@ -123,7 +99,7 @@ export default function Product() {
                               <div className="actions flex flex-col justify-end pt-20">
                                  <Link href={`/shop/bedroom/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
 
-                                 <Button onClick={() => movetowishlist(product.productid, product.sku, product.id)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
+                                 <Button className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
 
                                  <AlertDialog className='rounded-none'>
                                     <AlertDialogTrigger asChild>

@@ -1,6 +1,6 @@
 import prisma from "@/db";
 export async function GET(requset, {params}){
-    let product_detail = await prisma.diningproducts.findUnique({
+    let product_detail = await prisma.products.findUnique({
         where:{
             id: parseInt(params.details),
         },

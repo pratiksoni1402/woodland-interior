@@ -1,3 +1,15 @@
+// Base Media URL
+export const BASE_MEDIA_URL = '/uploads/images/shop'
+// End
+
+// Category Wise Image Sub Folder
+export const CATEGORY_IMAGE_SUBFOLDER = {
+    bedroom: 'bedroom',
+    diningtables: 'diningtables',
+    sofasets: 'sofasets',
+    outdoor: 'outdoor',
+};
+// End
 
 // Home Page Media
 export const HOMEPAGE_MEDIA_URL = '/uploads/images/hompage/' 

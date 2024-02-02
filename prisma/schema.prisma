@@ -50,7 +50,10 @@ model Products {
 model Category {
   id       Int        @id @default(autoincrement())
   name     String     @db.VarChar(50)
+  slug     String     @db.VarChar(50)
   products Products[]
+
+  @@map("categories")
 }
 
 // End

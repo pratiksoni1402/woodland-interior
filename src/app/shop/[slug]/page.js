@@ -87,7 +87,7 @@ export default function Bedroom({ params }) {
             {
               allproducts && allproducts.map((category) => (
                 category.products && category.products.map((product) => (
-                  <Link href={`/shop/bedroom/${product.id}`} key={product.id} className="my-4 group ">
+                  <Link href={`/product-detail/${product.id}`} key={product.id} className="my-4 group ">
                     <div className="product-image overflow-hidden relative h-[327px]">
                       <LazyImage src={`${BASE_MEDIA_URL}/${getCategoryImageSubfolder(category.name)}/products/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300" />
                     </div>
@@ -103,32 +103,6 @@ export default function Bedroom({ params }) {
               ))
             }
           </div>
-        </div>
-        <div className="new-data">
-          <h1>This is new data</h1>
-          {/* {
-                        allproducts && allproducts.map((item) =>(
-                            console.log(item.products.name)
-                        ))
-                    } */}
-
-          {/* {
-                        allproducts && allproducts.map((category) => (
-                            category.products && category.products.map((product) => (
-                                <div key={product.id}>
-                                    <h2>{product.name}</h2>
-                                </div>
-                            ))
-                        ))
-                    } */}
-
-          {/* {
-                        product && productlist.map((category) => (
-                            category.products && category.products.map((product) => (
-                                console.log(product.name)
-                            ))
-                        ))
-                    }  */}
         </div>
       </div>
     </div>

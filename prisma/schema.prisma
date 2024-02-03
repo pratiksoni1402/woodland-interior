@@ -39,7 +39,7 @@ model Products {
   image       String      @db.VarChar(50)
   category    Category    @relation(fields: [category_id], references: [id])
   Cartitems   Cartitems[]
-  Wishlist    Wishlist[]
+  wishlist    Wishlist[]
 
   @@map("all_products")
 }
@@ -51,6 +51,9 @@ model Category {
   id       Int        @id @default(autoincrement())
   name     String     @db.VarChar(50)
   slug     String     @db.VarChar(50)
+  heading  String     @db.VarChar(100)
+  intro    String     @db.Text
+  image    String     @db.VarChar(50)
   products Products[]
 
   @@map("categories")
@@ -128,7 +131,7 @@ model Cartitems {
 model Wishlist {
   id        Int      @id @default(autoincrement())
   productid Int      @db.Int
-  sku       String   @db.VarChar(50)
+  sku       String?   @db.VarChar(50)
   quantity  Int?     @db.Int
   products  Products @relation(fields: [productid], references: [id])
 

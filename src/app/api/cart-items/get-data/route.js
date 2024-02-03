@@ -6,7 +6,7 @@ export async function GET() {
             productid: true,
             sku: true,
             quantity: true,
-            bedroomproduct: {
+            products: {
                 select: {
                     name: true,
                     description: true,

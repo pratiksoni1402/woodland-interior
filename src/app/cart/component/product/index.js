@@ -4,7 +4,6 @@ import { Button } from "./../../../components/ui/button";
 import { IndianRupee } from "lucide-react";
 import axios from "axios";
 import Link from "next/link";
-import { BEDROOM_PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import {
@@ -21,6 +20,7 @@ import {
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { ClipLoader } from "react-spinners";
+import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 export default function Product() {
    const [loading, setLoading] = useState(false);
    const queryClient = useQueryClient();
@@ -31,9 +31,7 @@ export default function Product() {
       queryFn: () =>
          axios.get('/api/cart-items/get-data')
             .then((response) => {
-               // console.log(response.data.cartdata)
                return response.data.cartdata
-
             })
             .catch((error) => {
                console.error("Error fetching data:", error);
@@ -48,6 +46,19 @@ export default function Product() {
       axios.post('/api/cart-items/delete-item', { id })
          .then((response) => {
             console.log("Product deleted successfully", response.data.deleteproduct)
+            toast.success("Deleted Successfully", {
+               duration: 3000,
+               style: {
+                  border: '1px solid #3c2f27',
+                  padding: '16px',
+                  color: '#faf2ec',
+                  backgroundColor: '#3c2f27',
+               },
+               iconTheme: {
+                  primary: '#faf2ec',
+                  secondary: '#3c2f27',
+               },
+            })
          })
          .catch((error) => {
             console.log("Error occured", error)
@@ -58,6 +69,9 @@ export default function Product() {
          })
    }
    // End
+
+   // Move to wishlist
+
 
    return (
       <div className="product-wrapper ">
@@ -70,15 +84,15 @@ export default function Product() {
                      <div className='product py-10 border-b border-[#b2937e]' key={product.id}>
                         <div className="grid grid-cols-12 gap-3">
                            <div className="xl:col-span-3 lg:col-span-3 sm:col-span-4 col-span-12">
-                              <Image src={`${BEDROOM_PRODUCT_MEDIA_URL}/${product.bedroomproduct.image}`} alt={product.bedroomproduct.name} height={250} width={250} className="sm:w-[250px] w-full" />
+                              <Image src={`${PRODUCT_MEDIA_URL}/${product.products.image}`} alt={product.products.name} height={250} width={250} className="sm:w-[250px] w-full" />
                            </div>
                            <div className="xl:col-span-7 lg:col-span-7 sm:col-span-6 col-span-12">
                               <div className='description'>
                                  <div className='title text-[#3c2f27] font-semibold font-crimson text-xl pb-3'>
-                                    {product.bedroomproduct.name}
+                                    {product.products.name}
                                  </div>
                                  <div className='description text-[#4b4537] font-roboto text-sm pb-3'>
-                                    {product.bedroomproduct.description}
+                                    {product.products.description}
                                  </div>
                                  <div className='constant  text-[#4b4537] font-roboto text-sm pb-3'>SKU: <span className='variation' >{product.sku}</span></div>
                               </div>
@@ -94,12 +108,12 @@ export default function Product() {
                            <div className="xl:col-span-2 lg:col-span-2 sm:col-span-2 col-span-12">
                               <div className='amount flex justify-end'>
                                  <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee width={20} /></div>
-                                 <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.bedroomproduct.price}</div>
+                                 <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.products.price}</div>
                               </div>
                               <div className="actions flex flex-col justify-end pt-20">
-                                 <Link href={`/shop/bedroom/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
+                                 <Link href={`/product-detail/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
 
-                                 <Button className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
+                                 <Button onClick={() => movetowishlist(product.productid, product.sku, count)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
 
                                  <AlertDialog className='rounded-none'>
                                     <AlertDialogTrigger asChild>

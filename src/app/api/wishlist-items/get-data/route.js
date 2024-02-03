@@ -1,12 +1,12 @@
 import prisma from "@/db";
 export async function GET() {
-    const getallproduct = await prisma.products.findMany({
+    const getallproduct = await prisma.wishlist.findMany({
         select: {
             id: true,
-            // productid: true,
+            productid: true,
             sku: true,
             quantity: true,
-            bedroomproduct: {
+            products: {
                 select: {
                     name: true,
                     description: true,

@@ -10,7 +10,7 @@ export default function Home() {
       {/* Banner Section */}
       <section className="banner-wrapper">
         <div className="content-wrapper relative">
-          <div className="banner-title text-white z-[1] md:text-[55px] md:leading-[60px] text-xl leading-6">
+          <div className="banner-title text-white z-[1] xl:text-8xl md:text-[55px] text-2xl md:leading-[60px] leading-6">
             <h1>Crafted Excellence in Wood:</h1>
             <h2> Where Nature Meets Artistry</h2>
           </div>

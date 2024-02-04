@@ -23,12 +23,11 @@ export default function Product() {
 
   // Get all products from wishlist table
   const { isPending, data: allproducts, error } = useQuery({
-    queryKey: ['productslist'],
+    queryKey: ['productlist'],
     queryFn: () =>
       axios.get('/api/wishlist-items/get-data')
         .then((response) => {
-          // console.log(response.data.getallproduct)
-          queryClient.invalidateQueries('productlist')
+          // queryClient.invalidateQueries('productlist')
           return response.data.getallproduct
         })
         .catch((error) => {
@@ -93,7 +92,7 @@ export default function Product() {
         })
       })
       .finally(() =>{
-        queryClient.invalidateQueries('productslist');
+        queryClient.invalidateQueries('productlist');
       })
   }
   // End

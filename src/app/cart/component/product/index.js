@@ -22,8 +22,10 @@ import { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 export default function Product() {
+   const [count, setcount] = useState(1)
    const [loading, setLoading] = useState(false);
    const queryClient = useQueryClient();
+
 
    //Get All Products from Cart Table
    const { isPending, data: totalproducts, error } = useQuery({
@@ -46,7 +48,28 @@ export default function Product() {
       axios.post('/api/cart-items/delete-item', { id })
          .then((response) => {
             console.log("Product deleted successfully", response.data.deleteproduct)
-            toast.success("Deleted Successfully", {
+         })
+         .catch((error) => {
+            console.log("Error occured", error)
+         })
+         .finally(() => {
+            setLoading(false);
+            queryClient.invalidateQueries('product');
+         })
+   }
+   // End
+
+   // Move to wishlist
+   const movetowishlist = (productid, sku, id, quantity) => {
+      console.log('Fetched from cart page', productid, sku)
+      axios.post('/api/wishlist-items/from-cart', {
+         productid,
+         sku,
+         quantity,
+      })
+         .then((response) => {
+            cnfdelete(id)
+            toast.success("Moved to wishlist", {
                duration: 3000,
                style: {
                   border: '1px solid #3c2f27',
@@ -61,16 +84,55 @@ export default function Product() {
             })
          })
          .catch((error) => {
-            console.log("Error occured", error)
+            toast.error('Error', {
+               duration: 3000,
+               style: {
+                  border: '1px solid #3c2f27',
+                  padding: '16px',
+                  color: '#faf2ec',
+                  backgroundColor: '#3c2f27',
+               },
+               iconTheme: {
+                  primary: '#faf2ec',
+                  secondary: '#3c2f27',
+               },
+            })
          })
          .finally(() => {
-            setLoading(false);
-            queryClient.invalidateQueries('product');
+            queryClient.invalidateQueries('product')
          })
    }
    // End
 
-   // Move to wishlist
+   // Increase Quantity
+   const increasequantity = (id) => {
+      if (count < 10) {
+         setcount((prevcount) => prevcount + 1)
+      } else {
+         toast.error("Only 10 Sets are allowed to buy", {
+            duration: 8000,
+            style: {
+               border: '1px solid #3c2f27',
+               padding: '16px',
+               color: '#faf2ec',
+               backgroundColor: '#3c2f27',
+            },
+            iconTheme: {
+               primary: '#faf2ec',
+               secondary: '#3c2f27',
+            },
+         });
+      }
+   }
+   // End
+
+   // Decrease Quantity
+   const decreasequantity = (id) => {
+      if (count > 1) {
+         setcount((prevcount) => prevcount - 1)
+      }
+   }
+
 
 
    return (
@@ -99,9 +161,9 @@ export default function Product() {
                               <div className="quantity py-3 ">
                                  <div className="pb-1 text-xs text-[#3c2f27] font-roboto">Quantity:</div>
                                  <div className="flex items-center">
-                                    <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">+</Button>
-                                    <span className="px-7 border-[#3c2f27] border h-10 flex items-center border-r-0 border-l-0">{product.quantity}</span>
-                                    <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">-</Button>
+                                    <Button variant="outline" onClick={() => increasequantity(product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">+</Button>
+                                    <span className="px-7 border-[#3c2f27] border h-10 flex items-center border-r-0 border-l-0">{count}</span>
+                                    <Button variant="outline" onClick={() => decreasequantity(product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">-</Button>
                                  </div>
                               </div>
                            </div>
@@ -113,7 +175,7 @@ export default function Product() {
                               <div className="actions flex flex-col justify-end pt-20">
                                  <Link href={`/product-detail/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
 
-                                 <Button onClick={() => movetowishlist(product.productid, product.sku, count)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
+                                 <Button onClick={() => movetowishlist(product.productid, product.sku, product.id, product.quantity)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
 
                                  <AlertDialog className='rounded-none'>
                                     <AlertDialogTrigger asChild>

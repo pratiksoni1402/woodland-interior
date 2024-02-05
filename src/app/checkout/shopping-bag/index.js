@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { IndianRupee } from 'lucide-react';
+import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 export default function Shoppingbag() {
   let grandtotal = 0;
   let taxamount = 0;
@@ -35,7 +36,7 @@ export default function Shoppingbag() {
             <div className="grid grid-cols-12 gap-2">
               <div className="col-span-3">
                 <div className="product-image">
-                  <Image src='/uploads/images/shop/bedroom/products/image2.jpg' alt="image2" width={100} height={100} className="w-full" />
+                  <Image src={`${PRODUCT_MEDIA_URL}/${productlist.products.image}`} alt={productlist.products.name} width={100} height={100} className="w-full" />
                 </div>
               </div>
               <div className="col-span-7">

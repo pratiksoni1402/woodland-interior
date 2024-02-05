@@ -6,7 +6,7 @@ export async function POST(req) {
         const formData = await req.json();
 
         // Hash the password using bcrypt
-        const saltRounds = 10; // Adjust this value based on your security requirements
+        const saltRounds = 10; // Adjust this value based security requirements
         const hashedPassword = await bcrypt.hash(formData.password, saltRounds);
 
         // Save the hashed password in the database

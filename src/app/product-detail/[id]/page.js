@@ -49,7 +49,7 @@ export default function Detail({ params }) {
   // End
 
   // Cart Table Data
-  const { pending: onhold, data:shoppingcart, error: haveError } = useQuery({
+  const { pending: onhold, data: shoppingcart, error: haveError } = useQuery({
     queryKey: ['bagdata'],
     queryFn: () =>
       axios.get('/api/cart-items/get-data')
@@ -207,14 +207,18 @@ export default function Detail({ params }) {
         setAdding(false);
       })
   }
+  // End
 
-  if (wishlistdata) {
-    for (let i = 0; i < wishlistdata.length; i++) {
-      const productlist = wishlistdata[i].productid;
-      console.log(productlist);
-    }
+  // Remove Product from wishlist
+  const removefromwishlist = (id) => {
+    axios.post('/api/wishlist-items/delete-item', { id })
+      .then((response) => {
+        queryClient.invalidateQueries('wishlistcount')
+      })
+      .catch((error) => {
+        console.log("Error", error)
+      })
   }
-  
   // End
 
   return (
@@ -264,16 +268,40 @@ export default function Detail({ params }) {
                   </div>
                   <div className="wishlist py-3">
                     {
-                      loading ? (
-                        <div className="flex justify-center">
-                          <ClipLoader color="#3c2f27" />
-                        </div>
-                      ) : (
+                      wishlistdata?.find(v => v.productid == detail.id) ? (
+                        <>
 
-                        <Button variant="outline" onClick={() => addtowishlist(detail.id, detail.sku)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12">ADD TO WISHLIST
-                        </Button>
+                          {
+                            loading ? (
+                              <div className="flex justify-center">
+                                <ClipLoader color="#3c2f27" />
+                              </div>
+                            ) : (
+
+                              <Button variant="outline" onClick={() => removefromwishlist(detail.id)} className="text-sm w-full hover:text-[#3c2f27] bg-[#3c2f27] text-[#faf2ec] hover:bg-transparent border-[#3c2f27]  rounded-none h-12 uppercase">Remove from Wishlist
+                              </Button>
+                            )
+                          }
+
+                        </>
+                      ) : (
+                        <>
+                          {
+                            loading ? (
+                              <div className="flex justify-center">
+                                <ClipLoader color="#3c2f27" />
+                              </div>
+                            ) : (
+
+                              <Button variant="outline" onClick={() => addtowishlist(detail.id, detail.sku)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12 uppercase">Add To Wishlist
+                              </Button>
+                            )
+                          }
+                        </>
+
                       )
                     }
+
                   </div>
 
                   <div className="cart py-3">
@@ -286,7 +314,7 @@ export default function Detail({ params }) {
 
                       ) : (
 
-                        <Button variant="outline" onClick={() => addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12">ADD TO BAG
+                        <Button variant="outline" onClick={() => addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12 uppercase">Add To Bag
                         </Button>
                       )
                     }

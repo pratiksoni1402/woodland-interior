@@ -37,9 +37,9 @@ export default function Product() {
   // End
 
   // Delete product from wishlist table
-  const deleteproduct = (id) => {
-
-    axios.post('/api/wishlist-items/delete-item', { id })
+  const deleteproduct = (productid) => {
+    
+    axios.post('/api/wishlist-items/delete-item', { productid })
       .then((response) => {
         console.log('Product deleted successfully', response.data.deleteitem)
         queryClient.invalidateQueries('productlist');
@@ -147,7 +147,7 @@ export default function Product() {
                           </AlertDialogHeader>
                           <AlertDialogFooter>
                             <AlertDialogCancel className='hover:duration-300 rounded-none bg-transparent text-[#3c2f27] border-[#3c2f27] hover:bg-[#b2937e] hover:border-[#b2937e] hover:text-[white]'>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={() => deleteproduct(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>Delete</AlertDialogAction>
+                            <AlertDialogAction onClick={() => deleteproduct(product.productid)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>Delete</AlertDialogAction>
                           </AlertDialogFooter>
                         </AlertDialogContent>
                       </AlertDialog>

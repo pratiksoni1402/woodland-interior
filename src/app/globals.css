@@ -401,22 +401,22 @@ textarea:focus {
 
 /* User Register  Form */
 .user-registration .register-form form input{
-  @apply w-full p-3 mb-3 border border-[#54595f] rounded-none
+  @apply w-full py-3 mb-3 border border-[#54595f] rounded-none  border-r-0 border-l-0 border-t-0
 }
 
 .user-registration .register-form form input:focus{
-  @apply outline-0 border border-[#3c2f27] duration-300
+  @apply outline-0 border border-[#3c2f27] duration-300  border-r-0 border-l-0 border-t-0
 
 }
 /* End */
 
 /* Login Form */
 .user-login .login-form form input{
-  @apply  w-full p-3 mb-3 border border-[#54595f] rounded-none
+  @apply  w-full py-3 mb-3 border border-[#54595f] rounded-none border-r-0 border-l-0 border-t-0
 }
 
 .user-login .login-form form input:focus{
- @apply outline-0 border border-[#3c2f27] duration-300
+ @apply outline-0 border border-[#3c2f27] duration-300 border-r-0 border-l-0 border-t-0 bg-white
 }
 /* End */
 

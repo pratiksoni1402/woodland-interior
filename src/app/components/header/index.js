@@ -103,7 +103,7 @@ const Navbar = () => {
                      </NavigationMenuItem>
                      <NavigationMenuItem>
                         <NavigationMenuLink asChild>
-                           <Link href="/auth">
+                           <Link href="/auth/login">
                               <Avatar>
                                  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
                                  <AvatarFallback>CN</AvatarFallback>

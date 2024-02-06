@@ -70,34 +70,9 @@ export default function Cart() {
     })
       .then((response) => {
         cnfdelete(id)
-        toast.success("Moved to wishlist", {
-          duration: 3000,
-          style: {
-            border: '1px solid #3c2f27',
-            padding: '16px',
-            color: '#faf2ec',
-            backgroundColor: '#3c2f27',
-          },
-          iconTheme: {
-            primary: '#faf2ec',
-            secondary: '#3c2f27',
-          },
-        })
       })
       .catch((error) => {
-        toast.error('Error', {
-          duration: 3000,
-          style: {
-            border: '1px solid #3c2f27',
-            padding: '16px',
-            color: '#faf2ec',
-            backgroundColor: '#3c2f27',
-          },
-          iconTheme: {
-            primary: '#faf2ec',
-            secondary: '#3c2f27',
-          },
-        })
+
       })
       .finally(() => {
         queryClient.invalidateQueries('product')
@@ -118,7 +93,7 @@ export default function Cart() {
         })
         .catch((error) => {
           console.log("Error while updating quantity", error)
-          toast.error('Error')
+  
         })
     } else {
       toast.error("Only 10 Prodcuts are allowed to buy")
@@ -138,7 +113,7 @@ export default function Cart() {
           queryClient.invalidateQueries('product')
         })
         .catch((error) => {
-          toast.error("Error", error)
+          console.log("Error", error)
         })
     } else {
       toast.error('Minimum quantity should be 1')

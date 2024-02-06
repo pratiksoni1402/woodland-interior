@@ -64,7 +64,6 @@ export default function MobileMenu() {
         queryFn: () =>
            axios.get('/api/cart-items/get-count')
            .then((response) =>{
-              console.log(response.data.productcount)
               return response.data.productcount
            })
   
@@ -75,7 +74,6 @@ export default function MobileMenu() {
         queryFn: () =>
            axios.get('/api/wishlist-items/get-count')
            .then((response) => {
-              console.log(response.data.totalcount)
               return response.data.totalcount
            })
      });

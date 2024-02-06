@@ -6,18 +6,21 @@ import { IndianRupee } from 'lucide-react';
 import { Heart } from 'lucide-react';
 import { Button } from "./../../components/ui/button";
 import { ShoppingBag } from 'lucide-react';
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { useQuery } from "@tanstack/react-query";
 import LazyImage from "@/app/components/lazy-loading/lazy-image";
 import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import Link from "next/link";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function Detail({ params }) {
+  const queryClient = useQueryClient();
   const [count, setCount] = useState(1);
   const [price, setPrice] = useState();
   const [loading, setLoading] = useState(false);
-  console.log(count)
+  const [adding, setAdding] = useState(false);
+
 
   // Fetching Product Detail
   const { isPending, data: detail, error } = useQuery({
@@ -25,14 +28,63 @@ export default function Detail({ params }) {
     queryFn: () =>
       axios.get(`/api/product-detail/${params['id']}`)
         .then((response) => {
-          console.log(response.data.productDetail)
           return response.data.productDetail
         })
         .catch((error) => {
           console.log("Error in fetching data", error)
         })
   })
-  // End  
+  // End
+
+  // Wishlist Table Data
+  const { isavailable, data: wishlistdata, error: hasError } = useQuery({
+    queryKey: ['wishlistitems'],
+    queryFn: () =>
+      axios.get('/api/wishlist-items/get-data')
+        .then((response) => {
+          console.log(response.data.getallproduct)
+          return response.data.getallproduct
+        })
+  });
+  // End
+
+  // Cart Table Data
+  const { pending: onhold, data:shoppingcart, error: haveError } = useQuery({
+    queryKey: ['bagdata'],
+    queryFn: () =>
+      axios.get('/api/cart-items/get-data')
+        .then((response) => {
+          console.log(response.data.cartdata)
+          return response.data.cartdata
+        })
+        .catch((error) => {
+          console.log("Error", error)
+        })
+  });
+
+  // Invalidate totalcount on add to Cart
+  const { pending, data: totalcount, iserror } = useQuery({
+    queryKey: ['totalcount'],
+    queryFn: () =>
+      axios.get('/api/cart-items/get-count')
+        .then((response) => {
+          console.log(response.data.productcount)
+          return response.data.productcount
+        })
+
+  });
+  // End
+
+  // Invalidate totalcount on add to Wishlist
+  const { hold, data: wishlisttotal, isWishlistError } = useQuery({
+    queryKey: ['wishlistcount'],
+    queryFn: () =>
+      axios.get('/api/wishlist-items/get-count')
+        .then((response) => {
+          console.log(response.data.totalcount)
+          return response.data.totalcount
+        })
+  });
 
 
   // Updating Price Based on Product Quantity
@@ -44,7 +96,7 @@ export default function Detail({ params }) {
 
   // Display spinner Until Data is Getting Ready
   if (!detail) {
-    return <div className='loading h-screen bg-[#faf2ec]  w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
+    return <div className='loading h-screen bg-[#faf2ec] w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
     </div>;
   }
   // End
@@ -87,8 +139,8 @@ export default function Detail({ params }) {
       quantity: count,
     })
       .then((response) => {
-        console.log(response.data.savedproducts)
-        toast.success("Product Added to wishlist",{
+        queryClient.invalidateQueries('wishlistcount')
+        toast.success("Product Added to wishlist", {
           duration: 3000,
           style: {
             border: '1px solid #3c2f27',
@@ -114,16 +166,16 @@ export default function Detail({ params }) {
 
   // Add to cart
   const addtocart = (id, sku, count) => {
-    console.log("The three muskeeters", id, sku, count)
-    axios.post('/api/cart-items/set-data',{
+    setAdding(true)
+    axios.post('/api/cart-items/set-data', {
       id,
       sku,
       quantity: count,
     })
-    .then((response) =>{
-      console.log(response.data.cartproducts)
-      toast.success('Product Added to cart',{
-        duration: 3000,
+      .then((response) => {
+        queryClient.invalidateQueries('totalcount')
+        toast.success('Product Added to cart', {
+          duration: 3000,
           style: {
             border: '1px solid #3c2f27',
             padding: '16px',
@@ -134,12 +186,11 @@ export default function Detail({ params }) {
             primary: '#faf2ec',
             secondary: '#3c2f27',
           },
+        })
       })
-    })
-    .catch((error) =>{
-      console.log('Error occured', error)
-      toast.error('Error', {
-        duration: 3000,
+      .catch((error) => {
+        toast.error('Error', {
+          duration: 3000,
           style: {
             border: '1px solid #3c2f27',
             padding: '16px',
@@ -150,9 +201,20 @@ export default function Detail({ params }) {
             primary: '#faf2ec',
             secondary: '#3c2f27',
           },
+        })
       })
-    })
+      .finally(() => {
+        setAdding(false);
+      })
   }
+
+  if (wishlistdata) {
+    for (let i = 0; i < wishlistdata.length; i++) {
+      const productlist = wishlistdata[i].productid;
+      console.log(productlist);
+    }
+  }
+  
   // End
 
   return (
@@ -160,7 +222,6 @@ export default function Detail({ params }) {
       <div className="container">
         <div className="product-wrapper py-10 border-t">
           <div className="breadcrumb">
-            {/* <Link href='/'>HOME</Link> <Link href=''></Link> */}
           </div>
           <div className="grid grid-cols-12 gap-7">
             <Toaster />
@@ -184,7 +245,8 @@ export default function Detail({ params }) {
                     {detail?.description}
                   </div>
                   <div className="pricing flex items-center  text-[#3c2f27] font-semibold font-crimson text-lg">
-                    <span> <IndianRupee width={18} /></span><span>{price}</span>
+                    <span> <IndianRupee width={18} /></span>
+                    <span>{price}</span>
                     <span className="text-xs px-1">(inclusive of all taxes)</span>
                   </div>
                 </div>
@@ -209,16 +271,25 @@ export default function Detail({ params }) {
                       ) : (
 
                         <Button variant="outline" onClick={() => addtowishlist(detail.id, detail.sku)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12">ADD TO WISHLIST
-                          {/* <span className="px-2"><Heart width={18} /></span> */}
                         </Button>
                       )
                     }
                   </div>
 
                   <div className="cart py-3">
-                    <Button variant="outline" onClick={()=> addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12">ADD TO BAG
-                      {/* <span className="px-2"><ShoppingBag width={18} /></span> */}
-                    </Button>
+                    {
+                      adding ? (
+
+                        <div className="flex justify-center">
+                          <ClipLoader color="#3c2f27" />
+                        </div>
+
+                      ) : (
+
+                        <Button variant="outline" onClick={() => addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12">ADD TO BAG
+                        </Button>
+                      )
+                    }
                   </div>
                 </div>
               </div>

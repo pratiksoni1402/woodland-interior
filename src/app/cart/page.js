@@ -26,8 +26,6 @@ export default function Cart() {
   let subtotal = 0;
   let taxrate = 9;
   let taxamount = (totalPrice * taxrate) / 100
-  console.log("This is subtotal",subtotal)
-  const [count, setcount] = useState(1)
   const [loading, setLoading] = useState(false);
   const queryClient = useQueryClient();
 
@@ -51,7 +49,7 @@ export default function Cart() {
     setLoading(true);
     axios.post('/api/cart-items/delete-item', { id })
       .then((response) => {
-        console.log("Product deleted successfully", response.data.deleteproduct)
+        
       })
       .catch((error) => {
         console.log("Error occured", error)
@@ -65,7 +63,6 @@ export default function Cart() {
 
   // Move to wishlist
   const movetowishlist = (productid, sku, id, quantity) => {
-    console.log('Fetched from cart page', productid, sku)
     axios.post('/api/wishlist-items/from-cart', {
       productid,
       sku,
@@ -260,7 +257,7 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="place-order text-center w-full ">
-                  <Link href='/checkout' className="w-full bg-[#b2937e] rounded-none hover:bg-[#3c2f27]">Proceed To Checkout</Link>
+                  <Link href='/checkout' className="w-full block p-3 bg-[#b2937e] rounded-none text-[#3c2f27] hover:text-white hover:bg-[#3c2f27]">Proceed To Checkout</Link>
                 </div>
 
               </div>

@@ -7,11 +7,11 @@ import { IndianRupee } from 'lucide-react';
 import LazyImage from "@/app/components/lazy-loading/lazy-image";
 import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import { BANNER_MEDIA_URL } from "@/app/_lib/constants/images";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 export default function Bedroom({ params }) {
 
   // Fetching All Products
-  const { isPending, data: allproducts, error } = useQuery({
+  const { isPending, data: allproducts, error, fetchNextPage, hasNextPage } = useQuery({
     queryKey: ['product-list'],
     queryFn: () =>
       axios.get(`/api/product-listing?slug=${params.slug}`)

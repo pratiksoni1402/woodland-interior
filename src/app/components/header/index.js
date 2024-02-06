@@ -29,7 +29,6 @@ const Navbar = () => {
       queryFn: () =>
          axios.get('/api/cart-items/get-count')
          .then((response) =>{
-            console.log(response.data.productcount)
             return response.data.productcount
          })
 
@@ -40,10 +39,9 @@ const Navbar = () => {
       queryFn: () =>
          axios.get('/api/wishlist-items/get-count')
          .then((response) => {
-            console.log(response.data.totalcount)
             return response.data.totalcount
          })
-   })
+   });
    
    return (
       <div className="navigation-bar bg-[#faf2ec] h-[75px] py-4 sticky top-0 z-10">

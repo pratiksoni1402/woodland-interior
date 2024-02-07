@@ -3,15 +3,12 @@ import axios from "axios";
 import { MoonLoader } from 'react-spinners';
 import { ClipLoader } from "react-spinners";
 import { IndianRupee } from 'lucide-react';
-import { Heart } from 'lucide-react';
 import { Button } from "./../../components/ui/button";
-import { ShoppingBag } from 'lucide-react';
 import { useEffect, useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { useQuery } from "@tanstack/react-query";
 import LazyImage from "@/app/components/lazy-loading/lazy-image";
 import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
-import Link from "next/link";
 import { useQueryClient } from "@tanstack/react-query";
 
 export default function Detail({ params }) {
@@ -48,20 +45,7 @@ export default function Detail({ params }) {
   });
   // End
 
-  // Cart Table Data
-  const { pending: onhold, data: shoppingcart, error: haveError } = useQuery({
-    queryKey: ['bagdata'],
-    queryFn: () =>
-      axios.get('/api/cart-items/get-data')
-        .then((response) => {
-          console.log(response.data.cartdata)
-          return response.data.cartdata
-        })
-        .catch((error) => {
-          console.log("Error", error)
-        })
-  });
-
+  
   // Invalidate totalcount on add to Cart
   const { pending, data: totalcount, iserror } = useQuery({
     queryKey: ['totalcount'],
@@ -211,6 +195,7 @@ export default function Detail({ params }) {
 
   // Remove Product from wishlist
   const removefromwishlist = (id) => {
+    console.log("this is id", id)
     axios.post('/api/wishlist-items/delete-item', { id })
       .then((response) => {
         queryClient.invalidateQueries('wishlistcount')
@@ -219,7 +204,9 @@ export default function Detail({ params }) {
         console.log("Error", error)
       })
   }
+  const wishlistid = wishlistdata?.find(a => a.id)
   // End
+  
 
   return (
     <div className="product-detail-page bg-[#faf2ec]">
@@ -269,8 +256,8 @@ export default function Detail({ params }) {
                   <div className="wishlist py-3">
                     {
                       wishlistdata?.find(v => v.productid == detail.id) ? (
+                          
                         <>
-
                           {
                             loading ? (
                               <div className="flex justify-center">
@@ -278,7 +265,7 @@ export default function Detail({ params }) {
                               </div>
                             ) : (
 
-                              <Button variant="outline" onClick={() => removefromwishlist(detail.id)} className="text-sm w-full hover:text-[#3c2f27] bg-[#3c2f27] text-[#faf2ec] hover:bg-transparent border-[#3c2f27]  rounded-none h-12 uppercase">Remove from Wishlist
+                              <Button variant="outline" onClick={() => removefromwishlist(wishlistid.id)} className="text-sm w-full hover:text-[#3c2f27] bg-[#3c2f27] text-[#faf2ec] hover:bg-transparent border-[#3c2f27]  rounded-none h-12 uppercase">Remove from Wishlist
                               </Button>
                             )
                           }

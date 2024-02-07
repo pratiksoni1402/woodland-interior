@@ -15,6 +15,7 @@ model Homepage {
 
   @@map("homepage")
 }
+// End
 
 // New user registration Model
 model Credentials {
@@ -120,6 +121,7 @@ model Cartitems {
   productid Int      @db.Int
   sku       String   @db.VarChar(50)
   quantity  Int?     @db.Int
+  sessionid String @db.VarChar(200)
   products  Products @relation(fields: [productid], references: [id])
 
   @@map("cart_items")
@@ -133,6 +135,7 @@ model Wishlist {
   productid Int      @db.Int
   sku       String?   @db.VarChar(50)
   quantity  Int?     @db.Int
+  sessionid String @db.VarChar(200)
   products  Products @relation(fields: [productid], references: [id])
 
   @@map("wishlist_items")

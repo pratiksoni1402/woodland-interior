@@ -22,8 +22,7 @@ const Login = () => {
         setLoading(false);
       })
   }
-
-
+  
   return (
     <div className='user-login-form bg-[#faf2ec] pb-20'>
       <div className='container'>

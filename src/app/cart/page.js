@@ -84,7 +84,7 @@ export default function Cart() {
   const increasequantity = (quantity, id) => {
     if (quantity < 10) {
       const updatequantity = quantity + 1
-      axios.put('/api/update-quantity', {
+      axios.put('/api/cart-items/update-quantity', {
         quantity: updatequantity,
         id
       })
@@ -105,7 +105,7 @@ export default function Cart() {
   const decreasequantity = (quantity, id) => {
     if (quantity > 1) {
       const changequantity = quantity - 1;
-      axios.put('/api/update-quantity', {
+      axios.put('/api/cart-items/update-quantity', {
         quantity: changequantity,
         id,
       })

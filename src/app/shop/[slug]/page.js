@@ -7,19 +7,22 @@ import { IndianRupee } from 'lucide-react';
 import LazyImage from "@/app/components/lazy-loading/lazy-image";
 import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import { BANNER_MEDIA_URL } from "@/app/_lib/constants/images";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 export default function Bedroom({ params }) {
 
   // Fetching All Products
-  const { isPending, data: allproducts, error } = useQuery({
+  const { isPending, data: allproducts, error, fetchNextPage, hasNextPage } = useQuery({
     queryKey: ['product-list'],
     queryFn: () =>
       axios.get(`/api/product-listing?slug=${params.slug}`)
         .then((response) => {
+          console.log(response.data.productlist)
           return response.data.productlist
         })
   })
   // End
+
+
 
   return (
     <div className="bedroom-products-page bg-[#faf2ec] border-t">
@@ -61,9 +64,20 @@ export default function Bedroom({ params }) {
           }
         </div>
         <div className="total-products text-center border border-x-0 py-3 my-3">
-          <span className="font-roboto text-sm text-[#54595f]">
-            Showing 17 of 17 Products
-          </span>
+          {
+            allproducts && allproducts.map((counting, index) => (
+              <div key={index}>
+                <span className="font-crimson font-semibold text-base text-[#3c2f27]">
+                  <span>Showing</span>
+                  <span className="px-1">{counting.products.length}</span>
+                  <span>of</span>
+                  <span className="px-1">{counting.products.length}</span>
+                  <span>Products</span>
+                </span>
+              </div>
+            ))
+          }
+
         </div>
         <div className="product-listing-section py-10">
           <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-5">

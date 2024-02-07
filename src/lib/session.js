@@ -1,19 +1,22 @@
 import { getIronSession } from "iron-session";
 import { cookies } from 'next/headers';
 
-export function getSession() {
-    const session = getIronSession(cookies(), { password: process.env.SESSION_PASS, cookieName: "woodland-interiors-cookies" });
 
-    return session
+export async function getSession() {
+    const session = await getIronSession(cookies(), { password: process.env.SESSION_PASS, cookieName: "woodland-interiors-cookies" });
+
+    return session;
 }
 
 export async function getSessionId() {
-    const session = getSession()
-
+    const session = await getSession();
     if (!session?.id) {
-        session.set('id', crypto.randomUUID())
+        const newSessionId = crypto.randomUUID()
+        session.id = newSessionId;
         await session.save();
+        return newSessionId;
     }
 
-    return session.id
+    return session.id;
 }
+

@@ -26,8 +26,6 @@ export default function Cart() {
   let subtotal = 0;
   let taxrate = 9;
   let taxamount = (totalPrice * taxrate) / 100
-  console.log("This is subtotal",subtotal)
-  const [count, setcount] = useState(1)
   const [loading, setLoading] = useState(false);
   const queryClient = useQueryClient();
 
@@ -51,7 +49,7 @@ export default function Cart() {
     setLoading(true);
     axios.post('/api/cart-items/delete-item', { id })
       .then((response) => {
-        console.log("Product deleted successfully", response.data.deleteproduct)
+        
       })
       .catch((error) => {
         console.log("Error occured", error)
@@ -65,7 +63,6 @@ export default function Cart() {
 
   // Move to wishlist
   const movetowishlist = (productid, sku, id, quantity) => {
-    console.log('Fetched from cart page', productid, sku)
     axios.post('/api/wishlist-items/from-cart', {
       productid,
       sku,
@@ -73,34 +70,9 @@ export default function Cart() {
     })
       .then((response) => {
         cnfdelete(id)
-        toast.success("Moved to wishlist", {
-          duration: 3000,
-          style: {
-            border: '1px solid #3c2f27',
-            padding: '16px',
-            color: '#faf2ec',
-            backgroundColor: '#3c2f27',
-          },
-          iconTheme: {
-            primary: '#faf2ec',
-            secondary: '#3c2f27',
-          },
-        })
       })
       .catch((error) => {
-        toast.error('Error', {
-          duration: 3000,
-          style: {
-            border: '1px solid #3c2f27',
-            padding: '16px',
-            color: '#faf2ec',
-            backgroundColor: '#3c2f27',
-          },
-          iconTheme: {
-            primary: '#faf2ec',
-            secondary: '#3c2f27',
-          },
-        })
+
       })
       .finally(() => {
         queryClient.invalidateQueries('product')
@@ -112,7 +84,7 @@ export default function Cart() {
   const increasequantity = (quantity, id) => {
     if (quantity < 10) {
       const updatequantity = quantity + 1
-      axios.put('/api/update-quantity', {
+      axios.put('/api/cart-items/update-quantity', {
         quantity: updatequantity,
         id
       })
@@ -121,7 +93,7 @@ export default function Cart() {
         })
         .catch((error) => {
           console.log("Error while updating quantity", error)
-          toast.error('Error')
+  
         })
     } else {
       toast.error("Only 10 Prodcuts are allowed to buy")
@@ -133,7 +105,7 @@ export default function Cart() {
   const decreasequantity = (quantity, id) => {
     if (quantity > 1) {
       const changequantity = quantity - 1;
-      axios.put('/api/update-quantity', {
+      axios.put('/api/cart-items/update-quantity', {
         quantity: changequantity,
         id,
       })
@@ -141,7 +113,7 @@ export default function Cart() {
           queryClient.invalidateQueries('product')
         })
         .catch((error) => {
-          toast.error("Error", error)
+          console.log("Error", error)
         })
     } else {
       toast.error('Minimum quantity should be 1')
@@ -260,7 +232,7 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="place-order text-center w-full ">
-                  <Link href='/checkout' className="w-full bg-[#b2937e] rounded-none hover:bg-[#3c2f27]">Proceed To Checkout</Link>
+                  <Link href='/checkout' className="w-full block p-3 bg-[#b2937e] rounded-none text-[#3c2f27] hover:text-white hover:bg-[#3c2f27]">Proceed To Checkout</Link>
                 </div>
 
               </div>

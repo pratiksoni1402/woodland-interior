@@ -38,7 +38,7 @@ export default function Product() {
 
   // Delete product from wishlist table
   const deleteproduct = (id) => {
-
+    
     axios.post('/api/wishlist-items/delete-item', { id })
       .then((response) => {
         console.log('Product deleted successfully', response.data.deleteitem)

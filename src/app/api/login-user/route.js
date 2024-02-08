@@ -1,7 +1,9 @@
 import prisma from "@/db";
 import bcrypt from 'bcrypt';
+import { getSession } from "@/lib/session";
 export const dynamic = 'force-dynamic'
 export async function POST(request) {
+  let session = await getSession();
   try {
     const user_details = await request.json();
 
@@ -11,12 +13,6 @@ export async function POST(request) {
         email: user_details.email,
       },
     });
-
-    if (!details) {
-      console.log("User not found");
-      return Response.json({ error: "Invalid credentials" }, { status: 401 });
-    }
-
     // Compare the provided password with the stored hashed password
     const passwordMatch = await bcrypt.compare(user_details.password, details.password);
 
@@ -25,8 +21,27 @@ export async function POST(request) {
       return Response.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
+
+
+    if (details && passwordMatch) {
+      console.log("This is details", details)
+      session.user_details = {
+        email: user_details.email,
+      },
+      console.log("This is master session from login api", session)
+      await session.save()
+    }
+
+    // If no user found
+    if (!details) {
+      console.log("User not found");
+      return Response.json({ error: "Invalid credentials" }, { status: 401 });
+    }
+    // End
+
     console.log("Login successful", { details: details });
     return Response.json({ success: "Login successful" });
+
   } catch (error) {
     console.error("Error:", error);
     return Response.json({ error: "Internal Server Error" }, { status: 500 });

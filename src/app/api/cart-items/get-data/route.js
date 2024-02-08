@@ -1,4 +1,5 @@
 import prisma from "@/db";
+export const dynamic = 'force-dynamic'
 export async function GET() {
     let cartdata = await prisma.cartitems.findMany({
         select: {

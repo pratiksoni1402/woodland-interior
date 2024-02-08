@@ -1,6 +1,6 @@
 import { prisma } from '@/db';
 import bcrypt from 'bcrypt';
-
+export const dynamic = 'force-dynamic'
 export async function POST(req) {
     try {
         const formData = await req.json();

@@ -1,5 +1,6 @@
 import prisma from "@/db";
 import { getSessionId } from "@/lib/session";
+export const dynamic = 'force-dynamic'
 export async function POST(request){
     let record = await request.json()
     let sessionid = await getSessionId()

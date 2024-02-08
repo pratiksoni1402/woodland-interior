@@ -1,4 +1,5 @@
 import prisma from "@/db";
+export const dynamic = 'force-dynamic'
 export async function POST(request) {
     const requestbody = await request.json();
     console.log(requestbody)

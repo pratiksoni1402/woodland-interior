@@ -3,22 +3,6 @@ import Link from 'next/link';
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from "./../../ui/button";
-import {
-  Cloud,
-  CreditCard,
-  Github,
-  Keyboard,
-  LifeBuoy,
-  LogOut,
-  Mail,
-  MessageSquare,
-  Plus,
-  PlusCircle,
-  Settings,
-  User,
-  UserPlus,
-  Users,
-} from "lucide-react"
 
 import {
   DropdownMenu,
@@ -173,28 +157,6 @@ export default function MobileMenu() {
                       Contact
                     </Link>
                   </div>
-                </div>
-              </div>
-
-              <div className='account-actions pt-5'>
-                <div className='heading px-4 text-base text-[#3c2f27] font-crimson font-semibold'>
-                  My Account
-                </div>
-                <div className='accounts'>
-                  <ul className='text-sm text-[#3c2f27] font-roboto pl-8'>
-                    <li className='py-1'>
-                      <Link href='/'>Edit Profile</Link>
-                    </li>
-                    <li className='py-1'>
-                      <Link href='/'>Order History</Link>
-                    </li>
-                    <li className='py-1'>
-                      <Link href='/'>Change Password</Link>
-                    </li>
-                    <li className='py-1'>
-                      <Link href='/'>Account Delete</Link>
-                    </li>
-                  </ul>
                 </div>
               </div>
               <SheetFooter>

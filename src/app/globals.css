@@ -389,13 +389,13 @@ html{
 /* Contact Form */
 .contact-page .content-wrapper .form-wrapper form input,
 textarea {
-  @apply w-full my-3 mx-0 h-10 border border-black rounded-none py-0 px-3 outline-0
+  @apply w-full my-3 mx-0 h-10 border border-[#3c2f27] rounded-none py-0 outline-0 border-l-0 border-r-0 border-t-0
     
 }
 
 .contact-page .content-wrapper .form-wrapper form input:focus,
 textarea:focus {
-    @apply border border-[#3c2f27]
+    @apply border border-[#3c2f27] border-l-0 border-r-0 border-t-0
 }
 /* End */
 

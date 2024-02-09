@@ -4,16 +4,21 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { LogIn } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Button } from "./../../components/ui/button";
+import { Toaster } from 'react-hot-toast';
 import { ClipLoader } from 'react-spinners';
 import Link from 'next/link';
 const Login = () => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
     setLoading(true);
     axios.post('/api/login-user', data)
       .then(response => {
-
+        toast.success('Success')
+        router.push('/my-account')
       })
       .catch(error => {
         console.error('Error:', error);
@@ -22,7 +27,7 @@ const Login = () => {
         setLoading(false);
       })
   }
-  
+
   return (
     <div className='user-login-form bg-[#faf2ec] pb-20'>
       <div className='container'>
@@ -30,6 +35,7 @@ const Login = () => {
           <div className='col-span-3'></div>
           <div className='col-span-6'>
             <div className="user-login">
+              <Toaster />
               <div className='heading text-center text-2xl text-[#3c2f27] font-crimson py-5'>
                 <h1>Login</h1>
                 <p className='text-base'>Old Customer? Sign in into your account.</p>

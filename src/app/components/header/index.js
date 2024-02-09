@@ -22,27 +22,27 @@ import {
 } from "./../ui/avatar"
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
-
 const Navbar = () => {
-   const { isPending, data:count, error } = useQuery({
+
+   const { isPending, data: count, error } = useQuery({
       queryKey: ['totalcount'],
       queryFn: () =>
          axios.get('/api/cart-items/get-count')
-         .then((response) =>{
-            return response.data.productcount
-         })
+            .then((response) => {
+               return response.data.productcount
+            })
 
    });
 
-   const {pending, data:wishlisttotal, iserror} =useQuery({
+   const { pending, data: wishlisttotal, iserror } = useQuery({
       queryKey: ['wishlistcount'],
       queryFn: () =>
          axios.get('/api/wishlist-items/get-count')
-         .then((response) => {
-            return response.data.totalcount
-         })
+            .then((response) => {
+               return response.data.totalcount
+            })
    });
-   
+
    return (
       <div className="navigation-bar bg-[#faf2ec] h-[75px] py-4 sticky top-0 z-10">
 

@@ -1,4 +1,5 @@
 import prisma from "@/db";
+export const dynamic = 'force-dynamic'
 export async function GET(requset, { params }) {
     let productDetail = await prisma.products.findUnique({
         where: {

@@ -18,7 +18,7 @@ const Login = () => {
     axios.post('/api/login-user', data)
       .then(response => {
         toast.success('Success')
-        router.push('/user-account')
+        router.push('/my-account')
       })
       .catch(error => {
         console.error('Error:', error);

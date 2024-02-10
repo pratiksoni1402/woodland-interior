@@ -26,7 +26,8 @@ export async function POST(request) {
     if (details && passwordMatch) {
       console.log("This is details", details)
       session.user_details = {
-        email: user_details.email,
+        firstname: details.firstname,
+        email: details.email,
       },
       console.log("This is master session from login api", session)
       await session.save()

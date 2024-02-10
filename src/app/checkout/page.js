@@ -1,6 +1,12 @@
+import { getSession } from "@/lib/session"
 import Shippingdetail from "./shipping-details"
 import Shoppingbag from "./shopping-bag"
+import { redirect } from "next/navigation"
 export default function Checkout() {
+    const session = getSession()
+    if(!session?.user_details){
+        return redirect('/auth/login')
+    }
     return (
         <div className="checkout-page bg-[#faf2ec] pb-10">
             <div className="container">

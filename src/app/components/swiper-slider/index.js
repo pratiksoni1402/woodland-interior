@@ -31,8 +31,6 @@ export default function SwiperSlider() {
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             autoplay={{ pauseOnMouseEnter: true }}
-            // onSwiper={(swiper) => console.log(swiper)}
-            // onSlideChange={() => console.log("slide change")}
             breakpoints={{
               280: {
                 width: 280,
@@ -40,7 +38,7 @@ export default function SwiperSlider() {
               },
               576: {
                 width: 576,
-                slidesPerView: 2,
+                slidesPerView: 1,
               },
               768: {
                 width: 768,

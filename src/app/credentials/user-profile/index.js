@@ -75,13 +75,13 @@ export default function Profile() {
         <div className="user-profile-component ">
             <div className="content-wrapper">
                 <div className="form-wrapper flex justify-center">
-                    <form onSubmit={handleSubmit(onSubmit)} className='w-3/4'>
+                    <form onSubmit={handleSubmit(onSubmit)} className=' sm:w-3/4 w-full '>
                         <input type="text" placeholder="First name" {...register("firstname", { required: true, maxLength: 80 })} />
                         <input type="text" placeholder="Last name" {...register("lastname", { required: true, maxLength: 100 })} />
                         <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
                         <input type="text" placeholder="Address Line 1" {...register("addresslineone", { required: true })} />
                         <input type="text" placeholder="Address Line 2" {...register("addresslinetwo", {})} />
-                        <div className='grid grid-cols-3 gap-3'>
+                        <div className='grid sm:grid-cols-3 grid-cols-1 gap-3'>
                             <select {...register("country", { required: true })} >
                                 <option value="" disabled selected>Select Country</option>
                                 {
@@ -90,14 +90,8 @@ export default function Profile() {
                                     ))
                                 }
                             </select>
-                            <select {...register("state", { required: true })}>
-                                <option value="" disabled selected>Select State</option>
-                                {
-                                    state?.map((states)=>(
-                                        <option value={states.name} key={states.id}>{states.name}</option>
-                                    ))
-                                }
-                            </select>
+                
+                            <input type="text" placeholder="State" {...register("state", { required: true })} />
                             <input type="text" placeholder="City" {...register("city", { required: true })} />
 
                         </div>

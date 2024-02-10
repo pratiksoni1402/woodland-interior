@@ -386,6 +386,35 @@ html{
 }
 /* End */
 
+/* Tabbing Swiper */
+.tabbing-actions .swiper .swiper-wrapper{
+  transform: translate3d(-104px, 0px, 0px);
+
+}
+.tabbing-actions .swiper .swiper-wrapper .swiper-slide:nth-child(4){
+  @apply !w-[121px] !mr-0
+}
+
+.tabbing-actions .swiper .swiper-wrapper .swiper-slide:nth-child(5){
+  @apply !w-[145px] !mr-0
+}
+.tabbing-actions .swiper .swiper-wrapper .swiper-slide{
+  @apply !w-[105px] !mr-0
+}
+.tabbing-actions .swiper .swiper-wrapper .swiper-slide-prev{
+  @apply !w-[105px] !mr-0
+}
+
+.tabbing-actions .swiper .swiper-wrapper .swiper-slide-active{
+  @apply !w-[105px] !mr-0
+}
+
+.tabbing-actions .swiper .swiper-wrapper .swiper-slide-next{
+  @apply !w-[105px] !mr-0
+}
+
+/* End */
+
 /* Contact Form */
 .contact-page .content-wrapper .form-wrapper form input,
 textarea {

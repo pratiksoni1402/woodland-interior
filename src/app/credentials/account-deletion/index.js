@@ -10,8 +10,6 @@ import {
     CardHeader,
     CardTitle,
 } from "../../components/ui/card"
-import { Input } from "../../components/ui/input"
-import { Label } from "../../components/ui/label"
 import { AlertCircle } from 'lucide-react';
 export function Deleteaccount() {
     return (
@@ -29,7 +27,7 @@ export function Deleteaccount() {
                         All your account data will be wiped off completely and this is non-reversible process <span className="font-bold"> BE CERTAIN ! </span>
                     </CardContent>
                     <CardFooter className='pt-3'>
-                        <Button className='w-full bg-[#3c2f27] hover:bg-red-600'>Delete Account</Button>
+                        <Button className='w-full bg-[#3c2f27] hover:bg-red-600 rounded-none'>Delete Account</Button>
                     </CardFooter>
                 </Card>
             </div>

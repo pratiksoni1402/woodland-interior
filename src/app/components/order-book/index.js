@@ -27,6 +27,9 @@ export default function Cart() {
   let taxrate = 9;
   let taxamount = (totalPrice * taxrate) / 100
   const [loading, setLoading] = useState(false);
+  const [productLoading, setProductLoading] = useState(null);
+  const [descreaseLoader, setDecreaseLoader] = useState(null);
+  const [towishlist, setToWishlist] = useState(null);
   const queryClient = useQueryClient();
 
   //Get All Products from Cart Table
@@ -49,7 +52,7 @@ export default function Cart() {
     setLoading(true);
     axios.post('/api/cart-items/delete-item', { id })
       .then((response) => {
-        
+
       })
       .catch((error) => {
         console.log("Error occured", error)
@@ -63,6 +66,7 @@ export default function Cart() {
 
   // Move to wishlist
   const movetowishlist = (productid, sku, id, quantity) => {
+    setToWishlist(id);
     axios.post('/api/wishlist-items/from-cart', {
       productid,
       sku,
@@ -76,6 +80,7 @@ export default function Cart() {
       })
       .finally(() => {
         queryClient.invalidateQueries('product')
+        setToWishlist(false); 
       })
   }
   // End
@@ -84,6 +89,7 @@ export default function Cart() {
   const increasequantity = (quantity, id) => {
     if (quantity < 10) {
       const updatequantity = quantity + 1
+      setProductLoading(id)
       axios.put('/api/cart-items/update-quantity', {
         quantity: updatequantity,
         id
@@ -93,7 +99,10 @@ export default function Cart() {
         })
         .catch((error) => {
           console.log("Error while updating quantity", error)
-  
+
+        })
+        .finally(() => {
+          setProductLoading(false)
         })
     } else {
       toast.error("Only 10 Prodcuts are allowed to buy")
@@ -105,6 +114,7 @@ export default function Cart() {
   const decreasequantity = (quantity, id) => {
     if (quantity > 1) {
       const changequantity = quantity - 1;
+      setDecreaseLoader(id)
       axios.put('/api/cart-items/update-quantity', {
         quantity: changequantity,
         id,
@@ -114,6 +124,9 @@ export default function Cart() {
         })
         .catch((error) => {
           console.log("Error", error)
+        })
+        .finally(() => {
+          setDecreaseLoader(false)
         })
     } else {
       toast.error('Minimum quantity should be 1')
@@ -134,9 +147,9 @@ export default function Cart() {
                     <Toaster />
                     {totalproducts?.map((product) => (
                       totalPrice += product.products.price * product.quantity,
-                      taxamount = (totalPrice * 9) /100,
+                      taxamount = (totalPrice * 9) / 100,
                       subtotal = totalPrice - (taxamount * 2),
-                      
+
 
                       <div className='product py-10 border-b border-[#b2937e]' key={product.id}>
                         <div className="grid grid-cols-12 gap-3">
@@ -156,9 +169,26 @@ export default function Cart() {
                             <div className="quantity py-3 ">
                               <div className="pb-1 text-xs text-[#3c2f27] font-roboto">Quantity:</div>
                               <div className="flex items-center">
-                                <Button variant="outline" onClick={() => increasequantity(product.quantity, product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">+</Button>
+                                {
+                                  productLoading === product.id ? (
+                                    <div className="flex justify-center border border-[#3c2f27]" >
+                                      <ClipLoader color="#3c2f27" width={10} />
+                                    </div>
+                                  ) : (
+
+                                    <Button variant="outline" onClick={() => increasequantity(product.quantity, product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">+</Button>
+                                  )
+                                }
                                 <span className="px-7 border-[#3c2f27] border h-10 flex items-center border-r-0 border-l-0">{product.quantity}</span>
-                                <Button variant="outline" onClick={() => decreasequantity(product.quantity, product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">-</Button>
+                                {
+                                  descreaseLoader === product.id ? (
+                                    <div className="flex justify-center border border-[#3c2f27]" >
+                                      <ClipLoader color="#3c2f27" width={10} />
+                                    </div>
+                                  ) : (
+                                    <Button variant="outline" onClick={() => decreasequantity(product.quantity, product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">-</Button>
+                                  )
+                                }
                               </div>
                             </div>
                           </div>
@@ -170,7 +200,16 @@ export default function Cart() {
                             <div className="actions flex flex-col justify-end pt-20">
                               <Link href={`/product-detail/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
 
-                              <Button onClick={() => movetowishlist(product.productid, product.sku, product.id, product.quantity)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
+                              {
+                                towishlist === product.id ? (
+                                  <div className="flex justify-center">
+                                    <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
+                                  </div>
+                                ) : (
+
+                                  <Button onClick={() => movetowishlist(product.productid, product.sku, product.id, product.quantity)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
+                                )
+                              }
 
                               <AlertDialog className='rounded-none'>
                                 <AlertDialogTrigger asChild>
@@ -188,7 +227,7 @@ export default function Cart() {
                                     <AlertDialogAction onClick={() => cnfdelete(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>
                                       {
                                         loading ? (
-                                          <ClipLoader color="#3c2f27" />
+                                          <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
                                         ) : (
                                           'Delete'
                                         )

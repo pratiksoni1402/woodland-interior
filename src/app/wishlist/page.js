@@ -18,8 +18,12 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./../components/ui/alert-dialog";
+import { useState } from "react";
+import { ClipLoader } from "react-spinners";
 export default function Product() {
   const queryClient = useQueryClient();
+  const [toCart, setToCart] = useState(null);
+  const [itemDelete, setItemDelte] = useState(null);
 
   // Get all products from wishlist table
   const { isPending, data: allproducts, error } = useQuery({
@@ -38,7 +42,7 @@ export default function Product() {
 
   // Delete product from wishlist table
   const deleteproduct = (id) => {
-    
+    setItemDelte(id);
     axios.post('/api/wishlist-items/delete-item', { id })
       .then((response) => {
         console.log('Product deleted successfully', response.data.deleteitem)
@@ -47,52 +51,32 @@ export default function Product() {
       .catch((error) => {
         console.log("Error Occured while deleting product", error)
       })
+      .finally(() => {
+        queryClient.invalidateQueries('productlist')
+        setItemDelte(false);
+
+      })
   }
   // End
 
   // Move product to Cart Table
   const movetocart = (productid, quantity, sku, id) => {
+    setToCart(id)
     axios.post('/api/cart-items/from-wishlist', {
       productid,
       quantity,
       sku,
     })
       .then((response) => {
-        console.log("Product moved to cart Successfully")
-        deleteproduct(id)
-        queryClient.invalidateQueries('productlist');
-        toast.success("Moved to cart", {
-          duration: 3000,
-          style: {
-            border: '1px solid #3c2f27',
-            padding: '16px',
-            color: '#faf2ec',
-            backgroundColor: '#3c2f27',
-          },
-          iconTheme: {
-            primary: '#faf2ec',
-            secondary: '#3c2f27',
-          },
-        })
+        deleteproduct();
       })
       .catch((error) => {
         console.log("Error", error)
-        toast.error("Error", {
-          duration: 3000,
-          style: {
-            border: '1px solid #3c2f27',
-            padding: '16px',
-            color: '#faf2ec',
-            backgroundColor: '#3c2f27',
-          },
-          iconTheme: {
-            primary: '#faf2ec',
-            secondary: '#3c2f27',
-          },
-        })
+
       })
-      .finally(() =>{
-        queryClient.invalidateQueries('productlist');
+      .finally(() => {
+        queryClient.invalidateQueries('productlist')
+        setToCart(false)
       })
   }
   // End
@@ -131,8 +115,16 @@ export default function Product() {
                     </div>
                     <div className="actions flex flex-col justify-end sm:pt-20 pt-0">
                       <Link href={`/product-detail/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
+                      {
+                        toCart === product.id ? (
+                          <div className="flex justify-center items-center">
+                            <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
+                          </div>
+                        ) : (
 
-                      <Button onClick={() => movetocart(product.productid, product.quantity, product.sku, product.id)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Cart</Button>
+                          <Button onClick={() => movetocart(product.productid, product.quantity, product.sku, product.id)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Cart</Button>
+                        )
+                      }
 
                       <AlertDialog className='rounded-none'>
                         <AlertDialogTrigger asChild>
@@ -147,7 +139,15 @@ export default function Product() {
                           </AlertDialogHeader>
                           <AlertDialogFooter>
                             <AlertDialogCancel className='hover:duration-300 rounded-none bg-transparent text-[#3c2f27] border-[#3c2f27] hover:bg-[#b2937e] hover:border-[#b2937e] hover:text-[white]'>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={() => deleteproduct(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>Delete</AlertDialogAction>
+                            {
+                              itemDelete === product.id ? (
+                                <div className="flex justify-center items-center">
+                                  <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
+                                </div>
+                              ) : (
+                                <AlertDialogAction onClick={() => deleteproduct(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>Delete</AlertDialogAction>
+                              )
+                            }
                           </AlertDialogFooter>
                         </AlertDialogContent>
                       </AlertDialog>

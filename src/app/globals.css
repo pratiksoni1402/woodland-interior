@@ -472,8 +472,15 @@ textarea:focus {
   @apply outline-1 outline-[#3c2f27] rounded-none
 }
 
+/* Customer Reviews */
+.customer-reviews .tab-button button{
+  @apply bg-[#3c2f27] rounded-none text-base font-crimson font-semibold text-white
+}
 
-
+.customer-reviews .reviews-wrapper .review{
+  @apply border-b border-[#b2937e]
+}
+/* End */
 /* Upper Footer Styling */
 .footer-section footer .upper-footer ul li a{
   @apply leading-6

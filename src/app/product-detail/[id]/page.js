@@ -10,6 +10,8 @@ import { useQuery } from "@tanstack/react-query";
 import LazyImage from "@/app/components/lazy-loading/lazy-image";
 import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import { useQueryClient } from "@tanstack/react-query";
+import Reviews from "@/app/components/customer-reviews";
+import Image from "next/image";
 
 export default function Detail({ params }) {
   const queryClient = useQueryClient();
@@ -45,7 +47,7 @@ export default function Detail({ params }) {
   });
   // End
 
-  
+
   // Invalidate totalcount on add to Cart
   const { pending, data: totalcount, iserror } = useQuery({
     queryKey: ['totalcount'],
@@ -206,20 +208,18 @@ export default function Detail({ params }) {
   }
   const wishlistid = wishlistdata?.find(a => a.id)
   // End
-  
+
 
   return (
     <div className="product-detail-page bg-[#faf2ec]">
       <div className="container">
         <div className="product-wrapper py-10 border-t">
-          <div className="breadcrumb">
-          </div>
           <div className="grid grid-cols-12 gap-7">
             <Toaster />
             <div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-5 col-span-12">
               <div className="left-section">
                 <div className="product-image  relative h-[600px]">
-                  <LazyImage src={`${PRODUCT_MEDIA_URL}/${detail.image}`} alt={detail.name} width={527} height={527} />
+                  <LazyImage src={`${PRODUCT_MEDIA_URL}/${detail.image}`} alt={detail.name} width={427} height={427} />
                 </div>
               </div>
             </div>
@@ -253,15 +253,43 @@ export default function Detail({ params }) {
                       <Button onClick={handleDecrement} variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">-</Button>
                     </div>
                   </div>
+                  <div className="shipping-wrapper py-5">
+                    <div className="flex gap-5">
+                      <div>
+                        <div className="transit flex flex-col justify-center items-center">
+                          <span className="p-3  border-2 border-[#3c2f27] rounded-full">
+                            <Image src='/uploads/images/shipping-step/in-transit.svg' alt='Transit' className="w-8 h-8" width={20} height={32} />
+                          </span>
+                          <span>
+                            <Image src='/uploads/images/shipping-step/shipping.svg' alt='Steps' className=" w-4 h-44" width={20} height={50} />
+                          </span>
+                        </div>
+                      </div>
+                      <div className="information">
+                        <div className="heading">
+                          <h2 className="font-crimson text-[#3c2f27] text-base">FREE 3 DAY SHIPPING</h2>
+                          <span className="font-roboto text-[#3c2f27] text-sm">on all India Orders</span>
+                        </div>
+                        <div className="order mt-6">
+                          <h2 className="font-crimson text-[#3c2f27] text-base">ORDER BY:</h2>
+                          <span className="font-roboto text-[#3c2f27] text-sm">5PM EST Monday, February 12</span>
+                        </div>
+                        <div className="order mt-7">
+                          <h2 className="font-crimson text-[#3c2f27] text-base">RECEIVE BY:</h2>
+                          <span className="font-roboto text-[#3c2f27] text-sm">5PM EST THRUSDAY, February 15</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div className="wishlist py-3">
                     {
                       wishlistdata?.find(v => v.productid == detail.id) ? (
-                          
+
                         <>
                           {
                             loading ? (
-                              <div className="flex justify-center">
-                                <ClipLoader color="#3c2f27" />
+                              <div className="flex justify-center items-center">
+                                <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
                               </div>
                             ) : (
 
@@ -275,8 +303,8 @@ export default function Detail({ params }) {
                         <>
                           {
                             loading ? (
-                              <div className="flex justify-center">
-                                <ClipLoader color="#3c2f27" />
+                              <div className="flex justify-center items-center">
+                                <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
                               </div>
                             ) : (
 
@@ -295,8 +323,8 @@ export default function Detail({ params }) {
                     {
                       adding ? (
 
-                        <div className="flex justify-center">
-                          <ClipLoader color="#3c2f27" />
+                        <div className="flex justify-center items-center">
+                          <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
                         </div>
 
                       ) : (
@@ -310,6 +338,10 @@ export default function Detail({ params }) {
               </div>
             </div>
           </div>
+
+        </div>
+        <div className="customer-reviews">
+          <Reviews />
         </div>
       </div>
     </div>

@@ -143,7 +143,7 @@ export default function Cart() {
             <div className="product-wrapper">
               <div className="grid grid-col-1">
                 <div className="col">
-                  <div className='my-items border-t border-[#b2937e] '>
+                  <div className='my-items h-screen border-t border-[#b2937e] '>
                     <Toaster />
                     {totalproducts?.map((product) => (
                       totalPrice += product.products.price * product.quantity,
@@ -194,7 +194,7 @@ export default function Cart() {
                               <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.products.price * product.quantity}</div>
                             </div>
                             <div className="actions flex flex-col justify-end md:pt-20 pt-5">
-                              <Link href={`/product-detail/${product.productid}`} className="md:text-end pr-4 text-left font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
+                              <Link href={`/product-detail/${product.productid}`} className="md:text-end text-left font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
 
                               {
                                 towishlist === product.id ? (
@@ -203,13 +203,13 @@ export default function Cart() {
                                   </div>
                                 ) : (
 
-                                  <Button onClick={() => movetowishlist(product.productid, product.sku, product.id, product.quantity)} className='md:px-4 px-0 md:justify-end justify-start font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
+                                  <Button onClick={() => movetowishlist(product.productid, product.sku, product.id, product.quantity)} className='px-0 md:justify-end justify-start font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
                                 )
                               }
 
                               <AlertDialog className='rounded-none'>
                                 <AlertDialogTrigger asChild>
-                                  <Button className='mt-[-10px] pr-0 md:justify-end justify-start font-roboto text-xs text-[#3c2f27] md:px-4 px-0  border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from cart</Button>
+                                  <Button className='mt-[-10px] md:justify-end justify-start font-roboto text-xs text-[#3c2f27] px-0  border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from cart</Button>
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                   <AlertDialogHeader>

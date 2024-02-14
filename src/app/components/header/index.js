@@ -6,7 +6,7 @@ import React, { useEffect } from "react"
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import MobileMenu from "./mobile-menu";
-// import AuthButton from "../auth-button"
+// import AuthButton from "../auth-button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -74,7 +74,14 @@ const Navbar = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/about-us" className="text-lg leading-7">
+                  <Link href="/stories" className="text-lg leading-7">
+                  Stories
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/about" className="text-lg leading-7">
                     About Us
                   </Link>
                 </NavigationMenuLink>

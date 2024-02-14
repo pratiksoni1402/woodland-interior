@@ -8,6 +8,6 @@ export async function POST(request) {
 
         },
     });
-    console.log('Product Delted from wishlist', { deleteitem });
+    console.log('Product Deleted from wishlist', { deleteitem });
     return Response.json({ deleteitem })
 }

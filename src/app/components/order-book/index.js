@@ -80,7 +80,7 @@ export default function Cart() {
       })
       .finally(() => {
         queryClient.invalidateQueries('product')
-        setToWishlist(false); 
+        setToWishlist(false);
       })
   }
   // End
@@ -139,7 +139,7 @@ export default function Cart() {
           Items in your cart
         </div>
         <div className="grid grid-cols-12 gap-5">
-          <div className="col-span-9">
+          <div className="lg:col-span-9 col-span-12">
             <div className="product-wrapper">
               <div className="grid grid-col-1">
                 <div className="col">
@@ -153,10 +153,10 @@ export default function Cart() {
 
                       <div className='product py-10 border-b border-[#b2937e]' key={product.id}>
                         <div className="grid grid-cols-12 gap-3">
-                          <div className="xl:col-span-3 lg:col-span-3 sm:col-span-4 col-span-12">
+                          <div className="xl:col-span-3 lg:col-span-3 md:col-span-4 col-span-12">
                             <Image src={`${PRODUCT_MEDIA_URL}/${product.products.image}`} alt={product.products.name} height={250} width={250} className="sm:w-[250px] w-full" />
                           </div>
-                          <div className="xl:col-span-7 lg:col-span-7 sm:col-span-6 col-span-12">
+                          <div className="xl:col-span-7 lg:col-span-7 md:col-span-6 col-span-12">
                             <div className='description'>
                               <div className='title text-[#3c2f27] font-semibold font-crimson text-xl pb-3'>
                                 {product.products.name}
@@ -171,9 +171,7 @@ export default function Cart() {
                               <div className="flex items-center">
                                 {
                                   productLoading === product.id ? (
-                                    <div className="flex justify-center border border-[#3c2f27]" >
-                                      <ClipLoader color="#3c2f27" width={10} />
-                                    </div>
+                                    <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"><ClipLoader color="#3c2f27" size={20} /></Button>
                                   ) : (
 
                                     <Button variant="outline" onClick={() => increasequantity(product.quantity, product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">+</Button>
@@ -182,9 +180,7 @@ export default function Cart() {
                                 <span className="px-7 border-[#3c2f27] border h-10 flex items-center border-r-0 border-l-0">{product.quantity}</span>
                                 {
                                   descreaseLoader === product.id ? (
-                                    <div className="flex justify-center border border-[#3c2f27]" >
-                                      <ClipLoader color="#3c2f27" width={10} />
-                                    </div>
+                                    <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"><ClipLoader color="#3c2f27" size={20} /></Button>
                                   ) : (
                                     <Button variant="outline" onClick={() => decreasequantity(product.quantity, product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">-</Button>
                                   )
@@ -192,13 +188,13 @@ export default function Cart() {
                               </div>
                             </div>
                           </div>
-                          <div className="xl:col-span-2 lg:col-span-2 sm:col-span-2 col-span-12">
-                            <div className='amount flex justify-end'>
+                          <div className="xl:col-span-2 lg:col-span-2 md:col-span-2 col-span-12">
+                            <div className='amount flex md:justify-end justify-start'>
                               <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee width={20} /></div>
                               <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.products.price * product.quantity}</div>
                             </div>
-                            <div className="actions flex flex-col justify-end pt-20">
-                              <Link href={`/product-detail/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
+                            <div className="actions flex flex-col justify-end md:pt-20 pt-5">
+                              <Link href={`/product-detail/${product.productid}`} className="md:text-end pr-4 text-left font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
 
                               {
                                 towishlist === product.id ? (
@@ -207,13 +203,13 @@ export default function Cart() {
                                   </div>
                                 ) : (
 
-                                  <Button onClick={() => movetowishlist(product.productid, product.sku, product.id, product.quantity)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
+                                  <Button onClick={() => movetowishlist(product.productid, product.sku, product.id, product.quantity)} className='md:px-4 px-0 md:justify-end justify-start font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
                                 )
                               }
 
                               <AlertDialog className='rounded-none'>
                                 <AlertDialogTrigger asChild>
-                                  <Button className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from cart</Button>
+                                  <Button className='mt-[-10px] pr-0 md:justify-end justify-start font-roboto text-xs text-[#3c2f27] md:px-4 px-0  border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from cart</Button>
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                   <AlertDialogHeader>
@@ -246,7 +242,8 @@ export default function Cart() {
               </div>
             </div>
           </div>
-          <div className="col-span-3">
+          
+          <div className="lg:col-span-3 col-span-12">
             <div className="order-summary-wrapper sticky top-20">
               <div className="wrapper border border-[#b2937e] p-4">
                 <div className="heading font-roboto border-b border-[#b2937e] text-center py-5 text-[#3c2f27] font-semibold">

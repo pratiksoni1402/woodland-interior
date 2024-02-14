@@ -8,6 +8,7 @@ import LazyImage from "@/app/components/lazy-loading/lazy-image";
 import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import { BANNER_MEDIA_URL } from "@/app/_lib/constants/images";
 import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { MoonLoader } from "react-spinners";
 export default function Bedroom({ params }) {
 
   // Fetching All Products
@@ -21,6 +22,13 @@ export default function Bedroom({ params }) {
         })
   })
   // End
+
+  if(!allproducts){
+    return(
+      <div className='loading h-screen bg-[#faf2ec] w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
+      </div>
+    )
+  }
 
 
 

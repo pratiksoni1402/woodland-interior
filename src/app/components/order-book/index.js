@@ -47,6 +47,17 @@ export default function Cart() {
   });
   // End
 
+  if (totalproducts?.length == 0) {
+    return (
+      <div className="w-full h-screen bg-[#faf2ec] flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
+        <h1>Your Cart is empty</h1>
+        <div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] text-[#faf2ec] mt-5 border border-[#3c2f27]">
+          <Link href='/shop/bedroom'>SHOP NOW</Link>
+        </div>
+      </div>
+    )
+  }
+
   // Delete Product From Cart Table
   function cnfdelete(id) {
     setLoading(true);
@@ -135,7 +146,7 @@ export default function Cart() {
   return (
     <div className="cart-items bg-[#faf2ec] py-10">
       <div className="container">
-        <div className="heading pb-10 text-4xl font-crimson text-[#3c2f27]">
+        <div className="heading pb-3 text-4xl font-crimson border-b border-[#b2937e]  text-[#3c2f27]">
           Items in your cart
         </div>
         <div className="grid grid-cols-12 gap-5">
@@ -143,7 +154,7 @@ export default function Cart() {
             <div className="product-wrapper">
               <div className="grid grid-col-1">
                 <div className="col">
-                  <div className='my-items h-screen border-t border-[#b2937e] '>
+                  <div className='my-items h-screen'>
                     <Toaster />
                     {totalproducts?.map((product) => (
                       totalPrice += product.products.price * product.quantity,
@@ -242,7 +253,6 @@ export default function Cart() {
               </div>
             </div>
           </div>
-          
           <div className="lg:col-span-3 col-span-12">
             <div className="order-summary-wrapper sticky top-20">
               <div className="wrapper border border-[#b2937e] p-4">
@@ -270,7 +280,6 @@ export default function Cart() {
                 <div className="place-order text-center w-full ">
                   <Link href='/checkout' className="w-full block p-3 bg-[#b2937e] rounded-none text-[#3c2f27] hover:text-white hover:bg-[#3c2f27]">Proceed To Checkout</Link>
                 </div>
-
               </div>
             </div>
           </div>

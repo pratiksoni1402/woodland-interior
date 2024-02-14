@@ -82,8 +82,11 @@ export default function Detail({ params }) {
 
   // Display spinner Until Data is Getting Ready
   if (!detail) {
-    return <div className='loading h-screen bg-[#faf2ec] w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
-    </div>;
+    return (
+
+      <div className='loading h-screen bg-[#faf2ec] w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
+      </div>
+    )
   }
   // End
 
@@ -304,7 +307,7 @@ export default function Detail({ params }) {
                         <>
                           {
                             loading ? (
-                              
+
                               <Button variant="outline" className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12 uppercase"><ClipLoader color="#3c2f27" size={20} />
                               </Button>
                             ) : (

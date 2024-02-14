@@ -1,7 +1,12 @@
 import prisma from "@/db";
 export const dynamic = 'force-dynamic'
+import { getSessionId } from "@/lib/session";
 export async function GET() {
+    const sessionid = getSessionId()
     let cartdata = await prisma.cartitems.findMany({
+        where: {
+            sessionid: sessionid,
+        },
         select: {
             id: true,
             productid: true,

@@ -31,7 +31,6 @@ export default function Product() {
     queryFn: () =>
       axios.get('/api/wishlist-items/get-data')
         .then((response) => {
-          // queryClient.invalidateQueries('productlist')
           return response.data.getallproduct
         })
         .catch((error) => {
@@ -42,7 +41,7 @@ export default function Product() {
 
   if(allproducts?.length == 0){
     return (
-      <div className="w-full h-screen bg-[#faf2ec] flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
+      <div className="w-full h-screen bg-[#faf2ec] mt-[-70px] flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
         <h1>Your Wishlist is empty</h1>
         <div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] text-[#faf2ec] mt-5 border border-[#3c2f27]">
           <Link href='/shop/bedroom'>SHOP NOW</Link>

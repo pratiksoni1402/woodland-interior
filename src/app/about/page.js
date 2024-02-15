@@ -78,14 +78,14 @@ export default function Aboutus() {
       <section className="banner flex">
         <div className="video ">
           <video
-            src="/forest-to-home/uploads/videos/homepage/our-story.mp4"
+            src="/uploads/images/about/about-page-video.mp4"
             autoPlay
             loop
             type="video/mp4"
           ></video>
         </div>
         <div className="image ">
-          <Image src="/uploads/images/about/AboutUs/tractor.jpg" alt='image'  width={500} height={500} />
+          <Image src="/uploads/images/about/tractor.jpg" alt='image'  width={500} height={500} />
         </div>
       </section>
       {/*  */}
@@ -137,7 +137,7 @@ export default function Aboutus() {
             <div className="col-span-12">
               <div className="video-wrapper">
                 <video
-                  src="/uploads/videos/homepage/our-story.mp4"
+                  src="/uploads/images/about/about-page-video.mp4"
                   autoPlay
                   loop
                   type="video/mp4"
@@ -185,7 +185,7 @@ export default function Aboutus() {
               </div>
             </div>
             <div className="md:col-span-6 sm:col-span-4 col-span-12">
-              <div className="explore-more d-flex justify-content-center pt-5">
+              <div className="explore-more flex justify-content-center pt-5">
                 <button type="button">find out more</button>
               </div>
             </div>
@@ -193,7 +193,7 @@ export default function Aboutus() {
         </div>
       </section>
       <section className="westbury">
-        <div className="content-wrapper d-flex">
+        <div className="content-wrapper flex">
           <div className="left-section">
             <div className="fairer-hills">
               <p>
@@ -208,7 +208,7 @@ export default function Aboutus() {
           <div className="right-section">
             <div className="westbury-white-horse">
               <Image
-                src="/uploads/images/about/AboutUs/white-horse.jpg"
+                src="/uploads/images/about/white-horse.jpg"
                 alt='image'  width={500} height={500} 
               />
             </div>

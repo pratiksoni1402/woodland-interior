@@ -8,29 +8,22 @@ export default function Home() {
     <div className="homepage">
 
       {/* Banner Section */}
-      <section className="banner-wrapper">
+      <section className="banner-wrapper mt-[-75px]">
         <div className="content-wrapper relative">
-          <div className="banner-title text-white z-[1] xl:text-5xl md:text-[55px] text-2xl md:leading-[60px] leading-6">
-            <h1>Crafted Excellence in Wood:</h1>
-            <h2> Where Nature Meets Artistry</h2>
+          <div className="banner-title text-white z-[1] xl:text-5xl md:text-[55px] text-2xl">
+            <h1 className="tracking-wide leading-[60px]">Crafted Excellence in Wood:</h1>
+            <h2 className="tracking-wide "> Where Nature Meets Artistry</h2>
           </div>
-          <div
-            className="banner w-full"
-            style={{
-              backgroundImage: 'url("/uploads/images/homepage/main-banner.jpg")',
-              width: "100%",
-              height: "100vh",
-              backgroundPosition: "bottom center",
-              backgroundSize: "cover",
-            }}
-          ></div>
+          <div className="banner w-full">
+          <video src="/uploads/images/homepage/warehouse.mp4" autoPlay loop></video>
+          </div>
         </div>
       </section>
       {/* End */}
 
       {/* Timber description  section */}
       <section className="timber-furniture">
-            <Visitshop />
+        <Visitshop />
       </section>
       {/*End*/}
 
@@ -40,7 +33,7 @@ export default function Home() {
         <div className="content-wrapper">
           <div className="grid lg:grid-cols-3 sm:grid-cols-1 ">
             <div className="content col-span-2">
-              <video src="/uploads/images/homepage/warehouse.mp4" autoPlay loop></video>
+              <video src="/uploads/images/homepage/warehouse-detail.mp4" autoPlay loop></video>
             </div>
             <div className="description flex flex-col justify-center px-4 py-4">
               <div className="title text-[#54595f] text-2xl font-medium py-3 font-crimson">Our Warehouse</div>
@@ -70,12 +63,12 @@ export default function Home() {
               <div className="title text-[#54595f] text-2xl font-medium py-3 font-crimson">Our Experts Team</div>
               <div className="detail">
                 <p className="text-justify text-[#54595f] font-roboto">
-                At <span className="brand-name">Woodland Interiors</span>, we take pride in curating a team of seasoned experts who breathe life into furniture design. Our experts are not just skilled craftsmen; they are visionaries who transform spaces with their artistry. Each piece of furniture is a testament to their passion, expertise, and commitment to excellence.Our experts bring years of experience and a deep understanding of the nuances of furniture design. They approach each project with a passion that goes beyond the conventional, infusing creativity and innovation into every detail. From conceptualization to creation, our experts ensure that each piece reflects a harmonious blend of form and function.
+                  At <span className="brand-name">Woodland Interiors</span>, we take pride in curating a team of seasoned experts who breathe life into furniture design. Our experts are not just skilled craftsmen; they are visionaries who transform spaces with their artistry. Each piece of furniture is a testament to their passion, expertise, and commitment to excellence.Our experts bring years of experience and a deep understanding of the nuances of furniture design. They approach each project with a passion that goes beyond the conventional, infusing creativity and innovation into every detail. From conceptualization to creation, our experts ensure that each piece reflects a harmonious blend of form and function.
                 </p>
               </div>
             </div>
             <div className="content showcase col-span-2 lg:order-2 order-1">
-              <Image src="/uploads/images/homepage/experts.jpg" alt="" width={500} height={500}/>
+              <Image src="/uploads/images/homepage/experts.jpg" alt="" width={500} height={500} />
             </div>
           </div>
         </div>
@@ -92,26 +85,26 @@ export default function Home() {
 
       {/* Custom service start */}
       <section className='custom-service'>
-                <div className='description'>
-                    <div className='tagline md:text-[50px] md:leading-[50px] text-[24px] leading-7'>
-                        <span className="font-crimson text-[#faf2ec]">Tailor-made pieces for homes, places and spaces</span>
-                    </div>
-                    <div className='visit-us'>
-                        <Link href='/bespoke'>our custom-made service</Link>
-                    </div>
-                </div>
-                <div className='dine-room d-block' style={{
-                    height: "85vh",
-                    width: "100%",
-                    backgroundImage:
-                        'url("/uploads/images/homepage/bg-image.jpg")',
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "bottom center",
-                    backgroundAttachment: "fixed"
+        <div className='description'>
+          <div className='tagline md:text-[50px] md:leading-[50px] text-[24px] leading-7'>
+            <span className="font-crimson text-[#faf2ec]">Tailor-made pieces for homes, places and spaces</span>
+          </div>
+          <div className='visit-us'>
+            <Link href='/bespoke'>our custom-made service</Link>
+          </div>
+        </div>
+        <div className='dine-room d-block' style={{
+          height: "85vh",
+          width: "100%",
+          backgroundImage:
+            'url("/uploads/images/homepage/bg-image.jpg")',
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "bottom center",
+          backgroundAttachment: "fixed"
 
-                }} >
-                </div>
+        }} >
+        </div>
       </section>
       {/* End */}
 

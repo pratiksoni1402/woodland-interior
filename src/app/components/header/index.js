@@ -25,7 +25,7 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 const Navbar = () => {
 
-  const { isPending, data: count, error } = useQuery({
+  const { isPending, data:count, error } = useQuery({
     queryKey: ['totalcount'],
     queryFn: () =>
       axios.get('/api/cart-items/get-count')

@@ -39,7 +39,7 @@ export default function Product() {
   })
   // End
 
-  if(allproducts?.length == 0){
+  if (allproducts?.length == 0) {
     return (
       <div className="w-full h-screen bg-[#faf2ec] mt-[-70px] flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
         <h1>Your Wishlist is empty</h1>
@@ -65,7 +65,6 @@ export default function Product() {
       .finally(() => {
         queryClient.invalidateQueries('productlist')
         setItemDelte(false);
-
       })
   }
   // End

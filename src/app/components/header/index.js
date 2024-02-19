@@ -66,7 +66,7 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger className='bg-transparent hover:bg-transparent text-lg leading-7'>Shop</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="nested-list bg-[#faf2ec] px-4 py-2 w-40">
+                  <ul className="nested-list bg-[#faf2ec] py-2 w-40">
                     <li><Link href='/shop/bedroom'>Bedroom</Link></li>
                     <li><Link href='/shop/dining-tables'>Dining Tables</Link></li>
                     <li><Link href='/shop/sofa-sets'>Sofa Sets</Link></li>

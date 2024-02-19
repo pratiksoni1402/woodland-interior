@@ -23,6 +23,8 @@ import {
 } from "./../ui/avatar"
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
+export const revalidate = 0;
+export const fetchCache = 'force-no-store';
 const Navbar = () => {
 
   const { isPending, data:count, error } = useQuery({

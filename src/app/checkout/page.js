@@ -2,9 +2,12 @@ import { getSession } from "@/lib/session"
 import Shippingdetail from "./shipping-details"
 import Shoppingbag from "./shopping-bag"
 import { redirect } from "next/navigation"
-export default function Checkout() {
-    const session = getSession()
+
+export default async function Checkout() {
+    const session = await getSession()
+
     if(!session?.user_details){
+        console.log("This is checkout session", session)
         return redirect('/auth/login')
     }
     return (

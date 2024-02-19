@@ -220,9 +220,9 @@ html{
   
 }
 
-.homepage .banner-wrapper .content-wrapper .banner {
+/* .homepage .banner-wrapper .content-wrapper .banner {
   filter: brightness(50%);
-}
+} */
 
 
 /* Our experts section Styling */
@@ -237,9 +237,9 @@ html{
 
 }
 
-.homepage .custom-service .dine-room {
+/* .homepage .custom-service .dine-room {
   filter: brightness(40%);
-}
+} */
 
 .homepage .custom-service .description {
   position: absolute;

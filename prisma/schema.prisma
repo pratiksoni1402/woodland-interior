@@ -76,6 +76,7 @@ model Customerprofile {
   city           String  @db.VarChar(40)
   phonenumber    Int     @db.Int
   pincode        Int     @db.Int
+  sessionid      String  @db.VarChar(200)
 
   @@map("customer_profile")
 }

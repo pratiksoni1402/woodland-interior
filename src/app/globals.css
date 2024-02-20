@@ -298,16 +298,16 @@ html{
 
 /* User Profile Component */
 .user-profile-component .content-wrapper .form-wrapper form input{
-  @apply w-full my-[10px] h-12 px-3 outline-0 border border-[#d3d3d3] 
+  @apply w-full my-[10px] h-12 px-3 outline-0 border border-[#d3d3d3] rounded-none 
   
 }
 
 .user-profile-component .content-wrapper .form-wrapper form input:focus{
-  @apply outline-1 outline-[#3c2f27] border border-transparent
+  @apply outline-1 outline-[#3c2f27] rounded-none border border-transparent
 }
 
 .user-profile-component .content-wrapper .form-wrapper form select{
-  @apply h-12 my-3 border border-gray-500 bg-white px-3
+  @apply h-12 my-3 border border-[#3c2f27] bg-white px-3
   
 }
 
@@ -387,15 +387,37 @@ html{
 /* End */
 
 /* Tabbing Swiper */
-.tabbing-actions .swiper .swiper-wrapper{
+/* .tabbing-actions .swiper .swiper-wrapper{
   transform: translate3d(-104px, 0px, 0px);
 
+} */
+.tabbing-actions .swiper .swiper-wrapper .edit-profile{
+  @apply !w-[160px] !mr-0
 }
-.tabbing-actions .swiper .swiper-wrapper .swiper-slide:nth-child(4){
-  @apply !w-[121px] !mr-0
+.tabbing-actions .swiper .swiper-wrapper .my-wishlist{
+  @apply !w-[150px] !mr-0
+} 
+.tabbing-actions .swiper .swiper-wrapper .order-history{
+  @apply !w-[160px] !mr-0
+} 
+.tabbing-actions .swiper .swiper-wrapper .chng-password{
+  @apply !w-[160px] !mr-0
 }
+.tabbing-actions .swiper .swiper-wrapper .acc-delete{
+  @apply !w-[160px] !mr-0
+}
+.tabbing-actions .swiper .swiper-wrapper .manage-addresses{
+  @apply !w-[160px] !mr-0
+} 
+.tabbing-actions .swiper .swiper-wrapper .browsing-history{
+  @apply !w-[160px] !mr-0
 
-.tabbing-actions .swiper .swiper-wrapper .swiper-slide:nth-child(5){
+}
+/* .tabbing-actions .swiper .swiper-wrapper .swiper-slide:nth-child(4){
+  @apply !w-[121px] !mr-0
+} */
+
+/* .tabbing-actions .swiper .swiper-wrapper .swiper-slide:nth-child(5){
   @apply !w-[145px] !mr-0
 }
 .tabbing-actions .swiper .swiper-wrapper .swiper-slide{
@@ -404,14 +426,14 @@ html{
 .tabbing-actions .swiper .swiper-wrapper .swiper-slide-prev{
   @apply !w-[105px] !mr-0
 }
-
+*/
 .tabbing-actions .swiper .swiper-wrapper .swiper-slide-active{
-  @apply !w-[105px] !mr-0
+  @apply !w-[0px] !mr-0
 }
 
 .tabbing-actions .swiper .swiper-wrapper .swiper-slide-next{
-  @apply !w-[105px] !mr-0
-}
+  @apply !w-[0px] !mr-0
+} 
 
 /* End */
 

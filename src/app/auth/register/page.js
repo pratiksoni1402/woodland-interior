@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
+import { Button } from './../../components/ui/button';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
@@ -13,7 +14,7 @@ export default function Register() {
     if (data.password === data.cnfpassword) {
       axios.post('/api/register-user', data)
         .then(response => {
-
+            toast.success("Success")
         })
         .catch(error => {
           console.error('Registration error', error);
@@ -32,6 +33,7 @@ export default function Register() {
           <div className='col-span-3'></div>
           <div className='col-span-6'>
             <div className='user-registration'>
+              <Toaster/>
               <div className='heading text-center text-2xl text-[#3c2f27] font-crimson py-5'>
                 <h1> New Customer ? Signup Here </h1>
               </div>
@@ -44,7 +46,7 @@ export default function Register() {
                   <div className='error-occured text-xs text-red-600 font-roboto font-semibold mt-[-10px] mb-[10px]'>{Error}</div>
                   <input type="password" placeholder="Confirm Password" {...register("cnfpassword", { required: true })} />
                   <div className='error-occured text-xs text-red-600 font-roboto font-semibold mt-[-10px] mb-[10px]'>{Error}</div>
-                  <button type='submit' className="w-full p-3 mt-8 mb-0 border hover:border-[#b2937e] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">Sign Up <UserPlus /></button>
+                  <Button type='submit' className="w-full p-3 mt-8 mb-0 border hover:border-[#b2937e] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">Sign Up <UserPlus /></Button>
                 </form>
               </div>
             </div>

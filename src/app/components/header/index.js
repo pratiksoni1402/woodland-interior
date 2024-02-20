@@ -6,7 +6,7 @@ import React, { useEffect } from "react"
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import MobileMenu from "./mobile-menu";
-// import AuthButton from "../auth-button";
+import AuthButton from "../auth-button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -25,7 +25,7 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 const Navbar = () => {
 
-  const { isPending, data:count, error } = useQuery({
+  const { isPending, data: count, error } = useQuery({
     queryKey: ['totalcount'],
     queryFn: () =>
       axios.get('/api/cart-items/get-count')
@@ -43,6 +43,16 @@ const Navbar = () => {
           return response.data.totalcount
         })
   });
+
+  const { hasPending, data:status, hasError } = useQuery({
+    queryKey: ['loginstatus'],
+    queryFn: () =>
+      axios.post('/api/auth-check')
+        .then((response) => {
+          console.log("Headerrrrr", response.data.session)
+          return response.data.session
+        })
+  })
 
   return (
     <div className="navigation-bar bg-[#faf2ec] h-[75px] py-4 sticky top-0 z-10">
@@ -75,7 +85,7 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/stories" className="text-lg leading-7">
-                  Stories
+                    Stories
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -111,7 +121,24 @@ const Navbar = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  {/* <AuthButton/> */}
+                  {
+                    status ? (
+                      <Link href="/my-account">
+                        <Avatar>
+                          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                      </Link>
+                    ) : (
+                      <Link href="/auth/login">
+                        <Avatar>
+                          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                      </Link>
+                    )
+                  }
+
                 </NavigationMenuLink>
               </NavigationMenuItem>
 

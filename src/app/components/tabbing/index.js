@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/ta
 import Profile from "@/app/credentials/user-profile";
 import Wishlist from "@/app/credentials/user-wishlist";
 import History from "@/app/credentials/user-history";
-import Resetpassword from "@/app/credentials/reset-password";
+import Updatepassword from "@/app/credentials/update-password";
 import { Deleteaccount } from "@/app/credentials/account-deletion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -89,24 +89,23 @@ export function Tabbing() {
               </TabsList>
 
             </SwiperSlide>
-            <SwiperSlide className="chng-password">
+            {/* <SwiperSlide className="chng-password">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
                 <TabsTrigger value="change-password" className="chng-password col-span-2 rounded-none hover:bg-white hover:text-[#3c2f27] ">
                   Change Password
                 </TabsTrigger>
               </TabsList>
-
-            </SwiperSlide>
+            </SwiperSlide> */}
             <SwiperSlide className="manage-addresses">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
-                <TabsTrigger value="account-deletion" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
+                <TabsTrigger value="manage-addresses" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
                  Manage Addresses
                 </TabsTrigger>
               </TabsList>
             </SwiperSlide>
             <SwiperSlide className="browsing-history">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
-                <TabsTrigger value="account-deletion" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
+                <TabsTrigger value="browsing-history" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
                  Browsing History
                 </TabsTrigger>
               </TabsList>
@@ -137,9 +136,19 @@ export function Tabbing() {
               <History />
             </div>
           </TabsContent>
-          <TabsContent value="change-password">
+          {/* <TabsContent value="change-password">
             <div>
-              <Resetpassword />
+              <Updatepassword />
+            </div>
+          </TabsContent> */}
+          <TabsContent value="manage-addresses">
+            <div>
+              
+            </div>
+          </TabsContent>
+          <TabsContent value="browsing-history">
+            <div>
+              
             </div>
           </TabsContent>
           <TabsContent value="account-deletion">

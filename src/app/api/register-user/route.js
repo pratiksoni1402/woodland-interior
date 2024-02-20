@@ -1,7 +1,9 @@
 import { prisma } from '@/db';
 import bcrypt from 'bcrypt';
+import { getSessionId } from '@/lib/session';
 export const dynamic = 'force-dynamic'
 export async function POST(req) {
+    const session = await getSessionId();
     try {
         const formData = await req.json();
 
@@ -16,10 +18,10 @@ export async function POST(req) {
                 lastname: formData.lastname,
                 email: formData.email,
                 password: hashedPassword,
+                sessionid: session,
             },
         });
 
-        // console.log('Hello from the Auth', { customer });
         return Response.json({ });
 
     } catch (error) {

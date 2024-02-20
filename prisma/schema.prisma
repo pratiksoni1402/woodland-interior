@@ -21,10 +21,11 @@ model Homepage {
 // New user registration Model
 model Credentials {
   id        Int      @id @default(autoincrement())
-  firstname String   @db.VarChar(20)
-  lastname  String   @db.VarChar(20)
-  email     String   @db.VarChar(50)
+  firstname String?   @db.VarChar(20)
+  lastname  String?  @db.VarChar(20)
+  email     String?   @db.VarChar(50)
   password  String   @db.VarChar(500)
+  sessionid String @db.VarChar(200)
   createdon DateTime @default(now())
 
   @@map("customers")

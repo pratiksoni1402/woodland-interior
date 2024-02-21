@@ -15,15 +15,17 @@ model Homepage {
 
   @@map("homepage")
 }
+
 // End
 
 // New user registration Model
 model Credentials {
   id        Int      @id @default(autoincrement())
-  firstname String   @db.VarChar(20)
-  lastname  String   @db.VarChar(20)
-  email     String   @db.VarChar(50)
+  firstname String?   @db.VarChar(20)
+  lastname  String?  @db.VarChar(20)
+  email     String?   @db.VarChar(50)
   password  String   @db.VarChar(500)
+  sessionid String @db.VarChar(200)
   createdon DateTime @default(now())
 
   @@map("customers")
@@ -75,6 +77,7 @@ model Customerprofile {
   city           String  @db.VarChar(40)
   phonenumber    Int     @db.Int
   pincode        Int     @db.Int
+  sessionid      String  @db.VarChar(200)
 
   @@map("customer_profile")
 }
@@ -121,7 +124,7 @@ model Cartitems {
   productid Int      @db.Int
   sku       String   @db.VarChar(50)
   quantity  Int?     @db.Int
-  sessionid String @db.VarChar(200)
+  sessionid String   @db.VarChar(200)
   products  Products @relation(fields: [productid], references: [id])
 
   @@map("cart_items")
@@ -133,10 +136,55 @@ model Cartitems {
 model Wishlist {
   id        Int      @id @default(autoincrement())
   productid Int      @db.Int
-  sku       String?   @db.VarChar(50)
+  sku       String?  @db.VarChar(50)
   quantity  Int?     @db.Int
-  sessionid String @db.VarChar(200)
+  sessionid String   @db.VarChar(200)
   products  Products @relation(fields: [productid], references: [id])
 
   @@map("wishlist_items")
+}
+
+// Orders Model
+model Orders {
+  id                    Int        @id @default(autoincrement())
+  customer_id           Int        @db.Int
+  shipping_first_name   String     @db.VarChar(50)
+  shipping_last_name    String     @db.VarChar(50)
+  shipping_address_one  String     @db.VarChar(200)
+  shipping_address_two  String     @db.VarChar(200)
+  shipping_country      String     @db.VarChar(50)
+  shipping_state        String     @db.VarChar(50)
+  shipping_city         String     @db.VarChar(50)
+  shipping_pincode      Int        @db.Int
+  shipping_landmark     String     @db.VarChar(50)
+  shipping_phone_number Int        @db.Int
+  billing_first_name    String     @db.VarChar(50)
+  billing_last_name     String     @db.VarChar(50)
+  billing_address_one   String     @db.VarChar(200)
+  billing_address_two   String     @db.VarChar(200)
+  billing_country       String     @db.VarChar(50)
+  billing_state         String     @db.VarChar(50)
+  billing_city          String     @db.VarChar(50)
+  billing_pincode       Int        @db.Int
+  billing_landmark      String     @db.VarChar(50)
+  billing_phone_number  Int        @db.Int
+  payment_mode          String     @db.VarChar(50)
+  orderitems            Orderitems @relation(fields: [id], references: [id])
+
+  @@map("orders")
+}
+
+// Order Items
+
+model Orderitems {
+  id               Int      @id @default(autoincrement())
+  name             String   @db.VarChar(200)
+  sku              String   @db.VarChar(50)
+  individual_price Decimal  @db.Decimal(10, 2)
+  quantity         Int      @db.Int
+  total_price      Decimal  @db.Decimal(10, 2)
+  image            String   @db.VarChar(30)
+  Orders           Orders[]
+
+  @@map("order_items")
 }

@@ -29,9 +29,11 @@ export default function Shoppingbag() {
       </div>
       <div className="product-wrapper">
         {cartdata && cartdata?.map((productlist) => (
+
           grandtotal += productlist.products.price * productlist.quantity,
           taxamount = (grandtotal * 9) / 100,
           subtotal = grandtotal - (taxamount * 2),
+          
           <div className="product border-t border-[#b2937e] py-5 px-3" key={productlist.id}>
             <div className="grid grid-cols-12 gap-2">
               <div className="col-span-3">

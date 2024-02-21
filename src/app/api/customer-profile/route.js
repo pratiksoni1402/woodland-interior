@@ -1,9 +1,14 @@
 import prisma from "@/db";
+import { getSessionId } from "@/lib/session";
 export const dynamic = 'force-dynamic'
-export async function POST(request) {
+export async function PUT(request) {
+    const session = await getSessionId();
     const formdata = await request.json() 
-    let profile = await prisma.customerprofile.create(
+    let profile = await prisma.customerprofile.updateMany(
         {
+            where:{
+                sessionid: session,    
+            },
             data:{
                 firstname: formdata.firstname,
                 lastname: formdata.lastname,

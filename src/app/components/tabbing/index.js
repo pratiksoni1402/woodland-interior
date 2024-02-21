@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/ta
 import Profile from "@/app/credentials/user-profile";
 import Wishlist from "@/app/credentials/user-wishlist";
 import History from "@/app/credentials/user-history";
-import Resetpassword from "@/app/credentials/reset-password";
+import Updatepassword from "@/app/credentials/update-password";
 import { Deleteaccount } from "@/app/credentials/account-deletion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -22,7 +22,7 @@ export function Tabbing() {
   return (
     <div className="tabbing-actions">
       <Tabs defaultValue="account">
-        <div className="flex justify-center pb-5 sm:w-3/4 w-full m-auto">
+        <div className="flex justify-center h-10 sm:w-3/4 w-full mx-auto pb-0 bg-[#3c2f27]">
 
           <Swiper
             spaceBetween={50}
@@ -50,11 +50,11 @@ export function Tabbing() {
               },
               1200: {
                 width: 1200,
-                slidesPerView: 5,
+                slidesPerView: 7,
               },
               1400: {
                 width: 1400,
-                slidesPerView: 5,
+                slidesPerView: 7,
               },
             }}
           >
@@ -64,39 +64,56 @@ export function Tabbing() {
             </SwiperSlide>
             <SwiperSlide>
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
-                <TabsTrigger value="account" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
+              </TabsList>
+            </SwiperSlide>
+            <SwiperSlide className="edit-profile">
+              <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
+                <TabsTrigger value="account" className="edit-profile col-span-2 rounded-none hover:bg-white hover:text-[#3c2f27] ">
                   Edit Profile
                 </TabsTrigger>
               </TabsList>
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide className=" my-wishlist" >
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
-                <TabsTrigger value="wishlist" className="col-span-2 rounded-none hover:bg-white hover:text-black mx-1">
+                <TabsTrigger value="wishlist" className=" my-wishlist col-span-2 rounded-none hover:bg-white hover:text-[#3c2f27] mx-1">
                   My Wishlist
                 </TabsTrigger>
               </TabsList>
 
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide className="order-history">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
-                <TabsTrigger value="history" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
-                  Order History
+                <TabsTrigger value="history" className="order-history col-span-2 rounded-none hover:bg-white hover:text-[#3c2f27] ">
+                  Previous Order
                 </TabsTrigger>
               </TabsList>
 
             </SwiperSlide>
-            <SwiperSlide>
+            {/* <SwiperSlide className="chng-password">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
-                <TabsTrigger value="change-password" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
+                <TabsTrigger value="change-password" className="chng-password col-span-2 rounded-none hover:bg-white hover:text-[#3c2f27] ">
                   Change Password
                 </TabsTrigger>
               </TabsList>
-
-            </SwiperSlide>
-            <SwiperSlide>
+            </SwiperSlide> */}
+            <SwiperSlide className="manage-addresses">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
-                <TabsTrigger value="account-deletion" className="col-span-2 rounded-none hover:bg-white hover:text-black ">
-                  Account Deletion
+                <TabsTrigger value="manage-addresses" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
+                 Manage Addresses
+                </TabsTrigger>
+              </TabsList>
+            </SwiperSlide>
+            <SwiperSlide className="browsing-history">
+              <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
+                <TabsTrigger value="browsing-history" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
+                 Browsing History
+                </TabsTrigger>
+              </TabsList>
+            </SwiperSlide>
+            <SwiperSlide className="acc-delete">
+              <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
+                <TabsTrigger value="account-deletion" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
+                 Delete Account
                 </TabsTrigger>
               </TabsList>
             </SwiperSlide>
@@ -119,9 +136,19 @@ export function Tabbing() {
               <History />
             </div>
           </TabsContent>
-          <TabsContent value="change-password">
+          {/* <TabsContent value="change-password">
             <div>
-              <Resetpassword />
+              <Updatepassword />
+            </div>
+          </TabsContent> */}
+          <TabsContent value="manage-addresses">
+            <div>
+              
+            </div>
+          </TabsContent>
+          <TabsContent value="browsing-history">
+            <div>
+              
             </div>
           </TabsContent>
           <TabsContent value="account-deletion">

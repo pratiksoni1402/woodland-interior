@@ -160,8 +160,6 @@ export default function Cart() {
                       totalPrice += product.products.price * product.quantity,
                       taxamount = (totalPrice * 9) / 100,
                       subtotal = totalPrice - (taxamount * 2),
-
-
                       <div className='product py-10 border-b border-[#b2937e]' key={product.id}>
                         <div className="grid grid-cols-12 gap-3">
                           <div className="xl:col-span-3 lg:col-span-3 md:col-span-4 col-span-12">
@@ -286,6 +284,5 @@ export default function Cart() {
         </div>
       </div>
     </div>
-
   )
 }

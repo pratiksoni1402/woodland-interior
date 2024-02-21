@@ -318,6 +318,7 @@ html{
   @apply outline-1 outline-[#3c2f27] border border-[#3c2f27]
 
 }
+
 /* End */
 
 /* Password Reset  */
@@ -492,6 +493,21 @@ textarea:focus {
 .shipping-details-form .data-\[state\=checked\]\:bg-primary[data-state=checked] {
   background-color: #3c2f27;
 }
+.shipping-details-form form .payment-method{
+  @apply pb-10
+}
+.shipping-details-form form .payment-method label{
+  @apply pl-1
+}
+.shipping-details-form form .payment-method div{
+  @apply pb-1
+}
+.shipping-details-form form .payment-method div label:hover{
+  @apply cursor-pointer
+}
+
+
+/* End */
 
 .change-password-form .form-wrapper form input:focus{
   @apply outline-1 outline-[#3c2f27] rounded-none
@@ -901,6 +917,7 @@ textarea:focus {
   margin-bottom: 20px;
 }
 /* End */
+
 
 /* Upper Footer Styling */
 .footer-section footer .upper-footer ul li a{

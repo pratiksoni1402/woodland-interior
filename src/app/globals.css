@@ -128,7 +128,7 @@ html{
 }
 /* Navigation Styling */
 .navigation-bar .navbar-wrapper .menu nav ul li  {
-  @apply text-[#4f4537] font-crimson
+  @apply text-[#3c2f27] font-crimson
   
 }
 .navigation-bar .navbar-wrapper .menu nav ul li a{
@@ -148,7 +148,7 @@ html{
 
 }
 .navigation-bar .navbar-wrapper .menu nav ul li button{
-  @apply p-0 bg-transparent text-[#4f4537]
+  @apply p-0 bg-transparent text-[#3c2f27] font-light
 
 }
 .navbar-expand-lg .navbar-nav a {
@@ -157,6 +157,7 @@ html{
 }
 
 .navigation-bar .navbar-wrapper .menu nav ul li::after {
+  /* @apply h-2 w-0 bg-[#3c2f27] transition-width transition-transform transform-origin-left-center */
   content: '';
   display: block;
   height: 2px;
@@ -181,7 +182,7 @@ html{
 }
 
 .navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item {
- @apply text-[#4f4537] font-crimson text-base leading-7
+ @apply text-[#3c2f27] font-crimson text-base leading-7
 
 }
 
@@ -191,7 +192,7 @@ html{
 }
 
 .navbar .navbar-toggler {
-  @apply pl-4 text-lg leading-3 text-[#54595f] bg-transparent border-none transition-none
+  @apply pl-4 text-lg leading-3 text-[#3c2f27] bg-transparent border-none transition-none
 }
 
 .navbar .navbar-toggler:focus {
@@ -210,13 +211,15 @@ html{
 
 /* Homepage Style start */
 .homepage .banner-wrapper .content-wrapper .banner-title{
-  width: 100%;
+  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center font-crimson
+
+  /* width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Crimson Pro', serif; */
   
 }
 
@@ -279,7 +282,7 @@ html{
 
 }
 .visit-shop .timber-furniture .product-description {
-  @apply font-crimson text-[#54595f]
+  @apply font-crimson text-[#3c2f27]
 }
 
 .visit-shop .timber-furniture .visit-store {
@@ -287,7 +290,7 @@ html{
 }
 
 .visit-shop .timber-furniture .visit-store a {
-  @apply inline-block no-underline rounded
+  @apply inline-block no-underline rounded-none text-[#3c2f27] font-roboto
 }
 
 .visit-shop .timber-furniture .visit-store a:hover {
@@ -345,12 +348,12 @@ html{
 }
 
 .image-carousel .carousel-heading {
-  @apply font-crimson text-[#54595f] pt-[30px] pb-5 px-0
+  @apply font-crimson text-[#3c2f27] pt-[30px] pb-5 px-0
   
 }
 
 .image-carousel .carousel .title {
-  @apply font-crimson text-lg text-[#54595f] leading-7 pt-1 pb-12 px-0
+  @apply font-roboto text-sm text-[#3c2f27] leading-7 pt-1 pb-12 px-0
  
 }
 
@@ -901,17 +904,21 @@ textarea:focus {
 
 /* Upper Footer Styling */
 .footer-section footer .upper-footer ul li a{
-  @apply leading-6
+  @apply leading-6 text-[#3c2f27]
 }
 
 .footer-section footer .upper-footer ul li a:hover{
-  @apply text-[#3c2f27]
+  @apply text-[#3c2f27] font-semibold
 }
 /* End */
 
 /* Lower Footer */
 .footer-section footer .lower-footer .lower-footer-wrapper div{
-  @apply text-[#4f4537] text-xs
+  @apply text-[#3c2f27] text-xs
+}
+
+.footer-section footer .lower-footer .lower-footer-wrapper div a:hover{
+  @apply underline
 }
 /* End */
 

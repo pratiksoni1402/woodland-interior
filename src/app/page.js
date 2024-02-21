@@ -36,9 +36,9 @@ export default function Home() {
               <video src="/uploads/images/homepage/warehouse-detail.mp4" autoPlay loop></video>
             </div>
             <div className="description flex flex-col justify-center px-4 py-4">
-              <div className="title text-[#54595f] text-2xl font-medium py-3 font-crimson">Our Warehouse</div>
+              <div className="title text-[#3c2f27] text-3xl font-medium py-3 font-crimson">Our Warehouse</div>
               <div className="detail">
-                <p className="text-justify text-[#54595f] font-roboto">
+                <p className="text-justify text-[#3c2f27] font-roboto">
                   Welcome to our furniture haven, where we merge artistry,
                   comfort, and functionality to create pieces that transform
                   spaces into living experiences. Discover our curated
@@ -60,9 +60,9 @@ export default function Home() {
         <div className="content-wrapper">
           <div className="grid lg:grid-cols-3 sm:grid-cols-1 ">
             <div className="description flex flex-col justify-center px-4 py-4 lg:order-1 order-2">
-              <div className="title text-[#54595f] text-2xl font-medium py-3 font-crimson">Our Experts Team</div>
+              <div className="title text-[#3c2f27] text-3xl font-medium py-3 font-crimson">Our Experts Team</div>
               <div className="detail">
-                <p className="text-justify text-[#54595f] font-roboto">
+                <p className="text-justify text-[#3c2f27] font-roboto">
                   At <span className="brand-name">Woodland Interiors</span>, we take pride in curating a team of seasoned experts who breathe life into furniture design. Our experts are not just skilled craftsmen; they are visionaries who transform spaces with their artistry. Each piece of furniture is a testament to their passion, expertise, and commitment to excellence.Our experts bring years of experience and a deep understanding of the nuances of furniture design. They approach each project with a passion that goes beyond the conventional, infusing creativity and innovation into every detail. From conceptualization to creation, our experts ensure that each piece reflects a harmonious blend of form and function.
                 </p>
               </div>
@@ -89,9 +89,9 @@ export default function Home() {
           <div className='tagline md:text-[50px] md:leading-[50px] text-[24px] leading-7'>
             <span className="font-crimson text-[#faf2ec]">Tailor-made pieces for homes, places and spaces</span>
           </div>
-          <div className='visit-us'>
+          {/* <div className='visit-us'>
             <Link href='/bespoke'>our custom-made service</Link>
-          </div>
+          </div> */}
         </div>
         <div className='dine-room d-block' style={{
           height: "85vh",

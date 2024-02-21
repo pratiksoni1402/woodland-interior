@@ -115,7 +115,7 @@ export default function SwiperSlider() {
                 width={300}
                 height={300}
               />
-              <div className="title text-center">Lorem Ipsum</div>
+              <div className="title text-center">Jute Chairs</div>
             </SwiperSlide>
 
             <SwiperSlide>

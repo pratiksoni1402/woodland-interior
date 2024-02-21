@@ -25,7 +25,7 @@ export default function Reviews() {
                     </div>
                   </div>
                   <div className="col-span-10">
-                    <div className="heading text-base text-[#3c2f27] font-crimson font-semibold pb-1">
+                    <div className="heading text-xl text-[#3c2f27] font-crimson font-semibold pb-1">
                       Rohan Patel
                     </div>
                     <div className="text text-sm text-[#3c2f27] font-roboto">
@@ -42,7 +42,7 @@ export default function Reviews() {
                     </div>
                   </div>
                   <div className="col-span-10">
-                    <div className="heading text-base text-[#3c2f27] font-crimson font-semibold pb-1">
+                    <div className="heading  text-xl text-[#3c2f27] font-crimson font-semibold pb-1">
                       Priya Gupta
                     </div>
                     <div className="text text-sm text-[#3c2f27] font-roboto">
@@ -59,7 +59,7 @@ export default function Reviews() {
                     </div>
                   </div>
                   <div className="col-span-10">
-                    <div className="heading text-base text-[#3c2f27] font-crimson font-semibold pb-1">
+                    <div className="heading  text-xl text-[#3c2f27] font-crimson font-semibold pb-1">
                       Neha Reddy
                     </div>
                     <div className="text text-sm text-[#3c2f27] font-roboto">
@@ -76,7 +76,7 @@ export default function Reviews() {
                     </div>
                   </div>
                   <div className="col-span-10">
-                    <div className="heading text-base text-[#3c2f27] font-crimson font-semibold pb-1">
+                    <div className="heading  text-xl text-[#3c2f27] font-crimson font-semibold pb-1">
                     Aarav Sharma
                     </div>
                     <div className="text text-sm text-[#3c2f27] font-roboto">
@@ -93,7 +93,7 @@ export default function Reviews() {
                     </div>
                   </div>
                   <div className="col-span-10">
-                    <div className="heading text-base text-[#3c2f27] font-crimson font-semibold pb-1">
+                    <div className="heading  text-xl text-[#3c2f27] font-crimson font-semibold pb-1">
                       Aryan Singh
                     </div>
                     <div className="text text-sm text-[#3c2f27] font-roboto">
@@ -110,7 +110,7 @@ export default function Reviews() {
                     </div>
                   </div>
                   <div className="col-span-10">
-                    <div className="heading text-base text-[#3c2f27] font-crimson font-semibold pb-1">
+                    <div className="heading  text-xl text-[#3c2f27] font-crimson font-semibold pb-1">
                     Aisha Mehta
                     </div>
                     <div className="text text-sm text-[#3c2f27] font-roboto">
@@ -119,7 +119,6 @@ export default function Reviews() {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
           <div className="lg:col-span-6 md:col-span-4 sm:col-span-12 col-span-12"></div>

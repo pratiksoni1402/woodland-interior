@@ -1,5 +1,6 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import prisma from "@/db";
-export const dynamic = 'force-dynamic'
 import { getSessionId } from "@/lib/session";
 export async function POST(request){
     const cartsession = await getSessionId();

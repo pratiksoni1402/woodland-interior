@@ -1,5 +1,6 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import { prisma } from "@/db";
-export const dynamic = 'force-dynamic'
 export async function POST(request) {
   let querydata = await request.json();
   console.log(querydata);

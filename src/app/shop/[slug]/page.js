@@ -1,4 +1,6 @@
-"use client";
+"use client"
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -46,7 +48,7 @@ export default function Bedroom({ params }) {
                         <h1>{bannerinfo.heading}</h1>
                       </div>
                       <div className="description">
-                        <p className="text-justify  text-[#4f4537] font-roboto leading-6 sm:text-base text-sm">
+                        <p className="text-justify  text-[#3c2f27] font-roboto leading-6 sm:text-base text-sm">
                           {bannerinfo.intro}
                         </p>
                       </div>
@@ -97,7 +99,7 @@ export default function Bedroom({ params }) {
                     <div className="product-image overflow-hidden relative sm:h-[327px] h-[227px]">
                       <LazyImage src={`${PRODUCT_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300 sm:w-[427px] sm:h-[427px] w-[227px] h-[227px]" />
                     </div>
-                    <div className="detail text-center text-sm text-[#54595f] font-roboto group-hover:text-[#3c2f27] group-hover:font-bold transition duration-150">
+                    <div className="detail text-center text-sm text-[#3c2f27] font-roboto group-hover:text-[#3c2f27] group-hover:font-bold transition duration-150">
                       <div className="p-2 sm:text-sm text-xs">{product.name}</div>
                       <div className="pricing font-bold flex justify-center items-center">
                         <div className=""><IndianRupee width={18} /></div>

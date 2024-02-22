@@ -1,6 +1,7 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import prisma from "@/db";
 import { getSessionId } from "@/lib/session";
-export const dynamic = 'force-dynamic'
 export async function PUT(request) {
     const session = await getSessionId();
     const formdata = await request.json() 

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import Orderitems from "../components/order-cnf-receipt/ordered-items"
 import Cnforder from "../components/order-cnf-receipt"
 import Ordertotal from "../components/order-cnf-receipt/order-total"

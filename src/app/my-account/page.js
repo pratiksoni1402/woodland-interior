@@ -22,11 +22,11 @@ export default async function MyAccount() {
           <div className="activity">
             <div className="font-roboto pb-2 text-[#3c2f27] font-semibold">You can do following things in you account.</div>
             <ul className="list-disc list-inside">
-              <li className="text-sm text-[#4f4537]">Edit your Profile</li>
-              <li className="text-sm text-[#4f4537]">View your wishlist</li>
-              <li className="text-sm text-[#4f4537]">Your Previous Order History</li>
-              <li className="text-sm text-[#4f4537]">Password Updation</li>
-              <li className="text-sm text-[#4f4537]">Account Deletion</li>
+              <li className="text-sm text-[#6c4428]">Edit your Profile</li>
+              <li className="text-sm text-[#6c4428]">View your wishlist</li>
+              <li className="text-sm text-[#6c4428]">Your Previous Order History</li>
+              <li className="text-sm text-[#6c4428]">Password Updation</li>
+              <li className="text-sm text-[#6c4428]">Account Deletion</li>
             </ul>
           </div>
           <div className="logout">

@@ -1,5 +1,6 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import prisma from "@/db";
-export const dynamic = 'force-dynamic'
 import { getSessionId } from "@/lib/session";
 export async function GET() {
     const session = await getSessionId();
@@ -11,20 +12,7 @@ export async function GET() {
         include:{
             products:true,
         },
-        // select: {
-        //     id: true,
-        //     productid: true,
-        //     sku: true,
-        //     quantity: true,
-        //     products: {
-        //         select: {
-        //             name: true,
-        //             description: true,
-        //             price: true,
-        //             image: true,
-        //         }
-        //     },
-        // },
+        
     });
     console.log("Products from wishlist table", { getallproduct })
     return Response.json({ getallproduct })

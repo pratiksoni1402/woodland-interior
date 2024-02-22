@@ -1,8 +1,9 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import Image from "next/image";
 import SwiperSlider from "../app/components/swiper-slider";
 import Visitshop from "./_component";
 import Link from "next/link";
-
 export default function Home() {
   return (
     <div className="homepage">

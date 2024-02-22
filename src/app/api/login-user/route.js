@@ -1,7 +1,8 @@
 import prisma from "@/db";
 import bcrypt from 'bcrypt';
 import { getSession } from "@/lib/session";
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 export async function POST(request) {
   let session = await getSession();
   try {
@@ -29,7 +30,7 @@ export async function POST(request) {
         firstname: details.firstname,
         email: details.email,
       },
-      console.log("This is master session from login api", session)
+        console.log("This is master session from login api", session)
       await session.save()
     }
 

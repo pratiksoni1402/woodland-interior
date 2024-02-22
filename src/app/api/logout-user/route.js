@@ -1,4 +1,5 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import { getSession } from "@/lib/session"
 export async function POST() {
     const session = await getSession();

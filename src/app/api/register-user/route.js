@@ -1,7 +1,8 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import { prisma } from '@/db';
 import bcrypt from 'bcrypt';
 import { getSessionId } from '@/lib/session';
-export const dynamic = 'force-dynamic'
 export async function POST(req) {
     const session = await getSessionId();
     try {

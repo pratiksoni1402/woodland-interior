@@ -1,4 +1,6 @@
 'use client'
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import React, { useEffect, useState } from 'react';
 import { Button } from './../../components/ui/button';
 import { useForm } from 'react-hook-form';

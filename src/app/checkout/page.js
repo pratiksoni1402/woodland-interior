@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import { getSession } from "@/lib/session"
 import Shippingdetail from "./shipping-details"
 import Shoppingbag from "./shopping-bag"

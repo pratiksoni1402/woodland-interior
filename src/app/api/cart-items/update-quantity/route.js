@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import prisma from "@/db";
 export async function PUT(request){
     let bodydata = await request.json()

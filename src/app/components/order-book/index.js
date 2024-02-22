@@ -144,7 +144,7 @@ export default function Cart() {
     }
   }
   return (
-    <div className="cart-items bg-[#faf2ec] py-10">
+    <div className="cart-items bg-[#faf2ec] py-20">
       <div className="container">
         <div className="heading pb-3 text-4xl font-crimson border-b border-[#b2937e]  text-[#3c2f27]">
           Items in your cart
@@ -154,7 +154,7 @@ export default function Cart() {
             <div className="product-wrapper">
               <div className="grid grid-col-1">
                 <div className="col">
-                  <div className='my-items h-screen'>
+                  <div className='my-items'>
                     <Toaster />
                     {totalproducts?.map((product) => (
                       totalPrice += product.products.price * product.quantity,

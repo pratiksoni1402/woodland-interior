@@ -99,7 +99,7 @@ export default function Product() {
         <div className="heading font-crimson text-4xl text-[#3c2f27] pt-10 pb-5  border-t">
           <h1>Your Wishlist</h1>
         </div>
-        <div className='my-items h-screen border-t border-[#b2937e] '>
+        <div className='my-items border-t border-[#b2937e] '>
           <Toaster />
           {
             allproducts?.map((product) => (

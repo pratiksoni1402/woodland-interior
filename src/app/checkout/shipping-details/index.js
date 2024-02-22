@@ -4,14 +4,17 @@ export const revalidate = 0;
 import React, { useState } from "react"
 import { Button } from "./../../components/ui/button";
 import { useForm } from 'react-hook-form';
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Switch } from "@/components/ui/switch"
 import { Label } from "./../../components/ui/label"
 import { useRouter } from "next/navigation";
+import { ClipLoader } from "react-spinners";
 export default function Shippingdetail() {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const [showForm, setShowForm] = useState(false);
+  const [animation, setAnimation] = useState(false);
 
   // Handle Toggle of Billing Details
   const handleSwitchToggle = () => {
@@ -20,7 +23,7 @@ export default function Shippingdetail() {
   // End
 
   // Getting Countries list 
-  const { isPending, data:countries, error } = useQuery({
+  const { isPending, data: countries, error } = useQuery({
     queryKey: ['countrylist'],
     queryFn: () =>
       axios.get('/api/get-countries')
@@ -36,15 +39,19 @@ export default function Shippingdetail() {
 
   // Placing Order
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = (data) =>{
+  const onSubmit = (data) => {
+    setAnimation(true);
     axios.post('/api/place-order', data)
-    .then((response) =>{
-      router.push('/order-receipt')
-      console.log("Order Placed Successfully", response)
-    })
-    .catch((error) =>{
-      console.log("Error", error)
-    })
+      .then((response) => {
+        router.push('/order-receipt')
+        console.log("Order Placed Successfully", response)
+      })
+      .catch((error) => {
+        console.log("Error", error)
+      })
+      .finally(() => {
+        setAnimation(false);
+      })
   }
   // End
 
@@ -146,7 +153,17 @@ export default function Shippingdetail() {
           </div>
 
         </div>
-        <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#3c2f27]'>Place Order</Button>
+        {animation ? (
+          <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#faf2ec] position-relative overflow-hidden'>
+            <ClipLoader color="#3c2f27" size={30} css="border-radius: 50%" />
+          </Button>
+
+        ) : (
+          <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#3c2f27]'>Place Order</Button>
+
+        )
+        }
+
       </form>
     </div>
   )

@@ -147,8 +147,6 @@ model Wishlist {
 // Orders Model
 model Orders {
   id                    Int          @id @default(autoincrement())
-  orderid               Int          @db.Int
-  customer_id           Int          @db.Int
   shipping_first_name   String       @db.VarChar(50)
   shipping_last_name    String       @db.VarChar(50)
   shipping_address_one  String       @db.VarChar(200)
@@ -159,21 +157,22 @@ model Orders {
   shipping_pincode      Int          @db.Int
   shipping_landmark     String       @db.VarChar(50)
   shipping_phone_number Int          @db.Int
-  billing_first_name    String       @db.VarChar(50)
-  billing_last_name     String       @db.VarChar(50)
-  billing_address_one   String       @db.VarChar(200)
-  billing_address_two   String       @db.VarChar(200)
-  billing_country       String       @db.VarChar(50)
-  billing_state         String       @db.VarChar(50)
-  billing_city          String       @db.VarChar(50)
-  billing_pincode       Int          @db.Int
-  billing_landmark      String       @db.VarChar(50)
-  billing_phone_number  Int          @db.Int
+  billing_first_name    String?      @db.VarChar(50)
+  billing_last_name     String?      @db.VarChar(50)
+  billing_address_one   String?      @db.VarChar(200)
+  billing_address_two   String?      @db.VarChar(200)
+  billing_country       String?      @db.VarChar(50)
+  billing_state         String?      @db.VarChar(50)
+  billing_city          String?      @db.VarChar(50)
+  billing_pincode       Int?         @db.Int
+  billing_landmark      String?      @db.VarChar(50)
+  billing_phone_number  Int?         @db.Int
   payment_mode          String       @db.VarChar(50)
   subtotal              Decimal      @db.Decimal(10, 2)
-  tax                   Decimal      @db.Decimal(10, 2)
+  tax_cgst              Decimal      @db.Decimal(10, 2)
+  tax_sgst              Decimal      @db.Decimal(10, 2)
   total                 Decimal      @db.Decimal(10, 2)
-  // orderitems            Orderitems[]
+  orderitems            Orderitems[]
 
   @@map("orders")
 }
@@ -182,13 +181,14 @@ model Orders {
 
 model Orderitems {
   id               Int     @id @default(autoincrement())
+  orderid          Int?    @db.Int
   name             String  @db.VarChar(200)
   sku              String  @db.VarChar(50)
   individual_price Decimal @db.Decimal(10, 2)
   quantity         Int     @db.Int
   total_price      Decimal @db.Decimal(10, 2)
   image            String  @db.VarChar(30)
-  // orders           Orders? @relation(fields: [orderid], references: [id])
+  orders           Orders? @relation(fields: [orderid], references: [id])
 
   @@map("order_items")
 }

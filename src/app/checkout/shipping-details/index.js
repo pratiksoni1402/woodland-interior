@@ -1,4 +1,6 @@
 'use client'
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import React, { useState } from "react"
 import { Button } from "./../../components/ui/button";
 import { useForm } from 'react-hook-form';
@@ -6,13 +8,18 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Switch } from "@/components/ui/switch"
 import { Label } from "./../../components/ui/label"
-
+import { useRouter } from "next/navigation";
 export default function Shippingdetail() {
+  const router = useRouter();
   const [showForm, setShowForm] = useState(false);
 
+  // Handle Toggle of Billing Details
   const handleSwitchToggle = () => {
     setShowForm(!showForm);
   }
+  // End
+
+  // Getting Countries list 
   const { isPending, data:countries, error } = useQuery({
     queryKey: ['countrylist'],
     queryFn: () =>
@@ -25,19 +32,22 @@ export default function Shippingdetail() {
           console.log("Error while fetching Country list", error)
         })
   })
+  // End
 
-  
+  // Placing Order
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) =>{
     axios.post('/api/place-order', data)
     .then((response) =>{
-      console.log("In orders", response)
+      router.push('/order-receipt')
+      console.log("Order Placed Successfully", response)
     })
     .catch((error) =>{
       console.log("Error", error)
     })
   }
-  console.log(errors);
+  // End
+
   return (
     <div className="shipping-details-form">
       <div className="heading text-left border-b pb-3 font-crimson text-[#3c2f27] text-2xl">
@@ -111,27 +121,27 @@ export default function Shippingdetail() {
             Payment Method
           </div>
           <div className="text-sm flex items-center font-roboto text-[#3c2f27] pb-1 ">
-            <input {...register("PaymentMethod", { required: true })} type="radio" value="Debit Card" id="debit-card" />
+            <input {...register("payment_mode", { required: true })} type="radio" value="Debit Card" id="debit-card" />
             <label htmlFor="debit-card">Debit Card</label>
           </div>
 
           <div className="text-sm flex items-center font-roboto text-[#3c2f27] ">
-            <input {...register("PaymentMethod", { required: true })} type="radio" value=" Credit Card" id="credit-card" />
+            <input {...register("payment_mode", { required: true })} type="radio" value=" Credit Card" id="credit-card" />
             <label htmlFor="credit-card">Credit Card</label>
           </div>
 
           <div className="text-sm flex items-center font-roboto text-[#3c2f27] ">
-            <input {...register("PaymentMethod", { required: true })} type="radio" value=" UPI" id="upi" />
+            <input {...register("payment_mode", { required: true })} type="radio" value=" UPI" id="upi" />
             <label htmlFor="upi">UPI</label>
           </div>
 
           <div className="text-sm flex items-center font-roboto text-[#3c2f27] ">
-            <input {...register("PaymentMethod", { required: true })} type="radio" value=" Net Banking" id="net-banking" />
+            <input {...register("payment_mode", { required: true })} type="radio" value=" Net Banking" id="net-banking" />
             <label htmlFor="net-banking">Net Banking</label>
           </div>
 
           <div className="text-sm flex items-center font-roboto text-[#3c2f27] ">
-            <input {...register("PaymentMethod", { required: true })} type="radio" value=" Cash on Delivery" id="cod" />
+            <input {...register("payment_mode", { required: true })} type="radio" value=" Cash on Delivery" id="cod" />
             <label htmlFor="cod">Cash on Delivery</label>
           </div>
 

@@ -62,6 +62,16 @@ export default function MobileMenu() {
         })
   });
 
+  const { hasPending, data: status, hasError } = useQuery({
+    queryKey: ['loginstatus'],
+    queryFn: () =>
+      axios.post('/api/auth-check')
+        .then((response) => {
+
+          return response.data.session
+        })
+  })
+
   return (
     <div className='mobile-menu-wrapper'>
       <div className='inner-content-wrapper flex items-center'>
@@ -81,12 +91,23 @@ export default function MobileMenu() {
             </Link>
           </div>
           <div className='pr-4'>
-            <Link href="/auth">
-              <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            </Link>
+            {
+              status ? (
+                <Link href="/my-account">
+                  <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                </Link>
+              ) : (
+                <Link href="/auth/login">
+                  <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                </Link>
+              )
+            }
           </div>
         </div>
         <div className='side-menu'>

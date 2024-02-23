@@ -50,8 +50,8 @@ export default function Previousorders({ params }) {
     <div className="order-receipt bg-[#faf2ec] pb-20">
       <div className="container">
         <div className="grid grid-cols-12">
-          <div className="col-span-2"></div>
-          <div className="col-span-8">
+          <div className="lg:col-span-2 col-span-12 "></div>
+          <div className="lg:col-span-8 col-span-12">
             <div className="order-receipt-wrapper bg-white">
               <div className="cnf-order-receipt">
                 <div className="grid grid-cols-12">
@@ -62,14 +62,14 @@ export default function Previousorders({ params }) {
                   </div>
                   <div className="col-span-12">
                     <div className="order-number text-sm pl-4 font-roboto text-[#3c2f27]">
-                      <span>Order Number:</span>
+                      <span>Order ID:</span>
                       <span className="font-semibold">{getDetail?.id}</span>
                     </div>
                   </div>
                   <div className="col-span-12">
                     <div className="address-wrapper pt-4">
                       <div className="grid grid-cols-2 gap-5">
-                        <div className="col">
+                        <div className="sm:col-span-1 col-span-2">
                           <div className="shipping-address">
                             <div className="heading  bg-[#3c2f27] pl-4 text-[#faf2ec] text-sm font-roboto mb-2 py-1">
                               Shipping Address
@@ -108,7 +108,7 @@ export default function Previousorders({ params }) {
                             </div>
                           </div>
                         </div>
-                        <div className="col">
+                        <div className="sm:col-span-1 col-span-2">
                           <div className="billing-address">
                             <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
                               Billing Address
@@ -147,7 +147,7 @@ export default function Previousorders({ params }) {
                             </div>
                           </div>
                         </div>
-                        <div className="col">
+                        <div className="sm:col-span-1 col-span-2">
                           <div className="payment-method pb-20">
                             <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
                               Payment Method
@@ -157,7 +157,7 @@ export default function Previousorders({ params }) {
                             </div>
                           </div>
                         </div>
-                        <div className="col">
+                        <div className="sm:col-span-1 col-span-2">
                           <div className="order-date pb-20">
                             <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
                               Order Date & Time
@@ -187,9 +187,9 @@ export default function Previousorders({ params }) {
                 <TableBody className='border-b border-[#e5e5e5]'>
                   {
 
-                    getDetail?.orderitems && getDetail?.orderitems?.map((products) => (
+                    getDetail?.orderitems && getDetail?.orderitems?.map((products, index) => (
                       <TableRow key={products.id}>
-                        <TableCell className="font-medium">1</TableCell>
+                        <TableCell className="font-medium">{index + 1}</TableCell>
                         <TableCell>
                           <Image src={`${PRODUCT_MEDIA_URL}/${products.image}`} alt={products.name} width={75} height={75} />
                         </TableCell>
@@ -223,7 +223,7 @@ export default function Previousorders({ params }) {
               </div>
             </div>
           </div>
-          <div className="col-span-2"></div>
+          <div className="lg:col-span-2 col-span-12 "></div>
         </div>
       </div>
     </div>

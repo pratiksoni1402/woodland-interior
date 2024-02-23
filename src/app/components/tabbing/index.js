@@ -2,7 +2,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
 import Profile from "@/app/credentials/user-profile";
 import Wishlist from "@/app/credentials/user-wishlist";
-import History from "@/app/credentials/user-history";
+import History from "@/app/credentials/previous-orders";
 import Updatepassword from "@/app/credentials/update-password";
 import { Deleteaccount } from "@/app/credentials/account-deletion";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -99,21 +99,21 @@ export function Tabbing() {
             <SwiperSlide className="manage-addresses">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
                 <TabsTrigger value="manage-addresses" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
-                 Manage Addresses
+                  Manage Addresses
                 </TabsTrigger>
               </TabsList>
             </SwiperSlide>
             <SwiperSlide className="browsing-history">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
                 <TabsTrigger value="browsing-history" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
-                 Browsing History
+                  Browsing History
                 </TabsTrigger>
               </TabsList>
             </SwiperSlide>
             <SwiperSlide className="acc-delete">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
                 <TabsTrigger value="account-deletion" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
-                 Delete Account
+                  Delete Account
                 </TabsTrigger>
               </TabsList>
             </SwiperSlide>
@@ -143,12 +143,12 @@ export function Tabbing() {
           </TabsContent> */}
           <TabsContent value="manage-addresses">
             <div>
-              
+
             </div>
           </TabsContent>
           <TabsContent value="browsing-history">
             <div>
-              
+
             </div>
           </TabsContent>
           <TabsContent value="account-deletion">

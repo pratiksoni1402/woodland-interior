@@ -78,6 +78,7 @@ model Customerprofile {
   phonenumber    Int     @db.Int
   pincode        Int     @db.Int
   sessionid      String  @db.VarChar(200)
+  session_email  String  @db.VarChar(100)
 
   @@map("customer_profile")
 }
@@ -172,6 +173,7 @@ model Orders {
   tax_cgst              Decimal      @db.Decimal(10, 2)
   tax_sgst              Decimal      @db.Decimal(10, 2)
   total                 Decimal      @db.Decimal(10, 2)
+  order_date            DateTime     @default(now())
   orderitems            Orderitems[]
 
   @@map("orders")

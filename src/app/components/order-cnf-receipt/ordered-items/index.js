@@ -74,7 +74,6 @@ export default function Orderitems() {
         </div>
         <div className="col-span-12">
           <Table className=''>
-            {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
             <TableHeader className='bg-[#3c2f27]'>
               <TableRow>
                 <TableHead className="w-[100px] text-[#faf2ec]">S.No</TableHead>
@@ -95,12 +94,6 @@ export default function Orderitems() {
                 </TableRow>
               ))}
             </TableBody>
-            {/* <TableFooter>
-              <TableRow>
-                <TableCell colSpan={3}>Total</TableCell>
-                <TableCell className="text-right">$2,500.00</TableCell>
-              </TableRow>
-            </TableFooter> */}
           </Table>
         </div>
       </div>

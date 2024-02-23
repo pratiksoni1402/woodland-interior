@@ -26,6 +26,7 @@ model Credentials {
   email     String?  @db.VarChar(50)
   password  String   @db.VarChar(500)
   sessionid String   @db.VarChar(200)
+  session_email String @db.VarChar(100)
   createdon DateTime @default(now())
 
   @@map("customers")
@@ -174,6 +175,7 @@ model Orders {
   tax_sgst              Decimal      @db.Decimal(10, 2)
   total                 Decimal      @db.Decimal(10, 2)
   order_date            DateTime     @default(now())
+  session_email         String       @db.VarChar(100)
   orderitems            Orderitems[]
 
   @@map("orders")

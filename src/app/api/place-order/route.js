@@ -2,7 +2,9 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import prisma from "@/db";
 import { getSessionId } from "@/lib/session";
+import { getSession } from "@/lib/session";
 export async function POST(request) {
+  const sessionEmail = await getSession();
   const requestbody = await request.json();
   const sessionid = await getSessionId();
 
@@ -65,6 +67,7 @@ export async function POST(request) {
       tax_sgst: SGST,
       subtotal: subTotal,
       total: totalPrice,
+      session_email: sessionEmail.user_details?.email,
       orderitems: {
         create: orderItems,
       },

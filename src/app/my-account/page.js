@@ -31,7 +31,7 @@ export default async function MyAccount() {
   const message = `${greeting}, ${session.user_details.firstname}`;
 
   return (
-    <div className="my-account-page bg-[#faf2ec]">
+    <div className="my-account-page bg-[#faf2ec] h-screen">
       <div className="wrapper container">
         <div className="heading text-center border-t font-crimson text-[#3c2f27] text-3xl py-5">
           <h1 className="capitalize">{message}</h1>
@@ -40,11 +40,13 @@ export default async function MyAccount() {
           <div className="activity">
             <div className="font-roboto pb-2 text-[#3c2f27] font-semibold">You can do following things in you account.</div>
             <ul className="list-disc list-inside">
-              <li className="text-sm text-[#6c4428]">Edit your Profile</li>
-              <li className="text-sm text-[#6c4428]">View your wishlist</li>
-              <li className="text-sm text-[#6c4428]">Your Previous Order History</li>
-              <li className="text-sm text-[#6c4428]">Password Updation</li>
-              <li className="text-sm text-[#6c4428]">Account Deletion</li>
+              <li className="text-sm text-[#3c2f27]">Edit your Profile</li>
+              <li className="text-sm text-[#3c2f27]">View your wishlist</li>
+              <li className="text-sm text-[#3c2f27]">Your Previous Order History</li>
+              <li className="text-sm text-[#3c2f27]">Password Updation</li>
+              <li className="text-sm text-[#3c2f27]">Manage Addresses</li>
+              <li className="text-sm text-[#3c2f27]">Browsing History</li>
+              <li className="text-sm text-[#3c2f27]">Account Deletion</li>
             </ul>
           </div>
           <div className="logout">

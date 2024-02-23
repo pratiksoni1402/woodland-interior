@@ -35,24 +35,24 @@ export default function History() {
             <div className="order-wrapper">
               <div className="orders">
                 <Table>
-                  <TableCaption className='pb-5'>A list of your Previous Orders.</TableCaption>
+                  <TableCaption className='pb-5 '>A list of your Previous Orders.</TableCaption>
                   <TableHeader>
-                    <TableRow>
-                      <TableHead className="text-[#3c2f27] font-semibold font-roboto ">Order ID</TableHead>
-                      <TableHead className='text-[#3c2f27] font-semibold font-roboto'>Total Amount</TableHead>
-                      <TableHead className='text-[#3c2f27] font-semibold font-roboto'>Payment Method</TableHead>
-                      <TableHead className="text-[#3c2f27] font-semibold font-roboto">Order Data</TableHead>
-                      <TableHead className="text-[#3c2f27] font-semibold font-roboto">Action</TableHead>
+                    <TableRow className=''>
+                      <TableHead className="text-[#3c2f27] text-center font-semibold font-roboto ">Order ID</TableHead>
+                      <TableHead className='text-[#3c2f27] text-center font-semibold font-roboto'>Total Amount</TableHead>
+                      <TableHead className='text-[#3c2f27] text-center font-semibold font-roboto'>Payment Method</TableHead>
+                      <TableHead className="text-[#3c2f27] text-center font-semibold font-roboto">Order Data</TableHead>
+                      <TableHead className="text-[#3c2f27] text-center font-semibold font-roboto">Action</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody className='bg-white'>
                     {orders?.map((invoice) => (
                       <TableRow key={invoice.invoice}>
-                        <TableCell className="text-[#3c2f27] font-roboto">{invoice.id}</TableCell>
-                        <TableCell className="text-[#3c2f27] font-roboto">{invoice.total}</TableCell>
-                        <TableCell className="text-[#3c2f27] font-roboto">{invoice.payment_mode}</TableCell>
-                        <TableCell className=" text-[#3c2f27] font-roboto">{invoice.order_date}</TableCell>
-                        <TableCell className=" text-[#3c2f27] font-roboto">
+                        <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.id}</TableCell>
+                        <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.total}</TableCell>
+                        <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.payment_mode}</TableCell>
+                        <TableCell className="text-center  text-[#3c2f27] font-roboto">{invoice.order_date}</TableCell>
+                        <TableCell className="text-center  text-[#3c2f27] font-roboto">
                           <Link href={`/previous-orders/${invoice.id}`} className="border border-[#3c2f27] bg-[#3c2f27] p-2 text-[#faf2ec] font-crimson text-sm hover:text-[#3c2f27] hover:bg-white">View Detail</Link>
                         </TableCell>
                       </TableRow>

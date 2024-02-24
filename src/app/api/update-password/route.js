@@ -13,11 +13,12 @@ export async function POST(request) {
   });
 
   const passwordMatch = await bcrypt.compare(requestBody.oldPassword, readPassword.password);
+  console.log('old Password and password Does not match', passwordMatch)
 
   const saltRound = 10;
   const hashedPassword = await bcrypt.hash(requestBody.newPassword, saltRound);
   console.log("Hashed", hashedPassword);
-  
+
   if (passwordMatch) {
     const updatePassword = await prisma.credentials.updateMany({
       where: {
@@ -27,8 +28,9 @@ export async function POST(request) {
         password: hashedPassword,
       },
     });
-    console.log("Password Changes successfully", {updatePassword})
-    return Response.json({updatePassword})
+    console.log("Password Changes successfully", { updatePassword })
+    return Response.json({ updatePassword })
   }
+  return Response.json({})
 
 }

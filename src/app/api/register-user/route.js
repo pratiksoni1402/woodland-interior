@@ -3,7 +3,9 @@ export const revalidate = 0;
 import { prisma } from '@/db';
 import bcrypt from 'bcrypt';
 import { getSessionId } from '@/lib/session';
+import { getSession } from '@/lib/session';
 export async function POST(req) {
+    const sessionEmail =await getSession();
     const session = await getSessionId();
     try {
         const formData = await req.json();

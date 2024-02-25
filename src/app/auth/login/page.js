@@ -34,8 +34,8 @@ const Login = () => {
     <div className='user-login-form bg-[#faf2ec] pb-20'>
       <div className='container'>
         <div className='grid grid-cols-12'>
-          <div className='col-span-3'></div>
-          <div className='col-span-6'>
+          <div className='lg:col-span-3 md:col-span-1 col-span-12'></div>
+          <div className='lg:col-span-6 md:col-span-10 col-span-12'>
             <div className="user-login">
               <Toaster />
               <div className='heading text-center text-2xl text-[#3c2f27] font-crimson py-5'>
@@ -66,7 +66,7 @@ const Login = () => {
             </div>
 
           </div>
-          <div className='col-span-3'></div>
+          <div className='lg:col-span-3 md:col-span-1 col-span-12'></div>
         </div>
 
       </div>

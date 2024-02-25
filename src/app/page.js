@@ -9,14 +9,14 @@ export default function Home() {
     <div className="homepage">
 
       {/* Banner Section */}
-      <section className="banner-wrapper mt-[-75px]">
+      <section className="banner-wrapper md:mt-[-75px] mt-0">
         <div className="content-wrapper relative">
           <div className="banner-title text-white z-[1] xl:text-5xl md:text-[55px] text-2xl">
-            <h1 className="tracking-wide leading-[60px]">Crafted Excellence in Wood:</h1>
+            <h1 className="tracking-wide md:leading-[60px] leading-6">Crafted Excellence in Wood:</h1>
             <h2 className="tracking-wide "> Where Nature Meets Artistry</h2>
           </div>
           <div className="banner w-full">
-          <video src="/uploads/images/homepage/warehouse.mp4" autoPlay loop></video>
+          <video src="/uploads/images/homepage/warehouse.mp4" className='w-full' autoPlay loop></video>
           </div>
         </div>
       </section>
@@ -88,7 +88,7 @@ export default function Home() {
       <section className='custom-service'>
         <div className='description'>
           <div className='tagline md:text-[50px] md:leading-[50px] text-[24px] leading-7'>
-            <span className="font-crimson text-[#faf2ec]">Tailor-made pieces for homes, places and spaces</span>
+            <span className="font-crimson text-[#faf2ec] px-2">Tailor-made pieces for homes, places and spaces</span>
           </div>
           {/* <div className='visit-us'>
             <Link href='/bespoke'>our custom-made service</Link>

@@ -6,7 +6,6 @@ import React, { useEffect } from "react"
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import MobileMenu from "./mobile-menu";
-import AuthButton from "../auth-button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -49,7 +48,7 @@ const Navbar = () => {
     queryFn: () =>
       axios.post('/api/auth-check')
         .then((response) => {
-          console.log("Headerrrrr", response.data.session)
+          
           return response.data.session
         })
   })

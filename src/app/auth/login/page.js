@@ -24,6 +24,19 @@ const Login = () => {
       })
       .catch(error => {
         console.error('Error:', error);
+        toast.error('Invalid Email or Password', {
+          duration: 3000,
+          style: {
+            border: '1px solid #3c2f27',
+            padding: '16px',
+            color: '#faf2ec',
+            backgroundColor: '#3c2f27',
+          },
+          iconTheme: {
+            primary: '#faf2ec',
+            secondary: '#3c2f27',
+          },
+        })
       })
       .finally(() => {
         setLoading(false);

@@ -94,9 +94,9 @@ export default function Product() {
   // End
 
   return (
-    <div className="product-wrapper bg-[#faf2ec] pb-20">
+    <div className="product-wrapper bg-[#faf2ec] pb-20" style={{minHeight:'500px'}}>
       <div className="container">
-        <div className='my-items sm:w-3/4 w-full mx-auto '>
+        <div className='my-items sm:w-3/4 w-full mx-auto  '>
           <Toaster />
           {
             allproducts?.map((product) => (

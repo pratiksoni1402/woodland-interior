@@ -22,6 +22,7 @@ export async function POST(req) {
                 email: formData.email,
                 password: hashedPassword,
                 sessionid: session,
+                session_email: formData.email,
             },
         });
 

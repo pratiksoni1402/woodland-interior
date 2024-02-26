@@ -396,18 +396,21 @@ html{
 
 } */
  .tabbing-actions .swiper .swiper-wrapper .edit-profile{
-  @apply !w-[160px] !mr-0
+  @apply !w-[100px] !mr-0
+}
+.tabbing-actions .swiper .swiper-wrapper .edit-profile div{
+  @apply  !p-0
 }
 
 .tabbing-actions .swiper .swiper-wrapper .my-wishlist{
-  @apply !w-[150px] !mr-0
+  @apply !w-[100px] !mr-2
 } 
 .tabbing-actions .swiper .swiper-wrapper .order-history{
-  @apply !w-[160px] !mr-0
+  @apply !w-[115px] !mr-2
 }
  
 .tabbing-actions .swiper .swiper-wrapper .chng-password{
-  @apply !w-[160px] !mr-0
+  @apply !w-[130px] !mr-2
 }
 .tabbing-actions .swiper .swiper-wrapper .acc-delete{
   @apply !w-[160px] !mr-0

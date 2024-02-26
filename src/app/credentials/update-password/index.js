@@ -28,19 +28,7 @@ export default function Updatepassword() {
       setLoading(true);
       axios.post('/api/update-password', data)
         .then((response) => {
-          toast.success("Password Changed Successfully", {
-            duration: 3000,
-            style: {
-              border: '1px solid #3c2f27',
-              padding: '16px',
-              color: '#faf2ec',
-              backgroundColor: '#3c2f27',
-            },
-            iconTheme: {
-              primary: '#faf2ec',
-              secondary: '#3c2f27',
-            },
-          })
+          toast.success("Password Changed Successfully");
           return response.data.updatePassword
         })
         .catch((error) => {
@@ -55,7 +43,7 @@ export default function Updatepassword() {
 
 
   return (
-    <div className='change-password-form'>
+    <div className='change-password-form' style={{minHeight:'500px'}}>
       <div className='form-wrapper  flex justify-center'>
         <Toaster/>
         <form onSubmit={handleSubmit(onSubmit)} className='w-3/4'>

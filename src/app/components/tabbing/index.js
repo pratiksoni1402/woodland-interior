@@ -67,7 +67,7 @@ export function Tabbing() {
               </TabsList>
             </SwiperSlide>
             <SwiperSlide className="edit-profile">
-              <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
+              <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none p-0">
                 <TabsTrigger value="account" className="edit-profile col-span-2 rounded-none hover:bg-white hover:text-[#3c2f27] ">
                   Edit Profile
                 </TabsTrigger>
@@ -96,7 +96,7 @@ export function Tabbing() {
                 </TabsTrigger>
               </TabsList>
             </SwiperSlide>
-            <SwiperSlide className="manage-addresses">
+            {/* <SwiperSlide className="manage-addresses">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
                 <TabsTrigger value="manage-addresses" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
                   Manage Addresses
@@ -116,7 +116,7 @@ export function Tabbing() {
                   Delete Account
                 </TabsTrigger>
               </TabsList>
-            </SwiperSlide>
+            </SwiperSlide> */}
           </Swiper>
         </div>
         <div className="tab-content flex flex-col justify-center">

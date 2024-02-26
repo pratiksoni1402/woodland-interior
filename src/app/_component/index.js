@@ -9,7 +9,7 @@ export default function Visitshop() {
           Crafted Elegance: Timber Furniture for Timeless Spaces
         </div>
         <div className="visit-store text-center">
-          <Link href="/all-products"  className="font-roboto py-3 px-6 text-sm bg-transparent text-[#54595f] border border-[#3c2f27]">VISIT SHOP</Link>
+          <Link href="/shop/bedroom"  className="font-roboto py-3 px-6 text-sm bg-transparent text-[#54595f] border border-[#3c2f27]">VISIT SHOP</Link>
         </div>
       </section>
     </div>

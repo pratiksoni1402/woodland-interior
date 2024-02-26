@@ -17,7 +17,7 @@ export default function History() {
   const { isPending, data: orders, isError } = useQuery({
     queryKey: ['totalOrders'],
     queryFn: () =>
-      axios.get('/api/order-receipt/past-orders')
+      axios.get('/api/past-orders')
         .then((response) => {
           console.log("Your past orders", response.data.getOrders)
           return response.data.getOrders
@@ -28,7 +28,7 @@ export default function History() {
   })
 
   return (
-    <div className="wishlist-component flex justify-center">
+    <div className="wishlist-component flex justify-center" style={{minHeight:'500px'}}>
       <div className='user-wishlist w-3/4 bg-[#faf2ec]'>
         <div className="grid grid-col-1">
           <div className="col">
@@ -41,7 +41,7 @@ export default function History() {
                       <TableHead className="text-[#3c2f27] text-center font-semibold font-roboto ">Order ID</TableHead>
                       <TableHead className='text-[#3c2f27] text-center font-semibold font-roboto'>Total Amount</TableHead>
                       <TableHead className='text-[#3c2f27] text-center font-semibold font-roboto'>Payment Method</TableHead>
-                      <TableHead className="text-[#3c2f27] text-center font-semibold font-roboto">Order Data</TableHead>
+                      <TableHead className="text-[#3c2f27] text-center font-semibold font-roboto">Order Date & Time</TableHead>
                       <TableHead className="text-[#3c2f27] text-center font-semibold font-roboto">Action</TableHead>
                     </TableRow>
                   </TableHeader>

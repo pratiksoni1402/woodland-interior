@@ -46,7 +46,7 @@ export default function Updatepassword() {
     <div className='change-password-form' style={{minHeight:'500px'}}>
       <div className='form-wrapper  flex justify-center'>
         <Toaster/>
-        <form onSubmit={handleSubmit(onSubmit)} className='w-3/4'>
+        <form onSubmit={handleSubmit(onSubmit)} className='lg:w-3/4 w-full'>
           <input type="password" placeholder="Old Password" {...register("oldPassword", { required: true, maxLength: 20 })} />
           <input type="password" placeholder="New Password" {...register("newPassword", { required: true, maxLength: 20 })} />
           <input type="password" placeholder="Confirm Password" {...register("confirmPassword", { required: true, maxLength: 20 })} />

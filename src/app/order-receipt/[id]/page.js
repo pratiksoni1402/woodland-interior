@@ -15,6 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { MoonLoader } from "react-spinners";
 export default function Orderreceipt({ params }) {
   const { id } = params;
   console.log('kdjhsdfsd', typeof id)
@@ -30,6 +31,13 @@ export default function Orderreceipt({ params }) {
           console.log("Error generated", error)
         })
   })
+
+  if (!receipt) {
+    return (
+      <div className='loading h-screen bg-[#faf2ec] w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
+      </div>
+    )
+  }
   // Assuming receipt.order_date is a string representing the timestamp, e.g., "2024-02-27T10:12:44.830Z"
   const orderDate = receipt?.order_date;
   if (orderDate) {
@@ -40,8 +48,8 @@ export default function Orderreceipt({ params }) {
     var formattedTime = `${date.toLocaleTimeString()}`;
 
   }
-  console.log(formattedDate); // Output: "2/27/2024 3:12:44 PM" (format might vary based on locale)
 
+  console.log(formattedDate); // Output: "2/27/2024 3:12:44 PM" (format might vary based on locale)
   const name = (receipt?.shipping_first_name ?? "") + ' ' + (receipt?.shipping_last_name ?? "");
   const billingName = (receipt?.billing_first_name ?? receipt?.shipping_first_name) + ' ' + (receipt?.billing_last_name ?? receipt?.shipping_last_name);
   const billingAddress = (receipt?.billing_address_one ?? receipt?.shipping_address_one);
@@ -66,21 +74,21 @@ export default function Orderreceipt({ params }) {
                 </div>
                 <div className="col-span-12">
                   <div className="order-status pl-4">
-                    <h2 className="text-2xl font-crimson text-green-950 pb-3">Thanks for your Order, {receipt?.shipping_first_name}</h2>
+                    <h2 className="text-2xl font-crimson text-[#248232] pb-3">Thanks for your Order, {receipt?.shipping_first_name}</h2>
                     <p className="text-sm font-roboto text-[#3c2f27]">Tracking information will be emailed as soon as your order shipped.</p>
                   </div>
                 </div>
                 <div className="col-span-12">
                   <div className="order-number text-sm pl-4 font-roboto text-[#3c2f27]">
                     <span>Order ID:</span>
-                    <span className="font-semibold">{receipt?.id}</span>
+                    <span className="font-semibold pl-1">{receipt?.id}</span>
                   </div>
                 </div>
                 <div className="col-span-12">
                   <div className="address-wrapper pt-4">
                     <div className="grid grid-cols-2 gap-5">
                       <div className="sm:col-span-1 col-span-2">
-                        <div className="shipping-address">
+                        <div className="shipping-address pb-5">
                           <div className="heading  bg-[#3c2f27] pl-4 text-[#faf2ec] text-sm font-roboto mb-2 py-1">
                             Shipping Address
                           </div>
@@ -115,7 +123,7 @@ export default function Orderreceipt({ params }) {
                         </div>
                       </div>
                       <div className="sm:col-span-1 col-span-2">
-                        <div className="billing-address">
+                        <div className="billing-address pb-5">
                           <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
                             Billing Address
                           </div>
@@ -150,7 +158,7 @@ export default function Orderreceipt({ params }) {
                         </div>
                       </div>
                       <div className="sm:col-span-1 col-span-2">
-                        <div className="payment-method">
+                        <div className="payment-method pb-5">
                           <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
                             Payment Method
                           </div>
@@ -160,7 +168,7 @@ export default function Orderreceipt({ params }) {
                         </div>
                       </div>
                       <div className="sm:col-span-1 col-span-2">
-                        <div className="order-date">
+                        <div className="order-date pb-5">
                           <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
                             Order Date & Time
                           </div>
@@ -181,11 +189,11 @@ export default function Orderreceipt({ params }) {
                 <Table className=''>
                   <TableHeader className='bg-[#3c2f27] hover:bg-[#3c2f27]'>
                     <TableRow className=' hover:bg-[#3c2f27]'>
-                      <TableHead className="w-[100px] text-[#faf2ec]">S.No</TableHead>
-                      <TableHead className=' text-[#faf2ec]'>Image</TableHead>
-                      <TableHead className=' text-[#faf2ec]'>Name</TableHead>
-                      <TableHead className=' text-[#faf2ec]'>Quantity</TableHead>
-                      <TableHead className=" text-[#faf2ec] text-right">Amount</TableHead>
+                      <TableHead className="w-[100px] text-[#faf2ec] font-roboto font-semibold text-sm">S.No</TableHead>
+                      <TableHead className=' text-[#faf2ec] font-roboto font-semibold text-sm'>Image</TableHead>
+                      <TableHead className=' text-[#faf2ec] font-roboto font-semibold text-sm'>Name</TableHead>
+                      <TableHead className=' text-[#faf2ec] font-roboto font-semibold text-sm'>Quantity</TableHead>
+                      <TableHead className=" text-[#faf2ec] font-roboto font-semibold text-sm text-right">Amount</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody className='border-b border-[#e5e5e5]'>
@@ -193,13 +201,13 @@ export default function Orderreceipt({ params }) {
 
                       receipt?.orderitems && receipt?.orderitems?.map((products, index) => (
                         <TableRow key={products.id}>
-                          <TableCell className="font-medium">{index + 1}</TableCell>
+                          <TableCell className="text-[#3c2f27] font-roboto font-semibold text-sm ">{index + 1}</TableCell>
                           <TableCell>
                             <Image src={`${PRODUCT_MEDIA_URL}/${products.image}`} alt={products.name} width={75} height={75} />
                           </TableCell>
-                          <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm whitespace-nowrap'>{products?.name}</TableCell>
-                          <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm'>{products?.quantity}</TableCell>
-                          <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm text-right'>{products?.total_price}</TableCell>
+                          <TableCell className='text-[#3c2f27] font-roboto font-semibold text-sm whitespace-nowrap'>{products?.name}</TableCell>
+                          <TableCell className='text-[#3c2f27] font-roboto font-semibold text-sm'>{products?.quantity}</TableCell>
+                          <TableCell className='text-[#3c2f27] font-roboto font-semibold text-sm text-right'>{products?.total_price}</TableCell>
                         </TableRow>
                       ))
                     }

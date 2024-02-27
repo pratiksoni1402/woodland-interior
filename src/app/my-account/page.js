@@ -36,7 +36,7 @@ export default async function MyAccount() {
         <div className="heading text-center border-t font-crimson text-[#3c2f27] text-3xl py-5">
           <h1 className="capitalize">{message}</h1>
         </div>
-        <div className="actions pb-10 sm:w-3/4 w-full m-auto flex justify-between">
+        <div className="actions pb-10 lg:w-3/4 w-full m-auto flex justify-between">
           <div className="activity">
             <div className="font-roboto pb-2 text-[#3c2f27] font-semibold">You can do following things in you account.</div>
             <ul className="list-disc list-inside">
@@ -44,9 +44,6 @@ export default async function MyAccount() {
               <li className="text-sm text-[#3c2f27]">View your wishlist</li>
               <li className="text-sm text-[#3c2f27]">Your Previous Order History</li>
               <li className="text-sm text-[#3c2f27]">Password Updation</li>
-              {/* <li className="text-sm text-[#3c2f27]">Manage Addresses</li>
-              <li className="text-sm text-[#3c2f27]">Browsing History</li>
-              <li className="text-sm text-[#3c2f27]">Account Deletion</li> */}
             </ul>
           </div>
           <div className="logout">
@@ -54,8 +51,8 @@ export default async function MyAccount() {
           </div>
 
         </div>
-        <div className="grid grid-cols-1 gap-5">
-          <div className=" ">
+        <div className="">
+          <div className="account-actions">
             <Tabbing />
           </div>
         </div>

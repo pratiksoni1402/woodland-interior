@@ -4,7 +4,6 @@ import Profile from "@/app/credentials/user-profile";
 import Wishlist from "@/app/credentials/user-wishlist";
 import History from "@/app/credentials/previous-orders";
 import Updatepassword from "@/app/credentials/update-password";
-import { Deleteaccount } from "@/app/credentials/account-deletion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Image from "next/image";
@@ -22,7 +21,7 @@ export function Tabbing() {
   return (
     <div className="tabbing-actions">
       <Tabs defaultValue="account">
-        <div className="flex justify-center h-10 sm:w-3/4 w-full mx-auto pb-0 bg-[#3c2f27]">
+        <div className="flex justify-center h-10 lg:w-3/4 w-full mx-auto pb-0 bg-[#3c2f27]">
 
           <Swiper
             spaceBetween={50}
@@ -96,27 +95,7 @@ export function Tabbing() {
                 </TabsTrigger>
               </TabsList>
             </SwiperSlide>
-            {/* <SwiperSlide className="manage-addresses">
-              <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
-                <TabsTrigger value="manage-addresses" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
-                  Manage Addresses
-                </TabsTrigger>
-              </TabsList>
-            </SwiperSlide>
-            <SwiperSlide className="browsing-history">
-              <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
-                <TabsTrigger value="browsing-history" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
-                  Browsing History
-                </TabsTrigger>
-              </TabsList>
-            </SwiperSlide>
-            <SwiperSlide className="acc-delete">
-              <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
-                <TabsTrigger value="account-deletion" className="acc-delete col-span-2 rounded-none hover:bg-white hover:text-black ">
-                  Delete Account
-                </TabsTrigger>
-              </TabsList>
-            </SwiperSlide> */}
+            
           </Swiper>
         </div>
         <div className="tab-content flex flex-col justify-center">
@@ -140,21 +119,7 @@ export function Tabbing() {
               <Updatepassword />
             </div>
           </TabsContent>
-          <TabsContent value="manage-addresses">
-            <div>
-
-            </div>
-          </TabsContent>
-          <TabsContent value="browsing-history">
-            <div>
-
-            </div>
-          </TabsContent>
-          <TabsContent value="account-deletion">
-            <div>
-              <Deleteaccount />
-            </div>
-          </TabsContent>
+          
         </div>
       </Tabs>
     </div>

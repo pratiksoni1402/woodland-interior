@@ -28,12 +28,12 @@ export default function History() {
   })
 
   return (
-    <div className="wishlist-component sm:flex block sm:justify-center" style={{minHeight:'500px'}}>
-      <div className='user-wishlist w-3/4 bg-[#faf2ec]'>
+    <div className="wishlist-component sm:flex block sm:justify-center overflow-x-auto">
+      <div className='user-wishlist bg-[#faf2ec] lg:w-3/4 w-full'>
         <div className="grid grid-col-1">
-          <div className="col sm:w-full w-[65%]">
+          <div className="col ">
             <div className="order-wrapper">
-              <div className="orders">
+              <div className="orders ">
                 <Table>
                   <TableCaption className='pb-5 '>A list of your Previous Orders.</TableCaption>
                   <TableHeader>

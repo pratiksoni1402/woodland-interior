@@ -63,7 +63,7 @@ export default function Profile() {
     <div className="user-profile-component ">
       <div className="content-wrapper">
         <div className="form-wrapper flex justify-center">
-          <form onSubmit={handleSubmit(onSubmit)} className=' sm:w-3/4 w-full '>
+          <form onSubmit={handleSubmit(onSubmit)} className=' lg:w-3/4 w-full '>
             <input type="text" placeholder="First name" {...register("firstname", { required: true, maxLength: 80 })} />
             <input type="text" placeholder="Last name" {...register("lastname", { required: true, maxLength: 100 })} />
             <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />

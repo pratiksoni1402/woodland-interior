@@ -10,7 +10,7 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "./../../components/ui/label"
 import { useRouter } from "next/navigation";
 import { ClipLoader } from "react-spinners";
-export default function Shippingdetail() {
+export default function Shippingdetail({ params }) {
   const router = useRouter();
   const queryClient = useQueryClient();
   const [showForm, setShowForm] = useState(false);
@@ -43,8 +43,9 @@ export default function Shippingdetail() {
     setAnimation(true);
     axios.post('/api/place-order', data)
       .then((response) => {
-        router.push('/order-receipt')
-        console.log("Order Placed Successfully", response)
+        router.push(`/order-receipt/${response.data.Orders.id}`)
+        console.log("Order Placed Successfully", response.data.Orders.id)
+        return response.data.Orders
       })
       .catch((error) => {
         console.log("Error", error)
@@ -154,15 +155,13 @@ export default function Shippingdetail() {
 
         </div>
         {animation ? (
-          <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#faf2ec] position-relative overflow-hidden'>
-            <ClipLoader color="#3c2f27" size={30} css="border-radius: 50%" />
+          <Button type='submit' className="rounded-none w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">
+            <ClipLoader color="#3c2f27" />
           </Button>
 
         ) : (
-          <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#3c2f27]'>Place Order</Button>
-
-        )
-        }
+          <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]'>Place Order</Button>
+        )}
 
       </form>
     </div>

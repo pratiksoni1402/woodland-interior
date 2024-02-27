@@ -30,6 +30,17 @@ export default function Previousorders({ params }) {
           console.log("Error Occured while fetching detail", error)
         })
   })
+
+  const orderDate = getDetail?.order_date;
+  if (orderDate) {
+    const date = new Date(orderDate);
+
+    // Format the date
+    var formattedDate = `${date.toLocaleDateString()}`;
+    var formattedTime = `${date.toLocaleTimeString()}`;
+
+  }
+
   const name = (getDetail?.shipping_first_name ?? "") + ' ' + (getDetail?.shipping_last_name ?? "");
   const billingName = (getDetail?.billing_first_name ?? getDetail?.shipping_first_name) + ' ' + (getDetail?.billing_last_name ?? getDetail?.shipping_last_name);
   const billingAddress = (getDetail?.billing_address_one ?? getDetail?.shipping_address_one);
@@ -63,14 +74,14 @@ export default function Previousorders({ params }) {
                   <div className="col-span-12">
                     <div className="order-number text-sm pl-4 font-roboto text-[#3c2f27]">
                       <span>Order ID:</span>
-                      <span className="font-semibold">{getDetail?.id}</span>
+                      <span className="font-semibold pl-1">{getDetail?.id}</span>
                     </div>
                   </div>
                   <div className="col-span-12">
                     <div className="address-wrapper pt-4">
                       <div className="grid grid-cols-2 gap-5">
                         <div className="sm:col-span-1 col-span-2">
-                          <div className="shipping-address">
+                          <div className="shipping-address pb-5">
                             <div className="heading  bg-[#3c2f27] pl-4 text-[#faf2ec] text-sm font-roboto mb-2 py-1">
                               Shipping Address
                             </div>
@@ -109,7 +120,7 @@ export default function Previousorders({ params }) {
                           </div>
                         </div>
                         <div className="sm:col-span-1 col-span-2">
-                          <div className="billing-address">
+                          <div className="billing-address pb-5">
                             <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
                               Billing Address
                             </div>
@@ -148,7 +159,7 @@ export default function Previousorders({ params }) {
                           </div>
                         </div>
                         <div className="sm:col-span-1 col-span-2">
-                          <div className="payment-method pb-20">
+                          <div className="payment-method pb-5">
                             <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
                               Payment Method
                             </div>
@@ -158,15 +169,16 @@ export default function Previousorders({ params }) {
                           </div>
                         </div>
                         <div className="sm:col-span-1 col-span-2">
-                          <div className="order-date pb-20">
-                            <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
-                              Order Date & Time
-                            </div>
-                            <div className="name font-roboto text-sm text-[#3c2f27] pl-4">
-                              <span className="value font-semibold pl-1">{getDetail?.order_date}</span>
-                            </div>
+                        <div className="order-date pb-5">
+                          <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
+                            Order Date & Time
+                          </div>
+                          <div className="name font-roboto text-sm text-[#3c2f27] pl-4 mb-5 pb-5">
+                            <div className="value font-semibold pl-1">Date: {formattedDate}</div>
+                            <div className="value font-semibold pl-1">Time: {formattedTime}</div>
                           </div>
                         </div>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -193,7 +205,7 @@ export default function Previousorders({ params }) {
                         <TableCell>
                           <Image src={`${PRODUCT_MEDIA_URL}/${products.image}`} alt={products.name} width={75} height={75} />
                         </TableCell>
-                        <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm'>{products?.name}</TableCell>
+                        <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm whitespace-nowrap'>{products?.name}</TableCell>
                         <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm'>{products?.quantity}</TableCell>
                         <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm'>{products?.total_price}</TableCell>
                       </TableRow>

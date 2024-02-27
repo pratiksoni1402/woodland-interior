@@ -193,7 +193,7 @@ export default function Previousorders({ params }) {
                         <TableCell>
                           <Image src={`${PRODUCT_MEDIA_URL}/${products.image}`} alt={products.name} width={75} height={75} />
                         </TableCell>
-                        <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm'>{products?.name}</TableCell>
+                        <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm whitespace-nowrap'>{products?.name}</TableCell>
                         <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm'>{products?.quantity}</TableCell>
                         <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm'>{products?.total_price}</TableCell>
                       </TableRow>

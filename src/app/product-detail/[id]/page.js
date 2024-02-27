@@ -223,7 +223,7 @@ export default function Detail({ params }) {
             <Toaster />
             <div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-5 col-span-12">
               <div className="left-section">
-                <div className="product-image  relative h-[600px]">
+                <div className="product-image  relative lg:h-[600px] h-[427px]">
                   <LazyImage src={`${PRODUCT_MEDIA_URL}/${detail.image}`} alt={detail.name} width={427} height={427} />
                 </div>
               </div>
@@ -328,11 +328,9 @@ export default function Detail({ params }) {
                   <div className="cart py-3">
                     {
                       adding ? (
-
-                        <div className="flex justify-center items-center">
-                          <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
-                        </div>
-
+                        <Button variant="outline" onClick={() => addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12 uppercase">
+                          <ClipLoader color="#3c2f27" />
+                        </Button>
                       ) : (
 
                         <Button variant="outline" onClick={() => addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12 uppercase">Add To Bag

@@ -19,7 +19,6 @@ const Login = () => {
     setLoading(true);
     axios.post('/api/login-user', data)
       .then(response => {
-        toast.success('Success')
         router.push('/my-account')
       })
       .catch(error => {

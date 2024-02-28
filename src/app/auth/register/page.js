@@ -8,6 +8,7 @@ import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import { UserPlus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { ClipLoader } from 'react-spinners';
 export default function Register() {
   const router = useRouter();
@@ -55,14 +56,18 @@ export default function Register() {
                   <div className='error-occured text-xs text-red-600 font-roboto font-semibold mt-[-10px] mb-[10px]'>{Error}</div>
                   <input type="password" placeholder="Confirm Password" {...register("cnfpassword", { required: true })} />
                   <div className='error-occured text-xs text-red-600 font-roboto font-semibold mt-[-10px] mb-[10px]'>{Error}</div>
+
+                  <div className='login pt-5 font-roboto text-sm text-[#3c2f27] hover:underline font-semibold'>
+                    <Link href='/auth/login'>Back to Log In</Link>
+                  </div>
                   {
                     isLoading ? (
-                      <Button type='submit' className="rounded-none w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">
+                      <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
                         <ClipLoader color="#3c2f27" />
-                      </Button>
+                      </div>
                     ) : (
 
-                      <Button type='submit' className="rounded-none w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">Sign Up <UserPlus /></Button>
+                      <button type='submit' className="w-full p-3 mt-4 mb-3 border hover:border-[#b2937e] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">Signup  <UserPlus /></button>
                     )
                   }
                 </form>

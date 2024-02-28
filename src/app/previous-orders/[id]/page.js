@@ -16,6 +16,7 @@ import axios from "axios";
 import Image from "next/image";
 import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import { MoonLoader } from "react-spinners";
+import { IndianRupee } from "lucide-react";
 export default function Previousorders({ params }) {
 
   const { isPending, data: getDetail, isError } = useQuery({
@@ -168,16 +169,16 @@ export default function Previousorders({ params }) {
                           </div>
                         </div>
                         <div className="sm:col-span-1 col-span-2">
-                        <div className="order-date pb-5">
-                          <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
-                            Order Date & Time
-                          </div>
-                          <div className="name font-roboto text-sm text-[#3c2f27] pl-4 mb-5 pb-5">
-                            <div className="value font-semibold pl-1">Date: {formattedDate}</div>
-                            <div className="value font-semibold pl-1">Time: {formattedTime}</div>
+                          <div className="order-date pb-5">
+                            <div className="heading bg-[#3c2f27] text-[#faf2ec] text-sm font-roboto mb-2 py-1 pl-4">
+                              Order Date & Time
+                            </div>
+                            <div className="name font-roboto text-sm text-[#3c2f27] pl-4 mb-5 pb-5">
+                              <div className="value font-semibold pl-1">Date: {formattedDate}</div>
+                              <div className="value font-semibold pl-1">Time: {formattedTime}</div>
+                            </div>
                           </div>
                         </div>
-                      </div>
                       </div>
                     </div>
                   </div>
@@ -206,7 +207,12 @@ export default function Previousorders({ params }) {
                         </TableCell>
                         <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm whitespace-nowrap'>{products?.name}</TableCell>
                         <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm'>{products?.quantity}</TableCell>
-                        <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm'>{products?.total_price}</TableCell>
+                        <TableCell className='font-roboto text-[#3c2f27] font-semibold text-sm'>
+                          <div className="flex items-center">
+                            <span className=""><IndianRupee width={14} /></span>
+                            <span>{products?.total_price}</span>
+                          </div>
+                        </TableCell>
                       </TableRow>
                     ))
                   }
@@ -214,22 +220,34 @@ export default function Previousorders({ params }) {
               </Table>
             </div>
             <div className="order-item-wrapper bg-white">
-              <div className="calculation px-2 pt-10">
+              <div className="calculation px-2 pt-10 font-roboto text-sm">
                 <div className="sub-total pt-3 flex justify-between px-2 font-roboto text-[#4b4537]">
                   <div>Sub-Total:</div>
-                  <div>{getDetail?.subtotal}</div>
+                  <div className="flex items-center">
+                    <span className=""><IndianRupee width={14}/></span>
+                    <span>{getDetail?.subtotal}</span>
+                  </div>
                 </div>
                 <div className="sub-total flex py-2 justify-between px-2 font-roboto text-[#4b4537]">
                   <div>Central GST:</div>
-                  <div>{getDetail?.tax_cgst}</div>
+                  <div className="flex items-center">
+                    <span className=""><IndianRupee width={14}/></span>
+                    <span>{getDetail?.tax_cgst}</span>
+                  </div>
                 </div>
                 <div className="sub-total flex pb-3 justify-between px-2 font-roboto text-[#4b4537]">
                   <div>State GST:</div>
-                  <div>{getDetail?.tax_sgst}</div>
+                  <div className="flex items-center">
+                    <span className=""><IndianRupee width={14}/></span>
+                    <span>{getDetail?.tax_sgst}</span>
+                  </div>
                 </div>
                 <div className="total-price flex font-semibold pt-3 pb-5 border-t border-[#b2937e] justify-between px-2 font-roboto text-[#4b4537]">
                   <div>Grand Total:</div>
-                  <div>{getDetail?.total}</div>
+                  <div className="flex items-center">
+                    <span className="svg-stroking"><IndianRupee width={14}/></span>
+                    <span>{getDetail?.total}</span>
+                  </div>
                 </div>
               </div>
             </div>

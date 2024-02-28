@@ -1,8 +1,9 @@
 'use client'
-import Image from "next/image"
-import { cn } from "@/lib/utils"
-import Link from "next/link"
-import React, { useEffect } from "react"
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { User } from 'lucide-react';
+import React, { useEffect } from "react";
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import MobileMenu from "./mobile-menu";
@@ -131,9 +132,9 @@ const Navbar = () => {
                   {
                     status ? (
                       <Link href="/my-account">
-                        <Avatar>
-                          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                          <AvatarFallback>CN</AvatarFallback>
+                        <Avatar className='text-[#3c2f27]'>
+                        <User />
+                          {/* <AvatarFallback>CN</AvatarFallback> */}
                         </Avatar>
                       </Link>
                     ) : (

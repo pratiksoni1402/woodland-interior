@@ -921,6 +921,10 @@ textarea:focus {
   margin-bottom: 20px;
 }
 /* End */
+.svg-stroking svg{
+  stroke-width: 3px;
+  
+}
 
 
 /* Upper Footer Styling */

@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
+import { IndianRupee } from "lucide-react";
 export default function History() {
   const { isPending, data: orders, isError } = useQuery({
     queryKey: ['totalOrders'],
@@ -46,10 +46,15 @@ export default function History() {
                   </TableHeader>
                   <TableBody className='bg-white'>
                     {orders?.map((invoice) => (
-                      
+
                       <TableRow key={invoice.invoice}>
                         <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.id}</TableCell>
-                        <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.total}</TableCell>
+                        <TableCell className="text-center text-[#3c2f27] font-roboto">
+                          <div className="flex items-center justify-center">
+                            <span className=""><IndianRupee width={14} /></span>
+                            <span>{invoice?.total}</span>
+                          </div>
+                        </TableCell>
                         <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.payment_mode}</TableCell>
                         <TableCell className="text-center  text-[#3c2f27] font-roboto whitespace-nowrap">{invoice?.order_date}</TableCell>
                         <TableCell className="text-center  text-[#3c2f27] font-roboto">

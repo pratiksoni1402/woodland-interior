@@ -43,24 +43,23 @@ export default function Updatepassword() {
 
 
   return (
-    <div className='change-password-form' style={{minHeight:'500px'}}>
+    <div className='change-password-form' style={{ minHeight: '500px' }}>
       <div className='form-wrapper  flex justify-center'>
-        <Toaster/>
+        <Toaster />
         <form onSubmit={handleSubmit(onSubmit)} className='lg:w-3/4 w-full'>
           <input type="password" placeholder="Old Password" {...register("oldPassword", { required: true, maxLength: 20 })} />
           <input type="password" placeholder="New Password" {...register("newPassword", { required: true, maxLength: 20 })} />
           <input type="password" placeholder="Confirm Password" {...register("confirmPassword", { required: true, maxLength: 20 })} />
           {
             isLoading ? (
-              <Button type='submit' className='w-full uppercase mt-5 mb-10 bg-transparent border-[#3c2f27] border hover:text-[#faf2ec] font-roboto rounded-none bg-[#3c2f27] text-[#faf2ec]'>
-                 <ClipLoader color="#3c2f27" />
-              </Button>
+              <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
+                <ClipLoader color="#3c2f27" />
+              </div>
             ) : (
-              <Button type='submit' className='w-full uppercase mt-5 mb-10 bg-transparent border-[#3c2f27] border font-roboto rounded-none bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] text-[#faf2ec]'>update password</Button>
+
+              <button type='submit' className="w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center">Update Password</button>
             )
           }
-
-
         </form>
       </div>
     </div>

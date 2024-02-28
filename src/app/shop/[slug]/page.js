@@ -19,7 +19,6 @@ export default function Bedroom({ params }) {
     queryFn: () =>
       axios.get(`/api/product-listing?slug=${params.slug}`)
         .then((response) => {
-          console.log(response.data.productlist)
           return response.data.productlist
         })
   })

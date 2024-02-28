@@ -28,7 +28,6 @@ export default function Shippingdetail({ params }) {
     queryFn: () =>
       axios.get('/api/get-countries')
         .then((response) => {
-          console.log(response.data.countriesList)
           return response.data.countriesList
         })
         .catch((error) => {
@@ -44,7 +43,6 @@ export default function Shippingdetail({ params }) {
     axios.post('/api/place-order', data)
       .then((response) => {
         router.push(`/order-receipt/${response.data.Orders.id}`)
-        console.log("Order Placed Successfully", response.data.Orders.id)
         return response.data.Orders
       })
       .catch((error) => {

@@ -9,7 +9,6 @@ export default async function Checkout() {
     const session = await getSession()
 
     if(!session?.user_details){
-        console.log("This is checkout session", session)
         return redirect('/auth/login')
     }
     return (

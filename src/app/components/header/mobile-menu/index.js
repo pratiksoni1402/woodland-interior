@@ -50,6 +50,9 @@ export default function MobileMenu() {
         .then((response) => {
           return response.data.productcount
         })
+        .catch((error) =>{
+          console.log('Error in count', error)
+        })
 
   });
 
@@ -60,6 +63,9 @@ export default function MobileMenu() {
         .then((response) => {
           return response.data.totalcount
         })
+        .catch((error) =>{
+          console.log('Error in count', error)
+        })
   });
 
   const { hasPending, data: status, hasError } = useQuery({
@@ -67,8 +73,10 @@ export default function MobileMenu() {
     queryFn: () =>
       axios.post('/api/auth-check')
         .then((response) => {
-
           return response.data.session
+        })
+        .catch((error) =>{
+          console.log('Error in Login Status', error)
         })
   })
 

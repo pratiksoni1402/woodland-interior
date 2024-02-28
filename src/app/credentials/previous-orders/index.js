@@ -19,7 +19,6 @@ export default function History() {
     queryFn: () =>
       axios.get('/api/past-orders')
         .then((response) => {
-          console.log("Your past orders", response.data.getOrders)
           return response.data.getOrders
         })
         .catch((error) => {

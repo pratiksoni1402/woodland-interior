@@ -9,7 +9,6 @@ import { redirect } from "next/navigation";
 export default async function MyAccount() {
 
   const session = await getSession();
-  console.log('This is session from my-account', session.user_details?.email)
   if (!session?.user_details) {
     return redirect('/auth/login')
   }

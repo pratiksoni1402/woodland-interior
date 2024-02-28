@@ -23,7 +23,6 @@ export default function Previousorders({ params }) {
     queryFn: () =>
       axios.get(`/api/previous-orders/${params['id']}`)
         .then((response) => {
-          console.log("This is previous order receipt", response.data.orderDetail)
           return response.data.orderDetail
         })
         .catch((error) => {

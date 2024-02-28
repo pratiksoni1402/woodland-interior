@@ -32,7 +32,7 @@ export default function Shoppingbag() {
           grandtotal += productlist.products.price * productlist.quantity,
           taxamount = (grandtotal * 9) / 100,
           subtotal = grandtotal - (taxamount * 2),
-          
+
           <div className="product border-t border-[#b2937e] py-5 px-3" key={productlist.id}>
             <div className="grid grid-cols-12 gap-2">
               <div className="col-span-3">
@@ -57,7 +57,7 @@ export default function Shoppingbag() {
               </div>
               <div className="col-span-2">
                 <div className="flex pricing text-xs text-right items-center justify-end text-[#3c2f27] font-semibold ">
-                  <div className="inline"><IndianRupee width={14}/></div>
+                  <div className="inline"><IndianRupee width={14} /></div>
                   <div>
                     {productlist.products.price * productlist.quantity}
                   </div>
@@ -78,20 +78,32 @@ export default function Shoppingbag() {
             <div className="calculation p-4">
               <div className="sub-total flex pb-2 justify-between font-roboto text-[#4b4537] text-sm">
                 <div>Sub-Total:</div>
-                <div>{subtotal}</div>
+                <div className="flex items-center">
+                  <span className=""><IndianRupee width={14} /></span>
+                  <span>{subtotal}</span>
+                </div>
               </div>
               <div className="sub-total flex pb-2 justify-between font-roboto text-[#4b4537] text-sm">
                 <div>Central GST:</div>
-                <div>{taxamount}</div>
+                <div className="flex items-center">
+                  <span className=""><IndianRupee width={14} /></span>
+                  <span>{taxamount}</span>
+                </div>
               </div>
               <div className="sub-total flex pb-2 justify-between font-roboto text-[#4b4537] text-sm">
                 <div>State GST:</div>
-                <div>{taxamount}</div>
+                <div className="flex items-center">
+                  <span className=""><IndianRupee width={14} /></span>
+                  <span>{taxamount}</span>
+                </div>
               </div>
             </div>
-            <div className="total-price flex font-semibold border-t border-[#b2937e] justify-between p-4  font-roboto text-[#4b4537]">
+            <div className="total-price flex font-semibold border-t border-[#b2937e] justify-between p-4 text-sm  font-roboto text-[#4b4537]">
               <div>Total:</div>
-              <div>{grandtotal}</div>
+              <div className="flex items-center">
+                <span className="svg-stroking"><IndianRupee width={14} /></span>
+                <span>{grandtotal}</span>
+              </div>
             </div>
           </div>
         </div>

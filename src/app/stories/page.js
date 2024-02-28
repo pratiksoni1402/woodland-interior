@@ -3,7 +3,7 @@ export const revalidate = 0;
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-// import './style.css'
+
 export default function Stories() {
   return (
     <div className='stories'>
@@ -40,7 +40,7 @@ export default function Stories() {
             Browse by category
           </div>
           <div className='categories'>
-            <div className='grid grid-cols-12 gap-5'>
+            <div className='grid grid-cols-12 sm:gap-5 gap-2'>
               <div className='xl:col-span-2 lg:col-span-2 md:col-span-4 sm:col-span-4 col-span-12'>
                 <div className='wrapper'>
                   <Link href='/'>Sustainability </Link>
@@ -82,7 +82,7 @@ export default function Stories() {
               <div className='product-wrapper py-4'>
                 <div className='image'>
                   <Image src='/uploads/images/stories/backyard.jpg' alt='image'  width={500} height={500}  />
-                  <div className='case-studies'>CASE STUDIES</div>
+                  <div className='case-studies text-[#3c2f27]'>CASE STUDIES</div>
                 </div>
                 <div className='content-wrapper'>
                   <div className='description'>
@@ -228,8 +228,8 @@ export default function Stories() {
       {/* Banner Section */}
       <section className='study-wooden-table'>
         <div className='hero-text d-block'>
-          <h1>Our Journal</h1>
-          <span>Discover the latest stories from inside the workshop.</span>
+          <h1 className='md:text-4xl text-2xl'>Our Journal</h1>
+          <span className='md:text-4xl text-xl'>Discover the latest stories from inside the workshop.</span>
           <div className='button'>
             {/* <button type='button'>FIND OUT MORE</button> */}
           </div>

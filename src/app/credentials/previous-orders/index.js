@@ -19,7 +19,6 @@ export default function History() {
     queryFn: () =>
       axios.get('/api/past-orders')
         .then((response) => {
-          console.log("Your past orders", response.data.getOrders)
           return response.data.getOrders
         })
         .catch((error) => {
@@ -47,11 +46,12 @@ export default function History() {
                   </TableHeader>
                   <TableBody className='bg-white'>
                     {orders?.map((invoice) => (
+                      
                       <TableRow key={invoice.invoice}>
                         <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.id}</TableCell>
                         <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.total}</TableCell>
                         <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.payment_mode}</TableCell>
-                        <TableCell className="text-center  text-[#3c2f27] font-roboto whitespace-nowrap">{invoice.order_date}</TableCell>
+                        <TableCell className="text-center  text-[#3c2f27] font-roboto whitespace-nowrap">{invoice?.order_date}</TableCell>
                         <TableCell className="text-center  text-[#3c2f27] font-roboto">
                           <Link href={`/previous-orders/${invoice.id}`} className="border border-[#3c2f27] bg-[#3c2f27] p-2 text-[#faf2ec] font-crimson text-sm hover:text-[#3c2f27] hover:bg-white whitespace-nowrap">View Detail</Link>
                         </TableCell>

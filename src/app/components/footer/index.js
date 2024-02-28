@@ -10,10 +10,10 @@ const footer = () => {
           <div className='upper-footer-wrapper grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-10 lg:justify-between md:justify-evenly'>
             <div className='flex items-center text-[#3c2f27] text-sm font-roboto'>
               <ul>
+                <li><Link href='/'>Home</Link></li>
                 <li><Link href='/stories'>Stories</Link></li>
                 <li><Link href='/about-us'>About</Link></li>
                 <li><Link href='/contact'>Contact</Link></li>
-                <li><Link href='/'>Home</Link></li>
               </ul>
             </div>
             <div className='flex items-center text-[#3c2f27] text-sm font-roboto'>
@@ -33,7 +33,7 @@ const footer = () => {
               </ul>
             </div>
             <div className='flex lg:justify-end sm:justify-center lg:col-span-1 sm:col-span-3'>
-              <Image src={Logo} alt='Woodland Interiors' />
+              <Image src={Logo} alt='Woodland Interiors' priority={true}/>
             </div>
           </div>
         </div>

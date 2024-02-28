@@ -10,24 +10,12 @@ const ContactForm = () => {
     const onSubmit = (data) =>{
         axios.post('/api/contactus', data)
         .then(response => {
-            notification();
+            toast.success("Query Submitted Successfully")
           })
         .catch(error =>{
             console.log("Not successfull", error)
-            dataerror();
+            toast.error("Error while submitting form")
         })
-    }
-
-    //Display Toast when form submitted successfully
-    const notification = () =>{
-        toast.success("Query Submitted Successfully", {
-            duration: 3000
-        })
-    }
-
-    //Display Toast when form submission failed
-    const dataerror = () =>{
-        toast.error("Error while submitting form")
     }
 
     return (

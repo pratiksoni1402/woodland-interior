@@ -31,6 +31,9 @@ const Navbar = () => {
         .then((response) => {
           return response.data.productcount
         })
+        .catch((error) =>{
+          console.log('Error in count', error)
+        })
 
   });
 
@@ -41,6 +44,9 @@ const Navbar = () => {
         .then((response) => {
           return response.data.totalcount
         })
+        .catch((error) =>{
+          console.log('Error in count', error)
+        })
   });
 
   const { hasPending, data:status, hasError } = useQuery({
@@ -48,8 +54,10 @@ const Navbar = () => {
     queryFn: () =>
       axios.post('/api/auth-check')
         .then((response) => {
-          
           return response.data.session
+        })
+        .catch((error) =>{
+          console.log('Error Login status ', error)
         })
   })
 

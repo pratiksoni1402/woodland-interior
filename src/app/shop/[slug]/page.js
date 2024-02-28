@@ -19,7 +19,6 @@ export default function Bedroom({ params }) {
     queryFn: () =>
       axios.get(`/api/product-listing?slug=${params.slug}`)
         .then((response) => {
-          console.log(response.data.productlist)
           return response.data.productlist
         })
   })
@@ -44,7 +43,7 @@ export default function Bedroom({ params }) {
                 <div className="md:col-span-8 sm:col-span-12 col-span-12 md:order-1 sm:order-2 order-2">
                   <div className="content-wrapper h-full flex items-center">
                     <div>
-                      <div className="title font-crimson text-[#3c2f27] font-medium text-4xl md:py-4 py-2">
+                      <div className="title font-crimson text-[#3c2f27] font-medium sm:text-4xl text-xl md:py-4 py-2">
                         <h1>{bannerinfo.heading}</h1>
                       </div>
                       <div className="description">
@@ -96,7 +95,7 @@ export default function Bedroom({ params }) {
               allproducts && allproducts.map((category) => (
                 category.products && category.products.map((product) => (
                   <Link href={`/product-detail/${product.id}`} key={product.id} className="my-4 group ">
-                    <div className="product-image overflow-hidden relative sm:h-[327px] h-[227px]">
+                    <div className="product-image overflow-hidden relative sm:h-[327px] h-[200px]">
                       <LazyImage src={`${PRODUCT_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300 sm:w-[427px] sm:h-[427px] w-[227px] h-[227px]" />
                     </div>
                     <div className="detail text-center text-sm text-[#3c2f27] font-roboto group-hover:text-[#3c2f27] group-hover:font-bold transition duration-150">

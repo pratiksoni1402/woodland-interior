@@ -14,7 +14,6 @@ export default function Shoppingbag() {
     queryFn: () =>
       axios.get('/api/cart-items/get-data')
         .then((response) => {
-          console.log("Checkout page", response.data.cartdata)
           return response.data.cartdata
 
         })

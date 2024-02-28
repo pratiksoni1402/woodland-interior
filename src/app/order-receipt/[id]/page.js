@@ -24,7 +24,6 @@ export default function Orderreceipt({ params }) {
     queryFn: () =>
       axios.post(`/api/order-receipt/${params['id']}`)
         .then((response) => {
-          console.log("Record Fetched Successfuly", response.data.orderReceipt)
           return response.data.orderReceipt
         })
         .catch((error) => {

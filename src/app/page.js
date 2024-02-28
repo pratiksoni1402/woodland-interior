@@ -97,7 +97,7 @@ export default function Home() {
       <section className='custom-service'>
         <div className='description'>
           <div className='tagline md:text-[50px] md:leading-[50px] text-[24px] leading-7'>
-            <span className="font-crimson text-[#faf2ec] px-2">Tailor-made pieces for homes, places and spaces</span>
+            <span className="font-crimson text-[#faf2ec] px-2 md:text-4xl text-2xl">Tailor-made pieces for homes, places and spaces</span>
           </div>
           {/* <div className='visit-us'>
             <Link href='/bespoke'>our custom-made service</Link>

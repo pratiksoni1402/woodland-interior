@@ -58,7 +58,6 @@ export default function Product() {
     setItemDelte(id);
     axios.post('/api/wishlist-items/delete-item', { id })
       .then((response) => {
-        console.log('Product deleted successfully', response.data.deleteitem)
         queryClient.invalidateQueries('productlist');
       })
       .catch((error) => {

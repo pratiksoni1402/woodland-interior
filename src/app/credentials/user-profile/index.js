@@ -5,11 +5,13 @@ import { Button } from './../../components/ui/button';
 import axios from 'axios';
 import toast, { Toast, Toaster } from 'react-hot-toast';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { ClipLoader } from 'react-spinners';
 export default function Profile() {
+  const [isLoading, setLoading] = useState(false);
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const queryClient = useQueryClient();
   // Get Countries
-  const { isPending, data: countries, error } = useQuery({
+  const { isPending, data:countries, error } = useQuery({
     queryKey: ['list'],
     queryFn: () =>
       axios.get('/api/get-countries')
@@ -46,14 +48,30 @@ export default function Profile() {
 
   //Update user profile 
   const onSubmit = (data) => {
+    setLoading(true);
     axios.put('/api/customer-profile', data)
       .then((response) => {
-        toast.success("Your Profile updated successfully");
+        toast.success("Profile Updated", {
+          duration: 3000,
+        style: {
+          border: '1px solid #3c2f27',
+          padding: '16px',
+          color: '#faf2ec',
+          backgroundColor: '#3c2f27',
+        },
+        iconTheme: {
+          primary: '#faf2ec',
+          secondary: '#3c2f27',
+        },
+        });
         queryClient.invalidateQueries('profiledata')
       })
       .catch((error) => {
         console.log("Error occured", error)
         toast.error("Error Occured while updating your profile");
+      })
+      .finally(() =>{
+        setLoading(false);
       })
   }
   // End
@@ -62,6 +80,7 @@ export default function Profile() {
   return (
     <div className="user-profile-component ">
       <div className="content-wrapper">
+        <Toaster/>
         <div className="form-wrapper flex justify-center">
           <form onSubmit={handleSubmit(onSubmit)} className=' lg:w-3/4 w-full '>
             <input type="text" placeholder="First name" {...register("firstname", { required: true, maxLength: 80 })} />
@@ -88,8 +107,16 @@ export default function Profile() {
               <input type="text" placeholder="Phonenumber" {...register("phonenumber", { required: true })} />
             </div>
             <div className='text-center py-8'>
-              <Button type='submit'  className="w-full border border-[#3c2f27] bg-transparent text-[#3c2f27 rounded-none font-roboto hover:bg-[#3c2f27] hover:text-[#faf2ec]">UPDATE PROFILE</Button>
-              <Toaster />
+            {
+                    isLoading ? (
+                      <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
+                        <ClipLoader color="#3c2f27" />
+                      </div>
+                    ) : (
+
+                      <button type='submit' className="w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center">Update Profile</button>
+                    )
+                  }
             </div>
           </form>
         </div>

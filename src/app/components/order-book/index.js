@@ -18,8 +18,10 @@ import {
   AlertDialogTrigger,
 } from "./../ui/alert-dialog";
 import toast from "react-hot-toast";
+import { MoonLoader } from "react-spinners";
 import { useState } from "react";
 import { ClipLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
 import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 export default function Cart() {
   let totalPrice = 0;
@@ -31,6 +33,8 @@ export default function Cart() {
   const [descreaseLoader, setDecreaseLoader] = useState(null);
   const [towishlist, setToWishlist] = useState(null);
   const queryClient = useQueryClient();
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter();
 
   //Get All Products from Cart Table
   const { isPending, data: totalproducts, error } = useQuery({
@@ -54,6 +58,13 @@ export default function Cart() {
         <div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] text-[#faf2ec] mt-5 border border-[#3c2f27]">
           <Link href='/shop/bedroom'>SHOP NOW</Link>
         </div>
+      </div>
+    )
+  }
+
+  if (!totalproducts){
+    return(
+      <div className='loading h-screen bg-[#faf2ec] w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
       </div>
     )
   }
@@ -116,7 +127,19 @@ export default function Cart() {
           setProductLoading(false)
         })
     } else {
-      toast.error("Only 10 Prodcuts are allowed to buy")
+      toast.error("Only 10 Prodcuts are allowed to buy", {
+        duration: 3000,
+        style: {
+          border: '1px solid #3c2f27',
+          padding: '16px',
+          color: '#faf2ec',
+          backgroundColor: '#3c2f27',
+        },
+        iconTheme: {
+          primary: '#faf2ec',
+          secondary: '#3c2f27',
+        },
+      })
     }
   }
   // End
@@ -140,9 +163,28 @@ export default function Cart() {
           setDecreaseLoader(false)
         })
     } else {
-      toast.error('Minimum quantity should be 1')
+      toast.error('Minimum quantity should be 1', {
+        duration: 3000,
+        style: {
+          border: '1px solid #3c2f27',
+          padding: '16px',
+          color: '#faf2ec',
+          backgroundColor: '#3c2f27',
+        },
+        iconTheme: {
+          primary: '#faf2ec',
+          secondary: '#3c2f27',
+        },
+      })
     }
   }
+  const handleClick = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(true);
+      router.push('/checkout');
+    }, 1000); // Show loader for 1 second
+  };
   return (
     <div className="cart-items bg-[#faf2ec] py-20">
       <div className="container">
@@ -199,7 +241,7 @@ export default function Cart() {
                           </div>
                           <div className="xl:col-span-2 lg:col-span-2 md:col-span-2 col-span-12">
                             <div className='amount flex md:justify-end justify-start'>
-                              <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee width={20} /></div>
+                              <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee width={17} /></div>
                               <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.products.price * product.quantity}</div>
                             </div>
                             <div className="actions flex flex-col justify-end md:pt-20 pt-5">
@@ -276,7 +318,16 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="place-order text-center w-full ">
-                  <Link href='/checkout' className="w-full block p-3 bg-[#b2937e] rounded-none text-[#3c2f27] hover:text-white hover:bg-[#3c2f27]">Proceed To Checkout</Link>
+                  {
+                    isLoading ? (
+                      <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
+                        <ClipLoader color="#3c2f27" />
+                      </div>
+                    ) : (
+
+                      <button type='submit' onClick={handleClick} className="w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center">Proceed to Checkout</button>
+                    )
+                  }
                 </div>
               </div>
             </div>

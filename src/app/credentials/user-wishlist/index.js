@@ -118,7 +118,7 @@ export default function Product() {
                   </div>
                   <div className="xl:col-span-2 lg:col-span-2 sm:col-span-2 col-span-12 sm:block flex justify-between items-start">
                     <div className='amount flex justify-end items-center'>
-                      <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee width={20} /></div>
+                      <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee width={17} /></div>
                       <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.products.price}</div>
                     </div>
                     <div className="actions flex flex-col justify-end sm:pt-20 pt-0">

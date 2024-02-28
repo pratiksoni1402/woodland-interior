@@ -299,7 +299,7 @@ export default function Detail({ params }) {
 
                             ) : (
 
-                              <Button variant="outline" onClick={() => removefromwishlist(wishlistid.id)} className="text-sm w-full hover:text-[#3c2f27] bg-[#3c2f27] text-[#faf2ec] hover:bg-transparent border-[#3c2f27]  rounded-none h-12 uppercase">Remove from Wishlist
+                              <Button variant="outline" onClick={() => removefromwishlist(wishlistid.id)} className="text-sm w-full hover:text-[#3c2f27] bg-[#3c2f27] text-[#faf2ec] hover:bg-transparent border-[#3c2f27]  rounded-none h-12 ">Remove from Wishlist
                               </Button>
                             )
                           }
@@ -314,7 +314,7 @@ export default function Detail({ params }) {
                               </Button>
                             ) : (
 
-                              <Button variant="outline" onClick={() => addtowishlist(detail.id, detail.sku)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12 uppercase">Add To Wishlist
+                              <Button variant="outline" onClick={() => addtowishlist(detail.id, detail.sku)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12 ">Add To Wishlist
                               </Button>
                             )
                           }
@@ -333,7 +333,7 @@ export default function Detail({ params }) {
                         </Button>
                       ) : (
 
-                        <Button variant="outline" onClick={() => addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12 uppercase">Add To Bag
+                        <Button variant="outline" onClick={() => addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12 ">Add To Bag
                         </Button>
                       )
                     }

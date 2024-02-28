@@ -16,6 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { MoonLoader } from "react-spinners";
+import { IndianRupee } from "lucide-react";
 export default function Orderreceipt({ params }) {
   const { id } = params;
   console.log('kdjhsdfsd', typeof id)
@@ -206,7 +207,10 @@ export default function Orderreceipt({ params }) {
                           </TableCell>
                           <TableCell className='text-[#3c2f27] font-roboto font-semibold text-sm whitespace-nowrap'>{products?.name}</TableCell>
                           <TableCell className='text-[#3c2f27] font-roboto font-semibold text-sm'>{products?.quantity}</TableCell>
-                          <TableCell className='text-[#3c2f27] font-roboto font-semibold text-sm text-right'>{products?.total_price}</TableCell>
+                          <TableCell className='text-[#3c2f27] font-roboto font-semibold text-sm text-right'><div className="flex items-center">
+                            <span className=""><IndianRupee width={14} /></span>
+                            <span>{products?.total_price}</span>
+                          </div></TableCell>
                         </TableRow>
                       ))
                     }
@@ -218,19 +222,31 @@ export default function Orderreceipt({ params }) {
               <div className="calculation px-2 text-sm">
                 <div className="sub-total pt-3 flex justify-between px-2 font-roboto text-[#4b4537]">
                   <div>Sub-Total:</div>
-                  <div>{receipt?.subtotal}</div>
+                  <div className="flex items-center">
+                    <span className=""><IndianRupee width={14} /></span>
+                    <span>{receipt?.subtotal}</span>
+                  </div>
                 </div>
                 <div className="sub-total flex py-2 justify-between px-2 font-roboto text-[#4b4537]">
                   <div>Central GST:</div>
-                  <div>{receipt?.tax_cgst}</div>
+                  <div className="flex items-center">
+                    <span className=""><IndianRupee width={14} /></span>
+                    <span>{receipt?.tax_cgst}</span>
+                  </div>
                 </div>
                 <div className="sub-total flex pb-3 justify-between px-2 font-roboto text-[#4b4537]">
                   <div>State GST:</div>
-                  <div>{receipt?.tax_sgst}</div>
+                  <div className="flex items-center">
+                    <span className=""><IndianRupee width={14} /></span>
+                    <span>{receipt?.tax_sgst}</span>
+                  </div>
                 </div>
                 <div className="total-price flex font-semibold pt-3 pb-5 border-t border-[#b2937e] justify-between px-2 font-roboto text-[#4b4537]">
                   <div>Grand Total:</div>
-                  <div>{receipt?.total}</div>
+                  <div className="flex items-center">
+                    <span className="svg-stroking"><IndianRupee width={14} /></span>
+                    <span>{receipt?.total}</span>
+                  </div>
                 </div>
               </div>
             </div>

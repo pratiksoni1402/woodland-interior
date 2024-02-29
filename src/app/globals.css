@@ -235,7 +235,7 @@ html{
 
 /* Custom Service */
 .homepage .custom-service {
-  position: relative;
+  @apply relative
 
 }
 
@@ -254,23 +254,13 @@ html{
 }
 
 .homepage .custom-service .description .visit-us a {
-  font-family: minion-pro;
-  font-size: 15px;
-  letter-spacing: 0.4px;
-  background: transparent;
-  color: white;
-  padding: 12px 24px;
-  border: 1px solid white;
-  text-decoration: none;
-  text-transform: uppercase;
-  margin-top: 15px;
-  display: inline-block;
+  @apply font-roboto text-base tracking-normal bg-transparent text-white py-3 px-6 border border-white no-underline uppercase mt-4 inline-block
+
 }
 
 .homepage .custom-service .description .visit-us a:hover {
-  color: black;
-  background-color: white;
-  transition: .6s;
+  @apply text-[#3c2f27] bg-[#faf2ec]
+  
 }
 
 /* End */
@@ -390,10 +380,7 @@ html{
 /* End */
 
 /* Tabbing Swiper */
-/* .tabbing-actions .swiper .swiper-wrapper{
-  transform: translate3d(-104px, 0px, 0px);
 
-} */
  .tabbing-actions .swiper .swiper-wrapper .edit-profile{
   @apply !w-[100px] !mr-0
 }
@@ -421,20 +408,7 @@ html{
   @apply !w-[160px] !mr-0
 
 } 
-/* .tabbing-actions .swiper .swiper-wrapper .swiper-slide:nth-child(4){
-  @apply !w-[121px] !mr-0
-} */
 
-/* .tabbing-actions .swiper .swiper-wrapper .swiper-slide:nth-child(5){
-  @apply !w-[145px] !mr-0
-}
-.tabbing-actions .swiper .swiper-wrapper .swiper-slide{
-  @apply !w-[105px] !mr-0
-}
-.tabbing-actions .swiper .swiper-wrapper .swiper-slide-prev{
-  @apply !w-[105px] !mr-0
-}
-*/
 .tabbing-actions .swiper .swiper-wrapper .swiper-slide-active{
   @apply !w-[0px] !mr-0
 }
@@ -533,8 +507,7 @@ textarea:focus {
 }
 
 .stories .banner-image-wrapper .banner-text-wrapper .banner-text {
-  /* position: absolute; */
-  /* bottom: 8%; */
+
   @apply absolute bottom-[8%]
 }
 
@@ -717,7 +690,7 @@ textarea:focus {
 
 /*  */
 .about-us .banner-image-wrapper {
-  position: relative;
+ @apply relative
 }
 .about-us .banner-image-wrapper .hero-image{
   filter: brightness(60%);

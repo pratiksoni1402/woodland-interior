@@ -95,13 +95,13 @@ export default function Bedroom({ params }) {
               allproducts && allproducts.map((category) => (
                 category.products && category.products.map((product) => (
                   <Link href={`/product-detail/${product.id}`} key={product.id} className="my-4 group ">
-                    <div className="product-image overflow-hidden relative sm:h-[327px] h-[200px]">
+                    <div className="product-image overflow-hidden relative sm:h-[300px] h-[200px]">
                       <LazyImage src={`${PRODUCT_MEDIA_URL}/${product.image}`} alt={product.name} width={427} height={427} className=" group-hover:scale-125 transition-transform duration-300 sm:w-[427px] sm:h-[427px] w-[227px] h-[227px]" />
                     </div>
                     <div className="detail text-center text-sm text-[#3c2f27] font-roboto group-hover:text-[#3c2f27] group-hover:font-bold transition duration-150">
                       <div className="p-2 sm:text-sm text-xs">{product.name}</div>
                       <div className="pricing font-bold flex justify-center items-center">
-                        <div className=""><IndianRupee width={18} /></div>
+                        <div className="svg-stroking"><IndianRupee size={14} /></div>
                         <div>{product.price}</div>
                       </div>
                     </div>
@@ -110,14 +110,6 @@ export default function Bedroom({ params }) {
               ))
             }
           </div>
-          {/* <div>
-            <h1>This is mock drill</h1>
-            {
-              allproducts && allproducts.map((items) => (
-                console.log('This id drilling',items.heading)
-              ))
-            }
-          </div> */}
         </div>
       </div>
     </div>

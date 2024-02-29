@@ -21,7 +21,7 @@ export function Tabbing() {
   return (
     <div className="tabbing-actions">
       <Tabs defaultValue="account">
-        <div className="flex justify-center h-10 lg:w-3/4 w-full mx-auto pb-0 bg-[#3c2f27]">
+        <div className="flex justify-center h-10 lg:w-3/4 w-full mx-auto pb-0 bg-[#3c2f27] sticky top-[75px]">
 
           <Swiper
             spaceBetween={50}

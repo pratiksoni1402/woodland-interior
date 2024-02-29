@@ -62,8 +62,8 @@ export default function Cart() {
     )
   }
 
-  if (!totalproducts){
-    return(
+  if (!totalproducts) {
+    return (
       <div className='loading h-screen bg-[#faf2ec] w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
       </div>
     )
@@ -188,11 +188,11 @@ export default function Cart() {
   return (
     <div className="cart-items bg-[#faf2ec] py-20">
       <div className="container">
-        <div className="heading pb-3 text-4xl font-crimson border-b border-[#b2937e]  text-[#3c2f27]">
-          Items in your cart
-        </div>
         <div className="grid grid-cols-12 gap-5">
           <div className="lg:col-span-9 col-span-12">
+        <div className="heading pb-3 sm:text-4xl text-xl font-crimson border-b border-[#b2937e]  text-[#3c2f27]">
+          Items in your cart
+        </div>
             <div className="product-wrapper">
               <div className="grid grid-col-1">
                 <div className="col">
@@ -215,7 +215,7 @@ export default function Cart() {
                               <div className='description text-[#4b4537] font-roboto text-sm pb-3'>
                                 {product.products.description}
                               </div>
-                              <div className='constant  text-[#4b4537] font-roboto text-sm pb-3'>SKU: <span className='variation' >{product.sku}</span></div>
+                              <div className='constant  text-[#4b4537] font-roboto text-sm pb-3'>SKU: <span className='variation font-semibold'>{product.sku}</span></div>
                             </div>
                             <div className="quantity py-3 ">
                               <div className="pb-1 text-xs text-[#3c2f27] font-roboto">Quantity:</div>
@@ -228,7 +228,7 @@ export default function Cart() {
                                     <Button variant="outline" onClick={() => increasequantity(product.quantity, product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">+</Button>
                                   )
                                 }
-                                <span className="px-7 border-[#3c2f27] border h-10 flex items-center border-r-0 border-l-0">{product.quantity}</span>
+                                <span className="px-7 border-[#3c2f27] border h-10 text-[#3c2f27] font-semibold text-sm flex items-center border-r-0 border-l-0">{product.quantity}</span>
                                 {
                                   descreaseLoader === product.id ? (
                                     <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"><ClipLoader color="#3c2f27" size={20} /></Button>
@@ -240,8 +240,8 @@ export default function Cart() {
                             </div>
                           </div>
                           <div className="xl:col-span-2 lg:col-span-2 md:col-span-2 col-span-12">
-                            <div className='amount flex md:justify-end justify-start'>
-                              <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee width={17} /></div>
+                            <div className='amount flex md:justify-end justify-start text-sm items-center'>
+                              <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee size={14} /></div>
                               <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.products.price * product.quantity}</div>
                             </div>
                             <div className="actions flex flex-col justify-end md:pt-20 pt-5">
@@ -300,21 +300,33 @@ export default function Cart() {
                   Summary
                 </div>
                 <div className="calculation">
-                  <div className="sub-total pt-3 flex justify-between px-2 font-roboto text-[#4b4537]">
+                  <div className="sub-total pt-3 flex justify-between px-2 text-sm font-roboto text-[#4b4537]">
                     <div>Sub-Total:</div>
-                    <div>{subtotal}</div>
+                    <div className="flex items-center">
+                  <span className=""><IndianRupee width={14} /></span>
+                  <span>{subtotal}</span>
+                </div>
                   </div>
-                  <div className="sub-total flex py-2 justify-between px-2 font-roboto text-[#4b4537]">
+                  <div className="sub-total flex py-2 justify-between px-2 text-sm font-roboto text-[#4b4537]">
                     <div>Central GST:</div>
-                    <div>{taxamount}</div>
+                    <div className="flex items-center">
+                      <span className=""><IndianRupee width={14} /></span>
+                      <span>{taxamount}</span>
+                    </div>
                   </div>
-                  <div className="sub-total flex pb-3 justify-between px-2 font-roboto text-[#4b4537]">
+                  <div className="sub-total flex pb-3 justify-between text-sm px-2 font-roboto text-[#4b4537]">
                     <div>State GST:</div>
-                    <div>{taxamount}</div>
+                    <div className="flex items-center">
+                      <span className=""><IndianRupee width={14} /></span>
+                      <span>{taxamount}</span>
+                    </div>
                   </div>
-                  <div className="total-price flex font-semibold pt-3 pb-5 border-t border-[#b2937e] justify-between px-2 font-roboto text-[#4b4537]">
+                  <div className="total-price flex font-semibold pt-3 pb-5 border-t border-[#b2937e] justify-between px-2 font-roboto text-[#4b4537] text-sm">
                     <div>Total:</div>
-                    <div>{totalPrice}</div>
+                    <div className="flex items-center">
+                      <span className="svg-strking"><IndianRupee width={14} /></span>
+                      <span>{totalPrice}</span>
+                    </div>
                   </div>
                 </div>
                 <div className="place-order text-center w-full ">

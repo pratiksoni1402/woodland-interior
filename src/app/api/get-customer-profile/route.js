@@ -10,6 +10,6 @@ export async function GET(){
             session_email: sessionEmail.user_details?.email,
         },
     })
-    // console.log("Reading from customer profile", {getprofile})
+    console.log("Reading from customer profile", {getprofile})
     return Response.json({getprofile})
 }

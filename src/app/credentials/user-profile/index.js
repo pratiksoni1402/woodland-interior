@@ -16,6 +16,7 @@ export default function Profile() {
     queryFn: () =>
       axios.get('/api/get-countries')
         .then((response) => {
+          
           return response.data.countriesList
         })
         .catch((error) => {
@@ -30,6 +31,7 @@ export default function Profile() {
     queryFn: () =>
       axios.get('/api/get-customer-profile')
         .then((response) => {
+          console.log('Response from Profile Page', response.data.getprofile)
           setValue('firstname', response.data.getprofile.firstname)
           setValue('lastname', response.data.getprofile.lastname)
           setValue('email', response.data.getprofile.email)
@@ -42,6 +44,10 @@ export default function Profile() {
           setValue('phonenumber', response.data.getprofile.phonenumber)
 
           return response.data.getprofile
+        })
+        .catch((error) =>{
+          console.log('Error fetching profile', error)
+          throw error;
         })
   })
   //End

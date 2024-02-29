@@ -22,7 +22,7 @@ export async function PUT(request) {
                 country: formdata.country,
                 state: formdata.state,
                 city: formdata.city,
-                phonenumber: parseInt(formdata.phonenumber),
+                phonenumber: formdata.phonenumber,
                 pincode: parseInt(formdata.pincode),
             },
         }

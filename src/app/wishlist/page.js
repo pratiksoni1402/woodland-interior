@@ -9,6 +9,7 @@ import Link from "next/link";
 import { PRODUCT_MEDIA_URL } from "../_lib/constants/images";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
+import { MoonLoader } from "react-spinners";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -44,10 +45,17 @@ export default function Product() {
   if (allproducts?.length == 0) {
     return (
       <div className="w-full h-screen bg-[#faf2ec] mt-[-70px] flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
-        <h1>Your Wishlist is empty</h1>
+        <h1 className="sm:text-4xl text-2x">Your Wishlist is empty</h1>
         <div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] text-[#faf2ec] mt-5 border border-[#3c2f27]">
           <Link href='/shop/bedroom'>SHOP NOW</Link>
         </div>
+      </div>
+    )
+  }
+
+  if (!allproducts) {
+    return (
+      <div className='loading h-screen bg-[#faf2ec] w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
       </div>
     )
   }
@@ -95,9 +103,9 @@ export default function Product() {
   // End
 
   return (
-    <div className="product-wrapper bg-[#faf2ec] pb-20">
+    <div className="product-wrapper bg-[#faf2ec] pt-5 pb-10">
       <div className="container">
-        <div className="heading font-crimson text-4xl text-[#3c2f27] pt-10 pb-5  border-t">
+        <div className="heading font-crimson sm:text-4xl text-xl text-[#3c2f27] pb-5">
           <h1>Your Wishlist</h1>
         </div>
         <div className='my-items border-t border-[#b2937e] '>
@@ -117,13 +125,13 @@ export default function Product() {
                       <div className='description text-[#4b4537] font-roboto text-sm pb-3'>
                         {product.products.description}
                       </div>
-                      <div className='constant  text-[#4b4537] font-roboto text-sm pb-3'>SKU: <span className='variation' >{product.sku}</span></div>
+                      <div className='constant  text-[#4b4537] font-roboto text-sm pb-3'>SKU: <span className='variation font-semibold'>{product.sku}</span></div>
                     </div>
 
                   </div>
                   <div className="xl:col-span-2 lg:col-span-2 sm:col-span-2 col-span-12 sm:block flex justify-between items-start">
-                    <div className='amount flex justify-end items-center'>
-                      <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee width={17} /></div>
+                    <div className='amount flex justify-end items-center text-sm'>
+                      <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee size={14} /></div>
                       <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.products.price}</div>
                     </div>
                     <div className="actions flex flex-col justify-end sm:pt-20 pt-0">

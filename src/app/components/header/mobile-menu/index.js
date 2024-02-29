@@ -125,7 +125,7 @@ export default function MobileMenu() {
             </SheetTrigger>
             <SheetContent className='bg-[#faf2ec]'>
               <SheetHeader className='border-b border-[#3c2f27]'>
-                <SheetTitle className='font-crimson text-2xl text-[#3c2f27] pt-4 pb-2'>Woodland Interiors</SheetTitle>
+                <SheetTitle className='font-crimson sm:text-2xl text-lg text-[#3c2f27] pt-4 pb-2'>Woodland Interiors</SheetTitle>
               </SheetHeader>
               <div className="sheet-body pt-10 font-crimson border-b">
                 <div className='nav-list'>

@@ -15,8 +15,12 @@ export default async function MyAccount() {
 
   function getGreeting() {
     const now = new Date();
-    const currentHour = now.getHours();
-
+  
+    // Setting time zone to Indian Standard Time (IST)
+    const ISTTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Kolkata"}));
+  
+    const currentHour = ISTTime.getHours();
+  
     if (currentHour >= 4 && currentHour < 12) {
       return "Good morning";
     } else if (currentHour >= 12 && currentHour < 17) {
@@ -25,19 +29,21 @@ export default async function MyAccount() {
       return "Good evening";
     }
   }
-
+  // End
+  
   const greeting = getGreeting();
   const message = `${greeting}, ${session.user_details.firstname}`;
+  
 
   return (
     <div className="my-account-page bg-[#faf2ec] h-full">
       <div className="wrapper container">
         <div className="heading text-center border-t font-crimson text-[#3c2f27] text-3xl py-5">
-          <h1 className="capitalize">{message}</h1>
+          <h1 className="capitalize md:text-4xl text-base">{message}</h1>
         </div>
-        <div className="actions pb-10 lg:w-3/4 w-full m-auto flex justify-between">
-          <div className="activity">
-            <div className="font-roboto pb-2 text-[#3c2f27] font-semibold">You can do following things in you account.</div>
+        <div className="actions pb-10 lg:w-3/4 w-full m-auto flex sm:flex-row flex-col justify-between">
+          <div className="activity sm:order-1 order-2">
+            <div className="font-roboto pb-2 text-[#3c2f27] font-semibold text-sm">You can do following things in you account.</div>
             <ul className="list-disc list-inside">
               <li className="text-sm text-[#3c2f27]">Edit your Profile</li>
               <li className="text-sm text-[#3c2f27]">View your wishlist</li>
@@ -45,7 +51,7 @@ export default async function MyAccount() {
               <li className="text-sm text-[#3c2f27]">Password Updation</li>
             </ul>
           </div>
-          <div className="logout">
+          <div className="logout sm:order-2 order-1 text-right">
             <Logoutbutton />
           </div>
 

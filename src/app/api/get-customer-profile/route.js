@@ -1,9 +1,8 @@
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
-import { getSessionId } from "@/lib/session";
+import prisma from "@/db";
 import { getSession } from "@/lib/session";
 export async function GET(){
-    const session = await getSessionId();
     const sessionEmail = await getSession();
     const getprofile = await prisma.customerprofile.findFirst({
         where:{

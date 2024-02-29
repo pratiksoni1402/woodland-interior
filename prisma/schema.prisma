@@ -20,14 +20,14 @@ model Homepage {
 
 // New user registration Model
 model Credentials {
-  id        Int      @id @default(autoincrement())
-  firstname String?  @db.VarChar(20)
-  lastname  String?  @db.VarChar(20)
-  email     String?  @db.VarChar(50)
-  password  String   @db.VarChar(500)
-  sessionid String   @db.VarChar(200)
-  session_email String? @db.VarChar(100)
-  createdon DateTime @default(now())
+  id            Int      @id @default(autoincrement())
+  firstname     String?  @db.VarChar(20)
+  lastname      String?  @db.VarChar(20)
+  email         String?  @db.VarChar(50)
+  password      String   @db.VarChar(500)
+  sessionid     String   @db.VarChar(200)
+  session_email String?  @db.VarChar(100)
+  createdon     DateTime @default(now())
 
   @@map("customers")
 }
@@ -76,7 +76,7 @@ model Customerprofile {
   country        String  @db.VarChar(50)
   state          String  @db.VarChar(50)
   city           String  @db.VarChar(40)
-  phonenumber    Int     @db.Int
+  phonenumber    String  @db.VarChar(20)
   pincode        Int     @db.Int
   sessionid      String  @db.VarChar(200)
   session_email  String  @db.VarChar(100)

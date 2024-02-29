@@ -228,10 +228,9 @@ export default function Stories() {
       {/* Banner Section */}
       <section className='study-wooden-table'>
         <div className='hero-text d-block'>
-          <h1 className='md:text-4xl text-2xl'>Our Journal</h1>
-          <span className='md:text-4xl text-xl'>Discover the latest stories from inside the workshop.</span>
+          <h1 className='lg:text-4xl md:text-2xl text-xl'>Our Journal</h1>
+          <span className='lg:text-4xl md:text-2xl text-xl'>Discover the latest stories from inside the workshop.</span>
           <div className='button'>
-            {/* <button type='button'>FIND OUT MORE</button> */}
           </div>
         </div>
         <div className='hero-image d-block' style={{
@@ -259,7 +258,7 @@ export default function Stories() {
               <Image src='/uploads/images/stories/round-table.jpg' alt='image'  width={1000} height={500} />
             </div>
           </div>
-          <div className='right-section'>
+          <div className='right-section lg:pt-0 pt-10'>
             <div className='wrapper'>
               <div className='heading'>
                 Keep up to date

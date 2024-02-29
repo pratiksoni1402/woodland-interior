@@ -295,7 +295,7 @@ html{
 }
 
 .user-profile-component .content-wrapper .form-wrapper form input:focus{
-  @apply rounded-none border
+  @apply rounded-none border border-[#3c2f27]
 }
 
 .user-profile-component .content-wrapper .form-wrapper form select{
@@ -311,23 +311,13 @@ html{
 /* End */
 
 /* Password Reset  */
-.change-password-form .form-wrapper form input{
- @apply w-full my-[10px] h-12 px-3 outline-0 border border-[#d3d3d3] 
+.change-password-form .form-wrapper form input[type="password"]{
+ @apply w-full my-[10px] h-12 px-3 border outline-0 
 
 }
 
-.change-password-form .form-wrapper form input:focus{
-  @apply outline-1 outline-[#3c2f27] border border-transparent
-}
-
-.change-password-form .form-wrapper form select{
-  @apply h-12 my-3 border border-gray-500 bg-white px-3
-
-}
-
-.change-password-form .form-wrapper form select:focus{
-  @apply outline-1 outline-[#3c2f27] border border-[#3c2f27]
-
+.change-password-form .form-wrapper form input[type="password"]:focus{
+  @apply border border-[#3c2f27] outline-0
 }
 /* End */
 
@@ -422,7 +412,7 @@ html{
 /* Contact Form */
 .contact-page .content-wrapper .form-wrapper form input,
 textarea {
-  @apply w-full py-2 my-3 mx-0 h-10 border rounded-none py-0 outline-0 px-3
+  @apply w-full py-2 my-3 mx-0 h-10 border rounded-none outline-0 px-3
     
 }
 

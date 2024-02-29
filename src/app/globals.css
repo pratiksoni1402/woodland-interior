@@ -290,12 +290,12 @@ html{
 
 /* User Profile Component */
 .user-profile-component .content-wrapper .form-wrapper form input{
-  @apply w-full my-[10px] h-12 px-3 outline-0 border border-[#d3d3d3] rounded-none 
+  @apply w-full my-[10px] h-12 px-3 outline-0 border rounded-none 
   
 }
 
 .user-profile-component .content-wrapper .form-wrapper form input:focus{
-  @apply outline-1 outline-[#3c2f27] rounded-none border border-transparent
+  @apply rounded-none border
 }
 
 .user-profile-component .content-wrapper .form-wrapper form select{
@@ -304,7 +304,7 @@ html{
 }
 
 .user-profile-component .content-wrapper .form-wrapper form select:focus{
-  @apply outline-1 outline-[#3c2f27] border border-[#3c2f27]
+  @apply  border border-[#3c2f27]
 
 }
 
@@ -422,50 +422,53 @@ html{
 /* Contact Form */
 .contact-page .content-wrapper .form-wrapper form input,
 textarea {
-  @apply w-full my-3 mx-0 h-10 border border-[#3c2f27] rounded-none py-0 outline-0 border-l-0 border-r-0 border-t-0
+  @apply w-full py-2 my-3 mx-0 h-10 border rounded-none py-0 outline-0 px-3
     
 }
 
 .contact-page .content-wrapper .form-wrapper form input:focus,
 textarea:focus {
-    @apply border border-[#3c2f27] border-l-0 border-r-0 border-t-0
+    @apply border border-[#3c2f27] px-3
 }
 /* End */
 
 /* User Register  Form */
 .user-registration .register-form form input{
-  @apply w-full py-3 mb-3 border border-[#54595f] rounded-none  border-r-0 border-l-0 border-t-0
+  @apply w-full py-3 mb-3 border rounded-none px-3 outline-none bg-white
 }
 
 .user-registration .register-form form input:focus{
-  @apply outline-0 border border-[#3c2f27] duration-300  border-r-0 border-l-0 border-t-0
+  @apply outline-none border border-[#3c2f27] duration-300 px-3 bg-white
 
 }
 /* End */
 
 /* Login Form */
 .user-login .login-form form input{
-  @apply  w-full py-3 mb-3 border border-[#54595f] rounded-none border-r-0 border-l-0 border-t-0
+  @apply  w-full py-3 mb-3 border rounded-none px-3 outline-none bg-white
 }
 
 .user-login .login-form form input:focus{
- @apply outline-0 border border-[#3c2f27] duration-300 border-r-0 border-l-0 border-t-0 bg-white
+ @apply outline-none border border-[#3c2f27] duration-300 px-3 bg-white
 }
 /* End */
 
 /* Shipping Details Form */
 
 .shipping-details-form form input[type=text]{
-  @apply w-full p-3 mb-3 border border-[#54595f] rounded-none outline-none shadow-none
+  @apply w-full p-3 mb-3 border  rounded-none outline-none shadow-none
+}
+.shipping-details-form form input[type=text]:focus{
+  @apply border  border-[#3c2f27]
 }
 
 .shipping-details-form form select{
-  @apply h-12 mb-3 border border-gray-500 bg-white px-3 rounded-none outline-none shadow-none
+  @apply h-12 mb-3 border  bg-white px-3 rounded-none outline-none shadow-none
   
 }
 
 .shipping-details-form  form select:focus{
-  @apply outline-0 outline-[#3c2f27] border border-[#3c2f27]
+  @apply  border  border-[#3c2f27]
 
 }
 .shipping-details-form .data-\[state\=checked\]\:bg-primary[data-state=checked] {

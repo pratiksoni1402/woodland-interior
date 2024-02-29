@@ -186,14 +186,14 @@ export default function Cart() {
     }, 1000); // Show loader for 1 second
   };
   return (
-    <div className="cart-items bg-[#faf2ec] py-20">
+    <div className="cart-items bg-[#faf2ec] pt-5 pb-10">
       <div className="container">
         <div className="grid grid-cols-12 gap-5">
           <div className="lg:col-span-9 col-span-12">
+            <div className="product-wrapper">
         <div className="heading pb-3 sm:text-4xl text-xl font-crimson border-b border-[#b2937e]  text-[#3c2f27]">
           Items in your cart
         </div>
-            <div className="product-wrapper">
               <div className="grid grid-col-1">
                 <div className="col">
                   <div className='my-items'>
@@ -294,7 +294,7 @@ export default function Cart() {
             </div>
           </div>
           <div className="lg:col-span-3 col-span-12">
-            <div className="order-summary-wrapper sticky top-20">
+            <div className="order-summary-wrapper sticky top-20 mt-[53px]">
               <div className="wrapper border border-[#b2937e] p-4">
                 <div className="heading font-roboto border-b border-[#b2937e] text-center py-5 text-[#3c2f27] font-semibold">
                   Summary

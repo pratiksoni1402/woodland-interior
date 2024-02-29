@@ -103,9 +103,9 @@ export default function Product() {
   // End
 
   return (
-    <div className="product-wrapper bg-[#faf2ec] pb-20">
+    <div className="product-wrapper bg-[#faf2ec] pt-5 pb-10">
       <div className="container">
-        <div className="heading font-crimson sm:text-4xl text-xl text-[#3c2f27] pt-10 pb-5  border-t">
+        <div className="heading font-crimson sm:text-4xl text-xl text-[#3c2f27] pb-5">
           <h1>Your Wishlist</h1>
         </div>
         <div className='my-items border-t border-[#b2937e] '>

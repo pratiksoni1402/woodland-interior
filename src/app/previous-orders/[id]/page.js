@@ -193,7 +193,7 @@ export default function Previousorders({ params }) {
                     <TableHead className=' text-[#faf2ec]'>Image</TableHead>
                     <TableHead className=' text-[#faf2ec]'>Name</TableHead>
                     <TableHead className=' text-[#faf2ec]'>Quantity</TableHead>
-                    <TableHead className="text-right text-[#faf2ec]">Amount</TableHead>
+                    <TableHead className=" text-[#faf2ec]">Amount</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody className='border-b border-[#e5e5e5]'>

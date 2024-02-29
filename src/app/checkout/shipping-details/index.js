@@ -153,9 +153,9 @@ export default function Shippingdetail({ params }) {
 
         </div>
         {animation ? (
-          <Button type='submit' className="rounded-none w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">
+          <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
             <ClipLoader color="#3c2f27" />
-          </Button>
+          </div>
 
         ) : (
           <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]'>Place Order</Button>

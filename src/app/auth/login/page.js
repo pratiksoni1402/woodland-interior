@@ -52,7 +52,6 @@ const Login = () => {
               <Toaster />
               <div className='heading text-center text-2xl text-[#3c2f27] font-crimson py-5'>
                 <h1>Login</h1>
-                <p className='text-base'>Old Customer? Sign in into your account.</p>
               </div>
               <div className='login-form border-[#3c2f27] border bg-white'>
                 <form onSubmit={handleSubmit(onSubmit)} className='m-5 bg-white'>
@@ -71,6 +70,7 @@ const Login = () => {
                   }
 
                 </form>
+
                 <div className='mt-16 mx-5'>
                   <Link href='/auth/register' className='w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center' >New User? Sign up here. </Link>
                 </div>

@@ -32,7 +32,7 @@ const Navbar = () => {
         .then((response) => {
           return response.data.productcount
         })
-        .catch((error) =>{
+        .catch((error) => {
           console.log('Error in count', error)
         })
 
@@ -45,19 +45,19 @@ const Navbar = () => {
         .then((response) => {
           return response.data.totalcount
         })
-        .catch((error) =>{
+        .catch((error) => {
           console.log('Error in count', error)
         })
   });
 
-  const { hasPending, data:status, hasError } = useQuery({
+  const { hasPending, data: status, hasError } = useQuery({
     queryKey: ['loginstatus'],
     queryFn: () =>
       axios.post('/api/auth-check')
         .then((response) => {
           return response.data.session
         })
-        .catch((error) =>{
+        .catch((error) => {
           console.log('Error Login status ', error)
         })
   })
@@ -67,7 +67,9 @@ const Navbar = () => {
 
       <div className=" container navbar-wrapper flex justify-between items-center ">
         <div className="logo">
-          <Image src="/uploads/images/logos/logo.png" alt="logo" width={208} height={30} />
+          <Link href='/'>
+            <Image src="/uploads/images/logos/logo.png" alt="logo" width={208} height={30} />
+          </Link>
         </div>
         <div className="menu lg:block md:hidden sm:hidden hidden">
           <NavigationMenu>
@@ -133,7 +135,7 @@ const Navbar = () => {
                     status ? (
                       <Link href="/my-account">
                         <Avatar className='text-[#3c2f27]'>
-                        <User />
+                          <User />
                           {/* <AvatarFallback>CN</AvatarFallback> */}
                         </Avatar>
                       </Link>

@@ -321,11 +321,11 @@ export default function Cart() {
                   {
                     isLoading ? (
                       <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
-                        <ClipLoader color="#3c2f27" />
+                        <ClipLoader color="#3c2f27" size={18} />
                       </div>
                     ) : (
 
-                      <button type='submit' onClick={handleClick} className="w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center">Proceed to Checkout</button>
+                      <Button type='submit' onClick={handleClick} className="w-full border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent rounded-none hover:text-[#3c2f27] text-[#faf2ec] block text-center">Proceed to Checkout</Button>
                     )
                   }
                 </div>

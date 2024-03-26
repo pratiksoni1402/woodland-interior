@@ -30,7 +30,7 @@ export default function Aboutus() {
           <div className="grid grid-cols-12">
             <div className="md:col-span-6 sm:col-span-4 col-span-12">
               <div className="content-wrapper">
-                <span>From our home, to your home</span>
+                <span className="font-crimson block">From our home, to your home</span>
               </div>
             </div>
             <div className="md:col-span-6 sm:col-span-4 col-span-12">

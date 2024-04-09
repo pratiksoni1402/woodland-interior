@@ -7,16 +7,16 @@ export async function PUT(request) {
     const sessionMail = await getSession();
     console.log('This is session Email', sessionMail.user_details?.email)
     const session = await getSessionId();
-    const formdata = await request.json() 
-    let profile = await prisma.customerprofile.updateMany(
+    const formdata = await request.json()
+    let profile = await prisma.credentials.updateMany(
         {
-            where:{
-                session_email: sessionMail.user_details?.email,    
+            where: {
+                session_email: sessionMail.user_details?.email,
             },
-            data:{
+            data: {
                 firstname: formdata.firstname,
                 lastname: formdata.lastname,
-                email: formdata.email,
+                // email: formdata.email,
                 addresslineone: formdata.addresslineone,
                 addresslinetwo: formdata.addresslinetwo,
                 country: formdata.country,
@@ -27,6 +27,6 @@ export async function PUT(request) {
             },
         }
     )
-    console.log("Hello from customer profile", {profile})
-    return Response.json({profile})
+    console.log("Hello from customer profile", { profile })
+    return Response.json({ profile })
 }

@@ -7,6 +7,8 @@ import { getSession } from "@/lib/session";
 export async function POST(request) {
   const sessionEmail = await getSession();
   const requestBody = await request.json();
+  let fnStatus = true
+  let message = {}
 
   // Get password from database
   const readPassword = await prisma.credentials.findFirst({
@@ -20,9 +22,10 @@ export async function POST(request) {
   const passwordMatch = await bcrypt.compare(requestBody.oldPassword, readPassword.password);
   console.log('old Password and password match', passwordMatch)
 
+
   // If passwords don't match
   if (!passwordMatch) {
-    return Response.json("Old password is incorrect");
+    return Response.json({message:"Old password is incorrect"});
   }
   // End
 
@@ -42,8 +45,8 @@ export async function POST(request) {
         password: hashedPassword,
       },
     });
-    console.log("Password Changes successfully", { updatePassword });
-    return Response.json({ updatePassword })
+    console.log({message:"Password Changed successfully"} );
+    return Response.json({messageSuccess:"Password Changed successfully"} )
     // End
   }
   return Response.json({})

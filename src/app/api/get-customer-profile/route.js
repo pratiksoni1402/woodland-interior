@@ -4,7 +4,7 @@ import prisma from "@/db";
 import { getSession } from "@/lib/session";
 export async function GET(){
     const sessionEmail = await getSession();
-    const getprofile = await prisma.customerprofile.findFirst({
+    const getprofile = await prisma.credentials.findFirst({
         where:{
             session_email: sessionEmail.user_details?.email,
         },

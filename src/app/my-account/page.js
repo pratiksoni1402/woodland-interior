@@ -51,7 +51,7 @@ export default async function MyAccount() {
               <li className="text-sm text-[#3c2f27]">Password Updation</li>
             </ul>
           </div>
-          <div className="logout sm:order-2 order-1 text-right">
+          <div className="logout sm:order-2 order-1 text-right text-white">
             <Logoutbutton />
           </div>
 

@@ -11,11 +11,11 @@ export default function Updatepassword() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
     if (data.newPassword !== data.confirmPassword) {
-      toast.error("Password and Confirm Password should be same", {
+      toast.error("Password and Confirm Password must be same", {
         duration: 3000,
         style: {
           border: '1px solid #3c2f27',
-          padding: '16px',
+          padding: '8px',
           color: '#faf2ec',
           backgroundColor: '#3c2f27',
         },
@@ -28,7 +28,36 @@ export default function Updatepassword() {
       setLoading(true);
       axios.post('/api/update-password', data)
         .then((response) => {
-          toast.success("Password Changed Successfully");
+          if (response.data.messageSuccess) {
+            toast.success(response.data.messageSuccess, {
+              duration: 3000,
+              style: {
+                border: '1px solid #3c2f27',
+                padding: '8px',
+                color: '#faf2ec',
+                backgroundColor: '#3c2f27',
+              },
+              iconTheme: {
+                primary: '#faf2ec',
+                secondary: '#3c2f27',
+              },
+            })
+          } else if (response.data.message) {
+            toast.error(response.data.message, {
+              duration: 3000,
+              style: {
+                border: '1px solid #3c2f27',
+                padding: '8px',
+                color: '#faf2ec',
+                backgroundColor: '#3c2f27',
+              },
+              iconTheme: {
+                primary: '#faf2ec',
+                secondary: '#3c2f27',
+              },
+            })
+          }
+          // toast.success(response.data.message);
           return response.data.updatePassword
         })
         .catch((error) => {

@@ -11,12 +11,12 @@ export default function Profile() {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const queryClient = useQueryClient();
   // Get Countries
-  const { isPending, data:countries, error } = useQuery({
+  const { isPending, data: countries, error } = useQuery({
     queryKey: ['list'],
     queryFn: () =>
       axios.get('/api/get-countries')
         .then((response) => {
-          
+
           return response.data.countriesList
         })
         .catch((error) => {
@@ -45,7 +45,7 @@ export default function Profile() {
 
           return response.data.getprofile
         })
-        .catch((error) =>{
+        .catch((error) => {
           console.log('Error fetching profile', error)
           throw error;
         })
@@ -59,16 +59,16 @@ export default function Profile() {
       .then((response) => {
         toast.success("Profile Updated", {
           duration: 3000,
-        style: {
-          border: '1px solid #3c2f27',
-          padding: '16px',
-          color: '#faf2ec',
-          backgroundColor: '#3c2f27',
-        },
-        iconTheme: {
-          primary: '#faf2ec',
-          secondary: '#3c2f27',
-        },
+          style: {
+            border: '1px solid #3c2f27',
+            padding: '16px',
+            color: '#faf2ec',
+            backgroundColor: '#3c2f27',
+          },
+          iconTheme: {
+            primary: '#faf2ec',
+            secondary: '#3c2f27',
+          },
         });
         queryClient.invalidateQueries('profiledata')
       })
@@ -76,7 +76,7 @@ export default function Profile() {
         console.log("Error occured", error)
         toast.error("Error Occured while updating your profile");
       })
-      .finally(() =>{
+      .finally(() => {
         setLoading(false);
       })
   }
@@ -86,12 +86,12 @@ export default function Profile() {
   return (
     <div className="user-profile-component ">
       <div className="content-wrapper">
-        <Toaster/>
+        <Toaster />
         <div className="form-wrapper flex justify-center">
           <form onSubmit={handleSubmit(onSubmit)} className=' lg:w-3/4 w-full '>
             <input type="text" placeholder="First name" {...register("firstname", { required: true, maxLength: 80 })} />
             <input type="text" placeholder="Last name" {...register("lastname", { required: true, maxLength: 100 })} />
-            <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+            {/* <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} disabled={true} /> */}
             <input type="text" placeholder="Address Line 1" {...register("addresslineone", { required: true })} />
             <input type="text" placeholder="Address Line 2" {...register("addresslinetwo", {})} />
             <div className='grid sm:grid-cols-3 grid-cols-1 gap-3'>
@@ -113,16 +113,16 @@ export default function Profile() {
               <input type="text" placeholder="Phonenumber" {...register("phonenumber", { required: true })} />
             </div>
             <div className='text-center py-8'>
-            {
-                    isLoading ? (
-                      <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
-                        <ClipLoader color="#3c2f27" />
-                      </div>
-                    ) : (
+              {
+                isLoading ? (
+                  <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
+                    <ClipLoader color="#3c2f27" />
+                  </div>
+                ) : (
 
-                      <button type='submit' className="w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center">Update Profile</button>
-                    )
-                  }
+                  <button type='submit' className="w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center">Update Profile</button>
+                )
+              }
             </div>
           </form>
         </div>

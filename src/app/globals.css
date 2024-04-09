@@ -276,7 +276,7 @@ html{
 
 /* User Profile Component */
 .user-profile-component .content-wrapper .form-wrapper form input{
-  @apply w-full my-[10px] h-12 px-3 outline-0 border rounded-none 
+  @apply w-full my-[10px] h-12 px-3 outline-0 border rounded-none font-roboto
   
 }
 

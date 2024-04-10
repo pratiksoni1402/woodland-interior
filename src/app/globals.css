@@ -398,7 +398,7 @@ html{
 /* Contact Form */
 .contact-page .content-wrapper .form-wrapper form input,
 textarea {
-  @apply w-full py-2 my-3 mx-0 h-10 border rounded-none outline-0 px-3
+  @apply w-full py-2 my-3 mx-0 h-10 border rounded-none outline-0 px-3 font-roboto
     
 }
 
@@ -410,7 +410,7 @@ textarea:focus {
 
 /* User Register  Form */
 .user-registration .register-form form input{
-  @apply w-full py-3 mb-3 border rounded-none px-3 outline-none bg-white
+  @apply w-full py-3 mb-3 border rounded-none px-3 outline-none bg-white font-roboto
 }
 
 .user-registration .register-form form input:focus{
@@ -421,7 +421,7 @@ textarea:focus {
 
 /* Login Form */
 .user-login .login-form form input{
-  @apply  w-full py-3 mb-3 border rounded-none px-3 outline-none bg-white
+  @apply  w-full py-3 mb-3 border rounded-none px-3 outline-none bg-white font-roboto
 }
 
 .user-login .login-form form input:focus{
@@ -432,14 +432,14 @@ textarea:focus {
 /* Shipping Details Form */
 
 .shipping-details-form form input[type=text]{
-  @apply w-full p-3 mb-3 border  rounded-none outline-none shadow-none
+  @apply w-full p-3 mb-3 border  rounded-none outline-none shadow-none font-roboto
 }
 .shipping-details-form form input[type=text]:focus{
   @apply border  border-[#3c2f27]
 }
 
 .shipping-details-form form select{
-  @apply h-12 mb-3 border  bg-white px-3 rounded-none outline-none shadow-none
+  @apply h-12 mb-3 border  bg-white px-3 rounded-none outline-none shadow-none font-roboto
   
 }
 
@@ -465,7 +465,9 @@ textarea:focus {
 
 
 /* End */
-
+.change-password-form .form-wrapper form input{
+  @apply font-roboto
+}
 .change-password-form .form-wrapper form input:focus{
   @apply outline-1 outline-[#3c2f27] rounded-none
 }
@@ -635,7 +637,7 @@ textarea:focus {
 }
 
 .stories .newsletter .content-wrapper .right-section .wrapper .subscribe input[type="text"] {
-  @apply h-9 w-full m-0 mb-5
+  @apply h-9 w-full m-0 mb-5 font-roboto
 
 }
 

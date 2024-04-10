@@ -2,7 +2,6 @@
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import React, { useEffect, useState } from 'react';
-import { Button } from './../../components/ui/button';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
@@ -21,7 +20,23 @@ export default function Register() {
       setLoading(true);
       axios.post('/api/register-user', data)
         .then(response => {
-          router.push('/my-account')
+          if (response.data.successMessage) {
+            router.push('/my-account')
+          } else if (response.data.errorMessage) {
+            toast.error(response.data.errorMessage, {
+              duration: 3000,
+              style: {
+                border: '1px solid #3c2f27',
+                padding: '8px',
+                color: '#faf2ec',
+                backgroundColor: '#3c2f27',
+              },
+              iconTheme: {
+                primary: '#faf2ec',
+                secondary: '#3c2f27',
+              },
+            })
+          }
         })
         .catch(error => {
           console.error('Registration error', error);
@@ -32,10 +47,7 @@ export default function Register() {
     } else {
       setError("Password and Confirm Password does not match")
     }
-
   };
-
-
   return (
     <div className='user-registration-form-wrapper bg-[#faf2ec] pb-12'>
       <div className='container'>

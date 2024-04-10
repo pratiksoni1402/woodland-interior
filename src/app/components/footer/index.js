@@ -14,6 +14,8 @@ const footer = () => {
                 <li><Link href='/stories'>Stories</Link></li>
                 <li><Link href='/about-us'>About</Link></li>
                 <li><Link href='/contact'>Contact</Link></li>
+                <li><Link href='/change-logs'>Change Logs</Link></li>
+
               </ul>
             </div>
             <div className='flex items-center text-[#3c2f27] text-sm font-roboto'>
@@ -52,6 +54,7 @@ const footer = () => {
             </div>
           </div>
         </div>
+        
       </footer>
     </div>
   );

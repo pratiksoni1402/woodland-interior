@@ -60,7 +60,6 @@ export default function Product() {
     )
   }
 
-
   // Delete product from wishlist table
   const deleteproduct = (id) => {
     setItemDelte(id);
@@ -77,8 +76,6 @@ export default function Product() {
       })
   }
   // End
-
-
 
   // Move product to Cart Table
   const movetocart = (productid, quantity, sku, id) => {

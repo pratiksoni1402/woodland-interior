@@ -12,7 +12,7 @@ export default function Logoutbutton() {
     setLoading(true);
     axios.post('/api/logout-user')
       .then((response) => {
-        router.push('/auth/login')
+        router.push('/')
         toast.success('Logged out', {
           duration: 1000,
           style: {

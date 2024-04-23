@@ -4,7 +4,7 @@ import { Button } from './../../components/ui/button';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
-import { ClipLoader } from 'react-spinners';
+import { Loader2Icon } from 'lucide-react';
 export default function Updatepassword() {
   const [isLoading, setLoading] = useState(false);
 
@@ -57,7 +57,6 @@ export default function Updatepassword() {
               },
             })
           }
-          // toast.success(response.data.message);
           return response.data.updatePassword
         })
         .catch((error) => {
@@ -76,17 +75,30 @@ export default function Updatepassword() {
       <div className='form-wrapper  flex justify-center'>
         <Toaster />
         <form onSubmit={handleSubmit(onSubmit)} className='lg:w-3/4 w-full'>
-          <input type="password" placeholder="Old Password" {...register("oldPassword", { required: true, maxLength: 20 })} />
-          <input type="password" placeholder="New Password" {...register("newPassword", { required: true, maxLength: 20 })} />
-          <input type="password" placeholder="Confirm Password" {...register("confirmPassword", { required: true, maxLength: 20 })} />
+
+          <div className='field-wrapper'>
+            <input type="password" placeholder="Old Password" {...register("oldPassword", { required: true, maxLength: 20 })} />
+            {errors.oldPassword && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>}
+          </div>
+
+          <div className='field-wrapper'>
+            <input type="password" placeholder="New Password" {...register("newPassword", { required: true, maxLength: 20 })} />
+            {errors.newPassword && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>}
+          </div>
+
+          <div>
+            <input type="password" placeholder="Confirm Password" {...register("confirmPassword", { required: true, maxLength: 20 })} />
+            {errors.confirmPassword && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>}
+          </div>
+
           {
             isLoading ? (
-              <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
-                <ClipLoader color="#3c2f27" />
-              </div>
+              <Button type='submit' className="w-full mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex" disabled={true}>
+                <Loader2Icon className='animate-spin mr-1' />
+                Update Password</Button>
             ) : (
 
-              <button type='submit' className="w-full p-3 mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center">Update Password</button>
+              <Button type='submit' className="w-full mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center">Update Password</Button>
             )
           }
         </form>

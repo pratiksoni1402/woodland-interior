@@ -3,8 +3,8 @@ import axios from "axios"
 import { Button } from "../ui/button"
 import toast from "react-hot-toast"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
-import { ClipLoader } from "react-spinners"
+import { useState } from "react";
+import { Loader2Icon } from 'lucide-react'
 export default function Logoutbutton() {
   const [isLoading, setLoading] = useState();
   const router = useRouter();
@@ -41,8 +41,8 @@ export default function Logoutbutton() {
     <div className="logout-button">
       {
         isLoading ? (
-          <Button type='submit' onClick={handlelogout} className='rounded-none bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] hover: border hover:border-[#3c2f27]'>
-            <ClipLoader color="#3c2f27" />
+          <Button type='submit' onClick={handlelogout} className='rounded-none bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] hover: border hover:border-[#3c2f27]' disabled={true}>
+            <Loader2Icon className='animate-spin mr-1' />
           </Button>
 
         ) : (

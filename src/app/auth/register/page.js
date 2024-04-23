@@ -8,7 +8,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import { UserPlus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ClipLoader } from 'react-spinners';
+import { Loader2Icon } from 'lucide-react';
+import { Button } from '@/app/components/ui/button';
 export default function Register() {
   const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -60,26 +61,47 @@ export default function Register() {
                 <h1> New Customer ? Signup Here </h1>
               </div>
               <div className='register-form'>
-                <form onSubmit={handleSubmit(onSubmit)} className=' border border-[#3c2f27] bg-white p-5'>
-                  <input type="text" placeholder="First name" {...register("firstname", { required: true })} />
-                  <input type="text" placeholder="Last name" {...register("lastname", { required: true, maxLength: 100 })} />
-                  <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
-                  <input type="password" placeholder="Password" {...register("password", { required: true })} />
-                  <div className='error-occured text-xs text-red-600 font-roboto font-semibold mt-[-10px] mb-[10px]'>{Error}</div>
-                  <input type="password" placeholder="Confirm Password" {...register("cnfpassword", { required: true })} />
-                  <div className='error-occured text-xs text-red-600 font-roboto font-semibold mt-[-10px] mb-[10px]'>{Error}</div>
+                <form onSubmit={handleSubmit(onSubmit)} className=' border border-[#b2937e] bg-white p-5'>
+
+                  <div className='field-wrapper'>
+                    <input type="text" placeholder="First name" {...register("firstname", { required: true })} />
+                    {errors.firstname && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>
+                    }
+                  </div>
+                  <div className='field-wrapper'>
+
+                    <input type="text" placeholder="Last name" {...register("lastname", { required: true, maxLength: 100 })} />
+                    {errors.lastname && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>
+                    }
+                  </div>
+                  <div className='field-wrapper'>
+
+                    <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                    {errors.email && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>}
+                  </div>
+                  <div className='field-wrapper'>
+
+                    <input type="password" placeholder="Password" {...register("password", { required: true })} />
+                    {errors.password && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>}
+                  </div>
+                  <div className='field-wrapper'>
+
+                    <input type="password" placeholder="Confirm Password" {...register("cnfpassword", { required: true })} />
+                    {errors.cnfpassword && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>
+                    }
+                  </div>
 
                   <div className='login pt-5 font-roboto text-sm text-[#3c2f27] hover:underline font-semibold'>
                     <Link href='/auth/login'>Back to Log In</Link>
                   </div>
                   {
                     isLoading ? (
-                      <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
-                        <ClipLoader color="#3c2f27" />
-                      </div>
+                      <Button type='submit' className="w-full rounded-none p-3 mt-4 mb-3 border hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2" disabled={true}>
+                        <Loader2Icon className='animate-spin mr-1' />
+                        Signup  <UserPlus /></Button>
                     ) : (
 
-                      <button type='submit' className="w-full p-3 mt-4 mb-3 border hover:border-[#b2937e] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">Signup  <UserPlus /></button>
+                      <Button type='submit' className="w-full rounded-none p-3 mt-4 mb-3 border hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2">Signup  <UserPlus /></Button>
                     )
                   }
                 </form>

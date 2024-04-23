@@ -30,7 +30,7 @@ export async function POST(request) {
   // End
 
   // Hashing the password
-  const saltRound = 10;
+  const saltRound = 14;
   const hashedPassword = await bcrypt.hash(requestBody.newPassword, saltRound);
   console.log("Hashed", hashedPassword);
   // End

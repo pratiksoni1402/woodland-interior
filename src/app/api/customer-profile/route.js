@@ -4,19 +4,18 @@ import prisma from "@/db";
 import { getSession } from "@/lib/session";
 import { getSessionId } from "@/lib/session";
 export async function PUT(request) {
-    const sessionMail = await getSession();
-    console.log('This is session Email', sessionMail.user_details?.email)
-    const session = await getSessionId();
+    const session = await getSession();
+    console.log('This is session Email', session.user_details?.email)
+    const sessionId = await getSessionId();
     const formdata = await request.json()
     let profile = await prisma.credentials.updateMany(
         {
             where: {
-                session_email: sessionMail.user_details?.email,
+                session_email: session.user_details?.email,
             },
             data: {
                 firstname: formdata.firstname,
                 lastname: formdata.lastname,
-                // email: formdata.email,
                 addresslineone: formdata.addresslineone,
                 addresslinetwo: formdata.addresslinetwo,
                 country: formdata.country,

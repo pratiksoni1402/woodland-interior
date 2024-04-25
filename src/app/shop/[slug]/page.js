@@ -34,7 +34,7 @@ export default function Bedroom({ params }) {
 
 
   return (
-    <div className="bedroom-products-page bg-[#faf2ec] border-t">
+    <div className="bedroom-products-page bg-[#faf2ec] border-t border-[#b2937e]">
       <div className="container">
         <div className="page-banner py-5">
           {
@@ -72,7 +72,7 @@ export default function Bedroom({ params }) {
             ))
           }
         </div>
-        <div className="total-products text-center border border-x-0 py-3 my-3">
+        <div className="total-products text-center border border-x-0 border-[#b2937e] py-3 my-3">
           {
             allproducts && allproducts.map((counting, index) => (
               <div key={index}>

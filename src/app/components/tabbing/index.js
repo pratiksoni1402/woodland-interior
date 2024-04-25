@@ -91,7 +91,7 @@ export function Tabbing() {
             <SwiperSlide className="chng-password">
               <TabsList className=" bg-[#3c2f27] text-[#faf2ec] rounded-none">
                 <TabsTrigger value="change-password" className="chng-password col-span-2 rounded-none hover:bg-white hover:text-[#3c2f27] ">
-                  Change Password
+                  Update Password
                 </TabsTrigger>
               </TabsList>
             </SwiperSlide>

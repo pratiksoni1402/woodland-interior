@@ -55,7 +55,8 @@ const Navbar = () => {
     queryFn: () =>
       axios.post('/api/auth-check')
         .then((response) => {
-          return response.data.session
+          console.log('This is user status', response.data.userstatus);
+          return response.data.userstatus
         })
         .catch((error) => {
           console.log('Error Login status ', error)
@@ -68,7 +69,7 @@ const Navbar = () => {
       <div className=" container navbar-wrapper flex justify-between items-center ">
         <div className="logo">
           <Link href='/'>
-            <Image src="/uploads/images/logos/logo.png" alt="logo" width={208} height={30} />
+            <Image src="/uploads/images/logos/logo.png" alt="logo" width={208} height={30} priority={true}/>
           </Link>
         </div>
         <div className="menu lg:block md:hidden sm:hidden hidden">
@@ -136,7 +137,6 @@ const Navbar = () => {
                       <Link href="/my-account">
                         <Avatar className='text-[#3c2f27]'>
                           <User />
-                          {/* <AvatarFallback>CN</AvatarFallback> */}
                         </Avatar>
                       </Link>
                     ) : (

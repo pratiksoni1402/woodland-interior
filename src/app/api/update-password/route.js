@@ -5,15 +5,13 @@ import bcrypt from 'bcrypt';
 import { getSession } from "@/lib/session";
 
 export async function POST(request) {
-  const sessionEmail = await getSession();
+  const session = await getSession();
   const requestBody = await request.json();
-  let fnStatus = true
-  let message = {}
 
   // Get password from database
   const readPassword = await prisma.credentials.findFirst({
     where: {
-      session_email: sessionEmail.user_details?.email,
+      session_email: session.user_details?.email,
     },
   });
   // End
@@ -30,7 +28,7 @@ export async function POST(request) {
   // End
 
   // Hashing the password
-  const saltRound = 10;
+  const saltRound = 14;
   const hashedPassword = await bcrypt.hash(requestBody.newPassword, saltRound);
   console.log("Hashed", hashedPassword);
   // End
@@ -39,7 +37,7 @@ export async function POST(request) {
   if (passwordMatch) {
     const updatePassword = await prisma.credentials.updateMany({
       where: {
-        session_email: sessionEmail.user_details?.email,
+        session_email: session.user_details?.email,
       },
       data: {
         password: hashedPassword,

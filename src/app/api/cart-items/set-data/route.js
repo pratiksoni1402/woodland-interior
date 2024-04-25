@@ -1,4 +1,3 @@
-// This API will send the Product Id and sku to cart table
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import prisma from "@/db";

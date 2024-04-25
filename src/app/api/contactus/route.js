@@ -8,7 +8,6 @@ export async function POST(request) {
     data: {
       firstname: querydata.firstname,
       lastname: querydata.lastname,
-    //   phonenumber: querydata.phonenumber,
       email: querydata.email,
       subject: querydata.subject,
       message: querydata.message,

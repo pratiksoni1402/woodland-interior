@@ -178,6 +178,7 @@ export default function Cart() {
       })
     }
   }
+
   const handleClick = () => {
     setIsLoading(true);
     setTimeout(() => {
@@ -185,6 +186,7 @@ export default function Cart() {
       router.push('/checkout');
     }, 1000); // Show loader for 1 second
   };
+
   return (
     <div className="cart-items bg-[#faf2ec] pt-5 pb-10">
       <div className="container">

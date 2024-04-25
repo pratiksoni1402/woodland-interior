@@ -44,7 +44,7 @@ export default async function MyAccount() {
         <div className="actions pb-10 lg:w-3/4 w-full m-auto flex sm:flex-row flex-col justify-between">
           <div className="activity sm:order-1 order-2">
             <div className="font-roboto pb-2 text-[#3c2f27] font-semibold text-sm">You can do following things in you account.</div>
-            <ul className="list-disc list-inside">
+            <ul className="list-disc list-inside font-roboto">
               <li className="text-sm text-[#3c2f27]">Edit your Profile</li>
               <li className="text-sm text-[#3c2f27]">View your wishlist</li>
               <li className="text-sm text-[#3c2f27]">Your Previous Order History</li>

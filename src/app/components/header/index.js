@@ -50,16 +50,16 @@ const Navbar = () => {
         })
   });
 
-  const { hasPending, data: status, hasError } = useQuery({
-    queryKey: ['loginstatus'],
+  const { data: status } = useQuery({
+    queryKey: ['loginCheck'],
     queryFn: () =>
       axios.post('/api/auth-check')
         .then((response) => {
-          console.log('This is user status', response.data.userstatus);
+          console.log('This is user status in client', response.data.userstatus);
           return response.data.userstatus
         })
         .catch((error) => {
-          console.log('Error Login status ', error)
+          console.log("Error occured", error)
         })
   })
 
@@ -69,7 +69,7 @@ const Navbar = () => {
       <div className=" container navbar-wrapper flex justify-between items-center ">
         <div className="logo">
           <Link href='/'>
-            <Image src="/uploads/images/logos/logo.png" alt="logo" width={208} height={30} priority={true}/>
+            <Image src="/uploads/images/logos/logo.png" alt="logo" width={208} height={30} priority={true} />
           </Link>
         </div>
         <div className="menu lg:block md:hidden sm:hidden hidden">

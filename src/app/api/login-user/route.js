@@ -28,6 +28,7 @@ export async function POST(request) {
       console.log("This is details", details)
       session.user_details = {
         firstname: details.firstname,
+        lastname: details.lastname,
         email: details.email,
       },
         console.log("This is master session from login api", session)

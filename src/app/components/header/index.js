@@ -14,12 +14,11 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "../ui/navigation-menu"
 import {
   Avatar,
   AvatarFallback,
-  AvatarImage,
+
 } from "./../ui/avatar"
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
@@ -63,6 +62,23 @@ const Navbar = () => {
         })
   })
 
+  const { data: sessionData } = useQuery({
+    queryKey: ['checkSession'],
+    queryFn: () =>
+      axios.get('/api/get-sessiondata')
+        .then((response) => {
+          console.log('data', response.data.getSessionData)
+          return response.data.getSessionData 
+        })
+        .catch((error) => {
+          console.log("Error occured", error)
+        })
+  })
+
+  const firstNameChar = sessionData?.user_details?.firstname || null
+  const lastNameChar = sessionData?.user_details?.lastname || null
+  const concatenation = firstNameChar?.charAt(0) + '' + lastNameChar?.charAt(0);
+  const result = concatenation.toUpperCase();
   return (
     <div className="navigation-bar bg-[#faf2ec] h-[75px] py-4 sticky top-0 z-10">
 
@@ -133,25 +149,20 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   {
-                    status ? (
+                    status == 1 ? (
                       <Link href="/my-account">
                         <Avatar className='text-[#3c2f27]'>
-                          <User />
+                          <AvatarFallback>{result}</AvatarFallback>
                         </Avatar>
                       </Link>
                     ) : (
                       <Link href="/auth/login">
-                        <Avatar>
-                          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                          <AvatarFallback>CN</AvatarFallback>
-                        </Avatar>
+                        <User />
                       </Link>
                     )
                   }
-
                 </NavigationMenuLink>
               </NavigationMenuItem>
-
             </NavigationMenuList>
           </NavigationMenu>
         </div>

@@ -131,7 +131,7 @@ export default function Cart() {
         duration: 3000,
         style: {
           border: '1px solid #3c2f27',
-          padding: '16px',
+          padding: '8px',
           color: '#faf2ec',
           backgroundColor: '#3c2f27',
         },
@@ -167,7 +167,7 @@ export default function Cart() {
         duration: 3000,
         style: {
           border: '1px solid #3c2f27',
-          padding: '16px',
+          padding: '8px',
           color: '#faf2ec',
           backgroundColor: '#3c2f27',
         },

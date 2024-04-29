@@ -9,7 +9,7 @@ export default async function Checkout() {
   const session = await getSession()
 
   if (!session?.user_details) {
-    return redirect('/auth/login')
+    return redirect('/auth/login?redirect=/checkout')
   }
   return (
     <div className="checkout-page bg-[#faf2ec] pb-10">

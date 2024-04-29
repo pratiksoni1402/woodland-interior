@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Link from 'next/link';
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
@@ -178,11 +178,11 @@ export default function MobileMenu() {
                       Our Values
                     </Link>
                   </div>
-                  <div className='pb-1 px-4  text-lg text-[#3c2f27]'>
+                  {/* <div className='pb-1 px-4  text-lg text-[#3c2f27]'>
                     <Link href='/about-us' className="group hover:underline text-sm font-roboto transition duration-500">
                       About Us
                     </Link>
-                  </div>
+                  </div> */}
                   <div className='pb-2 px-4  text-lg text-[#3c2f27]'>
                     <Link href='/contact' className="group hover:underline text-sm font-roboto transition duration-500">
                       Contact

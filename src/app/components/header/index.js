@@ -112,13 +112,13 @@ const Navbar = () => {
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              <NavigationMenuItem>
+              {/* <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/about" className="text-lg leading-7">
                     About Us
                   </Link>
                 </NavigationMenuLink>
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className="text-lg leading-7">
                   <Link href="/contact">

@@ -180,9 +180,9 @@ export default function Stories() {
         <div className='container'>
           <div className='content-wrapper md:w-1/3 sm:w-full w-full mx-auto mt-10 pb-20 text-[#3c2f27] text-center'>
             <ul className='font-crimson text-3xl pb-4'>
+              <li>Good For You.</li>
               <li>Good For People.</li>
               <li>Good For The Planet.</li>
-              <li>Good For You.</li>
             </ul>
             <p className='font-roboto text-base'>Today, 60% Of Our Products Support At Least One Of Our Sustainability Initiatives.</p>
           </div>

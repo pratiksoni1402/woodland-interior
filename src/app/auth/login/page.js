@@ -10,17 +10,25 @@ import { useRouter } from 'next/navigation';
 import { Button } from "./../../components/ui/button";
 import { Toaster } from 'react-hot-toast';
 import { Loader2Icon } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 const Login = () => {
+  const searchParam = useSearchParams();
+  const value = searchParam.get('redirect');
+  // console.log("Value", value);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm();
-  
+
   const onSubmit = (data) => {
     setLoading(true);
     axios.post('/api/login-user', data)
       .then(response => {
-        router.push('/my-account')
+        if (value === '/checkout') {
+          router.push('/checkout')
+        } else {
+          router.push('/my-account')
+        }
       })
       .catch(error => {
         console.error('Error:', error);

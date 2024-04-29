@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { User } from 'lucide-react';
 import React, { useEffect } from "react";
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
@@ -14,13 +13,13 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "../ui/navigation-menu"
 import {
   Avatar,
   AvatarFallback,
-  AvatarImage,
+
 } from "./../ui/avatar"
+import {CircleUserRound } from 'lucide-react';
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 const Navbar = () => {
@@ -50,16 +49,29 @@ const Navbar = () => {
         })
   });
 
-  const { hasPending, data: status, hasError } = useQuery({
-    queryKey: ['loginstatus'],
+  const { data: status } = useQuery({
+    queryKey: ['loginCheck'],
     queryFn: () =>
       axios.post('/api/auth-check')
         .then((response) => {
-          console.log('This is user status', response.data.userstatus);
+          console.log('This is user status in client', response.data.userstatus);
           return response.data.userstatus
         })
         .catch((error) => {
-          console.log('Error Login status ', error)
+          console.log("Error occured", error)
+        })
+  })
+
+  const { data: sessionData } = useQuery({
+    queryKey: ['checkSession'],
+    queryFn: () =>
+      axios.get('/api/get-sessiondata')
+        .then((response) => {
+          console.log('data', response.data.getSessionData)
+          return response.data.getSessionData
+        })
+        .catch((error) => {
+          console.log("Error occured", error)
         })
   })
 
@@ -69,7 +81,7 @@ const Navbar = () => {
       <div className=" container navbar-wrapper flex justify-between items-center ">
         <div className="logo">
           <Link href='/'>
-            <Image src="/uploads/images/logos/logo.png" alt="logo" width={208} height={30} priority={true}/>
+            <Image src="/uploads/images/logos/logo.png" alt="logo" width={208} height={30} priority={true} />
           </Link>
         </div>
         <div className="menu lg:block md:hidden sm:hidden hidden">
@@ -95,18 +107,18 @@ const Navbar = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/stories" className="text-lg leading-7">
-                    Stories
+                  <Link href="/our-values" className="text-lg leading-7">
+                    Our Values
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              <NavigationMenuItem>
+              {/* <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/about" className="text-lg leading-7">
                     About Us
                   </Link>
                 </NavigationMenuLink>
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className="text-lg leading-7">
                   <Link href="/contact">
@@ -133,25 +145,23 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   {
-                    status ? (
+                    sessionData && sessionData.user_details ? ( // Check if sessionData and user_details are not null/undefined
                       <Link href="/my-account">
                         <Avatar className='text-[#3c2f27]'>
-                          <User />
+                          <AvatarFallback className='font-roboto'>
+                            {sessionData.user_details?.firstname?.charAt(0)}
+                            {sessionData.user_details?.lastname?.charAt(0)}
+                          </AvatarFallback>
                         </Avatar>
                       </Link>
                     ) : (
                       <Link href="/auth/login">
-                        <Avatar>
-                          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                          <AvatarFallback>CN</AvatarFallback>
-                        </Avatar>
+                        <CircleUserRound />
                       </Link>
                     )
                   }
-
                 </NavigationMenuLink>
               </NavigationMenuItem>
-
             </NavigationMenuList>
           </NavigationMenu>
         </div>

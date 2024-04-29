@@ -9,6 +9,6 @@ export async function POST() {
         userstatus = 1;
     }
 
-    console.log('This is user status', userstatus);
+    console.log('This is user status in Server', userstatus);
     return Response.json({ userstatus });
 }

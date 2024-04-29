@@ -1,40 +1,30 @@
-import React from 'react'
+import React from 'react';
 import Link from 'next/link';
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from "./../../ui/button";
-
+import { CircleUserRound } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../../ui/dropdown-menu"
+} from "../../ui/dropdown-menu";
 
 import { Menu } from 'lucide-react';
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "../../ui/sheet"
+} from "../../ui/sheet";
 import {
   Avatar,
   AvatarFallback,
-  AvatarImage,
-} from "./../../../components/ui/avatar"
+} from "./../../../components/ui/avatar";
 import { BedDouble } from 'lucide-react';
 import { DoorClosed } from 'lucide-react';
 import { Sofa } from 'lucide-react';
@@ -43,40 +33,53 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 export default function MobileMenu() {
-  const { isPending, data: count, error } = useQuery({
+
+  const { data: count } = useQuery({
     queryKey: ['totalcount'],
     queryFn: () =>
       axios.get('/api/cart-items/get-count')
         .then((response) => {
           return response.data.productcount
         })
-        .catch((error) =>{
+        .catch((error) => {
           console.log('Error in count', error)
         })
-
   });
 
-  const { pending, data: wishlisttotal, iserror } = useQuery({
+  const { data: wishlisttotal } = useQuery({
     queryKey: ['wishlistcount'],
     queryFn: () =>
       axios.get('/api/wishlist-items/get-count')
         .then((response) => {
           return response.data.totalcount
         })
-        .catch((error) =>{
+        .catch((error) => {
           console.log('Error in count', error)
         })
   });
 
-  const { hasPending, data: status, hasError } = useQuery({
-    queryKey: ['loginstatus'],
+  const { data:status } = useQuery({
+    queryKey: ['loginCheck'],
     queryFn: () =>
       axios.post('/api/auth-check')
         .then((response) => {
-          return response.data.session
+          return response.data.userstatus
         })
-        .catch((error) =>{
+        .catch((error) => {
           console.log('Error in Login Status', error)
+        })
+  });
+
+  const { data: sessionData } = useQuery({
+    queryKey: ['checkSession'],
+    queryFn: () =>
+      axios.get('/api/get-sessiondata')
+        .then((response) => {
+          console.log('data', response.data.getSessionData)
+          return response.data.getSessionData
+        })
+        .catch((error) => {
+          console.log("Error occured", error)
         })
   })
 
@@ -100,19 +103,18 @@ export default function MobileMenu() {
           </div>
           <div className='pr-4'>
             {
-              status ? (
+              sessionData && sessionData.user_details ? ( // Check if sessionData and user_details are not null/undefined
                 <Link href="/my-account">
-                  <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                    <AvatarFallback>CN</AvatarFallback>
+                  <Avatar className='text-[#3c2f27]'>
+                    <AvatarFallback>
+                      {sessionData.user_details?.firstname?.charAt(0)}
+                      {sessionData.user_details?.lastname?.charAt(0)}
+                    </AvatarFallback>
                   </Avatar>
                 </Link>
               ) : (
                 <Link href="/auth/login">
-                  <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
+                  <CircleUserRound />
                 </Link>
               )
             }
@@ -172,15 +174,15 @@ export default function MobileMenu() {
                     </DropdownMenu>
                   </div>
                   <div className='pb-1 px-4  text-lg text-[#3c2f27]'>
-                    <Link href='/stories' className="group hover:underline text-sm font-roboto transition duration-500">
-                      Stories
+                    <Link href='/our-values' className="group hover:underline text-sm font-roboto transition duration-500">
+                      Our Values
                     </Link>
                   </div>
-                  <div className='pb-1 px-4  text-lg text-[#3c2f27]'>
+                  {/* <div className='pb-1 px-4  text-lg text-[#3c2f27]'>
                     <Link href='/about-us' className="group hover:underline text-sm font-roboto transition duration-500">
                       About Us
                     </Link>
-                  </div>
+                  </div> */}
                   <div className='pb-2 px-4  text-lg text-[#3c2f27]'>
                     <Link href='/contact' className="group hover:underline text-sm font-roboto transition duration-500">
                       Contact
@@ -193,9 +195,7 @@ export default function MobileMenu() {
             </SheetContent>
           </Sheet>
         </div>
-
       </div>
-
     </div>
   )
 }

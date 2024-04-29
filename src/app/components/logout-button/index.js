@@ -17,7 +17,7 @@ export default function Logoutbutton() {
           duration: 1000,
           style: {
             border: '1px solid #3c2f27',
-            padding: '16px',
+            padding: '8px',
             color: '#faf2ec',
             backgroundColor: '#3c2f27',
           },

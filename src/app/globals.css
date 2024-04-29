@@ -503,11 +503,11 @@ textarea:focus {
 
 .stories .banner-image-wrapper .banner-text-wrapper .banner-text {
 
-  @apply absolute bottom-[8%]
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 
 .stories .banner-image-wrapper .banner-text-wrapper .banner-text span {
-  @apply block text-4xl leading-7 text-[#3c2f27] font-crimson
+  @apply block md:text-5xl sm:text-3xl text-2xl leading-7 text-white font-crimson
   
 }
 /* End */

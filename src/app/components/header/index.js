@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { User } from 'lucide-react';
 import React, { useEffect } from "react";
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
@@ -20,6 +19,7 @@ import {
   AvatarFallback,
 
 } from "./../ui/avatar"
+import {CircleUserRound } from 'lucide-react';
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 const Navbar = () => {
@@ -68,17 +68,13 @@ const Navbar = () => {
       axios.get('/api/get-sessiondata')
         .then((response) => {
           console.log('data', response.data.getSessionData)
-          return response.data.getSessionData 
+          return response.data.getSessionData
         })
         .catch((error) => {
           console.log("Error occured", error)
         })
   })
 
-  const firstNameChar = sessionData?.user_details?.firstname || null
-  const lastNameChar = sessionData?.user_details?.lastname || null
-  const concatenation = firstNameChar?.charAt(0) + '' + lastNameChar?.charAt(0);
-  const result = concatenation.toUpperCase();
   return (
     <div className="navigation-bar bg-[#faf2ec] h-[75px] py-4 sticky top-0 z-10">
 
@@ -111,8 +107,8 @@ const Navbar = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/stories" className="text-lg leading-7">
-                    Stories
+                  <Link href="/our-values" className="text-lg leading-7">
+                    Our Values
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -149,15 +145,18 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   {
-                    status == 1 ? (
+                    sessionData && sessionData.user_details ? ( // Check if sessionData and user_details are not null/undefined
                       <Link href="/my-account">
                         <Avatar className='text-[#3c2f27]'>
-                          <AvatarFallback>{result}</AvatarFallback>
+                          <AvatarFallback className='font-roboto'>
+                            {sessionData.user_details?.firstname?.charAt(0)}
+                            {sessionData.user_details?.lastname?.charAt(0)}
+                          </AvatarFallback>
                         </Avatar>
                       </Link>
                     ) : (
                       <Link href="/auth/login">
-                        <User />
+                        <CircleUserRound />
                       </Link>
                     )
                   }

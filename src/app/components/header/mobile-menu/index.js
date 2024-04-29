@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Heart } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from "./../../ui/button";
-import { User } from 'lucide-react';
+import { CircleUserRound } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -58,7 +58,7 @@ export default function MobileMenu() {
         })
   });
 
-  const { data: status } = useQuery({
+  const { data:status } = useQuery({
     queryKey: ['loginCheck'],
     queryFn: () =>
       axios.post('/api/auth-check')
@@ -83,11 +83,6 @@ export default function MobileMenu() {
         })
   })
 
-  const firstNameChar = sessionData?.user_details.firstname
-  const lastNameChar = sessionData?.user_details.lastname
-  const concatenation = firstNameChar?.charAt(0) + '' + lastNameChar?.charAt(0);
-  const result = concatenation.toUpperCase();
-
   return (
     <div className='mobile-menu-wrapper'>
       <div className='inner-content-wrapper flex items-center'>
@@ -108,15 +103,18 @@ export default function MobileMenu() {
           </div>
           <div className='pr-4'>
             {
-              status == 1 ? (
+              sessionData && sessionData.user_details ? ( // Check if sessionData and user_details are not null/undefined
                 <Link href="/my-account">
-                  <Avatar className='font-roboto'>
-                    <AvatarFallback>{result}</AvatarFallback>
+                  <Avatar className='text-[#3c2f27]'>
+                    <AvatarFallback>
+                      {sessionData.user_details?.firstname?.charAt(0)}
+                      {sessionData.user_details?.lastname?.charAt(0)}
+                    </AvatarFallback>
                   </Avatar>
                 </Link>
               ) : (
                 <Link href="/auth/login">
-                  <User />
+                  <CircleUserRound />
                 </Link>
               )
             }
@@ -176,8 +174,8 @@ export default function MobileMenu() {
                     </DropdownMenu>
                   </div>
                   <div className='pb-1 px-4  text-lg text-[#3c2f27]'>
-                    <Link href='/stories' className="group hover:underline text-sm font-roboto transition duration-500">
-                      Stories
+                    <Link href='/our-values' className="group hover:underline text-sm font-roboto transition duration-500">
+                      Our Values
                     </Link>
                   </div>
                   <div className='pb-1 px-4  text-lg text-[#3c2f27]'>

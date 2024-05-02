@@ -13,6 +13,7 @@ import { Toaster } from 'react-hot-toast';
 import { Loader2Icon } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 const Login = () => {
   const searchParam = useSearchParams();
   const value = searchParam.get('redirect');
@@ -20,16 +21,31 @@ const Login = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const queryClient = useQueryClient();
+  const { data: sessionData } = useQuery({
+    queryKey: ['checkSession'],
+    queryFn: () =>
+      axios.get('/api/get-sessiondata')
+        .then((response) => {
+          console.log('data', response.data.getSessionData)
+          return response.data.getSessionData
+        })
+        .catch((error) => {
+          console.log("Error occured", error)
+        })
+  })
 
-  
   const onSubmit = (data) => {
     setLoading(true);
     axios.post('/api/login-user', data)
       .then(response => {
         if (value === '/checkout') {
           router.push('/checkout')
+          queryClient.invalidateQueries('checkSession')
         } else {
           router.push('/my-account')
+          queryClient.invalidateQueries('checkSession')
+
         }
       })
       .catch(error => {

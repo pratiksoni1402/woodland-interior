@@ -264,7 +264,7 @@ export default function Cart() {
                                 <AlertDialogTrigger asChild>
                                   <Button className='mt-[-10px] md:justify-end justify-start font-roboto text-xs text-[#3c2f27] px-0  border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from cart</Button>
                                 </AlertDialogTrigger>
-                                <AlertDialogContent>
+                                <AlertDialogContent className='bg-[#faf2ec]'>
                                   <AlertDialogHeader>
                                     <AlertDialogTitle>Remove Product?</AlertDialogTitle>
                                     <AlertDialogDescription className='font-roboto'>

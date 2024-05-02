@@ -406,7 +406,7 @@ html{
 /* Contact Form */
 .contact-page .content-wrapper .form-wrapper form input,
 textarea {
-  @apply w-full py-2 my-3 mx-0 h-10 border rounded-none outline-0 px-3 font-roboto
+  @apply w-full py-2 my-3 mx-0 h-10 border border-[#b2937e] rounded-none outline-0 px-3 font-roboto
     
 }
 
@@ -446,14 +446,14 @@ textarea:focus {
 /* Shipping Details Form */
 
 .shipping-details-form form input[type=text]{
-  @apply w-full p-3 mb-3 border  rounded-none outline-none shadow-none font-roboto
+  @apply w-full p-3 mb-3 border border-[#b2937e]  rounded-none outline-none shadow-none font-roboto text-[#3c2f27]
 }
 .shipping-details-form form input[type=text]:focus{
   @apply border  border-[#3c2f27]
 }
 
 .shipping-details-form form select{
-  @apply h-12 mb-3 border  bg-white px-3 rounded-none outline-none shadow-none font-roboto
+  @apply h-12 mb-3 border border-[#b2937e]  bg-white px-0 w-full text-[#3c2f27] font-roboto rounded-none outline-none shadow-none font-roboto
   
 }
 
@@ -461,18 +461,23 @@ textarea:focus {
   @apply  border  border-[#3c2f27]
 
 }
+
 .shipping-details-form .data-\[state\=checked\]\:bg-primary[data-state=checked] {
   @apply bg-[#3c2f27]
 }
+
 .shipping-details-form form .payment-method{
   @apply pb-10
 }
+
 .shipping-details-form form .payment-method label{
   @apply pl-1
 }
+
 .shipping-details-form form .payment-method div{
   @apply pb-1
 }
+
 .shipping-details-form form .payment-method div label:hover{
   @apply cursor-pointer
 }

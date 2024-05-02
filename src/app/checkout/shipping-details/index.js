@@ -9,7 +9,7 @@ import axios from "axios";
 import { Switch } from "@/components/ui/switch"
 import { Label } from "./../../components/ui/label"
 import { useRouter } from "next/navigation";
-import { ClipLoader } from "react-spinners";
+import { Loader2Icon } from "lucide-react";
 export default function Shippingdetail({ params }) {
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -56,7 +56,7 @@ export default function Shippingdetail({ params }) {
 
   return (
     <div className="shipping-details-form">
-      <div className="heading text-left border-b pb-3 font-crimson text-[#3c2f27] text-2xl">
+      <div className="heading text-left pb-3 font-crimson text-[#3c2f27] text-2xl">
         Shipping Detail
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,18 +65,21 @@ export default function Shippingdetail({ params }) {
           <input type="text" placeholder="Last name" {...register("shipping_last_name", { required: true, maxLength: 100 })} />
           <input type="text" placeholder="Address Line 1" {...register("shipping_address_one", { required: true })} />
           <input type="text" placeholder="Address Line 2" {...register("shipping_address_two", { required: true })} />
-          <div className='grid grid-cols-3 gap-5'>
-            <select {...register("shipping_country", { required: true })}>
-              <option value="" disabled>Select Country</option>
-
-              {countries && countries.map((country) => (
-                <option value={country.name} key={country.id} >{country.name}</option>
-              ))}
-
-            </select>
-            <input type="text" placeholder="State" {...register("shipping_state", { required: true })} />
-            <input type="text" placeholder="City" {...register("shipping_city", { required: true })} />
-
+          <div className='grid grid-cols-3 sm:gap-5 gap-0'>
+            <div className="sm:col-span-1 col-span-3">
+              <select {...register("shipping_country", { required: true })}>
+                <option value="" disabled>Select Country</option>
+                {countries && countries.map((country) => (
+                  <option value={country.name} key={country.id} >{country.name}</option>
+                ))}
+              </select>
+            </div>
+            <div className="sm:col-span-1 col-span-3">
+              <input type="text" placeholder="State" {...register("shipping_state", { required: true })} />
+            </div>
+            <div className="sm:col-span-1 col-span-3">
+              <input type="text" placeholder="City" {...register("shipping_city", { required: true })} />
+            </div>
           </div>
           <input type="text" placeholder="Pincode" {...register("shipping_pincode", { required: true })} />
           <input type="text" placeholder="Landmark" {...register("shipping_landmark", { required: true })} />
@@ -97,23 +100,29 @@ export default function Shippingdetail({ params }) {
 
             {showForm && (
               <div className="billing-detail-form">
-                <div className="heading text-left border-b pb-3 mt-4 font-crimson text-[#3c2f27] text-2xl">
+                <div className="heading text-left pb-3 mt-4 font-crimson text-[#3c2f27] text-2xl">
                   Billing Details
                 </div>
                 <input type="text" placeholder="First name" {...register("billing_first_name", { required: true, maxLength: 80 })} />
                 <input type="text" placeholder="Last name" {...register("billing_last_name", { required: true, maxLength: 100 })} />
                 <input type="text" placeholder="Address Line 1" {...register("billing_address_one", { required: true })} />
                 <input type="text" placeholder="Address Line 2" {...register("billing_address_two", { required: true })} />
-                <div className='grid grid-cols-3 gap-5'>
-                  <select {...register("billing_country", { required: true })}>
-                    <option value="" disabled>Select Country</option>
+                <div className='grid grid-cols-3 sm:gap-5 gap-0'>
+                  <div className="sm:col-span-1 col-span-3">
+                    <select {...register("billing_country", { required: true })}>
+                      <option value="" disabled>Select Country</option>
 
-                    {countries && countries.map((country) => (
-                      <option value={country.name} key={country.id}>{country.name}</option>
-                    ))}
-                  </select>
-                  <input type="text" placeholder="State" {...register("billing_state", { required: true })} />
-                  <input type="text" placeholder="City" {...register("billing_city", { required: true })} />
+                      {countries && countries.map((country) => (
+                        <option value={country.name} key={country.id}>{country.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className='sm:col-span-1 col-span-3'>
+                    <input type="text" placeholder="State" {...register("billing_state", { required: true })} />
+                  </div>
+                  <div className="sm:col-span-1 col-span-3">
+                    <input type="text" placeholder="City" {...register("billing_city", { required: true })} />
+                  </div>
                 </div>
                 <input type="text" placeholder="Pin Code" {...register("billing_pincode", { required: true })} />
                 <input type="text" placeholder="Nearest Landmark" {...register("billing_landmark", { required: true })} />
@@ -153,9 +162,9 @@ export default function Shippingdetail({ params }) {
 
         </div>
         {animation ? (
-          <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
-            <ClipLoader color="#3c2f27" />
-          </div>
+          <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]' disabled={true}>
+            <Loader2Icon className='animate-spin mr-1' />
+            Place Order</Button>
 
         ) : (
           <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]'>Place Order</Button>

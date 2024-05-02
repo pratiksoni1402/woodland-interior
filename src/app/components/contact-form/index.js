@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
 import { Button } from "./../ui/button";
-import { ClipLoader } from "react-spinners";
+import { Loader2Icon } from "lucide-react";
 const ContactForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [isLoading, setLoading] = useState(false);
@@ -41,7 +41,7 @@ const ContactForm = () => {
       <div className="content-wrapper">
         <Toaster />
         <div className="form-wrapper">
-          <form onSubmit={handleSubmit(onSubmit)} className="bg-white border border-[#3c2f27] p-5">
+          <form onSubmit={handleSubmit(onSubmit)} className="bg-white border border-[#b2937e] p-5">
             <input type="text" placeholder="First name" {...register("firstname", { required: true })} />
             <input type="text" placeholder="Last name" {...register("lastname", { required: true, maxLength: 100 })} />
             <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
@@ -50,9 +50,10 @@ const ContactForm = () => {
 
             {
               isLoading ? (
-                <div className="flex justify-center py-1 mt-4 border border-[#3c2f27] items-center">
-                  <ClipLoader color="#3c2f27" />
-                </div>
+                <Button type="submit" className="bg-white border px-6 mt-5 py-3 w-full border-[#3c2f27] rounded-none hover:bg-[#3c2f27] hover:text-[#faf2ec] font-roboto hover:transition-all hover:duration-300 text-[#3c2f27]" disabled={true}>
+                  <Loader2Icon className='animate-spin mr-1' />
+                  Submit</Button>
+
               ) : (
                 <Button type="submit" className="bg-white border px-6 mt-5 py-3 w-full border-[#3c2f27] rounded-none hover:bg-[#3c2f27] hover:text-[#faf2ec] font-roboto hover:transition-all hover:duration-300 text-[#3c2f27]">Submit</Button>
               )

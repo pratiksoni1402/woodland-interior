@@ -148,7 +148,7 @@ export default function Product() {
                         <AlertDialogTrigger asChild>
                           <Button className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from wishlist</Button>
                         </AlertDialogTrigger>
-                        <AlertDialogContent>
+                        <AlertDialogContent className='bg-[#faf2ec]'>
                           <AlertDialogHeader>
                             <AlertDialogTitle>Remove Product?</AlertDialogTitle>
                             <AlertDialogDescription className='font-roboto'>

@@ -5,9 +5,23 @@ import toast from "react-hot-toast"
 import { useRouter } from "next/navigation"
 import { useState } from "react";
 import { Loader2Icon } from 'lucide-react'
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 export default function Logoutbutton() {
   const [isLoading, setLoading] = useState();
   const router = useRouter();
+  const queryClient = useQueryClient();
+  const { data: sessionData } = useQuery({
+    queryKey: ['checkSession'],
+    queryFn: () =>
+      axios.get('/api/get-sessiondata')
+        .then((response) => {
+          console.log('data', response.data.getSessionData)
+          return response.data.getSessionData
+        })
+        .catch((error) => {
+          console.log("Error occured", error)
+        })
+  })
   const handlelogout = () => {
     setLoading(true);
     axios.post('/api/logout-user')
@@ -26,6 +40,7 @@ export default function Logoutbutton() {
             secondary: '#3c2f27',
           },
         });
+        queryClient.invalidateQueries('checkSession')
       })
       .catch((error) => {
         toast.error('error')

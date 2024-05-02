@@ -26,6 +26,18 @@ export default function History() {
         })
   })
 
+  // Assuming receipt.order_date is a string representing the timestamp, e.g., "2024-02-27T10:12:44.830Z"
+  const orderDate = orders?.order_date;
+  if (orderDate) {
+    const date = new Date(orderDate);
+
+    // Format the date
+    var formattedDate = `${date.toLocaleDateString()}`;
+    console.log("Local Date", formattedDate)
+    var formattedTime = `${date.toLocaleTimeString()}`;
+
+  }
+
   return (
     <div className="wishlist-component sm:flex block sm:justify-center overflow-x-auto">
       <div className='user-wishlist bg-[#faf2ec] lg:w-3/4 w-full'>
@@ -34,7 +46,7 @@ export default function History() {
             <div className="order-wrapper">
               <div className="orders ">
                 <Table>
-                  <TableCaption className='pb-5 '>A list of your Previous Orders.</TableCaption>
+                  <TableCaption className='pb-5 font-roboto text-vase text-[#3c2f27]'>A list of your Previous Orders.</TableCaption>
                   <TableHeader>
                     <TableRow className=''>
                       <TableHead className="text-[#3c2f27] text-center font-semibold font-roboto whitespace-nowrap">Order ID</TableHead>
@@ -47,7 +59,7 @@ export default function History() {
                   <TableBody className='bg-white'>
                     {orders?.map((invoice) => (
 
-                      <TableRow key={invoice.invoice}>
+                      <TableRow key={invoice.id}>
                         <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.id}</TableCell>
                         <TableCell className="text-center text-[#3c2f27] font-roboto">
                           <div className="flex items-center justify-center">
@@ -56,7 +68,7 @@ export default function History() {
                           </div>
                         </TableCell>
                         <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.payment_mode}</TableCell>
-                        <TableCell className="text-center  text-[#3c2f27] font-roboto whitespace-nowrap">{invoice?.order_date}</TableCell>
+                        <TableCell className="text-center  text-[#3c2f27] font-roboto whitespace-nowrap">{invoice.order_date}</TableCell>
                         <TableCell className="text-center  text-[#3c2f27] font-roboto">
                           <Link href={`/previous-orders/${invoice.id}`} className="border border-[#3c2f27] bg-[#3c2f27] p-2 text-[#faf2ec] font-crimson text-sm hover:text-[#3c2f27] hover:bg-white whitespace-nowrap">View Detail</Link>
                         </TableCell>

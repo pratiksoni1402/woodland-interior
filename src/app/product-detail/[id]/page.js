@@ -14,7 +14,7 @@ import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import { useQueryClient } from "@tanstack/react-query";
 import Reviews from "@/app/components/customer-reviews";
 import Image from "next/image";
-
+import { Loader2Icon } from "lucide-react";
 export default function Detail({ params }) {
   const queryClient = useQueryClient();
   const [count, setCount] = useState(1);
@@ -254,7 +254,7 @@ export default function Detail({ params }) {
                     </div>
                     <div className="flex items-center">
                       <Button onClick={handleIncrement} variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">+</Button>
-                      <span className="px-7 border-[#3c2f27] border h-10 flex items-center border-r-0 border-l-0">{count}</span>
+                      <span className="px-7 border-[#3c2f27] border font-roboto text-[#3c2f27] h-10 flex items-center border-r-0 border-l-0">{count}</span>
                       <Button onClick={handleDecrement} variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">-</Button>
                     </div>
                   </div>
@@ -293,9 +293,9 @@ export default function Detail({ params }) {
                         <>
                           {
                             loading ? (
-                              <Button variant="outline" className="text-sm w-full hover:text-[#3c2f27] bg-[#3c2f27] text-[#faf2ec] hover:bg-transparent border-[#3c2f27]  rounded-none h-12 uppercase">
-                                <ClipLoader color="#3c2f27" size={20} />
-                              </Button>
+                              <Button type='submit' className="w-full mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex" disabled={true}>
+                                <Loader2Icon className='animate-spin mr-1' />
+                                Remove from Wishlist</Button>
 
                             ) : (
 
@@ -309,9 +309,9 @@ export default function Detail({ params }) {
                         <>
                           {
                             loading ? (
-                              <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
-                                <ClipLoader color="#3c2f27" />
-                              </div>
+                              <Button type='submit' className="w-full mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex" disabled={true}>
+                                <Loader2Icon className='animate-spin mr-1' />
+                                Add to Wishlist</Button>
                             ) : (
                               <Button variant="outline" onClick={() => addtowishlist(detail.id, detail.sku)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12 ">Add To Wishlist
                               </Button>
@@ -327,9 +327,9 @@ export default function Detail({ params }) {
                   <div className="cart py-3">
                     {
                       adding ? (
-                        <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
-                          <ClipLoader color="#3c2f27" />
-                        </div>
+                        <Button type='submit' className="w-full mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex" disabled={true}>
+                          <Loader2Icon className='animate-spin mr-1' />
+                          Add to bag</Button>
                       ) : (
 
                         <Button variant="outline" onClick={() => addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12 ">Add To Bag

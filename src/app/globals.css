@@ -143,7 +143,7 @@ html {
 }
 
 .navigation-bar .navbar-wrapper .menu nav ul li button {
-  @apply p-0 bg-transparent text-[#3c2f27] font-light
+  @apply p-0 bg-transparent text-[#3c2f27] font-normal
 }
 
 .navbar-expand-lg .navbar-nav a {
@@ -169,7 +169,7 @@ html {
 }
 
 .navbar .nav .nav-links-dropdown:hover .dropdown-menu {
-  @apply block bg-[#faf2ec] rounded-none w-48
+  @apply block bg-[#faf2ec] rounded-none w-48 border border-[#b2937e]
 }
 
 .navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item {

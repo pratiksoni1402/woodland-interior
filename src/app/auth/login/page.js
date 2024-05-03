@@ -107,7 +107,7 @@ const Login = () => {
                 </form>
 
                 <div className='mt-10 mx-5'>
-                  <Link href='/auth/register' className='w-full font-roboto p-3 mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center' >New User? Sign up here. </Link>
+                  <Link href='/auth/register' className='w-full font-roboto py-[9px] px-3 text-sm mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center' >New User? Sign up here. </Link>
                 </div>
               </div>
             </div>

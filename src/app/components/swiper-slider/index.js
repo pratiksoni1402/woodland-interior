@@ -159,13 +159,7 @@ export default function SwiperSlider() {
             </SwiperSlide>
 
             <SwiperSlide>
-            <Image
-                src=""
-                alt=""
-                width={300}
-                height={300}
-              />
-              <div className="title text-center"></div>
+      
             </SwiperSlide>
           </Swiper>
         </div>

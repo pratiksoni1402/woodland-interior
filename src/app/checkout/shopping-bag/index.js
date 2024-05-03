@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { IndianRupee } from 'lucide-react';
 import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
+import { MoonLoader } from "react-spinners";
 export default function Shoppingbag() {
   let grandtotal = 0;
   let taxamount = 0;
@@ -21,6 +22,14 @@ export default function Shoppingbag() {
           console.log('Error', error)
         })
   })
+
+  if (!cartdata) {
+    return (
+
+      <div className='loading h-screen bg-[#faf2ec] w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
+      </div>
+    )
+  }
   return (
     <div className="shopping-bag border border-[#b2937e] mt-[45px]">
       <div className="heading text-center py-3 font-crimson text-[#3c2f27] text-2xl">

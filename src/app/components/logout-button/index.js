@@ -58,6 +58,7 @@ export default function Logoutbutton() {
         isLoading ? (
           <Button type='submit' onClick={handlelogout} className='rounded-none bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] hover: border hover:border-[#3c2f27]' disabled={true}>
             <Loader2Icon className='animate-spin mr-1' />
+            Logout
           </Button>
 
         ) : (

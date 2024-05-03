@@ -36,9 +36,9 @@ export default async function MyAccount() {
   
 
   return (
-    <div className="my-account-page bg-[#faf2ec] h-full">
+    <div className="my-account-page bg-[#faf2ec] h-full border-t border-[#b2937e]">
       <div className="wrapper container">
-        <div className="heading text-center border-t font-crimson text-[#3c2f27] text-3xl py-5">
+        <div className="heading text-center font-crimson text-[#3c2f27] text-3xl py-5">
           <h1 className="capitalize md:text-4xl text-base">{message}</h1>
         </div>
         <div className="actions pb-10 lg:w-3/4 w-full m-auto flex sm:flex-row flex-col justify-between">

@@ -216,9 +216,9 @@ export default function Detail({ params }) {
 
 
   return (
-    <div className="product-detail-page bg-[#faf2ec]">
+    <div className="product-detail-page bg-[#faf2ec] border-t border-[#b2937e]">
       <div className="container">
-        <div className="product-wrapper py-10 border-t">
+        <div className="product-wrapper py-10">
           <div className="grid grid-cols-12 gap-7">
             <Toaster />
             <div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-5 col-span-12">

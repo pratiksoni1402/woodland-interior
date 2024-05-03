@@ -12,7 +12,7 @@ export default async function Checkout() {
     return redirect('/auth/login?redirect=/checkout')
   }
   return (
-    <div className="checkout-page bg-[#faf2ec] pb-10">
+    <div className="checkout-page bg-[#faf2ec] pb-10 border-t border-[#b2937e]">
       <div className="container">
         <div className="heading text-center pt-5 pb-10 font-crimson text-[#3c2f27] text-4xl">
           Secure Checkout

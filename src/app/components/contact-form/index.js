@@ -42,11 +42,31 @@ const ContactForm = () => {
         <Toaster />
         <div className="form-wrapper">
           <form onSubmit={handleSubmit(onSubmit)} className="bg-white border border-[#b2937e] p-5">
-            <input type="text" placeholder="First name" {...register("firstname", { required: true })} />
-            <input type="text" placeholder="Last name" {...register("lastname", { required: true, maxLength: 100 })} />
-            <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
-            <input type="text" placeholder="How did you find us ?" {...register("subject", { required: true })} />
-            <textarea placeholder="Enter your Message Here" {...register("message", { required: true })} style={{ height: "180px" }} />
+
+            <div className="field-wrapper">
+              <input type="text" placeholder="First name" {...register("firstname", { required: true })} />
+              {errors.firstname && <span className="error-message font-roboto text-sm text-red-700">This field is required</span>}
+            </div>
+
+            <div className="field-wrapper">
+              <input type="text" placeholder="Last name" {...register("lastname", { required: true, maxLength: 100 })} />
+              {errors.lastname && <span className="error-message font-roboto text-sm text-red-700">This field is required</span>}
+            </div>
+
+            <div className="field-wrapper">
+              <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+              {errors.email && <span className="error-message font-roboto text-sm text-red-700">This field is required</span>}
+            </div>
+
+            <div className="field-wrapper">
+              <input type="text" placeholder="How did you find us ?" {...register("subject", { required: true })} />
+              {errors.subject && <span className="error-message font-roboto text-sm text-red-700">This field is required</span>}
+            </div>
+
+            <div className="field-wrapper">
+              <textarea placeholder="Enter your Message Here" {...register("message", { required: true })} style={{ height: "180px" }} />
+              {errors.message && <span className="error-message font-roboto text-sm text-red-700">This field is required</span>}
+            </div>
 
             {
               isLoading ? (

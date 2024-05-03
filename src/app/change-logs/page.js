@@ -1,8 +1,8 @@
 export default function ChangeLogs() {
   return (
-    <div className="change-logs-page bg-primary-foreground">
+    <div className="change-logs-page bg-primary-foreground border-t border-[#b2937e]">
       <div className="container">
-        <div className="content-wrapper border-t border-[#b2937e]">
+        <div className="content-wrapper pb-10">
           <section>
             <h1 className="text-center font-crimson text-4xl py-5 text-primary">Project Improvisations</h1>
           </section>

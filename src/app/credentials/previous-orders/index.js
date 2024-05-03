@@ -48,7 +48,7 @@ export default function History() {
                 <Table>
                   <TableCaption className='pb-5 font-roboto text-vase text-[#3c2f27]'>A list of your Previous Orders.</TableCaption>
                   <TableHeader>
-                    <TableRow className=''>
+                    <TableRow className=' border-b border-[#b2937e]'>
                       <TableHead className="text-[#3c2f27] text-center font-semibold font-roboto whitespace-nowrap">Order ID</TableHead>
                       <TableHead className='text-[#3c2f27] text-center font-semibold font-roboto whitespace-nowrap'>Total Amount</TableHead>
                       <TableHead className='text-[#3c2f27] text-center font-semibold font-roboto whitespace-nowrap'>Payment Method</TableHead>
@@ -59,7 +59,7 @@ export default function History() {
                   <TableBody className='bg-white'>
                     {orders?.map((invoice) => (
 
-                      <TableRow key={invoice.id}>
+                      <TableRow key={invoice.id} className=' border-b border-[#b2937e]'>
                         <TableCell className="text-center text-[#3c2f27] font-roboto">{invoice.id}</TableCell>
                         <TableCell className="text-center text-[#3c2f27] font-roboto">
                           <div className="flex items-center justify-center">

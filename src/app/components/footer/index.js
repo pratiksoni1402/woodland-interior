@@ -21,7 +21,6 @@ const footer = () => {
                 <ul>
                   <li><Link href='/' className='make-bold-props' title='Home'>Home</Link></li>
                   <li><Link href='/shop/sofa-sets' className='make-bold-props' title='Shop'>Shop</Link></li>
-                  <li><Link href='/our-values' className='make-bold-props' title='Our Products'>Our Products</Link></li>
                   <li><Link href='/contact' className='make-bold-props' title='Contact us'>Contact us</Link></li>
                 </ul>
               </div>

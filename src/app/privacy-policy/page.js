@@ -2,10 +2,10 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 export default function Policy() {
   return (
-    <div className="privacy-policy-page bg-[#faf2ec]">
+    <div className="privacy-policy-page bg-[#faf2ec] border-t border-[#b2937e]">
       <div className="container">
-      <div className="page-heading py-3">
-        <h1 className="text-2xl font-crimson text-[#3c2f27] font-semibold">Privacy Policy</h1>
+      <div className="page-heading pt-3 pb-5">
+        <h1 className="text-4xl font-crimson text-[#3c2f27] text-center">Privacy Policy</h1>
       </div>
       <div className="policy pb-10">
         <div className="block-one pb-5 text-sm text-[#3c2f27] font-roboto">

@@ -112,13 +112,6 @@ const Navbar = () => {
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              {/* <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/about" className="text-lg leading-7">
-                    About Us
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem> */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className="text-lg leading-7">
                   <Link href="/contact">
@@ -148,7 +141,7 @@ const Navbar = () => {
                     sessionData && sessionData.user_details ? ( // Check if sessionData and user_details are not null/undefined
                       <Link href="/my-account">
                         <Avatar className='text-[#3c2f27]'>
-                          <AvatarFallback className='font-roboto'>
+                          <AvatarFallback className='font-roboto border p-[2px] text-sm'>
                             {sessionData.user_details?.firstname?.charAt(0)}
                             {sessionData.user_details?.lastname?.charAt(0)}
                           </AvatarFallback>

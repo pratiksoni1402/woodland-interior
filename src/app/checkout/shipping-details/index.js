@@ -137,37 +137,52 @@ export default function Shippingdetail({ params }) {
           </div>
           <div className="text-sm flex items-center font-roboto text-[#3c2f27] pb-1 ">
             <input {...register("payment_mode", { required: true })} type="radio" value="Debit Card" id="debit-card" />
-            <label htmlFor="debit-card">Debit Card</label>
+            <label htmlFor="debit-card" className="radio-label flex flex-row items-center">
+              <span className="custom-radio "></span>
+              Debit Card
+            </label>
           </div>
 
           <div className="text-sm flex items-center font-roboto text-[#3c2f27] ">
             <input {...register("payment_mode", { required: true })} type="radio" value=" Credit Card" id="credit-card" />
-            <label htmlFor="credit-card">Credit Card</label>
+            <label htmlFor="credit-card" className="radio-label flex flex-row items-center">
+              <span className="custom-radio "></span>
+              Credit Card
+            </label>
           </div>
 
           <div className="text-sm flex items-center font-roboto text-[#3c2f27] ">
             <input {...register("payment_mode", { required: true })} type="radio" value=" UPI" id="upi" />
-            <label htmlFor="upi">UPI</label>
+            <label htmlFor="upi" className="radio-label flex flex-row items-center">
+              <span className="custom-radio "></span>
+              UPI
+            </label>
           </div>
 
           <div className="text-sm flex items-center font-roboto text-[#3c2f27] ">
             <input {...register("payment_mode", { required: true })} type="radio" value=" Net Banking" id="net-banking" />
-            <label htmlFor="net-banking">Net Banking</label>
+            <label htmlFor="net-banking" className="radio-label flex flex-row items-center">
+              <span className="custom-radio"></span>
+              Net Banking
+            </label>
           </div>
 
           <div className="text-sm flex items-center font-roboto text-[#3c2f27] ">
             <input {...register("payment_mode", { required: true })} type="radio" value=" Cash on Delivery" id="cod" />
-            <label htmlFor="cod">Cash on Delivery</label>
+            <label htmlFor="cod" className="radio-label flex flex-row items-center">
+              <span className="custom-radio "></span>
+              Cash on Delivery
+            </label>
           </div>
 
         </div>
         {animation ? (
-          <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]' disabled={true}>
+          <Button type='submit' className='rounded-none w-full font-roboto bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]' disabled={true}>
             <Loader2Icon className='animate-spin mr-1' />
             Place Order</Button>
 
         ) : (
-          <Button type='submit' className='rounded-none w-full font-roboto h-12 bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]'>Place Order</Button>
+          <Button type='submit' className='rounded-none w-full font-roboto bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]'>Place Order</Button>
         )}
 
       </form>

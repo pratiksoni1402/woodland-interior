@@ -75,7 +75,6 @@ export default function MobileMenu() {
     queryFn: () =>
       axios.get('/api/get-sessiondata')
         .then((response) => {
-          console.log('data', response.data.getSessionData)
           return response.data.getSessionData
         })
         .catch((error) => {

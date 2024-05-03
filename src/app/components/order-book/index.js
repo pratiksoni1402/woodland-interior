@@ -6,6 +6,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
+import { Loader2Icon } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -193,9 +194,9 @@ export default function Cart() {
         <div className="grid grid-cols-12 gap-5">
           <div className="lg:col-span-9 col-span-12">
             <div className="product-wrapper">
-        <div className="heading pb-3 sm:text-4xl text-xl font-crimson border-b border-[#b2937e]  text-[#3c2f27]">
-          Items in your cart
-        </div>
+              <div className="heading pb-3 sm:text-4xl text-xl font-crimson border-b border-[#b2937e]  text-[#3c2f27]">
+                Items in your cart
+              </div>
               <div className="grid grid-col-1">
                 <div className="col">
                   <div className='my-items'>
@@ -224,7 +225,9 @@ export default function Cart() {
                               <div className="flex items-center">
                                 {
                                   productLoading === product.id ? (
-                                    <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"><ClipLoader color="#3c2f27" size={20} /></Button>
+                                    <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">
+                                      <Loader2Icon className='animate-spin' />
+                                    </Button>
                                   ) : (
 
                                     <Button variant="outline" onClick={() => increasequantity(product.quantity, product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">+</Button>
@@ -233,7 +236,9 @@ export default function Cart() {
                                 <span className="px-7 border-[#3c2f27] border h-10 text-[#3c2f27] font-semibold text-sm flex items-center border-r-0 border-l-0">{product.quantity}</span>
                                 {
                                   descreaseLoader === product.id ? (
-                                    <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"><ClipLoader color="#3c2f27" size={20} /></Button>
+                                    <Button variant="outline" className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">
+                                      <Loader2Icon className='animate-spin ' />
+                                    </Button>
                                   ) : (
                                     <Button variant="outline" onClick={() => decreasequantity(product.quantity, product.id)} className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]">-</Button>
                                   )
@@ -247,22 +252,22 @@ export default function Cart() {
                               <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.products.price * product.quantity}</div>
                             </div>
                             <div className="actions flex flex-col justify-end md:pt-20 pt-5">
-                              <Link href={`/product-detail/${product.productid}`} className="md:text-end text-left font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
+                              <Link href={`/product-detail/${product.productid}`} className="md:text-end text-left font-roboto text-sm font-medium text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
 
                               {
                                 towishlist === product.id ? (
-                                  <div className="flex justify-center">
-                                    <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
-                                  </div>
+                                  <Button className='px-0 md:justify-end justify-start font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' disabled={true}>
+                                    <Loader2Icon className='animate-spin mr-1' />
+                                    Move to Wishlist</Button>
                                 ) : (
 
-                                  <Button onClick={() => movetowishlist(product.productid, product.sku, product.id, product.quantity)} className='px-0 md:justify-end justify-start font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
+                                  <Button onClick={() => movetowishlist(product.productid, product.sku, product.id, product.quantity)} className='px-0 md:justify-end justify-start font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Wishlist</Button>
                                 )
                               }
 
                               <AlertDialog className='rounded-none'>
                                 <AlertDialogTrigger asChild>
-                                  <Button className='mt-[-10px] md:justify-end justify-start font-roboto text-xs text-[#3c2f27] px-0  border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from cart</Button>
+                                  <Button className='mt-[-10px] md:justify-end justify-start font-roboto text-sm text-[#3c2f27] px-0  border-b border-transparent hover:text-[#3c2f27] hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from cart</Button>
                                 </AlertDialogTrigger>
                                 <AlertDialogContent className='bg-[#faf2ec]'>
                                   <AlertDialogHeader>
@@ -276,7 +281,11 @@ export default function Cart() {
                                     <AlertDialogAction onClick={() => cnfdelete(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>
                                       {
                                         loading ? (
-                                          <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
+                                          <div className="flex flex-row items-start justify-center">
+                                            <Loader2Icon className='animate-spin mr-1' />
+                                            <span>Delete</span>
+
+                                          </div>
                                         ) : (
                                           'Delete'
                                         )
@@ -305,9 +314,9 @@ export default function Cart() {
                   <div className="sub-total pt-3 flex justify-between px-2 text-sm font-roboto text-[#4b4537]">
                     <div>Sub-Total:</div>
                     <div className="flex items-center">
-                  <span className=""><IndianRupee width={14} /></span>
-                  <span>{subtotal}</span>
-                </div>
+                      <span className=""><IndianRupee width={14} /></span>
+                      <span>{subtotal}</span>
+                    </div>
                   </div>
                   <div className="sub-total flex py-2 justify-between px-2 text-sm font-roboto text-[#4b4537]">
                     <div>Central GST:</div>
@@ -334,9 +343,9 @@ export default function Cart() {
                 <div className="place-order text-center w-full ">
                   {
                     isLoading ? (
-                      <div className="flex justify-center py-2 mt-4 border border-[#3c2f27] items-center">
-                        <ClipLoader color="#3c2f27" size={18} />
-                      </div>
+                      <Button type='submit' className='rounded-none w-full font-roboto bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]' disabled={true}>
+                        <Loader2Icon className='animate-spin mr-1' />
+                        Proceed to Checkout</Button>
                     ) : (
 
                       <Button type='submit' onClick={handleClick} className="w-full border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent rounded-none hover:text-[#3c2f27] text-[#faf2ec] block text-center">Proceed to Checkout</Button>

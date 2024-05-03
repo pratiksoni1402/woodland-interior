@@ -6,44 +6,76 @@ const footer = () => {
   return (
     <div className='footer-section bg-white'>
       <footer className='container'>
-        <div className='upper-footer pb-10 pt-20 border-b'>
-          <div className='upper-footer-wrapper grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-10 lg:justify-between md:justify-evenly'>
-            <div className='flex items-center text-[#3c2f27] text-sm font-roboto'>
-              <ul>
-                <li><Link href='/'>Home</Link></li>
-                <li><Link href='/stories'>Stories</Link></li>
-                <li><Link href='/about-us'>About</Link></li>
-                <li><Link href='/contact'>Contact</Link></li>
+        <div className='upper-footer pb-10 sm:pt-20 pt-10 border-b'>
+          <div className='upper-footer-wrapper grid lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-10 lg:justify-around md:justify-evenly'>
 
+            <div className='col lg:order-1 md:order-2 sm:order-2 order-2'>
+              <div className=''>
+                <Image src={Logo} alt='Woodland Interiors' priority={true} />
+              </div>
+            </div>
 
-              </ul>
+            <div className='col lg:order-2 md:order-1 sm:order-1 order-1'>
+              <div className=' text-[#3c2f27] text-sm font-roboto '>
+                <h2 className='font-roboto pb-2 font-semibold'>Site Map</h2>
+                <ul>
+                  <li><Link href='/' className='make-bold-props' title='Home'>Home</Link></li>
+                  <li><Link href='/shop/sofa-sets' className='make-bold-props' title='Shop'>Shop</Link></li>
+                  <li><Link href='/our-values' className='make-bold-props' title='Our Products'>Our Products</Link></li>
+                  <li><Link href='/contact' className='make-bold-props' title='Contact us'>Contact us</Link></li>
+                </ul>
+              </div>
             </div>
-            <div className='flex items-center text-[#3c2f27] text-sm font-roboto'>
-              <ul>
-                <li><Link href='/change-logs'>Change Logs</Link></li>
-                <li><Link href='/privacy-policy'>Privacy Policy</Link></li>
-                <li><Link href='/terms-conditions'>Terms & Condition</Link></li>
-              </ul>
+
+            <div className='col lg:order-2 md:order-1 sm:order-1 order-1'>
+              <div className=' text-[#3c2f27] text-sm font-roboto '>
+                <h2 className='font-roboto pb-2 font-semibold'>Complaince</h2>
+                <ul>
+                  <li><Link href='/change-logs' className='make-bold-props' title='Change Logs'>Change Logs</Link></li>
+                  <li><Link href='/privacy-policy' className='make-bold-props' title='Privacy Policy'>Privacy Policy</Link></li>
+                  <li><Link href='/terms-conditions' className='make-bold-props' title='Terms & Condition'>Terms & Condition</Link></li>
+                </ul>
+              </div>
             </div>
-            {/* <div className='flex items-center text-[#3c2f27] text-sm font-roboto'>
-              <ul>
-                <li>Timing</li>
-                <li>Monday to Friday - 9AM - 9PM</li>
-                <li>Satuday - 9AM - 1PM</li>
-                <li>Sunday Closed</li>
-              </ul>
-            </div> */}
-            <div className='flex lg:justify-end sm:justify-center lg:col-span-1 sm:col-span-3'>
-              <Image src={Logo} alt='Woodland Interiors' priority={true} />
+
+            <div className='col lg:order-2 md:order-1 sm:order-1 order-1'>
+              <div className=' text-[#3c2f27] text-sm font-roboto '>
+                <h2 className='font-roboto pb-2 font-semibold'>Useful Links</h2>
+                <ul>
+                  <li><Link href='#' className='make-bold-props' title='Exporters'>Exporters</Link></li>
+                  <li><Link href='#' className='make-bold-props' title='Buy in Bulk'>Buy in Bulk</Link></li>
+                  <li><Link href='#' className='make-bold-props' title='Hotel Furniture'>Hotel Furniture</Link></li>
+                  <li><Link href='#' className='make-bold-props' title='Delivery Location'>Delivery Location</Link></li>
+                  <li><Link href='#' className='make-bold-props' title='Custom Furniture'>Custom Furniture</Link></li>
+                </ul>
+              </div>
             </div>
+
+            <div className='col lg:order-2 md:order-1 sm:order-1 order-1'>
+              <div className=' text-[#3c2f27] text-sm font-roboto '>
+                <h2 className='font-roboto pb-2 font-semibold'>Partners</h2>
+                <ul>
+                  <li><Link href='#' className='make-bold-props' title='Design Service'>Design Service</Link></li>
+                  <li><Link href='#' className='make-bold-props' title='Design Partners'>Design Partners</Link></li>
+                  <li><Link href='#' className='make-bold-props' title='Become a Franchise'>Become a Franchise</Link></li>
+                </ul>
+              </div>
+            </div>
+
+            <div className='col lg:order-2 md:order-1 sm:order-1 order-1'>
+              <div className=' text-[#3c2f27] text-sm font-roboto'>
+                <h2 className='font-roboto pb-2 font-semibold'>Explore More</h2>
+                <ul>
+                  <li><Link href='#' className='make-bold-props' title='Blog'>Blog</Link></li>
+                  <li><Link href='#' className='make-bold-props' title='Visit Us'>Visit Us</Link></li>
+                  <li><Link href='#' className='make-bold-props' title='Gift Cards'>Gift Cards</Link></li>
+                  <li><Link href='# ' className='make-bold-props' title='Refer & Earn'>Refer & Earn</Link></li>
+                </ul>
+              </div>
+            </div>
+            
           </div>
         </div>
-        <div className='lower-footer pt-2 pb-4'>
-          <div className='lower-footer-wrapper font-roboto text-[#3c2f27] text-base text-center'>
-              © Copyright Woodland Interiors Pvt Ltd. All rights reserved 2024.
-          </div>
-        </div>
-
       </footer>
     </div>
   );

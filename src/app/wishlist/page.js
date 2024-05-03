@@ -10,6 +10,7 @@ import { PRODUCT_MEDIA_URL } from "../_lib/constants/images";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 import { MoonLoader } from "react-spinners";
+import { Loader2Icon } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -132,21 +133,21 @@ export default function Product() {
                       <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.products.price}</div>
                     </div>
                     <div className="actions flex flex-col justify-end sm:pt-20 pt-0">
-                      <Link href={`/product-detail/${product.productid}`} className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
+                      <Link href={`/product-detail/${product.productid}`} className="text-end font-roboto text-sm font-medium text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
                       {
                         toCart === product.id ? (
-                          <div className="flex justify-center items-center">
-                            <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
-                          </div>
+                          <Button className='pr-0 justify-end font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' disabled={true}>
+                            <Loader2Icon className='animate-spin mr-1' />
+                            Move to Cart</Button>
                         ) : (
 
-                          <Button onClick={() => movetocart(product.productid, product.quantity, product.sku, product.id)} className='pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Cart</Button>
+                          <Button onClick={() => movetocart(product.productid, product.quantity, product.sku, product.id)} className='pr-0 justify-end font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Cart</Button>
                         )
                       }
 
                       <AlertDialog className='rounded-none'>
                         <AlertDialogTrigger asChild>
-                          <Button className='mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline bg-transparent hover:bg-transparent' variant="outline">Delete from wishlist</Button>
+                          <Button className='mt-[-10px] pr-0 justify-end font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline bg-transparent hover:bg-transparent hover:text-[#3c2f27]' variant="outline">Delete from wishlist</Button>
                         </AlertDialogTrigger>
                         <AlertDialogContent className='bg-[#faf2ec]'>
                           <AlertDialogHeader>
@@ -159,9 +160,9 @@ export default function Product() {
                             <AlertDialogCancel className='hover:duration-300 rounded-none bg-transparent text-[#3c2f27] border-[#3c2f27] hover:bg-[#b2937e] hover:border-[#b2937e] hover:text-[white]'>Cancel</AlertDialogCancel>
                             {
                               itemDelete === product.id ? (
-                                <div className="flex justify-center items-center">
-                                  <ClipLoader color="#3c2f27" size={20} css="border-radius: 50%" />
-                                </div>
+                                <AlertDialogAction className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>
+                                  <Loader2Icon className='animate-spin mr-1' />
+                                  Delete</AlertDialogAction>
                               ) : (
                                 <AlertDialogAction onClick={() => deleteproduct(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>Delete</AlertDialogAction>
                               )

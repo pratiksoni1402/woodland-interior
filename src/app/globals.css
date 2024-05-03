@@ -5,11 +5,11 @@
 @tailwind utilities;
 
 
-*{
+* {
   @apply m-0 p-0 box-border
-}  
+}
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -20,63 +20,63 @@ html{
 
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
- 
+
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
- 
+
     --primary: #3c2f27;
     --primary-foreground: #faf2ec;
- 
+
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
- 
+
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
- 
+
     --accent: 0 0% 96.1%;
     --accent-foreground: 0 0% 9%;
- 
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
- 
+
     --radius: 0.5rem;
 
     --light: #54595f;
     --dark: #7f5539;
 
     --theme: #ddb892;
-    
+
   }
- 
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
- 
+
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
- 
+
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
- 
+
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 9%;
- 
+
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
- 
+
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
- 
+
     --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
- 
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
- 
+
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
@@ -88,10 +88,12 @@ html{
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
+
 /* width */
 ::-webkit-scrollbar {
   width: 11px;
@@ -110,18 +112,25 @@ html{
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background:#b2937e;
+  background: #b2937e;
 }
+
+/* Global */
+/* button{
+  @apply h-12
+} */
+/* End */
+
 /* Navigation Styling */
-.navigation-bar .navbar-wrapper .menu nav ul li  {
+.navigation-bar .navbar-wrapper .menu nav ul li {
   @apply text-[#3c2f27] font-crimson
-  
 }
-.navigation-bar .navbar-wrapper .menu nav ul li a{
+
+.navigation-bar .navbar-wrapper .menu nav ul li a {
   @apply block
 }
 
-.navbar-expand-lg  .selected {
+.navbar-expand-lg .selected {
   @apply relative
 }
 
@@ -131,15 +140,14 @@ html{
 
 .navigation-bar .navbar-wrapper .menu nav ul li:hover {
   @apply text-[#3c2f27] cursor-pointer duration-300
-
 }
-.navigation-bar .navbar-wrapper .menu nav ul li button{
+
+.navigation-bar .navbar-wrapper .menu nav ul li button {
   @apply p-0 bg-transparent text-[#3c2f27] font-light
-
 }
+
 .navbar-expand-lg .navbar-nav a {
   @apply relative no-underline
-
 }
 
 .navigation-bar .navbar-wrapper .menu nav ul li::after {
@@ -154,26 +162,22 @@ html{
 
 .navigation-bar .navbar-wrapper .menu nav ul li:hover::after {
   @apply w-full scale-x-100
-
 }
 
 .navbar .nav .nav-link .nav-item .dropdown-toggle::after {
   @apply hidden
-
 }
 
 .navbar .nav .nav-links-dropdown:hover .dropdown-menu {
-  @apply block bg-[#faf2ec] rounded-none w-48 
+  @apply block bg-[#faf2ec] rounded-none w-48
 }
 
 .navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item {
- @apply text-[#3c2f27] font-crimson text-base leading-7
-
+  @apply text-[#3c2f27] font-crimson text-base leading-7
 }
 
 .navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item:hover {
   @apply bg-transparent text-[#3c2f27]
-
 }
 
 .navbar .navbar-toggler {
@@ -182,22 +186,21 @@ html{
 
 .navbar .navbar-toggler:focus {
   @apply no-underline outline-0 shadow-none
-
 }
 
 .navigation-bar .menu ul li {
   @apply py-0 px-3
 }
 
-.navigation-bar .menu .nested-list li{
+.navigation-bar .menu .nested-list li {
   @apply pb-3
 }
+
 /* End */
 
 /* Homepage Style start */
-.homepage .banner-wrapper .content-wrapper .banner-title{
+.homepage .banner-wrapper .content-wrapper .banner-title {
   @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center font-crimson
-  
 }
 
 .homepage .banner-wrapper .content-wrapper .banner {
@@ -205,23 +208,23 @@ html{
 
 }
 
-@media(max-width:768px){
-  .homepage .banner-wrapper .content-wrapper .banner{
+@media(max-width:768px) {
+  .homepage .banner-wrapper .content-wrapper .banner {
     height: 30vh !important;
   }
 }
 
 
 /* Our experts section Styling */
-.homepage .our-expert .content-wrapper .showcase img{
+.homepage .our-expert .content-wrapper .showcase img {
   width: 100% !important;
-}  
+}
+
 /* End */
 
 /* Custom Service */
 .homepage .custom-service {
   @apply relative
-
 }
 
 .homepage .custom-service .dine-room {
@@ -240,12 +243,10 @@ html{
 
 .homepage .custom-service .description .visit-us a {
   @apply font-roboto text-base tracking-normal bg-transparent text-white py-3 px-6 border border-white no-underline uppercase mt-4 inline-block
-
 }
 
 .homepage .custom-service .description .visit-us a:hover {
   @apply text-[#3c2f27] bg-[#faf2ec]
-  
 }
 
 /* End */
@@ -253,8 +254,8 @@ html{
 /* Product Showcase Section  */
 .visit-shop .timber-furniture {
   @apply bg-[#faf2ec]
-
 }
+
 .visit-shop .timber-furniture .product-description {
   @apply font-crimson text-[#3c2f27]
 }
@@ -274,68 +275,66 @@ html{
 /* Product Description Section end  */
 
 /* User Profile Component */
-.user-profile-component .content-wrapper{
+.user-profile-component .content-wrapper {
   @apply mt-5
 }
-.user-profile-component .content-wrapper .form-wrapper form .field-wrapper{
+
+.user-profile-component .content-wrapper .form-wrapper form .field-wrapper {
   @apply mb-2
 }
-.user-profile-component .content-wrapper .form-wrapper form input{
+
+.user-profile-component .content-wrapper .form-wrapper form input {
   @apply w-full mt-[10px] h-12 px-3 outline-0 border border-[#b2937e] rounded-none font-roboto
-  
 }
 
-.user-profile-component .content-wrapper .form-wrapper form input:focus{
+.user-profile-component .content-wrapper .form-wrapper form input:focus {
   @apply rounded-none border border-[#3c2f27]
 }
 
-.user-profile-component .content-wrapper .form-wrapper form select{
+.user-profile-component .content-wrapper .form-wrapper form select {
   @apply h-12 my-3 border border-[#b2937e] bg-white px-3
-  
 }
 
-.user-profile-component .content-wrapper .form-wrapper form select:focus{
-  @apply  border border-[#3c2f27] outline-0
-
+.user-profile-component .content-wrapper .form-wrapper form select:focus {
+  @apply border border-[#3c2f27] outline-0
 }
 
 /* End */
 
 /* Password Reset  */
-.change-password-form .form-wrapper form .field-wrapper{
+.change-password-form .form-wrapper form .field-wrapper {
   @apply mb-2
 }
-.change-password-form .form-wrapper form input[type="password"]{
- @apply w-full mt-[10px] h-12 px-3 border border-[#b2937e] outline-0 
 
+.change-password-form .form-wrapper form input[type="password"] {
+  @apply w-full mt-[10px] h-12 px-3 border border-[#b2937e] outline-0
 }
 
-.change-password-form .form-wrapper form input[type="password"]:focus{
+.change-password-form .form-wrapper form input[type="password"]:focus {
   @apply border border-[#3c2f27] outline-0
 }
+
 /* End */
 
 /* Swiper  */
 
 .image-carousel {
- @apply pb-[30px] bg-[#faf2ec]
+  @apply pb-[30px] bg-[#faf2ec]
 }
 
 .image-carousel .carousel-heading {
   @apply font-crimson text-[#3c2f27] pt-[30px] pb-5 px-0
-  
 }
 
 .image-carousel .carousel .title {
   @apply font-roboto text-sm text-[#3c2f27] leading-7 pt-1 pb-12 px-0
- 
 }
 
-.image-carousel .carousel .product-swiper .swiper-wrapper{
+.image-carousel .carousel .product-swiper .swiper-wrapper {
   @apply py-0 px-20
 }
 
-.image-carousel .carousel .product-swiper .swiper-wrapper img{
+.image-carousel .carousel .product-swiper .swiper-wrapper img {
   @apply w-full
 }
 
@@ -345,61 +344,64 @@ html{
 
 .image-carousel .carousel .swiper-button-prev, .swiper-button-next {
   @apply absolute top-[47%] z-10 cursor-pointer flex items-center justify-center text-white bottom-[50%] translate-y-[-50%] font-extrabold
-  
 }
 
 .image-carousel .carousel .swiper-button-next {
-  @apply absolute top-[47%] z-10 cursor-pointer flex items-center justify-center text-white bottom-[50%] translate-y-[-50%] font-extrabold 
-
-
+  @apply absolute top-[47%] z-10 cursor-pointer flex items-center justify-center text-white bottom-[50%] translate-y-[-50%] font-extrabold
 }
-.image-carousel .carousel .swiper-pagination .swiper-pagination-bullet{
- @apply  my-0 mx-[10px];
-  
+
+.image-carousel .carousel .swiper-pagination .swiper-pagination-bullet {
+  @apply my-0 mx-[10px];
+
 }
 
 .image-carousel .carousel .swiper-pagination .swiper-pagination-bullet-active {
   @apply bg-[#3c2f27]
 }
+
 /* End */
 
 /* Tabbing Swiper */
 
- .tabbing-actions .swiper .swiper-wrapper .edit-profile{
+.tabbing-actions .swiper .swiper-wrapper .edit-profile {
   @apply !w-[100px] !mr-0
 }
-.tabbing-actions .swiper .swiper-wrapper .edit-profile div{
-  @apply  !p-0
+
+.tabbing-actions .swiper .swiper-wrapper .edit-profile div {
+  @apply !p-0
 }
 
-.tabbing-actions .swiper .swiper-wrapper .my-wishlist{
+.tabbing-actions .swiper .swiper-wrapper .my-wishlist {
   @apply !w-[100px] !mr-2
-} 
-.tabbing-actions .swiper .swiper-wrapper .order-history{
+}
+
+.tabbing-actions .swiper .swiper-wrapper .order-history {
   @apply !w-[115px] !mr-2
 }
- 
-.tabbing-actions .swiper .swiper-wrapper .chng-password{
+
+.tabbing-actions .swiper .swiper-wrapper .chng-password {
   @apply !w-[130px] !mr-2
 }
-.tabbing-actions .swiper .swiper-wrapper .acc-delete{
+
+.tabbing-actions .swiper .swiper-wrapper .acc-delete {
   @apply !w-[160px] !mr-0
 }
-.tabbing-actions .swiper .swiper-wrapper .manage-addresses{
-  @apply !w-[160px] !mr-0
-} 
-.tabbing-actions .swiper .swiper-wrapper .browsing-history{
-  @apply !w-[160px] !mr-0
 
-} 
+.tabbing-actions .swiper .swiper-wrapper .manage-addresses {
+  @apply !w-[160px] !mr-0
+}
 
-.tabbing-actions .swiper .swiper-wrapper .swiper-slide-active{
+.tabbing-actions .swiper .swiper-wrapper .browsing-history {
+  @apply !w-[160px] !mr-0
+}
+
+.tabbing-actions .swiper .swiper-wrapper .swiper-slide-active {
   @apply !w-[0px] !mr-0
 }
 
-.tabbing-actions .swiper .swiper-wrapper .swiper-slide-next{
+.tabbing-actions .swiper .swiper-wrapper .swiper-slide-next {
   @apply !w-[0px] !mr-0
-} 
+}
 
 /* End */
 
@@ -407,103 +409,121 @@ html{
 .contact-page .content-wrapper .form-wrapper form input,
 textarea {
   @apply w-full py-2 my-3 mx-0 h-10 border border-[#b2937e] rounded-none outline-0 px-3 font-roboto
-    
 }
 
 .contact-page .content-wrapper .form-wrapper form input:focus,
 textarea:focus {
-    @apply border border-[#3c2f27] px-3
+  @apply border border-[#3c2f27] px-3
 }
+
 /* End */
 
 /* User Register  Form */
-.user-registration .register-form form .field-wrapper{
+.user-registration .register-form form .field-wrapper {
   @apply mb-3
 }
-.user-registration .register-form form input{
+
+.user-registration .register-form form input {
   @apply w-full py-3 border border-[#b2937e] rounded-none px-3 outline-none bg-white font-roboto
 }
 
-.user-registration .register-form form input:focus{
+.user-registration .register-form form input:focus {
   @apply outline-none border border-[#3c2f27] duration-300 px-3 bg-white
-
 }
+
 /* End */
 
 /* Login Form */
-.user-login .login-form form .field-wrapper{
+.user-login .login-form form .field-wrapper {
   @apply mb-3
 }
-.user-login .login-form form input{
-  @apply  w-full border border-[#b2937e] rounded-none p-3 outline-none bg-white font-roboto
+
+.user-login .login-form form input {
+  @apply w-full border border-[#b2937e] rounded-none p-3 outline-none bg-white font-roboto
 }
 
-.user-login .login-form form input:focus{
- @apply outline-none border border-[#3c2f27] duration-300 px-3 bg-white
+.user-login .login-form form input:focus {
+  @apply outline-none border border-[#3c2f27] duration-300 px-3 bg-white
 }
+
 /* End */
 
 /* Shipping Details Form */
 
-.shipping-details-form form input[type=text]{
-  @apply w-full p-3 mb-3 border border-[#b2937e]  rounded-none outline-none shadow-none font-roboto text-[#3c2f27]
-}
-.shipping-details-form form input[type=text]:focus{
-  @apply border  border-[#3c2f27]
+.shipping-details-form form input[type=text] {
+  @apply w-full p-3 mb-3 border border-[#b2937e] rounded-none outline-none shadow-none font-roboto text-[#3c2f27]
 }
 
-.shipping-details-form form select{
-  @apply h-12 mb-3 border border-[#b2937e]  bg-white px-0 w-full text-[#3c2f27] font-roboto rounded-none outline-none shadow-none font-roboto
-  
+.shipping-details-form form input[type=text]:focus {
+  @apply border border-[#3c2f27]
 }
 
-.shipping-details-form  form select:focus{
-  @apply  border  border-[#3c2f27]
+.shipping-details-form form select {
+  @apply h-12 mb-3 border border-[#b2937e] bg-white px-0 w-full text-[#3c2f27] font-roboto rounded-none outline-none shadow-none font-roboto
+}
 
+.shipping-details-form form select:focus {
+  @apply border border-[#3c2f27]
 }
 
 .shipping-details-form .data-\[state\=checked\]\:bg-primary[data-state=checked] {
   @apply bg-[#3c2f27]
 }
 
-.shipping-details-form form .payment-method{
+.shipping-details-form form .payment-method {
   @apply pb-10
 }
 
-.shipping-details-form form .payment-method label{
+.shipping-details-form form .payment-method label {
   @apply pl-1
 }
 
-.shipping-details-form form .payment-method div{
+.shipping-details-form form .payment-method div {
   @apply pb-1
 }
 
-.shipping-details-form form .payment-method div label:hover{
+.shipping-details-form form .payment-method div label:hover {
   @apply cursor-pointer
 }
 
+.shipping-details-form form .payment-method div input[type="radio"] {
+  @apply hidden
+}
+
+
+.shipping-details-form form .payment-method div .custom-radio {
+  @apply block w-4 h-4 border-2 border-[#ccc] rounded-full relative mr-1 hover:bg-primary p-1
+}
+
+.shipping-details-form form .payment-method div input[type="radio"]:checked + .radio-label .custom-radio{
+  @apply after:content-[''] after:w-3 after:h-3 after:bg-primary after:rounded-full after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 p-1 border border-primary
+}
 
 /* End */
-.change-password-form .form-wrapper form input{
+/* --------------------------------------------------------------- */
+
+.change-password-form .form-wrapper form input {
   @apply font-roboto
 }
-.change-password-form .form-wrapper form input:focus{
+
+.change-password-form .form-wrapper form input:focus {
   @apply outline-1 outline-[#3c2f27] rounded-none
 }
 
 /* Customer Reviews */
-.customer-reviews .tab-button button{
+.customer-reviews .tab-button button {
   @apply bg-[#3c2f27] rounded-none text-base font-crimson font-semibold text-white
 }
 
-.customer-reviews .reviews-wrapper .review{
+.customer-reviews .reviews-wrapper .review {
   @apply border-b border-[#b2937e]
 }
+
 /* End */
 /* Stories Page Styling */
 /* Banner Image Section Styling */
 .stories .banner-image-wrapper {
- @apply relative
+  @apply relative
 }
 
 .stories .banner-image-wrapper .banner-text-wrapper .banner-text {
@@ -513,24 +533,21 @@ textarea:focus {
 
 .stories .banner-image-wrapper .banner-text-wrapper .banner-text span {
   @apply block md:text-5xl sm:text-3xl text-2xl leading-7 text-white font-crimson
-  
 }
+
 /* End */
 
 /* Browse by Category */
 .stories .browse-by-category {
   @apply bg-[#faf2ec] py-12 px-0
-
 }
 
 .stories .browse-by-category .inspiration {
   @apply text-center font-crimson text-2xl leading-10 text-[#3c2f27]
-
 }
 
 .stories .browse-by-category .heading {
   @apply text-center font-roboto text-2xl leading-10 text-[#4f4537] py-3 px-0
-
 }
 
 .stories .browse-by-category .categories {
@@ -539,12 +556,10 @@ textarea:focus {
 
 .stories .browse-by-category .categories .wrapper {
   @apply py-4 px-0
-
 }
 
 .stories .browse-by-category .categories .wrapper a {
   @apply font-roboto text-xl no-underline block leading-5 text-[#4f4537] py-8 px-5 bg-white text-center border border-transparent rounded-none
-
 }
 
 .stories .browse-by-category .categories .wrapper a:hover {
@@ -556,7 +571,7 @@ textarea:focus {
 /* End */
 /* Product Listing */
 .stories .product-listing {
- @apply bg-[#faf2ec] pt-3 pr-0 pb-10 pl-0
+  @apply bg-[#faf2ec] pt-3 pr-0 pb-10 pl-0
 }
 
 .stories .product-listing .product-wrapper .image {
@@ -564,23 +579,19 @@ textarea:focus {
 }
 
 .stories .product-listing .product-wrapper .image .case-studies {
-  @apply absolute right-5 top-5  font-roboto text-xs leading-4 border border-[#3c2f27] py-2 px-4 bg-[#faf2ec] rounded-3xl
-  
-  
+  @apply absolute right-5 top-5 font-roboto text-xs leading-4 border border-[#3c2f27] py-2 px-4 bg-[#faf2ec] rounded-3xl
 }
 
 .stories .product-listing .product-wrapper .content-wrapper {
- @apply bg-white;
+  @apply bg-white;
 }
 
 .stories .product-listing .product-wrapper .content-wrapper .description {
-  @apply font-roboto text-lg leading-7 text-[#4f4537] p-5 pt-3 
-
+  @apply font-roboto text-lg leading-7 text-[#4f4537] p-5 pt-3
 }
 
 .stories .product-listing .product-wrapper .content-wrapper .read-more {
-  @apply font-roboto font-bold text-sm tracking-tight leading-6 text-[#3c2f27] py-3 px-5 
-
+  @apply font-roboto font-bold text-sm tracking-tight leading-6 text-[#3c2f27] py-3 px-5
 }
 
 /* End */
@@ -595,13 +606,11 @@ textarea:focus {
 }
 
 .stories .study-wooden-table .hero-text {
-  @apply absolute top-2/4 text-center left-2/4 text-white w-full z-10  transform -translate-x-1/2 -translate-y-1/2
-  
+  @apply absolute top-2/4 text-center left-2/4 text-white w-full z-10 transform -translate-x-1/2 -translate-y-1/2
 }
 
 .stories .study-wooden-table .hero-text h1 {
   @apply text-5xl leading-[55px] font-crimson
-
 }
 
 .stories .study-wooden-table .hero-text span {
@@ -611,24 +620,20 @@ textarea:focus {
 /* Follow Us */
 .stories .follow-us {
   @apply bg-[#faf2ec] py-10 px-0
-
 }
 
 .stories .follow-us .social-link {
   @apply text-[#4f4537] font-crimson text-center text-3xl leading-9
-
 }
 
 .stories .follow-us .social-link a {
   @apply text-[#4f4537] font-crimson text-center text-3xl leading-9 no-underline
-
 }
 
 /*  */
 /* Newsletter */
 .stories .newsletter {
   @apply p-0 pb-16 bg-[#faf2ec]
-
 }
 
 .stories .newsletter .content-wrapper .left-section {
@@ -637,37 +642,30 @@ textarea:focus {
 
 .stories .newsletter .content-wrapper .right-section {
   @apply w-1/3 flex justify-center items-center
-
 }
 
 .stories .newsletter .content-wrapper .right-section .wrapper {
   @apply w-2/3
-
 }
 
 .stories .newsletter .content-wrapper .right-section .wrapper .heading {
   @apply font-crimson text-3xl text-[#4f4537]
- 
 }
 
 .stories .newsletter .content-wrapper .right-section .wrapper .description {
   @apply font-roboto text-base text-[#4b4537] pt-3 pb-4 px-0
-  
 }
 
 .stories .newsletter .content-wrapper .right-section .wrapper .subscribe input[type="text"] {
   @apply h-9 w-full m-0 mb-5 font-roboto
-
 }
 
 .stories .newsletter .content-wrapper .right-section .wrapper .subscribe button {
   @apply w-full py-3 px-6 text-[#4f4537] border border-[#4f4537] font-roboto bg-transparent
-
 }
 
 .stories .newsletter .content-wrapper .right-section .wrapper .subscribe button:hover {
   @apply text-white bg-[#3c2f27] border border-[#3c2f27]
-
 }
 
 @media(max-width:992px) {
@@ -676,25 +674,27 @@ textarea:focus {
   }
 
   .stories .newsletter .content-wrapper .left-section {
-      @apply w-full
+    @apply w-full
   }
 
   .stories .newsletter .content-wrapper .right-section {
-      @apply w-full
-
+    @apply w-full
   }
 
 }
+
 /* End */
 
 
 /*  */
 .about-us .banner-image-wrapper {
- @apply relative
+  @apply relative
 }
-.about-us .banner-image-wrapper .hero-image{
+
+.about-us .banner-image-wrapper .hero-image {
   filter: brightness(60%);
 }
+
 .about-us .banner-image-wrapper .hero-text {
   position: absolute;
   bottom: 10%;
@@ -731,7 +731,8 @@ textarea:focus {
   margin-bottom: 0;
 
 }
-.about-us .about-company-location .explore-more button{
+
+.about-us .about-company-location .explore-more button {
   border: 1px solid black;
   padding: 12px 24px;
   font-family: minion-pro;
@@ -742,7 +743,8 @@ textarea:focus {
   color: black;
   background-color: transparent;
 }
-.about-us .about-company-location .explore-more button:hover{
+
+.about-us .about-company-location .explore-more button:hover {
   background-color: #3c2f27;
   color: white;
   transition: .4s;
@@ -770,110 +772,130 @@ textarea:focus {
 
 @media(max-width:576px) {
   .about-us .banner {
-      display: flex !important;
-      flex-wrap: wrap;
-      flex-direction: column;
+    display: flex !important;
+    flex-wrap: wrap;
+    flex-direction: column;
   }
 
   .about-us .banner .video {
-      width: 100%;
-      display: block;
+    width: 100%;
+    display: block;
   }
 
   .about-us .banner .image {
-      width: 100%;
+    width: 100%;
   }
 
 }
+
 /*  */
 
-.about-us .work-showcase{
+.about-us .work-showcase {
   background-color: #faf2ec;
 }
-.about-us .work-showcase .video-wrapper{
+
+.about-us .work-showcase .video-wrapper {
   display: inherit;
-  
+
 }
-.about-us .work-showcase .video-wrapper video{
+
+.about-us .work-showcase .video-wrapper video {
   width: 100%;
 }
+
 /*  */
-.about-us .westbury{
+.about-us .westbury {
   background-color: #3c2f27;
 }
-.about-us .westbury .content-wrapper .left-section{
+
+.about-us .westbury .content-wrapper .left-section {
   width: 60%;
   display: flex;
   align-items: center;
 }
+
 .about-us .westbury .content-wrapper .left-section .fairer-hills {
   width: 65%;
   margin: auto;
 }
-.about-us .westbury .content-wrapper .left-section .fairer-hills p{
+
+.about-us .westbury .content-wrapper .left-section .fairer-hills p {
   font-family: minion-pro;
   font-size: 30px;
   line-height: 45px;
   color: white;
 }
-.about-us .westbury .content-wrapper .left-section .fairer-hills span{
+
+.about-us .westbury .content-wrapper .left-section .fairer-hills span {
   font-family: minion-pro;
   font-size: 18px;
   line-height: 28px;
   color: white;
 }
-.about-us .westbury .content-wrapper .right-section{
+
+.about-us .westbury .content-wrapper .right-section {
   width: 40%;
 }
-.about-us .westbury .content-wrapper .right-section .westbury-white-horse{
+
+.about-us .westbury .content-wrapper .right-section .westbury-white-horse {
   width: 75%;
 }
-@media(max-width:992px){
-  .about-us .westbury .content-wrapper .left-section .fairer-hills p{
-      font-family: minion-pro;
-      font-size: 18px;
-      line-height: 26px;
-      color: white;
+
+@media(max-width:992px) {
+  .about-us .westbury .content-wrapper .left-section .fairer-hills p {
+    font-family: minion-pro;
+    font-size: 18px;
+    line-height: 26px;
+    color: white;
   }
 }
-@media(max-width:576px){
-  .about-us .westbury .content-wrapper .left-section{
-      width: 100%;
-      display: flex;
-      align-items: center;
-      order: 2;
+
+@media(max-width:576px) {
+  .about-us .westbury .content-wrapper .left-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    order: 2;
   }
+
   .about-us .westbury .content-wrapper .left-section .fairer-hills {
-      width: 100%;
-      padding: 20px;
+    width: 100%;
+    padding: 20px;
   }
-  .about-us .westbury .content-wrapper .right-section{
-      width: 100%;
-      order: 1;
-  }  
-  .about-us .westbury .content-wrapper .right-section .westbury-white-horse{
-      width: 100%;
-  } 
-  .about-us .westbury .content-wrapper{
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
+
+  .about-us .westbury .content-wrapper .right-section {
+    width: 100%;
+    order: 1;
+  }
+
+  .about-us .westbury .content-wrapper .right-section .westbury-white-horse {
+    width: 100%;
+  }
+
+  .about-us .westbury .content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
   }
 
 }
+
 /* Old Map */
-.about-us .old-navigation-map{
+.about-us .old-navigation-map {
   position: relative;
 }
-.about-us .old-navigation-map .hero-image{
+
+.about-us .old-navigation-map .hero-image {
   filter: brightness(40%);
 }
-.about-us .old-navigation-map .heading{
+
+.about-us .old-navigation-map .heading {
   position: absolute;
   top: 15%;
   width: 100%;
 }
-.about-us .old-navigation-map .heading span{
+
+.about-us .old-navigation-map .heading span {
   font-family: minion-pro-display;
   font-size: 34px;
   line-height: 34px;
@@ -881,46 +903,56 @@ textarea:focus {
   text-align: center;
   color: white;
 }
-.about-us .old-navigation-map .firms-promise{
+
+.about-us .old-navigation-map .firms-promise {
   position: absolute;
-  bottom: 10% ;
+  bottom: 10%;
   width: 100%;
 }
-.about-us .old-navigation-map .firms-promise .left-section p, .right-section p{
+
+.about-us .old-navigation-map .firms-promise .left-section p,
+.right-section p {
   font-family: minion-pro;
   font-size: 18px;
   line-height: 28px;
   color: white;
   margin-bottom: 20px;
 }
+
 /* End */
-.svg-stroking svg{
+.svg-stroking svg {
   stroke-width: 3px;
-  
+
 }
 
 
 /* Upper Footer Styling */
-.footer-section footer .upper-footer ul li a{
+.footer-section footer .upper-footer ul li a {
   @apply leading-6 text-[#3c2f27]
 }
 
-.footer-section footer .upper-footer ul li a:hover{
+.footer-section footer .upper-footer ul li a:hover {
   @apply text-[#3c2f27] font-semibold
 }
+
 /* End */
 
 /* Lower Footer */
-.footer-section footer .lower-footer .lower-footer-wrapper div{
+.footer-section footer .lower-footer .lower-footer-wrapper div {
   @apply text-[#3c2f27] text-xs
 }
 
-.footer-section footer .lower-footer .lower-footer-wrapper div a:hover{
+.footer-section footer .lower-footer .lower-footer-wrapper div a:hover {
   @apply underline
 }
+
 /* End */
 
-
-
-
-
+.make-bold-props {
+  @apply before:block
+  before:content-[attr(title)]
+  before:h-0
+  before:font-bold
+  before:overflow-hidden
+  before:invisible;
+}

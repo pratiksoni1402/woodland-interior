@@ -299,7 +299,7 @@ export default function Detail({ params }) {
 
                             ) : (
 
-                              <Button variant="outline" onClick={() => removefromwishlist(wishlistid.id)} className="text-sm w-full hover:text-[#3c2f27] bg-[#3c2f27] text-[#faf2ec] hover:bg-transparent border-[#3c2f27]  rounded-none h-12 ">Remove from Wishlist
+                              <Button variant="outline" onClick={() => removefromwishlist(wishlistid.id)} className="text-sm w-full hover:text-[#3c2f27] bg-[#3c2f27] text-[#faf2ec] hover:bg-transparent border-[#3c2f27]  rounded-none ">Remove from Wishlist
                               </Button>
                             )
                           }
@@ -309,11 +309,11 @@ export default function Detail({ params }) {
                         <>
                           {
                             loading ? (
-                              <Button type='submit' className="w-full mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex" disabled={true}>
+                              <Button type='submit' className="w-full border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex" disabled={true}>
                                 <Loader2Icon className='animate-spin mr-1' />
                                 Add to Wishlist</Button>
                             ) : (
-                              <Button variant="outline" onClick={() => addtowishlist(detail.id, detail.sku)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none h-12 ">Add To Wishlist
+                              <Button variant="outline" onClick={() => addtowishlist(detail.id, detail.sku)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none ">Add To Wishlist
                               </Button>
                             )
                           }
@@ -327,12 +327,12 @@ export default function Detail({ params }) {
                   <div className="cart py-3">
                     {
                       adding ? (
-                        <Button type='submit' className="w-full mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex" disabled={true}>
+                        <Button type='submit' className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] border-[#3c2f27] rounded-none border" disabled={true}>
                           <Loader2Icon className='animate-spin mr-1' />
                           Add to bag</Button>
                       ) : (
 
-                        <Button variant="outline" onClick={() => addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none h-12 ">Add To Bag
+                        <Button variant="outline" onClick={() => addtocart(detail.id, detail.sku, count)} className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none ">Add To Bag
                         </Button>
                       )
                     }

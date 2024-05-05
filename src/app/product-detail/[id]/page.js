@@ -327,7 +327,7 @@ export default function Detail({ params }) {
                   <div className="cart py-3">
                     {
                       adding ? (
-                        <Button type='submit' className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] border-[#3c2f27] rounded-none border" disabled={true}>
+                        <Button type='submit' className="text-sm w-full text-[#faf2ec] bg-[#3c2f27] rounded-none border" disabled={true}>
                           <Loader2Icon className='animate-spin mr-1' />
                           Add to bag</Button>
                       ) : (

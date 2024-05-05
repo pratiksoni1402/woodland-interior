@@ -109,7 +109,7 @@ export default function Profile() {
               {errors.addresslinetwo && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>}
             </div>
 
-            <div className='grid sm:grid-cols-3 grid-cols-1 gap-3 items-center'>
+            <div className='grid sm:grid-cols-3 grid-cols-1 sm:gap-3 gap-0 items-center'>
               <div className=''>
                 <select {...register("country", { required: true })} className='w-full'>
                   <option value="" disabled>Select Country</option>
@@ -133,15 +133,19 @@ export default function Profile() {
               </div>
 
             </div>
-            <div className='grid grid-cols-2 gap-3'>
-              <div className='field-wrapper'>
-                <input type="text" placeholder="Pincode" {...register("pincode", { required: true })} />
-                {errors.city && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>}
+            <div className='grid grid-cols-2 sm:gap-3 gap-0'>
+              <div className='sm:col-span-1 col-span-2'>
+                <div className='field-wrapper'>
+                  <input type="text" placeholder="Pincode" {...register("pincode", { required: true })} />
+                  {errors.city && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>}
+                </div>
               </div>
 
-              <div className='field-wrapper'>
-                <input type="text" placeholder="Phonenumber" {...register("phonenumber", { required: true })} />
-                {errors.city && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>}
+              <div className='sm:col-span-1 col-span-2'>
+                <div className='field-wrapper'>
+                  <input type="text" placeholder="Phonenumber" {...register("phonenumber", { required: true })} />
+                  {errors.city && <span className='error-message font-roboto text-sm text-red-700'>This field is required</span>}
+                </div>
               </div>
             </div>
             <div className='text-center py-8'>

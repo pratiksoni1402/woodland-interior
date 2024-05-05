@@ -39,10 +39,10 @@ export default async function MyAccount() {
     <div className="my-account-page bg-[#faf2ec] h-full border-t border-[#b2937e]">
       <div className="wrapper container">
         <div className="heading text-center font-crimson text-[#3c2f27] text-3xl py-5">
-          <h1 className="capitalize md:text-4xl text-base">{message}</h1>
+          <h1 className="capitalize md:text-4xl text-2xl">{message}</h1>
         </div>
         <div className="actions pb-10 lg:w-3/4 w-full m-auto flex sm:flex-row flex-col justify-between">
-          <div className="activity sm:order-1 order-2">
+          <div className="activity sm:order-1 order-2 sm:mt-0 mt-4">
             <div className="font-roboto pb-2 text-[#3c2f27] font-semibold text-sm">You can do following things in you account.</div>
             <ul className="list-disc list-inside font-roboto">
               <li className="text-sm text-[#3c2f27]">Edit your Profile</li>

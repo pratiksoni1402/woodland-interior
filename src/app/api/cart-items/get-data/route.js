@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 export const revalidate = 0;
 import { getSessionId } from "@/lib/session";
 import prisma from "@/db";

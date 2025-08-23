@@ -303,10 +303,14 @@ html {
 
 /* Password Reset  */
 .change-password-form .form-wrapper form .field-wrapper {
-  @apply mb-2
+  @apply mb-2 w-1/2 mx-auto
 }
 
 .change-password-form .form-wrapper form input[type="password"] {
+  @apply mt-[10px] w-full h-12 px-3 border border-[#b2937e] outline-0
+}
+
+.change-password-form .form-wrapper form input[type="text"] {
   @apply w-full mt-[10px] h-12 px-3 border border-[#b2937e] outline-0
 }
 
@@ -711,7 +715,7 @@ textarea:focus {
 
 .about-us .banner-image-wrapper .hero-text p {
   margin-bottom: 0;
-  font-family: minion-pro-display;
+  font-family: minion-pro-display, serif;
   font-size: 32px;
   font-size: 38px;
   color: white;

@@ -1,7 +1,7 @@
 "use client"
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
-export const revalidate = 0;
+// export const revalidate = 0;
 import Image from "next/image";
 import { Button } from "./../components/ui/button";
 import { IndianRupee } from "lucide-react";
@@ -44,7 +44,7 @@ export default function Product() {
   })
   // End
 
-  if (allproducts?.length == 0) {
+  if (allproducts?.length === 0) {
     return (
       <div className="w-full h-screen bg-[#faf2ec] mt-[-70px] flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
         <h1 className="sm:text-4xl text-2x">Your Wishlist is empty</h1>

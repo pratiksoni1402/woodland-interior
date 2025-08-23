@@ -3,6 +3,7 @@ import Header from "../app/components/header";
 import Footer from "../app/components/footer";
 import { QueryClient } from "@tanstack/react-query";
 import QueryClientProvider from "@/provider/query-client";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 export const metadata = {
@@ -22,6 +23,17 @@ export default function RootLayout({ children }) {
           <Footer />
         </QueryClientProvider>
         <SpeedInsights />
+        <NextTopLoader
+          color="#6E6E6E"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={4}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #ffffff,0 0 5px #ffffff"
+        />
       </body>
     </html>
   );

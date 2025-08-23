@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
-export const revalidate = 0;
+// export const revalidate = 0;
 export default function ChangeLogs() {
   return (
     <div className="change-logs-page bg-primary-foreground border-t border-[#b2937e]">

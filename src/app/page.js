@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
-export const revalidate = 0;
+// export const revalidate = 0;
 import Image from "next/image";
 import SwiperSlider from "../app/components/swiper-slider";
 import Visitshop from "./_component";

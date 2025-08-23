@@ -23,17 +23,18 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@tanstack/react-query": "^5.17.15",
     "@tanstack/react-query-devtools": "^5.17.18",
+    "@vercel/blob": "^1.1.1",
     "@vercel/speed-insights": "^1.1.0",
-    "axios": "^1.6.2",
+    "axios": "1.11.0",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "iron-session": "^8.0.1",
     "lucide-react": "^0.376.0",
     "mongodb": "^6.3.0",
-    "mysql2": "^3.7.1",
+    "mysql2": "3.9.8",
     "next": "^14.1.0",
-    "nextjs-toploader": "^1.6.4",
+    "nextjs-toploader": "^1.6.12",
     "postcss-loader": "^7.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -48,6 +49,9 @@
     "vaul": "^0.9.0",
     "zustand": "^4.4.7"
   },
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.17.7",
     "autoprefixer": "^10.0.1",
@@ -57,6 +61,9 @@
     "prettier": "^3.1.0",
     "prisma": "^5.12.1",
     "tailwindcss": "^3.3.0"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
   "main": "next.config.js",

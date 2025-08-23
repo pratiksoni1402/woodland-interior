@@ -1,9 +1,10 @@
-"use client"
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
+"use client";
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 // export const revalidate = 0;
 import Image from "next/image";
 import { Button } from "./../components/ui/button";
+import { BLOB_BASE_URL } from "@/app/_lib/constants/blob";
 import { IndianRupee } from "lucide-react";
 import axios from "axios";
 import Link from "next/link";
@@ -31,17 +32,22 @@ export default function Product() {
   const [itemDelete, setItemDelte] = useState(null);
 
   // Get all products from wishlist table
-  const { isPending, data: allproducts, error } = useQuery({
-    queryKey: ['productlist'],
+  const {
+    isPending,
+    data: allproducts,
+    error,
+  } = useQuery({
+    queryKey: ["productlist"],
     queryFn: () =>
-      axios.get('/api/wishlist-items/get-data')
+      axios
+        .get("/api/wishlist-items/get-data")
         .then((response) => {
-          return response.data.getallproduct
+          return response.data.getallproduct;
         })
         .catch((error) => {
-          console.log("Error Occured", error)
-        })
-  })
+          console.log("Error Occured", error);
+        }),
+  });
   // End
 
   if (allproducts?.length === 0) {
@@ -49,56 +55,58 @@ export default function Product() {
       <div className="w-full h-screen bg-[#faf2ec] mt-[-70px] flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
         <h1 className="sm:text-4xl text-2x">Your Wishlist is empty</h1>
         <div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] text-[#faf2ec] mt-5 border border-[#3c2f27]">
-          <Link href='/shop/bedroom'>SHOP NOW</Link>
+          <Link href="/shop/bedroom">SHOP NOW</Link>
         </div>
       </div>
-    )
+    );
   }
 
   if (!allproducts) {
     return (
-      <div className='loading h-screen bg-[#faf2ec] w-full flex justify-center items-center'><MoonLoader color="#3c2f27" />
+      <div className="loading h-screen bg-[#faf2ec] w-full flex justify-center items-center">
+        <MoonLoader color="#3c2f27" />
       </div>
-    )
+    );
   }
 
   // Delete product from wishlist table
   const deleteproduct = (id) => {
     setItemDelte(id);
-    axios.post('/api/wishlist-items/delete-item', { id })
+    axios
+      .post("/api/wishlist-items/delete-item", { id })
       .then((response) => {
-        queryClient.invalidateQueries('productlist');
+        queryClient.invalidateQueries("productlist");
       })
       .catch((error) => {
-        console.log("Error Occured while deleting product", error)
+        console.log("Error Occured while deleting product", error);
       })
       .finally(() => {
-        queryClient.invalidateQueries('productlist')
+        queryClient.invalidateQueries("productlist");
         setItemDelte(false);
-      })
-  }
+      });
+  };
   // End
 
   // Move product to Cart Table
   const movetocart = (productid, quantity, sku, id) => {
-    setToCart(id)
-    axios.post('/api/cart-items/from-wishlist', {
-      productid,
-      quantity,
-      sku,
-    })
+    setToCart(id);
+    axios
+      .post("/api/cart-items/from-wishlist", {
+        productid,
+        quantity,
+        sku,
+      })
       .then((response) => {
         deleteproduct(id);
       })
       .catch((error) => {
-        console.log("Error", error)
-
+        console.log("Error", error);
       })
       .finally(() => {
-        queryClient.invalidateQueries('productlist')
-        setToCart(false)
-      })
-  }
+        queryClient.invalidateQueries("productlist");
+        setToCart(false);
+      });
+  };
   // End
 
   return (
@@ -107,77 +115,125 @@ export default function Product() {
         <div className="heading font-crimson sm:text-4xl text-xl text-[#3c2f27] pb-5">
           <h1>Your Wishlist</h1>
         </div>
-        <div className='my-items border-t border-[#b2937e] '>
+        <div className="my-items border-t border-[#b2937e] ">
           <Toaster />
-          {
-            allproducts?.map((product) => (
-              <div className='product py-10 border-b border-[#b2937e]' key={product.id}>
-                <div className="grid grid-cols-12 gap-3">
-                  <div className="xl:col-span-3 lg:col-span-3 sm:col-span-4 col-span-12">
-                    <Image src={`${PRODUCT_MEDIA_URL}/${product.products.image}`} alt={product.products.name} height={250} width={250} className="sm:w-[250px] w-full" />
-                  </div>
-                  <div className="xl:col-span-7 lg:col-span-7 sm:col-span-6 col-span-12">
-                    <div className='description'>
-                      <div className='title text-[#3c2f27] font-semibold font-crimson text-xl pb-3'>
-                        {product.products.name}
-                      </div>
-                      <div className='description text-[#4b4537] font-roboto text-sm pb-3'>
-                        {product.products.description}
-                      </div>
-                      <div className='constant  text-[#4b4537] font-roboto text-sm pb-3'>SKU: <span className='variation font-semibold'>{product.sku}</span></div>
+          {allproducts?.map((product) => (
+            <div
+              className="product py-10 border-b border-[#b2937e]"
+              key={product.id}
+            >
+              <div className="grid grid-cols-12 gap-3">
+                <div className="xl:col-span-3 lg:col-span-3 sm:col-span-4 col-span-12">
+                  <Image
+                    src={`${BLOB_BASE_URL}/${product.products.image}`}
+                    alt={product.products.name}
+                    height={250}
+                    width={250}
+                    className="sm:w-[250px] w-full"
+                  />
+                </div>
+                <div className="xl:col-span-7 lg:col-span-7 sm:col-span-6 col-span-12">
+                  <div className="description">
+                    <div className="title text-[#3c2f27] font-semibold font-crimson text-xl pb-3">
+                      {product.products.name}
                     </div>
-
-                  </div>
-                  <div className="xl:col-span-2 lg:col-span-2 sm:col-span-2 col-span-12 sm:block flex justify-between items-start">
-                    <div className='amount flex justify-end items-center text-sm'>
-                      <div className='constant font-roboto text-[#3c2f27] font-semibold'><IndianRupee size={14} /></div>
-                      <div className='variation font-roboto text-[#3c2f27] font-semibold'>{product.products.price}</div>
+                    <div className="description text-[#4b4537] font-roboto text-sm pb-3">
+                      {product.products.description}
                     </div>
-                    <div className="actions flex flex-col justify-end sm:pt-20 pt-0">
-                      <Link href={`/product-detail/${product.productid}`} className="text-end font-roboto text-sm font-medium text-[#3c2f27] border-b border-transparent hover:underline ">View Detail</Link>
-                      {
-                        toCart === product.id ? (
-                          <Button className='pr-0 justify-end font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' disabled={true}>
-                            <Loader2Icon className='animate-spin mr-1' />
-                            Move to Cart</Button>
-                        ) : (
-
-                          <Button onClick={() => movetocart(product.productid, product.quantity, product.sku, product.id)} className='pr-0 justify-end font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline ' variant='#3c2f27' >Move to Cart</Button>
-                        )
-                      }
-
-                      <AlertDialog className='rounded-none'>
-                        <AlertDialogTrigger asChild>
-                          <Button className='mt-[-10px] pr-0 justify-end font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline bg-transparent hover:bg-transparent hover:text-[#3c2f27]' variant="outline">Delete from wishlist</Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent className='bg-[#faf2ec]'>
-                          <AlertDialogHeader>
-                            <AlertDialogTitle>Remove Product?</AlertDialogTitle>
-                            <AlertDialogDescription className='font-roboto'>
-                              Are you sure you want to delete this product from your wishlist!
-                            </AlertDialogDescription>
-                          </AlertDialogHeader>
-                          <AlertDialogFooter>
-                            <AlertDialogCancel className='hover:duration-300 rounded-none bg-transparent text-[#3c2f27] border-[#3c2f27] hover:bg-[#b2937e] hover:border-[#b2937e] hover:text-[white]'>Cancel</AlertDialogCancel>
-                            {
-                              itemDelete === product.id ? (
-                                <AlertDialogAction className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>
-                                  <Loader2Icon className='animate-spin mr-1' />
-                                  Delete</AlertDialogAction>
-                              ) : (
-                                <AlertDialogAction onClick={() => deleteproduct(product.id)} className='hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]'>Delete</AlertDialogAction>
-                              )
-                            }
-                          </AlertDialogFooter>
-                        </AlertDialogContent>
-                      </AlertDialog>
+                    <div className="constant  text-[#4b4537] font-roboto text-sm pb-3">
+                      SKU:{" "}
+                      <span className="variation font-semibold">
+                        {product.sku}
+                      </span>
                     </div>
                   </div>
                 </div>
+                <div className="xl:col-span-2 lg:col-span-2 sm:col-span-2 col-span-12 sm:block flex justify-between items-start">
+                  <div className="amount flex justify-end items-center text-sm">
+                    <div className="constant font-roboto text-[#3c2f27] font-semibold">
+                      <IndianRupee size={14} />
+                    </div>
+                    <div className="variation font-roboto text-[#3c2f27] font-semibold">
+                      {product.products.price}
+                    </div>
+                  </div>
+                  <div className="actions flex flex-col justify-end sm:pt-20 pt-0">
+                    <Link
+                      href={`/product-detail/${product.productid}`}
+                      className="text-end font-roboto text-sm font-medium text-[#3c2f27] border-b border-transparent hover:underline "
+                    >
+                      View Detail
+                    </Link>
+                    {toCart === product.id ? (
+                      <Button
+                        className="pr-0 justify-end font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline "
+                        variant="#3c2f27"
+                        disabled={true}
+                      >
+                        <Loader2Icon className="animate-spin mr-1" />
+                        Move to Cart
+                      </Button>
+                    ) : (
+                      <Button
+                        onClick={() =>
+                          movetocart(
+                            product.productid,
+                            product.quantity,
+                            product.sku,
+                            product.id,
+                          )
+                        }
+                        className="pr-0 justify-end font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline "
+                        variant="#3c2f27"
+                      >
+                        Move to Cart
+                      </Button>
+                    )}
+
+                    <AlertDialog className="rounded-none">
+                      <AlertDialogTrigger asChild>
+                        <Button
+                          className="mt-[-10px] pr-0 justify-end font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline bg-transparent hover:bg-transparent hover:text-[#3c2f27]"
+                          variant="outline"
+                        >
+                          Delete from wishlist
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent className="bg-[#faf2ec]">
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Remove Product?</AlertDialogTitle>
+                          <AlertDialogDescription className="font-roboto">
+                            Are you sure you want to delete this product from
+                            your wishlist!
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel className="hover:duration-300 rounded-none bg-transparent text-[#3c2f27] border-[#3c2f27] hover:bg-[#b2937e] hover:border-[#b2937e] hover:text-[white]">
+                            Cancel
+                          </AlertDialogCancel>
+                          {itemDelete === product.id ? (
+                            <AlertDialogAction className="hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]">
+                              <Loader2Icon className="animate-spin mr-1" />
+                              Delete
+                            </AlertDialogAction>
+                          ) : (
+                            <AlertDialogAction
+                              onClick={() => deleteproduct(product.id)}
+                              className="hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]"
+                            >
+                              Delete
+                            </AlertDialogAction>
+                          )}
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
       </div>
     </div>
-  )
+  );
 }

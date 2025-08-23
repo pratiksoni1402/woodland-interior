@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 // export const revalidate = 0;
 import axios from "axios";
+import { BLOB_BASE_URL } from "@/app/_lib/constants/blob";
 import { MoonLoader } from "react-spinners";
 import { ClipLoader } from "react-spinners";
 import { IndianRupee } from "lucide-react";
@@ -238,7 +239,7 @@ export default function Detail({ params }) {
               <div className="left-section">
                 <div className="product-image  relative lg:h-[600px] h-[427px]">
                   <LazyImage
-                    src={`${PRODUCT_MEDIA_URL}/${detail.image}`}
+                    src={`${BLOB_BASE_URL}/${detail.image}`}
                     alt={detail.name}
                     width={427}
                     height={427}

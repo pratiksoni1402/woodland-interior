@@ -1,4 +1,6 @@
 "use client";
+import { BLOB_BASE_URL } from "@/app/_lib/constants/blob";
+
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 // export const revalidate = 0;
@@ -13,7 +15,6 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
-import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import { MoonLoader } from "react-spinners";
 import { IndianRupee } from "lucide-react";
 export default function Previousorders({ params }) {
@@ -256,7 +257,7 @@ export default function Previousorders({ params }) {
                         </TableCell>
                         <TableCell>
                           <Image
-                            src={`${PRODUCT_MEDIA_URL}/${products.image}`}
+                            src={`${BLOB_BASE_URL}/${products.image}`}
                             alt={products.name}
                             width={75}
                             height={75}

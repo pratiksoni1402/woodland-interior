@@ -3,6 +3,17 @@ const nextConfig = {
   experimental: {
     missingSuspenseWithCSRBailout: false,
   },
-}
 
-module.exports = nextConfig
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "dlpegx7tp67ftrd7.public.blob.vercel-storage.com",
+        port: "",
+        pathname: "/products/**",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;

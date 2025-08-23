@@ -1,26 +1,18 @@
 "use client";
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
-// export const revalidate = false;
+import { BLOB_BASE_URL } from "@/app/_lib/constants/blob";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import axios from "axios";
 import { IndianRupee } from "lucide-react";
 import LazyImage from "@/app/components/lazy-loading/lazy-image";
-import { PRODUCT_MEDIA_URL } from "@/app/_lib/constants/images";
 import { BANNER_MEDIA_URL } from "@/app/_lib/constants/images";
-import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { MoonLoader } from "react-spinners";
 export default function Bedroom({ params }) {
   // Fetching All Products
-  const {
-    isPending,
-    data: allproducts,
-    error,
-    fetchNextPage,
-    hasNextPage,
-  } = useQuery({
+  const { data: allproducts } = useQuery({
     queryKey: ["product-list"],
     queryFn: () =>
       axios.get(`/api/product-listing?slug=${params.slug}`).then((response) => {
@@ -29,7 +21,7 @@ export default function Bedroom({ params }) {
   });
   // End
 
-  console.log("products", allproducts);
+  console.log("Blob", BLOB_BASE_URL);
 
   if (!allproducts) {
     return (
@@ -108,7 +100,7 @@ export default function Bedroom({ params }) {
                     >
                       <div className="product-image overflow-hidden relative sm:h-[300px] h-[200px]">
                         <LazyImage
-                          src={`${PRODUCT_MEDIA_URL}/${product.image}`}
+                          src={`${BLOB_BASE_URL}/${product.image}`}
                           alt={product.name}
                           width={427}
                           height={427}

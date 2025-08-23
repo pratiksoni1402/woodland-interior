@@ -23,6 +23,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@tanstack/react-query": "^5.17.15",
     "@tanstack/react-query-devtools": "^5.17.18",
+    "@vercel/blob": "^1.1.1",
     "@vercel/speed-insights": "^1.1.0",
     "axios": "1.11.0",
     "bcrypt": "^5.1.1",

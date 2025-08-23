@@ -1,4 +1,6 @@
 "use client";
+import { BLOB_BASE_URL } from "@/app/_lib/constants/blob";
+
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 // export const revalidate = 0;
@@ -268,7 +270,7 @@ export default function Orderreceipt({ params }) {
                           </TableCell>
                           <TableCell>
                             <Image
-                              src={`${PRODUCT_MEDIA_URL}/${products.image}`}
+                              src={`${BLOB_BASE_URL}/${products.image}`}
                               alt={products.name}
                               width={75}
                               height={75}

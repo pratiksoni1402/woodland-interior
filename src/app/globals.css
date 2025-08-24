@@ -716,15 +716,13 @@ textarea:focus {
 .about-us .banner-image-wrapper .hero-text p {
   margin-bottom: 0;
   font-family: minion-pro-display, serif;
-  font-size: 32px;
   font-size: 38px;
   color: white;
 }
 
 /*  */
 .about-us .about-company-location {
-  background-color: #faf2ec;
-  padding: 50px 0;
+  @apply bg-[#faf2ec] py-12 px-0
 }
 
 .about-us .about-company-location .content-wrapper span {
@@ -779,23 +777,20 @@ textarea:focus {
 }
 
 .about-us .banner .image img {
-  width: 100%;
+  @apply w-full
 }
 
 @media(max-width:576px) {
   .about-us .banner {
-    display: flex !important;
-    flex-wrap: wrap;
-    flex-direction: column;
+    @apply !flex flex-wrap flex-col
   }
 
   .about-us .banner .video {
-    width: 100%;
-    display: block;
+    @apply w-full block
   }
 
   .about-us .banner .image {
-    width: 100%;
+    @apply w-full
   }
 
 }
@@ -803,16 +798,15 @@ textarea:focus {
 /*  */
 
 .about-us .work-showcase {
-  background-color: #faf2ec;
+  @apply bg-[#faf2ec];
 }
 
 .about-us .work-showcase .video-wrapper {
-  display: inherit;
-
+  @apply divide-inherit
 }
 
 .about-us .work-showcase .video-wrapper video {
-  width: 100%;
+  @apply w-full
 }
 
 /*  */

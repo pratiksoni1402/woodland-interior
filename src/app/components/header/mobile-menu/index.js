@@ -1,9 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Heart } from 'lucide-react';
-import { ShoppingCart } from 'lucide-react';
 import { Button } from './../../ui/button';
-import { CircleUserRound } from 'lucide-react';
+
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -21,102 +19,27 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from '../../ui/sheet';
-import { Avatar, AvatarFallback } from './../../../components/ui/avatar';
 import { BedDouble } from 'lucide-react';
 import { DoorClosed } from 'lucide-react';
 import { Sofa } from 'lucide-react';
 import { TentTree } from 'lucide-react';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 
+import CartLink from '@/app/components/header/cart-link';
+import WishlistLink from '@/app/components/header/wishlist-link';
+import UserAccountLink from '@/app/components/header/user';
 export default function MobileMenu() {
-	const { data: count } = useQuery({
-		queryKey: ['totalcount'],
-		queryFn: () =>
-			axios
-				.get('/api/cart-items/get-count')
-				.then((response) => {
-					return response.data.productcount;
-				})
-				.catch((error) => {
-					console.log('Error in count', error);
-				}),
-	});
-
-	const { data: wishlisttotal } = useQuery({
-		queryKey: ['wishlistcount'],
-		queryFn: () =>
-			axios
-				.get('/api/wishlist-items/get-count')
-				.then((response) => {
-					return response.data.totalcount;
-				})
-				.catch((error) => {
-					console.log('Error in count', error);
-				}),
-	});
-
-	const { data: status } = useQuery({
-		queryKey: ['loginCheck'],
-		queryFn: () =>
-			axios
-				.post('/api/auth-check')
-				.then((response) => {
-					return response.data.userstatus;
-				})
-				.catch((error) => {
-					console.log('Error in Login Status', error);
-				}),
-	});
-
-	const { data: sessionData } = useQuery({
-		queryKey: ['checkSession'],
-		queryFn: () =>
-			axios
-				.get('/api/get-sessiondata')
-				.then((response) => {
-					return response.data.getSessionData;
-				})
-				.catch((error) => {
-					console.log('Error occured', error);
-				}),
-	});
-
 	return (
 		<div className="mobile-menu-wrapper">
 			<div className="inner-content-wrapper flex items-center">
 				<div className="inner-wrapper flex">
 					<div className="pr-4">
-						<Link href="/wishlist" className="relative">
-							<Heart />
-							<div className="absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]">
-								{wishlisttotal}
-							</div>
-						</Link>
+						<WishlistLink />
 					</div>
 					<div className="pr-4">
-						<Link href="/cart" className="relative">
-							<ShoppingCart />
-							<div className="absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]">
-								{count}
-							</div>
-						</Link>
+						<CartLink />
 					</div>
 					<div className="pr-4">
-						{sessionData && sessionData.user_details ? (
-							<Link href="/my-account">
-								<Avatar className="text-[#3c2f27] border">
-									<AvatarFallback>
-										{sessionData.user_details?.firstname?.charAt(0)}
-										{sessionData.user_details?.lastname?.charAt(0)}
-									</AvatarFallback>
-								</Avatar>
-							</Link>
-						) : (
-							<Link href="/auth.js/login">
-								<CircleUserRound />
-							</Link>
-						)}
+						<UserAccountLink />
 					</div>
 				</div>
 				<div className="side-menu">

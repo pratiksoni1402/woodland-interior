@@ -54,6 +54,7 @@
   "engines": {
     "node": ">=22.18.0"
   },
+  "engineStrict": true,
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.17.7",
     "autoprefixer": "^10.0.1",

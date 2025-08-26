@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Button } from './../../ui/button';
+import { Button } from '@/components/ui/button';
 
 import {
 	DropdownMenu,
@@ -8,7 +8,7 @@ import {
 	DropdownMenuGroup,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from '../../ui/dropdown-menu';
+} from '@/components/ui/dropdown-menu';
 
 import { Menu } from 'lucide-react';
 import {
@@ -18,7 +18,7 @@ import {
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
-} from '../../ui/sheet';
+} from '@/components/ui/sheet';
 import { BedDouble } from 'lucide-react';
 import { DoorClosed } from 'lucide-react';
 import { Sofa } from 'lucide-react';

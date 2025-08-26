@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
 // export const revalidate = 0;
 import Image from 'next/image';
-import { Button } from './../components/ui/button';
+import { Button } from '@/components/ui/button';
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
 import { IndianRupee } from 'lucide-react';
 import axios from 'axios';

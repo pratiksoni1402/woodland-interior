@@ -10,7 +10,7 @@ import { UserPlus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Loader2Icon } from 'lucide-react';
-import { Button } from '@/app/components/ui/button';
+import { Button } from '@/components/ui/button';
 export default function Register() {
 	const router = useRouter();
 	const {

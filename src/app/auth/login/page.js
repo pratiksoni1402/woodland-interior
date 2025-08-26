@@ -9,7 +9,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { LogIn } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/app/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Toaster } from 'react-hot-toast';
 import { Loader2Icon } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';

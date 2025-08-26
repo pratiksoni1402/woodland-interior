@@ -3,12 +3,12 @@ export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
 // export const revalidate = 0;
 import React, { useState } from 'react';
-import { Button } from '@/app/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { useForm } from 'react-hook-form';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Switch } from '@/components/ui/switch';
-import { Label } from '@/app/components/ui/label';
+import { Label } from '@/components/ui/label';
 import { useRouter } from 'next/navigation';
 import { Loader2Icon } from 'lucide-react';
 export default function Shippingdetail() {

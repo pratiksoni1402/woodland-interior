@@ -3,24 +3,11 @@ import Link from 'next/link';
 import React from 'react';
 import axios from 'axios';
 
-import { Avatar, AvatarFallback } from '@/app/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { CircleUserRound } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 
 export default function UserAccountLink() {
-	// const { data: status } = useQuery({
-	// 	queryKey: ['loginCheck'],
-	// 	queryFn: () =>
-	// 		axios
-	// 			.post('/api/auth-check')
-	// 			.then((response) => {
-	// 				return response.data.userstatus;
-	// 			})
-	// 			.catch((error) => {
-	// 				console.log(error);
-	// 			}),
-	// });
-
 	const { data: sessionData } = useQuery({
 		queryKey: ['checkSession'],
 		queryFn: () =>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-import { Button } from './../ui/button';
+import { Button } from '@/components/ui/button';
 import { Loader2Icon } from 'lucide-react';
 const ContactForm = () => {
 	const {

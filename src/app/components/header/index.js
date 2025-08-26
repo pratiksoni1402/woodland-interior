@@ -10,7 +10,7 @@ import {
 	NavigationMenuLink,
 	NavigationMenuList,
 	NavigationMenuTrigger,
-} from '../ui/navigation-menu';
+} from '@/components/ui/navigation-menu';
 
 import MobileMenu from './mobile-menu';
 import CartLink from '@/app/components/header/cart-link';

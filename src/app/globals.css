@@ -1,16 +1,105 @@
 /* End */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+@plugin 'tailwindcss-animate';
 
-* {
-  @apply m-0 p-0 box-border
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-light: var(--light);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --font-crimson: var(--font-crimson);
+  --font-roboto: var(--font-roboto);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
-html {
-  @apply scroll-smooth
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer utilities {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
 }
 
 @layer base {
@@ -82,7 +171,6 @@ html {
     --ring: 0 0% 83.1%;
   }
 }
-
 
 @layer base {
   * {
@@ -206,7 +294,6 @@ html {
     height: 30vh !important;
   }
 }
-
 
 /* Our experts section Styling */
 .homepage .our-expert .content-wrapper .showcase img {
@@ -361,43 +448,43 @@ html {
 /* Tabbing Swiper */
 
 .tabbing-actions .swiper .swiper-wrapper .edit-profile {
-  @apply !w-[100px] !mr-0
+  @apply w-[100px]! mr-0!
 }
 
 .tabbing-actions .swiper .swiper-wrapper .edit-profile div {
-  @apply !p-0
+  @apply p-0!
 }
 
 .tabbing-actions .swiper .swiper-wrapper .my-wishlist {
-  @apply !w-[100px] !mr-2
+  @apply w-[100px]! mr-2!
 }
 
 .tabbing-actions .swiper .swiper-wrapper .order-history {
-  @apply !w-[115px] !mr-2
+  @apply w-[115px]! mr-2!
 }
 
 .tabbing-actions .swiper .swiper-wrapper .chng-password {
-  @apply !w-[130px] !mr-2
+  @apply w-[130px]! mr-2!
 }
 
 .tabbing-actions .swiper .swiper-wrapper .acc-delete {
-  @apply !w-[160px] !mr-0
+  @apply w-[160px]! mr-0!
 }
 
 .tabbing-actions .swiper .swiper-wrapper .manage-addresses {
-  @apply !w-[160px] !mr-0
+  @apply w-[160px]! mr-0!
 }
 
 .tabbing-actions .swiper .swiper-wrapper .browsing-history {
-  @apply !w-[160px] !mr-0
+  @apply w-[160px]! mr-0!
 }
 
 .tabbing-actions .swiper .swiper-wrapper .swiper-slide-active {
-  @apply !w-[0px] !mr-0
+  @apply w-[0px]! mr-0!
 }
 
 .tabbing-actions .swiper .swiper-wrapper .swiper-slide-next {
-  @apply !w-[0px] !mr-0
+  @apply w-[0px]! mr-0!
 }
 
 /* End */
@@ -425,11 +512,11 @@ textarea:focus {
 }
 
 .user-registration .register-form form input {
-  @apply w-full py-3 border border-[#b2937e] rounded-none px-3 outline-none bg-white font-roboto
+  @apply w-full py-3 border border-[#b2937e] rounded-none px-3 outline-hidden bg-white font-roboto
 }
 
 .user-registration .register-form form input:focus {
-  @apply outline-none border border-primary duration-300 px-3 bg-white
+  @apply outline-hidden border border-primary duration-300 px-3 bg-white
 }
 
 /* End */
@@ -440,11 +527,11 @@ textarea:focus {
 }
 
 .user-login .login-form form input {
-  @apply w-full border border-[#b2937e] rounded-none p-3 outline-none bg-white font-roboto
+  @apply w-full border border-[#b2937e] rounded-none p-3 outline-hidden bg-white font-roboto
 }
 
 .user-login .login-form form input:focus {
-  @apply outline-none border border-primary duration-300 px-3 bg-white
+  @apply outline-hidden border border-primary duration-300 px-3 bg-white
 }
 
 /* End */
@@ -452,7 +539,7 @@ textarea:focus {
 /* Shipping Details Form */
 
 .shipping-details-form form input[type=text] {
-  @apply w-full p-3 border border-[#b2937e] rounded-none outline-none shadow-none font-roboto text-primary
+  @apply w-full p-3 border border-[#b2937e] rounded-none outline-hidden shadow-none font-roboto text-primary
 }
 
 .shipping-details-form form input[type=text]:focus {
@@ -460,7 +547,7 @@ textarea:focus {
 }
 
 .shipping-details-form form select {
-  @apply h-12 border border-[#b2937e] bg-white px-3 w-full text-primary font-roboto rounded-none outline-none shadow-none
+  @apply h-12 border border-[#b2937e] bg-white px-3 w-full text-primary font-roboto rounded-none outline-hidden shadow-none
 }
 
 .shipping-details-form form select:focus {
@@ -490,7 +577,6 @@ textarea:focus {
 .shipping-details-form form .payment-method div input[type="radio"] {
   @apply hidden
 }
-
 
 .shipping-details-form form .payment-method div .custom-radio {
   @apply block w-4 h-4 border-2 border-[#ccc] rounded-full relative mr-1 hover:bg-primary p-1
@@ -690,7 +776,6 @@ textarea:focus {
 
 /* End */
 
-
 /*  */
 .about-us .banner-image-wrapper {
   @apply relative
@@ -729,7 +814,6 @@ textarea:focus {
   @apply bg-primary text-white duration-500
 }
 
-
 /*  */
 .about-us .banner .video {
   @apply w-1/2
@@ -749,7 +833,7 @@ textarea:focus {
 
 @media(max-width:576px) {
   .about-us .banner {
-    @apply !flex flex-wrap flex-col
+    @apply flex! flex-wrap flex-col
   }
 
   .about-us .banner .video {
@@ -865,7 +949,6 @@ textarea:focus {
   @apply stroke-2
 }
 
-
 /* Upper Footer Styling */
 .footer-section footer .upper-footer ul li a {
   @apply leading-6 text-primary
@@ -895,4 +978,120 @@ textarea:focus {
   before:font-bold
   before:overflow-hidden
   before:invisible;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

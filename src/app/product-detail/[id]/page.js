@@ -7,7 +7,7 @@ import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
 import { MoonLoader } from 'react-spinners';
 
 import { IndianRupee } from 'lucide-react';
-import { Button } from '@/app/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';

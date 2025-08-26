@@ -1,4 +1,5 @@
-"use client";
+"use client";;
+import { use } from "react";
 import { BLOB_BASE_URL } from "@/app/_lib/constants/blob";
 
 export const dynamic = "force-dynamic";
@@ -17,7 +18,8 @@ import axios from "axios";
 import Image from "next/image";
 import { MoonLoader } from "react-spinners";
 import { IndianRupee } from "lucide-react";
-export default function Previousorders({ params }) {
+export default function Previousorders(props) {
+  const params = use(props.params);
   const { data: getDetail } = useQuery({
     queryKey: ["orderData"],
     queryFn: () =>

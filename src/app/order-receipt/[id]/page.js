@@ -1,4 +1,5 @@
-"use client";
+"use client";;
+import { use } from "react";
 import { BLOB_BASE_URL } from "@/app/_lib/constants/blob";
 
 export const dynamic = "force-dynamic";
@@ -20,7 +21,8 @@ import {
 } from "@/components/ui/table";
 import { MoonLoader } from "react-spinners";
 import { IndianRupee } from "lucide-react";
-export default function Orderreceipt({ params }) {
+export default function Orderreceipt(props) {
+  const params = use(props.params);
   const { id } = params;
   console.log("kdjhsdfsd", typeof id);
   const {

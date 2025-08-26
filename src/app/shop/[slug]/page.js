@@ -1,4 +1,5 @@
-"use client";
+"use client";;
+import { use } from "react";
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 import { BLOB_BASE_URL } from "@/app/_lib/constants/blob";
@@ -10,7 +11,8 @@ import LazyImage from "@/app/components/lazy-loading/lazy-image";
 import { BANNER_MEDIA_URL } from "@/app/_lib/constants/images";
 import { useQuery } from "@tanstack/react-query";
 import { MoonLoader } from "react-spinners";
-export default function Bedroom({ params }) {
+export default function Bedroom(props) {
+  const params = use(props.params);
   // Fetching All Products
   const { data: allproducts } = useQuery({
     queryKey: ["product-list"],

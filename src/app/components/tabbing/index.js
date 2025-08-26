@@ -15,9 +15,9 @@ import 'swiper/css/bundle';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import { Autoplay } from 'swiper/modules';
-SwiperCore.use([Autoplay]);
 
 export function Tabbing() {
+	SwiperCore.use([Autoplay]);
 	return (
 		<div className="tabbing-actions">
 			<Tabs defaultValue="account">

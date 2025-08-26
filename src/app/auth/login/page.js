@@ -2,7 +2,7 @@
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
 // export const revalidate = 0;
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -15,7 +15,7 @@ import { Loader2Icon } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-const Login = () => {
+function LoginForm() {
 	const searchParam = useSearchParams();
 	const value = searchParam.get('redirect');
 	// console.log("Value", value);
@@ -26,6 +26,7 @@ const Login = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
+
 	const queryClient = useQueryClient();
 	const { data: sessionData } = useQuery({
 		queryKey: ['checkSession'],
@@ -155,6 +156,12 @@ const Login = () => {
 			</div>
 		</div>
 	);
-};
+}
 
-export default Login;
+export default function Login() {
+	return (
+		<Suspense>
+			<LoginForm />
+		</Suspense>
+	);
+}

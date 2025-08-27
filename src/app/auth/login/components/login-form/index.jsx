@@ -1,0 +1,161 @@
+'use client';
+
+import React, { Suspense, useState } from 'react';
+
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Toaster } from 'react-hot-toast';
+import { Loader2Icon } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query';
+import { ForgotPasswordLink } from '@/app/auth/login/components/forgot-password';
+function AuthenticationForm() {
+	const searchParam = useSearchParams();
+	const value = searchParam.get('redirect');
+	// console.log("Value", value);
+	const router = useRouter();
+	const [loading, setLoading] = useState(false);
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+
+	const queryClient = useQueryClient();
+	// const { data: sessionData } = useQuery({
+	// 	queryKey: ['checkSession'],
+	// 	queryFn: () =>
+	// 		axios
+	// 			.get('/api/get-sessiondata')
+	// 			.then((response) => {
+	// 				console.log('data', response.data.getSessionData);
+	// 				return response.data.getSessionData;
+	// 			})
+	// 			.catch((error) => {
+	// 				console.log('Error occured', error);
+	// 			}),
+	// });
+
+	const onSubmit = (data) => {
+		setLoading(true);
+		axios
+			.post('/api/login-user', data)
+			.then(() => {
+				if (value === '/checkout') {
+					router.push('/checkout');
+					queryClient.invalidateQueries('checkSession');
+				} else {
+					router.push('/my-account');
+					queryClient.invalidateQueries('checkSession');
+				}
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+				toast.error('Invalid Email or Password', {
+					duration: 3000,
+					style: {
+						border: '1px solid #3c2f27',
+						padding: '16px',
+						color: '#faf2ec',
+						backgroundColor: '#3c2f27',
+					},
+					iconTheme: {
+						primary: '#faf2ec',
+						secondary: '#3c2f27',
+					},
+				});
+			})
+			.finally(() => {
+				setLoading(false);
+			});
+	};
+
+	return (
+		<div className="user-login-form pb-20 w-3/5">
+			<div className="user-login">
+				<Toaster />
+				<div className="heading text-center text-2xl text-[#3c2f27] font-crimson py-5">
+					<h1>Login</h1>
+				</div>
+				<div className="login-form border-[#b2937e] border rounded-md bg-white">
+					<form onSubmit={handleSubmit(onSubmit)} className="m-5 bg-white">
+						<div className="field-wrapper !mb-6">
+							<label
+								htmlFor="email"
+								className="font-medium font-roboto text-sm pb-0.5 block"
+							>
+								Email
+							</label>
+							<input
+								type="text"
+								id="email"
+								placeholder="john@example.com"
+								{...register('email', {
+									required: true,
+									pattern: /^\S+@\S+$/i,
+								})}
+							/>
+							{errors.email && (
+								<span className="error-message font-roboto text-sm text-red-700">
+									This field is required
+								</span>
+							)}
+						</div>
+
+						<div className="field-wrapper">
+							<label
+								htmlFor="password"
+								className="font-medium font-roboto text-sm pb-0.5 block"
+							>
+								Password
+							</label>
+							<input
+								type="password"
+								id="password"
+								{...register('password', { required: true })}
+							/>
+							{errors.password && (
+								<span className="error-message font-roboto text-sm text-red-700">
+									This field is required
+								</span>
+							)}
+						</div>
+						<div className="text-right">
+							<ForgotPasswordLink />
+						</div>
+						<div className="mt-7">
+							{loading ? (
+								<Button
+									type="submit"
+									className="w-full p-3 mt-4 mb-3 border rounded-none hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2"
+									disabled={true}
+								>
+									<Loader2Icon className="animate-spin mr-1" />
+									Login
+								</Button>
+							) : (
+								<Button
+									type="submit"
+									className="w-full p-3 mt-4 mb-3 hover:cursor-pointer border rounded-none hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2"
+								>
+									Login
+								</Button>
+							)}
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+export function LoginForm() {
+	return (
+		<Suspense>
+			<AuthenticationForm />
+		</Suspense>
+	);
+}

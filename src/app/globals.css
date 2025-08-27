@@ -508,11 +508,11 @@ textarea:focus {
 
 /* User Register  Form */
 .user-registration .register-form form .field-wrapper {
-  @apply mb-3
+  @apply mb-3 w-full
 }
 
 .user-registration .register-form form input {
-  @apply w-full py-3 border border-[#b2937e] rounded-none px-3 outline-hidden bg-white font-roboto
+  @apply w-full py-3 border border-[#b2937e] h-10 text-sm rounded-md px-3 outline-hidden bg-white font-roboto
 }
 
 .user-registration .register-form form input:focus {
@@ -527,7 +527,7 @@ textarea:focus {
 }
 
 .user-login .login-form form input {
-  @apply w-full border border-[#b2937e] rounded-none p-3 outline-hidden bg-white font-roboto
+  @apply w-full border border-[#b2937e] h-10 text-sm rounded-md p-3 outline-hidden bg-white font-roboto
 }
 
 .user-login .login-form form input:focus {
@@ -603,7 +603,7 @@ textarea:focus {
 
 /* Customer Reviews */
 .customer-reviews .tab-button button {
-  @apply text-primary rounded-none text-base font-crimson font-semibold text-white
+  @apply text-primary rounded-none text-base font-crimson font-semibold
 }
 
 .customer-reviews .reviews-wrapper .review {

@@ -4,9 +4,8 @@ import { Button } from '@/components/ui/button';
 import { IndianRupee } from 'lucide-react';
 import axios from 'axios';
 import Link from 'next/link';
-import { PRODUCT_MEDIA_URL } from '@/app/_lib/constants/images';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
 import {
 	AlertDialog,
@@ -27,11 +26,7 @@ export default function Product() {
 	const [itemDelete, setItemDelte] = useState(null);
 
 	// Get all products from wishlist table
-	const {
-		isPending,
-		data: allproducts,
-		error,
-	} = useQuery({
+	const { data: allproducts } = useQuery({
 		queryKey: ['productlist'],
 		queryFn: () =>
 			axios
@@ -61,7 +56,7 @@ export default function Product() {
 		setItemDelte(id);
 		axios
 			.post('/api/wishlist-items/delete-item', { id })
-			.then((response) => {
+			.then(() => {
 				queryClient.invalidateQueries('productlist');
 			})
 			.catch((error) => {
@@ -83,7 +78,7 @@ export default function Product() {
 				quantity,
 				sku,
 			})
-			.then((response) => {
+			.then(() => {
 				deleteproduct(id);
 			})
 			.catch((error) => {

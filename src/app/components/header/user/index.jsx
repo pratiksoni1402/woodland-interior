@@ -34,7 +34,7 @@ export default function UserAccountLink() {
 					</Avatar>
 				</Link>
 			) : (
-				<Link href="/auth/login">
+				<Link href="/auth">
 					<CircleUserRound />
 				</Link>
 			)}

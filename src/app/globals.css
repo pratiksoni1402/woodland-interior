@@ -184,7 +184,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-  @apply w-3
+  @apply w-2
 }
 
 /* Track */
@@ -194,7 +194,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-[#b2937e] rounded-sm
+  @apply bg-primary-foreground rounded-sm
 }
 
 /* Handle on hover */

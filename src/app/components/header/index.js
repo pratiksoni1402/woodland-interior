@@ -35,18 +35,19 @@ const Navbar = () => {
 					<NavigationMenu>
 						<NavigationMenuList>
 							<NavigationMenuItem>
-								<NavigationMenuLink asChild>
-									<Link href="/" className="text-lg leading-7">
-										Home
-									</Link>
+								<NavigationMenuLink
+									asChild
+									className="text-lg hover:bg-[#faf2ec]"
+								>
+									<Link href="/">Home</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<NavigationMenuTrigger className="bg-transparent hover:bg-transparent font-crimson font-medium text-lg leading-7">
+								<NavigationMenuTrigger className="bg-transparent hover:bg-transparent hover:cursor-pointer font-crimson font-medium text-lg leading-7">
 									Shop
 								</NavigationMenuTrigger>
-								<NavigationMenuContent className="test">
-									<ul className="nested-list bg-[#faf2ec] py-2 w-40">
+								<NavigationMenuContent className="bg-[#faf2ec]">
+									<ul className="nested-list  py-2 w-40">
 										<li>
 											<Link href="/shop/bedroom">Bedroom</Link>
 										</li>
@@ -63,14 +64,18 @@ const Navbar = () => {
 								</NavigationMenuContent>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<NavigationMenuLink asChild>
-									<Link href="/our-values" className="text-lg leading-7">
-										Our Values
-									</Link>
+								<NavigationMenuLink
+									asChild
+									className="text-lg hover:bg-[#faf2ec]"
+								>
+									<Link href="/our-values">Our Values</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<NavigationMenuLink asChild className="text-lg leading-7">
+								<NavigationMenuLink
+									asChild
+									className="text-lg leading-7 hover:bg-primary-foreground hover:bg-[#faf2ec]"
+								>
 									<Link href="/contact">Contact</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>

@@ -1,9 +1,9 @@
 'use client';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import Profile from '@/app/credentials/user-profile';
-import Wishlist from '@/app/credentials/user-wishlist';
-import History from '@/app/credentials/previous-orders';
-import Updatepassword from '@/app/credentials/update-password';
+// import Profile from '@/app/my-account/components/user-profile';
+// import Wishlist from '@/app/my-account/components/user-wishlist';
+// import History from '@/app/my-account/components/previous-orders';
+// import Updatepassword from '@/app/my-account/components/update-password';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Image from 'next/image';
@@ -105,24 +105,16 @@ export function Tabbing() {
 				</div>
 				<div className="tab-content flex flex-col justify-center">
 					<TabsContent value="account">
-						<div>
-							<Profile />
-						</div>
+						<div>{/*<Profile />*/}</div>
 					</TabsContent>
 					<TabsContent value="wishlist">
-						<div>
-							<Wishlist />
-						</div>
+						<div>{/*<Wishlist />*/}</div>
 					</TabsContent>
 					<TabsContent value="history">
-						<div>
-							<History />
-						</div>
+						<div>{/*<History />*/}</div>
 					</TabsContent>
 					<TabsContent value="change-password">
-						<div>
-							<Updatepassword />
-						</div>
+						<div>{/*<Updatepassword />*/}</div>
 					</TabsContent>
 				</div>
 			</Tabs>

@@ -6,7 +6,7 @@ import axios from 'axios';
 import toast, { Toast, Toaster } from 'react-hot-toast';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Loader2Icon } from 'lucide-react';
-export default function Profile() {
+export default function UserProfile() {
 	const [isLoading, setLoading] = useState(false);
 	const {
 		register,

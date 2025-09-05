@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
-export default function Product() {
+export default function UsersWishlist() {
 	const queryClient = useQueryClient();
 	const [toCart, setToCart] = useState(null);
 	const [itemDelete, setItemDelte] = useState(null);

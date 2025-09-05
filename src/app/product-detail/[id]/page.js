@@ -17,15 +17,15 @@ import Reviews from '@/app/components/customer-reviews';
 import Image from 'next/image';
 import { Loader2Icon } from 'lucide-react';
 export default function Detail(props) {
-    const params = use(props.params);
-    const queryClient = useQueryClient();
-    const [count, setCount] = useState(1);
-    const [price, setPrice] = useState();
-    const [loading, setLoading] = useState(false);
-    const [adding, setAdding] = useState(false);
+	const params = use(props.params);
+	const queryClient = useQueryClient();
+	const [count, setCount] = useState(1);
+	const [price, setPrice] = useState();
+	const [loading, setLoading] = useState(false);
+	const [adding, setAdding] = useState(false);
 
-    // Fetching Product Detail
-    const { data: detail } = useQuery({
+	// Fetching Product Detail
+	const { data: detail } = useQuery({
 		queryKey: ['product-detail'],
 		queryFn: () =>
 			axios
@@ -37,10 +37,10 @@ export default function Detail(props) {
 					console.log('Error in fetching data', error);
 				}),
 	});
-    // End
+	// End
 
-    // Wishlist Table Data
-    const { data: wishlistdata } = useQuery({
+	// Wishlist Table Data
+	const { data: wishlistdata } = useQuery({
 		queryKey: ['wishlistitems'],
 		queryFn: () =>
 			axios.get('/api/wishlist-items/get-data').then((response) => {
@@ -48,10 +48,10 @@ export default function Detail(props) {
 				return response.data.getallproduct;
 			}),
 	});
-    // End
+	// End
 
-    // Invalidate totalcount on add to Cart
-    const { data: totalcount } = useQuery({
+	// Invalidate totalcount on add to Cart
+	const { data: totalcount } = useQuery({
 		queryKey: ['totalcount'],
 		queryFn: () =>
 			axios.get('/api/cart-items/get-count').then((response) => {
@@ -59,10 +59,10 @@ export default function Detail(props) {
 				return response.data.productcount;
 			}),
 	});
-    // End
+	// End
 
-    // Invalidate totalcount on add to Wishlist
-    const { data: wishlisttotal } = useQuery({
+	// Invalidate totalcount on add to Wishlist
+	const { data: wishlisttotal } = useQuery({
 		queryKey: ['wishlistcount'],
 		queryFn: () =>
 			axios.get('/api/wishlist-items/get-count').then((response) => {
@@ -71,25 +71,25 @@ export default function Detail(props) {
 			}),
 	});
 
-    // Updating Price Based on Product Quantity
-    useEffect(() => {
+	// Updating Price Based on Product Quantity
+	useEffect(() => {
 		const price = detail?.price * count;
 		setPrice(price);
 	}, [count, detail]);
-    // End
+	// End
 
-    // Display spinner Until Data is Getting Ready
-    if (!detail) {
+	// Display spinner Until Data is Getting Ready
+	if (!detail) {
 		return (
 			<div className="loading h-screen bg-[#faf2ec] w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
 			</div>
 		);
 	}
-    // End
+	// End
 
-    // Increasing Product Quantity
-    const handleIncrement = () => {
+	// Increasing Product Quantity
+	const handleIncrement = () => {
 		if (count < 10) {
 			setCount((prevCount) => prevCount + 1);
 		} else {
@@ -108,17 +108,17 @@ export default function Detail(props) {
 			});
 		}
 	};
-    // End
+	// End
 
-    // Decreasing Product Quantity
-    const handleDecrement = () => {
+	// Decreasing Product Quantity
+	const handleDecrement = () => {
 		if (count > 1) {
 			setCount((prevCount) => prevCount - 1);
 		}
 	};
 
-    // Add to wishlist
-    const addtowishlist = (id, sku) => {
+	// Add to wishlist
+	const addtowishlist = (id, sku) => {
 		setLoading(true);
 		axios
 			.post('/api/wishlist-items/set-data', {
@@ -150,10 +150,10 @@ export default function Detail(props) {
 				setLoading(false);
 			});
 	};
-    // End
+	// End
 
-    // Add to cart
-    const addtocart = (id, sku, count) => {
+	// Add to cart
+	const addtocart = (id, sku, count) => {
 		setAdding(true);
 		axios
 			.post('/api/cart-items/set-data', {
@@ -196,10 +196,10 @@ export default function Detail(props) {
 				setAdding(false);
 			});
 	};
-    // End
+	// End
 
-    // Remove Product from wishlist
-    const removefromwishlist = (id) => {
+	// Remove Product from wishlist
+	const removefromwishlist = (id) => {
 		console.log('this is id', id);
 		axios
 			.post('/api/wishlist-items/delete-item', { id })
@@ -210,10 +210,10 @@ export default function Detail(props) {
 				console.log('Error', error);
 			});
 	};
-    const wishlistid = wishlistdata?.find((a) => a.id);
-    // End
+	const wishlistid = wishlistdata?.find((a) => a.id);
+	// End
 
-    return (
+	return (
 		<div className="product-detail-page bg-[#faf2ec] border-t border-[#b2937e]">
 			<div className="container">
 				<div className="product-wrapper py-10">
@@ -249,7 +249,7 @@ export default function Detail(props) {
 											{' '}
 											<IndianRupee width={18} />
 										</span>
-										<span>{price}</span>
+										<span>{price || ''}</span>
 										<span className="text-xs px-1">
 											(inclusive of all taxes)
 										</span>

@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Loader2Icon } from 'lucide-react';
 import { Eye, EyeOff } from 'lucide-react';
 import { Toggle } from '@/components/ui/toggle';
-export default function Updatepassword() {
+export default function UpdateUserPassword() {
 	const [isLoading, setLoading] = useState(false);
 	const [showOldPassword, setShowOldPassword] = useState(false);
 	const [showNewPassword, setShowNewPassword] = useState(false);

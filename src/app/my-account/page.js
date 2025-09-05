@@ -1,9 +1,7 @@
-import SideMenu from '@/app/my-account/components/side-menu';
 import Profile from '@/app/my-account/components/user-profile';
 import React from 'react';
-import { Tabbing } from '../components/tabbing';
 import { getSession } from '@/lib/session';
-import Logoutbutton from '../components/logout-button';
+// import Logoutbutton from '../components/logout-button';
 import { redirect } from 'next/navigation';
 export default async function MyAccount() {
 	const session = await getSession();

@@ -182,6 +182,10 @@
   }
 }
 
+.container-fluid{
+  @apply px-5 w-full
+}
+
 /* width */
 ::-webkit-scrollbar {
   @apply w-2

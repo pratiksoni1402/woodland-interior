@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Loader2Icon } from 'lucide-react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-export default function Logoutbutton() {
+export default function Logout() {
 	const [isLoading, setLoading] = useState();
 	const router = useRouter();
 	const queryClient = useQueryClient();
@@ -27,7 +27,7 @@ export default function Logoutbutton() {
 		setLoading(true);
 		axios
 			.post('/api/logout-user')
-			.then((response) => {
+			.then(() => {
 				router.push('/');
 				toast.success('Logged out', {
 					duration: 1000,
@@ -69,7 +69,7 @@ export default function Logoutbutton() {
 				<Button
 					type="submit"
 					onClick={handlelogout}
-					className="rounded-none bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] hover: border hover:border-[#3c2f27]"
+					className="bg-transparent hover:bg-transparent rounded-none text-black font-crimson text-lg px-0 border-none shadow-none font-normal outline-none hover:underline cursor-pointer"
 				>
 					Logout
 				</Button>

@@ -449,54 +449,13 @@
 
 /* End */
 
-/* Tabbing Swiper */
-
-.tabbing-actions .swiper .swiper-wrapper .edit-profile {
-  @apply w-[100px]! mr-0!
-}
-
-.tabbing-actions .swiper .swiper-wrapper .edit-profile div {
-  @apply p-0!
-}
-
-.tabbing-actions .swiper .swiper-wrapper .my-wishlist {
-  @apply w-[100px]! mr-2!
-}
-
-.tabbing-actions .swiper .swiper-wrapper .order-history {
-  @apply w-[115px]! mr-2!
-}
-
-.tabbing-actions .swiper .swiper-wrapper .chng-password {
-  @apply w-[130px]! mr-2!
-}
-
-.tabbing-actions .swiper .swiper-wrapper .acc-delete {
-  @apply w-[160px]! mr-0!
-}
-
-.tabbing-actions .swiper .swiper-wrapper .manage-addresses {
-  @apply w-[160px]! mr-0!
-}
-
-.tabbing-actions .swiper .swiper-wrapper .browsing-history {
-  @apply w-[160px]! mr-0!
-}
-
-.tabbing-actions .swiper .swiper-wrapper .swiper-slide-active {
-  @apply w-[0px]! mr-0!
-}
-
-.tabbing-actions .swiper .swiper-wrapper .swiper-slide-next {
-  @apply w-[0px]! mr-0!
-}
 
 /* End */
 
 /* Contact Form */
 .contact-page .content-wrapper .form-wrapper form input,
 textarea {
-  @apply w-full py-2 mx-0 h-10 border border-[#b2937e] rounded-none outline-0 px-3 font-roboto
+  @apply w-full py-2 mx-0 border border-[#b2937e] rounded-md outline-0 px-3 font-roboto
 }
 
 .contact-page .content-wrapper .form-wrapper form input:focus,

@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 
 
 export async function getSession() {
-    const session = await getIronSession(cookies(), { password: process.env.SESSION_PASS, cookieName: "woodland-interiors-cookies" });
+    const session = await getIronSession(await cookies(), { password: process.env.SESSION_PASS, cookieName: "woodland-interiors-cookies" });
 
     return session;
 }

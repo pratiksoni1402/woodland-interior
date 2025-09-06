@@ -41,7 +41,7 @@ const ContactForm = () => {
 						onSubmit={handleSubmit(onSubmit)}
 						className="bg-white border border-[#b2937e] sm:p-5 p-2.5 rounded-md"
 					>
-						<div className="flex sm:flex-nowrap flex-wrap sm:gap-5 sp">
+						<div className="flex sm:flex-nowrap flex-wrap sm:gap-5">
 							<div className="field-wrapper w-full">
 								<label
 									htmlFor="fname"

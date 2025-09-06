@@ -359,24 +359,21 @@
 /* Product Description Section end  */
 
 /* User Profile Component */
-.user-profile-component .content-wrapper {
-  @apply mt-5
-}
 
 .user-profile-component .content-wrapper .form-wrapper form .field-wrapper {
-  @apply mb-2
+  @apply mb-3
 }
 
 .user-profile-component .content-wrapper .form-wrapper form input {
-  @apply w-full mt-[10px] h-12 px-3 outline-0 border border-[#b2937e] rounded-none font-roboto
+  @apply w-full h-10 px-3 outline-0 border border-[#b2937e] rounded-md font-roboto text-sm
 }
 
 .user-profile-component .content-wrapper .form-wrapper form input:focus {
-  @apply rounded-none border border-primary
+  @apply rounded-md border border-primary
 }
 
 .user-profile-component .content-wrapper .form-wrapper form select {
-  @apply h-12 my-3 border border-[#b2937e] bg-white px-3
+  @apply h-10 rounded-md hover:!cursor-pointer !text-sm border border-[#b2937e] bg-white px-3
 }
 
 .user-profile-component .content-wrapper .form-wrapper form select:focus {

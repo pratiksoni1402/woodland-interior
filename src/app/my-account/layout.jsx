@@ -11,19 +11,21 @@ export default async function UserProfileLayout({ children }) {
 	}
 	const greetingMessage = getGreetingMessage();
 	return (
-		<div className="container-fluid">
-			<div className="heading text-center font-crimson text-[#3c2f27] text-3xl py-5">
-				<h1 className="capitalize md:text-4xl text-2xl">{greetingMessage}</h1>
-			</div>
-			<div className="grid grid-cols-12">
-				<div className="col-span-4">
-					<div className="h-full font-crimson text-lg">
-						<SideMenu />
-					</div>
+		<div className="bg-[#faf2ec]">
+			<div className="container-fluid">
+				<div className="heading text-center font-crimson text-[#3c2f27] text-3xl py-5">
+					<h1 className="capitalize md:text-4xl text-2xl">{greetingMessage}</h1>
 				</div>
+				<div className="grid grid-cols-12 gap-5">
+					<div className="col-span-3">
+						<div className="h-full font-crimson text-lg">
+							<SideMenu />
+						</div>
+					</div>
 
-				<div className="col-span-8">
-					<div>{children}</div>
+					<div className="col-span-9">
+						<div>{children}</div>
+					</div>
 				</div>
 			</div>
 		</div>

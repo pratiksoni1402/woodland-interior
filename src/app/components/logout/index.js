@@ -54,7 +54,7 @@ export default function Logout() {
 	};
 
 	return (
-		<div className="logout-button">
+		<div className="logout-button pl-3">
 			{isLoading ? (
 				<Button
 					type="submit"

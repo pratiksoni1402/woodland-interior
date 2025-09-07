@@ -20,6 +20,15 @@ import {
 } from '@/components/ui/alert-dialog';
 import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
+import {
+	Card,
+	CardAction,
+	CardContent,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from '@/components/ui/card';
 export default function UsersWishlist() {
 	const queryClient = useQueryClient();
 	const [toCart, setToCart] = useState(null);
@@ -39,7 +48,7 @@ export default function UsersWishlist() {
 				}),
 	});
 	// End
-
+	console.log(allproducts);
 	if (allproducts?.length === 0) {
 		return (
 			<div className="bg-[#faf2ec] py-20 flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
@@ -92,126 +101,48 @@ export default function UsersWishlist() {
 	// End
 
 	return (
-		<div
-			className="product-wrapper bg-[#faf2ec] pb-20"
-			style={{ minHeight: '500px' }}
-		>
+		<div className="product-wrapper  pb-20" style={{ minHeight: '500px' }}>
 			<div className="container">
-				<div className="my-items lg:w-3/4 w-full mx-auto  ">
+				<div className="my-items">
 					<Toaster />
 					{allproducts?.map((product) => (
-						<div
-							className="product pt-10 pb-5 border-b border-[#b2937e]"
+						<Link
+							href={`/product-detail/${product.productid}`}
 							key={product.id}
+							className="block w-max"
 						>
-							<div className="grid grid-cols-12 gap-3">
-								<div className="xl:col-span-2 lg:col-span-3 sm:col-span-4 col-span-12">
-									<Image
-										src={`${BLOB_BASE_URL}/${product.products.image}`}
-										alt={product.products.name}
-										height={150}
-										width={150}
-										className="sm:w-[150px] w-full"
-									/>
-								</div>
-								<div className="xl:col-span-8 lg:col-span-7 sm:col-span-6 col-span-12">
-									<div className="description">
-										<div className="title text-[#3c2f27] font-semibold font-crimson text-xl pb-3">
+							<Card className="!w-96">
+								<CardContent>
+									<div>
+										<Image
+											src={`${BLOB_BASE_URL}/${product.products.image}`}
+											alt={product.products.name}
+											height={250}
+											width={250}
+											className=" w-full"
+										/>
+									</div>
+								</CardContent>
+								<CardFooter>
+									<div className="flex flex-col">
+										<div className="title text-[#3c2f27] leading-6 font-semibold font-crimson text-xl pb-3">
 											{product.products.name}
 										</div>
-										<div className="description text-[#4b4537] font-roboto text-sm pb-3">
-											{product.products.description}
-										</div>
-										<div className="constant  text-[#4b4537] font-roboto text-sm pb-3">
-											SKU: <span className="variation">{product.sku}</span>
-										</div>
-									</div>
-								</div>
-								<div className="xl:col-span-2 lg:col-span-2 sm:col-span-2 col-span-12 sm:block flex justify-between items-start">
-									<div className="amount flex justify-end items-center">
-										<div className="constant font-roboto text-[#3c2f27] font-semibold">
-											<IndianRupee width={17} />
-										</div>
-										<div className="variation font-roboto text-[#3c2f27] font-semibold">
-											{product.products.price}
-										</div>
-									</div>
-									<div className="actions flex flex-col justify-end sm:pt-20 pt-0">
-										<Link
-											href={`/product-detail/${product.productid}`}
-											className="text-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline "
-										>
-											View Detail
-										</Link>
-										{toCart === product.id ? (
-											<div className="flex justify-center items-center">
-												<ClipLoader
-													color="#3c2f27"
-													size={20}
-													css="border-radius: 50%"
-												/>
+										<div className="amount flex justify-center items-center">
+											<div className="constant font-roboto text-[#3c2f27] font-semibold">
+												<IndianRupee width={17} />
 											</div>
-										) : (
-											<Button
-												onClick={() =>
-													movetocart(
-														product.productid,
-														product.quantity,
-														product.sku,
-														product.id
-													)
-												}
-												className="pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline "
-												variant="#3c2f27"
-											>
-												Move to Cart
-											</Button>
-										)}
-
-										<AlertDialog className="rounded-none">
-											<AlertDialogTrigger asChild>
-												<Button
-													className="mt-[-10px] pr-0 justify-end font-roboto text-xs text-[#3c2f27] border-b border-transparent hover:underline bg-transparent hover:bg-transparent"
-													variant="outline"
-												>
-													Delete from wishlist
-												</Button>
-											</AlertDialogTrigger>
-											<AlertDialogContent>
-												<AlertDialogHeader>
-													<AlertDialogTitle>Remove Product?</AlertDialogTitle>
-													<AlertDialogDescription className="font-roboto">
-														Are you sure you want to delete this product from
-														your wishlist!
-													</AlertDialogDescription>
-												</AlertDialogHeader>
-												<AlertDialogFooter>
-													<AlertDialogCancel className="hover:duration-300 rounded-none bg-transparent text-[#3c2f27] border-[#3c2f27] hover:bg-[#b2937e] hover:border-[#b2937e] hover:text-[white]">
-														Cancel
-													</AlertDialogCancel>
-													{itemDelete === product.id ? (
-														<div className="flex justify-center items-center">
-															<ClipLoader
-																color="#3c2f27"
-																size={20}
-																css="border-radius: 50%"
-															/>
-														</div>
-													) : (
-														<AlertDialogAction
-															onClick={() => deleteproduct(product.id)}
-															className="hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]"
-														>
-															Delete
-														</AlertDialogAction>
-													)}
-												</AlertDialogFooter>
-											</AlertDialogContent>
-										</AlertDialog>
+											<div className="variation font-roboto text-[#3c2f27] font-semibold">
+												{product.products.price}
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</div>
+									{/*<div className="description text-[#4b4537] font-roboto text-sm pb-3">*/}
+									{/*	{product.products.description}*/}
+									{/*</div>*/}
+								</CardFooter>
+							</Card>
+						</Link>
 					))}
 				</div>
 			</div>

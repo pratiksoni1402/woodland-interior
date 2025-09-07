@@ -7,6 +7,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Loader2Icon } from 'lucide-react';
 import { Eye, EyeOff } from 'lucide-react';
 import { Toggle } from '@/components/ui/toggle';
+import { showErrorToast } from '@/lib/toast';
+import { showSuccessToast } from '@/lib/toast';
 export default function UpdateUserPassword() {
 	const [isLoading, setLoading] = useState(false);
 	const [showOldPassword, setShowOldPassword] = useState(false);
@@ -19,52 +21,16 @@ export default function UpdateUserPassword() {
 	} = useForm();
 	const onSubmit = (data) => {
 		if (data.newPassword !== data.confirmPassword) {
-			toast.error('Password and Confirm Password must be same', {
-				duration: 3000,
-				style: {
-					border: '1px solid #3c2f27',
-					padding: '8px',
-					color: '#faf2ec',
-					backgroundColor: '#3c2f27',
-				},
-				iconTheme: {
-					primary: '#faf2ec',
-					secondary: '#3c2f27',
-				},
-			});
+			showErrorToast('Password and confirm password must be same');
 		} else if (data.newPassword === data.confirmPassword) {
 			setLoading(true);
 			axios
 				.post('/api/update-password', data)
 				.then((response) => {
 					if (response.data.messageSuccess) {
-						toast.success(response.data.messageSuccess, {
-							duration: 3000,
-							style: {
-								border: '1px solid #3c2f27',
-								padding: '8px',
-								color: '#faf2ec',
-								backgroundColor: '#3c2f27',
-							},
-							iconTheme: {
-								primary: '#faf2ec',
-								secondary: '#3c2f27',
-							},
-						});
+						showSuccessToast(response.data.messageSuccess);
 					} else if (response.data.message) {
-						toast.error(response.data.message, {
-							duration: 3000,
-							style: {
-								border: '1px solid #3c2f27',
-								padding: '8px',
-								color: '#faf2ec',
-								backgroundColor: '#3c2f27',
-							},
-							iconTheme: {
-								primary: '#faf2ec',
-								secondary: '#3c2f27',
-							},
-						});
+						showErrorToast(response.data.message);
 					}
 					return response.data.updatePassword;
 				})
@@ -93,84 +59,109 @@ export default function UpdateUserPassword() {
 		<div className="change-password-form" style={{ minHeight: '500px' }}>
 			<div className="form-wrapper  flex justify-center">
 				<Toaster />
-				<form onSubmit={handleSubmit(onSubmit)} className="lg:w-3/4 w-full">
-					<div className="field-wrapper relative">
-						<input
-							type={showOldPassword ? 'text' : 'password'}
-							placeholder="Old Password"
-							{...register('oldPassword', { required: true, maxLength: 20 })}
-						/>
-						<Toggle
-							onClick={handleOldPasswordVisibility}
-							className="absolute right-0 top-3"
-						>
-							{showOldPassword ? <Eye /> : <EyeOff />}
-						</Toggle>
-						{errors.oldPassword && (
-							<span className="error-message font-roboto text-sm text-red-700">
-								This field is required
-							</span>
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					className="border border-[#b2937e] rounded-md"
+				>
+					<div className="p-5">
+						<div className="field-wrapper relative">
+							<label
+								htmlFor="oldpass"
+								className="text-sm font-roboto pl-2 pr-0.5"
+							>
+								Old Password
+							</label>
+							<span className="font-semibold  text-red-700">*</span>
+							<input
+								id="oldpass"
+								type={showOldPassword ? 'text' : 'password'}
+								{...register('oldPassword', { required: true, maxLength: 20 })}
+							/>
+							<Toggle
+								onClick={handleOldPasswordVisibility}
+								className="absolute right-0 top-6.5"
+							>
+								{showOldPassword ? <Eye /> : <EyeOff />}
+							</Toggle>
+							{errors.oldPassword && (
+								<span className="error-message font-roboto text-sm pl-2 text-red-700">
+									This field is required
+								</span>
+							)}
+						</div>
+
+						<div className="field-wrapper relative">
+							<label
+								htmlFor="newpass"
+								className="text-sm font-roboto pl-2 pr-0.5"
+							>
+								New Password
+							</label>
+							<span className="font-semibold text-red-700">*</span>
+							<input
+								id="newpass"
+								type={showNewPassword ? 'text' : 'password'}
+								{...register('newPassword', { required: true, maxLength: 20 })}
+							/>
+							<Toggle
+								onClick={handleNewPasswordVisibility}
+								className="absolute right-0 top-6.5"
+							>
+								{showOldPassword ? <Eye /> : <EyeOff />}
+							</Toggle>
+							{errors.newPassword && (
+								<span className="error-message font-roboto text-sm pl-2 text-red-700">
+									This field is required
+								</span>
+							)}
+						</div>
+
+						<div className="field-wrapper relative">
+							<label
+								htmlFor="cnfpass"
+								className="text-sm font-roboto pl-2 pr-0.5"
+							>
+								Confirm Password
+							</label>
+							<span className="font-semibold text-red-700">*</span>
+							<input
+								type={showCnfPassword ? 'text' : 'password'}
+								{...register('confirmPassword', {
+									required: true,
+									maxLength: 20,
+								})}
+							/>
+							<Toggle
+								onClick={handleCnfPasswordVisibility}
+								className="absolute right-0 top-6.5"
+							>
+								{showOldPassword ? <Eye /> : <EyeOff />}
+							</Toggle>
+							{errors.confirmPassword && (
+								<span className="error-message font-roboto text-sm pl-2 text-red-700">
+									This field is required
+								</span>
+							)}
+						</div>
+
+						{isLoading ? (
+							<Button
+								type="submit"
+								className="w-64 mx-auto mt-8 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex"
+								disabled={true}
+							>
+								<Loader2Icon className="animate-spin mr-1" />
+								Update Password
+							</Button>
+						) : (
+							<Button
+								type="submit"
+								className="w-36 mx-auto mt-8 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center"
+							>
+								Update Password
+							</Button>
 						)}
 					</div>
-
-					<div className="field-wrapper relative">
-						<input
-							type={showNewPassword ? 'text' : 'password'}
-							placeholder="New Password"
-							{...register('newPassword', { required: true, maxLength: 20 })}
-						/>
-						<Toggle
-							onClick={handleNewPasswordVisibility}
-							className="absolute right-0 top-3"
-						>
-							{showOldPassword ? <Eye /> : <EyeOff />}
-						</Toggle>
-						{errors.newPassword && (
-							<span className="error-message font-roboto text-sm text-red-700">
-								This field is required
-							</span>
-						)}
-					</div>
-
-					<div className="field-wrapper relative">
-						<input
-							type={showCnfPassword ? 'text' : 'password'}
-							placeholder="Confirm Password"
-							{...register('confirmPassword', {
-								required: true,
-								maxLength: 20,
-							})}
-						/>
-						<Toggle
-							onClick={handleCnfPasswordVisibility}
-							className="absolute right-0 top-3"
-						>
-							{showOldPassword ? <Eye /> : <EyeOff />}
-						</Toggle>
-						{errors.confirmPassword && (
-							<span className="error-message font-roboto text-sm text-red-700">
-								This field is required
-							</span>
-						)}
-					</div>
-
-					{isLoading ? (
-						<Button
-							type="submit"
-							className="w-64 mx-auto mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex"
-							disabled={true}
-						>
-							<Loader2Icon className="animate-spin mr-1" />
-							Update Password
-						</Button>
-					) : (
-						<Button
-							type="submit"
-							className="w-64 mx-auto mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center"
-						>
-							Update Password
-						</Button>
-					)}
 				</form>
 			</div>
 		</div>

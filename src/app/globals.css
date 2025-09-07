@@ -384,19 +384,19 @@
 
 /* Password Reset  */
 .change-password-form .form-wrapper form .field-wrapper {
-  @apply mb-2 w-1/2 mx-auto
+  @apply mb-3
 }
 
 .change-password-form .form-wrapper form input[type="password"] {
-  @apply mt-[10px] w-full h-12 px-3 border border-[#b2937e] outline-0
+  @apply w-full h-10 px-3 border rounded-md border-[#b2937e] outline-0
 }
 
 .change-password-form .form-wrapper form input[type="text"] {
-  @apply w-full mt-[10px] h-12 px-3 border border-[#b2937e] outline-0
+  @apply w-full h-10 px-3 border border-[#b2937e] outline-0 rounded-md
 }
 
 .change-password-form .form-wrapper form input[type="password"]:focus {
-  @apply border border-primary outline-0
+  @apply border border-primary outline-0 rounded-md
 }
 
 /* End */

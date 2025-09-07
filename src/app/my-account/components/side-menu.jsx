@@ -35,14 +35,16 @@ export default function SideMenu() {
 					<Link
 						key={index}
 						href={menuItems.url}
-						className={`flex justify-between items-center mb-3 px-2 border border-transparent rounded-md ${menuItems.url === pathName ? 'bg-white py-1 rounded-md' : 'bg-[#faf2ec]'} `}
+						className={`flex justify-between items-center mb-3 px-2 border border-transparent rounded-md ${menuItems.url === pathName ? 'border border-primary py-1 rounded-md' : ' border border-b border-transparent'} `}
 					>
 						<span>{menuItems.name}</span>
 						<span>{menuItems.icon}</span>
 					</Link>
 				))}
 
-				<Logout />
+				<div className="ml-2">
+					<Logout />
+				</div>
 			</div>
 		</div>
 	);

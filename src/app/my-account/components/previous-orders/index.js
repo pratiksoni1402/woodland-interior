@@ -44,7 +44,7 @@ export default function OrderHistory() {
 
 	return (
 		<div className="wishlist-component sm:flex block sm:justify-center overflow-x-auto">
-			<div className="user-wishlist bg-[#faf2ec] lg:w-3/4 w-full">
+			<div className="user-wishlist w-full">
 				<div className="grid grid-col-1">
 					<div className="col ">
 						<div className="order-wrapper">

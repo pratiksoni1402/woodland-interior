@@ -15,9 +15,10 @@ export default async function UserProfileLayout({ children }) {
 			<div className="heading text-center font-crimson text-[#3c2f27] text-3xl py-5">
 				<h1 className="capitalize md:text-4xl text-2xl">{greetingMessage}</h1>
 			</div>
+
 			<div className="grid grid-cols-12 gap-5">
-				<div className="col-span-3">
-					<div className="h-full font-crimson text-lg">
+				<div className="col-span-3 self-start">
+					<div className="sticky top-5 font-crimson text-lg">
 						<SideMenu />
 					</div>
 				</div>

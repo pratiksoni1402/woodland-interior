@@ -79,7 +79,7 @@ export default function UpdateUserPassword() {
 							/>
 							<Toggle
 								onClick={handleOldPasswordVisibility}
-								className="absolute right-0 top-6.5"
+								className="absolute right-1 top-6.5 hover:cursor-pointer hover:bg-white"
 							>
 								{showOldPassword ? <Eye /> : <EyeOff />}
 							</Toggle>
@@ -105,9 +105,9 @@ export default function UpdateUserPassword() {
 							/>
 							<Toggle
 								onClick={handleNewPasswordVisibility}
-								className="absolute right-0 top-6.5"
+								className="absolute right-1 top-6.5 hover:cursor-pointer hover:bg-white"
 							>
-								{showOldPassword ? <Eye /> : <EyeOff />}
+								{showNewPassword ? <Eye /> : <EyeOff />}
 							</Toggle>
 							{errors.newPassword && (
 								<span className="error-message font-roboto text-sm pl-2 text-red-700">
@@ -133,9 +133,9 @@ export default function UpdateUserPassword() {
 							/>
 							<Toggle
 								onClick={handleCnfPasswordVisibility}
-								className="absolute right-0 top-6.5"
+								className="absolute right-1 top-6.5 hover:cursor-pointer hover:bg-white"
 							>
-								{showOldPassword ? <Eye /> : <EyeOff />}
+								{showCnfPassword ? <Eye /> : <EyeOff />}
 							</Toggle>
 							{errors.confirmPassword && (
 								<span className="error-message font-roboto text-sm pl-2 text-red-700">

@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { Loader2Icon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { showErrorToast } from '@/lib/toast';
 export function SignupForm() {
 	const router = useRouter();
 	const {
@@ -25,19 +26,7 @@ export function SignupForm() {
 					if (response.data.successMessage) {
 						router.push('/my-account');
 					} else if (response.data.errorMessage) {
-						toast.error(response.data.errorMessage, {
-							duration: 3000,
-							style: {
-								border: '1px solid #3c2f27',
-								padding: '8px',
-								color: '#faf2ec',
-								backgroundColor: '#3c2f27',
-							},
-							iconTheme: {
-								primary: '#faf2ec',
-								secondary: '#3c2f27',
-							},
-						});
+						showErrorToast(response.data.errorMessage);
 					}
 				})
 				.catch((error) => {
@@ -60,15 +49,16 @@ export function SignupForm() {
 				<div className="register-form">
 					<form
 						onSubmit={handleSubmit(onSubmit)}
-						className=" border border-[#b2937e] rounded-md bg-white p-5"
+						className=" border border-border rounded-md bg-white p-5"
 					>
 						<div className="flex gap-3">
 							<div className="field-wrapper">
 								<label
 									htmlFor="firstName"
-									className="font-medium font-roboto text-sm pb-0.5 block"
+									className="font-medium font-roboto text-sm pl-2 pb-0.5 block"
 								>
 									Firstname
+									<span className="font-semibold text-red-700 pl-0.5">*</span>
 								</label>
 								<input
 									id="firstName"
@@ -77,7 +67,7 @@ export function SignupForm() {
 									{...register('firstname', { required: true })}
 								/>
 								{errors.firstname && (
-									<span className="error-message font-roboto text-sm text-red-700">
+									<span className="error-message pl-2 font-roboto text-sm text-red-700">
 										This field is required
 									</span>
 								)}
@@ -85,9 +75,10 @@ export function SignupForm() {
 							<div className="field-wrapper">
 								<label
 									htmlFor="lastName"
-									className="font-medium font-roboto text-sm pb-0.5 block"
+									className="font-medium font-roboto text-sm pl-2 pb-0.5 block"
 								>
 									Lastname
+									<span className="font-semibold text-red-700 pl-0.5">*</span>
 								</label>
 								<input
 									type="text"
@@ -99,7 +90,7 @@ export function SignupForm() {
 									})}
 								/>
 								{errors.lastname && (
-									<span className="error-message font-roboto text-sm text-red-700">
+									<span className="error-message font-roboto pl-2 text-sm text-red-700">
 										This field is required
 									</span>
 								)}
@@ -108,9 +99,10 @@ export function SignupForm() {
 						<div className="field-wrapper">
 							<label
 								htmlFor="email"
-								className="font-medium font-roboto text-sm pb-0.5 block"
+								className="font-medium font-roboto text-sm pl-2 pb-0.5 block"
 							>
 								Email
+								<span className="font-semibold text-red-700 pl-0.5">*</span>
 							</label>
 							<input
 								id="email"
@@ -122,7 +114,7 @@ export function SignupForm() {
 								})}
 							/>
 							{errors.email && (
-								<span className="error-message font-roboto text-sm text-red-700">
+								<span className="error-message pl-2 font-roboto text-sm text-red-700">
 									This field is required
 								</span>
 							)}
@@ -130,9 +122,10 @@ export function SignupForm() {
 						<div className="field-wrapper">
 							<label
 								htmlFor="password"
-								className="font-medium font-roboto text-sm pb-0.5 block"
+								className="font-medium font-roboto text-sm pl-2 pb-0.5 block"
 							>
 								Password
+								<span className="font-semibold text-red-700 pl-0.5">*</span>
 							</label>
 							<input
 								id="password"
@@ -140,7 +133,7 @@ export function SignupForm() {
 								{...register('password', { required: true })}
 							/>
 							{errors.password && (
-								<span className="error-message font-roboto text-sm text-red-700">
+								<span className="error-message font-roboto pl-2 text-sm text-red-700">
 									This field is required
 								</span>
 							)}
@@ -148,9 +141,10 @@ export function SignupForm() {
 						<div className="field-wrapper">
 							<label
 								htmlFor="cnfPassword"
-								className="font-medium font-roboto text-sm pb-0.5 block"
+								className="font-medium font-roboto text-sm pl-2 pb-0.5 block"
 							>
 								Confirm Password
+								<span className="font-semibold text-red-700 pl-0.5">*</span>
 							</label>
 							<input
 								id="cnfPassword"
@@ -158,29 +152,31 @@ export function SignupForm() {
 								{...register('cnfpassword', { required: true })}
 							/>
 							{errors.cnfpassword && (
-								<span className="error-message font-roboto text-sm text-red-700">
+								<span className="error-message font-roboto pl-2 text-sm text-red-700">
 									This field is required
 								</span>
 							)}
 						</div>
 
-						{isLoading ? (
-							<Button
-								type="submit"
-								className="w-full rounded-none p-3 mt-4 mb-3 border hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2"
-								disabled={true}
-							>
-								<Loader2Icon className="animate-spin mr-1" />
-								Signup
-							</Button>
-						) : (
-							<Button
-								type="submit"
-								className="w-full hover:cursor-pointer rounded-none p-3 mt-4 mb-3 border hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2"
-							>
-								Signup
-							</Button>
-						)}
+						<div className="mt-10 mb-0">
+							{isLoading ? (
+								<Button
+									type="submit"
+									className="w-full rounded-md p-3 mt-4 mb-3 border hover:border-primary hover:bg-primary border-primary bg-transparent text-primary hover:text-background flex justify-center items-center gap-2"
+									disabled={true}
+								>
+									<Loader2Icon className="animate-spin mr-1" />
+									Signup
+								</Button>
+							) : (
+								<Button
+									type="submit"
+									className="w-full hover:cursor-pointer rounded-md p-3 mt-4 mb-3 border border-primary bg-primary text-white font-roboto hover:bg-secondary hover:border-secondary hover:text-background flex justify-center items-center gap-2"
+								>
+									Signup
+								</Button>
+							)}
+						</div>
 					</form>
 				</div>
 			</div>

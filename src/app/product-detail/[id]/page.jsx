@@ -79,7 +79,7 @@ export default function Detail(props) {
 	// Display spinner Until Data is Getting Ready
 	if (!detail) {
 		return (
-			<div className="loading h-screen bg-[#faf2ec] w-full flex justify-center items-center">
+			<div className="loading h-screen bg-background w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
 			</div>
 		);
@@ -240,7 +240,7 @@ export default function Detail(props) {
 											{adding ? (
 												<Button
 													type="submit"
-													className="text-sm w-full text-[#faf2ec] bg-primary rounded-md border"
+													className="text-sm w-full text-background bg-primary rounded-md border"
 													disabled={true}
 												>
 													<Loader2Icon className="animate-spin mr-1" />
@@ -252,7 +252,7 @@ export default function Detail(props) {
 													onClick={() =>
 														addtocart(detail.id, detail.sku, count)
 													}
-													className="text-sm w-full font-roboto hover:cursor-pointer text-white bg-primary hover:text-[#faf2ec] hover:bg-secondary border-primary hover:border-secondary rounded-md"
+													className="text-sm w-full font-roboto hover:cursor-pointer text-white bg-primary hover:text-background hover:bg-secondary border-primary hover:border-secondary rounded-md"
 												>
 													Add To Bag
 												</Button>
@@ -264,17 +264,17 @@ export default function Detail(props) {
 													{loading ? (
 														<Button
 															type="submit"
-															className="w-full mt-4 mb-3 border hover:border-primary font-roboto bg-secondary-foreground border-secondary-foreground hover:bg-transparent hover:text-primary text-[#faf2ec] text-center flex rounded-md"
+															className="w-full mt-4 mb-3 border hover:border-primary font-roboto bg-secondary-foreground border-secondary-foreground hover:bg-transparent hover:text-primary text-background text-center flex rounded-md"
 															disabled={true}
 														>
 															<Loader2Icon className="animate-spin mr-1" />
-															Remove from Wishlist
+															Remove from Wishlisttttt
 														</Button>
 													) : (
 														<Button
 															variant="outline"
 															onClick={() => removefromwishlist(wishlistid.id)}
-															className="text-sm w-full hover:text-primary font-roboto bg-secondary-foreground text-[#faf2ec] hover:bg-transparent border-secondary-foreground hover:cursor-pointer rounded-md "
+															className="text-sm w-full hover:text-primary font-roboto bg-secondary-foreground text-background hover:bg-transparent border-secondary-foreground hover:cursor-pointer rounded-md "
 														>
 															Remove from Wishlist
 														</Button>
@@ -285,7 +285,7 @@ export default function Detail(props) {
 													{loading ? (
 														<Button
 															type="submit"
-															className="w-full border hover:border-primary bg-primary border-primary hover:bg-transparent hover:text-primary text-[#faf2ec] text-center flex"
+															className="w-full border hover:border-primary bg-primary border-primary hover:bg-transparent hover:text-primary text-background text-center flex"
 															disabled={true}
 														>
 															<Loader2Icon className="animate-spin mr-1" />
@@ -297,7 +297,7 @@ export default function Detail(props) {
 															onClick={() =>
 																addtowishlist(detail.id, detail.sku)
 															}
-															className="text-sm w-full font-roboto text-primary hover:bg-secondary hover:text-[#faf2ec] bg-transparent border-primary hover:border-secondary hover:cursor-pointer rounded-md "
+															className="text-sm w-full font-roboto text-primary hover:bg-secondary hover:text-background bg-transparent border-primary hover:border-secondary hover:cursor-pointer rounded-md "
 														>
 															Add To Wishlist
 														</Button>

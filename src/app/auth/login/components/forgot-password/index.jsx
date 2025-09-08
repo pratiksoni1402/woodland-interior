@@ -4,7 +4,7 @@ export function ForgotPasswordLink() {
 	return (
 		<Link
 			href="/auth/password-reset"
-			className="font-medium text-sm hover:text-primary"
+			className="font-medium text-sm hover:text-primary font-roboto"
 		>
 			Forgot Password ?
 		</Link>

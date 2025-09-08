@@ -12,6 +12,7 @@ import { Loader2Icon } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useQueryClient } from '@tanstack/react-query';
 import { ForgotPasswordLink } from '@/app/auth/login/components/forgot-password';
+import { showErrorToast } from '@/lib/toast';
 function AuthenticationForm() {
 	const searchParam = useSearchParams();
 	const value = searchParam.get('redirect');
@@ -25,19 +26,6 @@ function AuthenticationForm() {
 	} = useForm();
 
 	const queryClient = useQueryClient();
-	// const { data: sessionData } = useQuery({
-	// 	queryKey: ['checkSession'],
-	// 	queryFn: () =>
-	// 		axios
-	// 			.get('/api/get-sessiondata')
-	// 			.then((response) => {
-	// 				console.log('data', response.data.getSessionData);
-	// 				return response.data.getSessionData;
-	// 			})
-	// 			.catch((error) => {
-	// 				console.log('Error occured', error);
-	// 			}),
-	// });
 
 	const onSubmit = (data) => {
 		setLoading(true);
@@ -54,19 +42,7 @@ function AuthenticationForm() {
 			})
 			.catch((error) => {
 				console.error('Error:', error);
-				toast.error('Invalid Email or Password', {
-					duration: 3000,
-					style: {
-						border: '1px solid #3c2f27',
-						padding: '16px',
-						color: '#faf2ec',
-						backgroundColor: '#3c2f27',
-					},
-					iconTheme: {
-						primary: '#faf2ec',
-						secondary: '#3c2f27',
-					},
-				});
+				showErrorToast('Invalid email or password');
 			})
 			.finally(() => {
 				setLoading(false);
@@ -77,17 +53,18 @@ function AuthenticationForm() {
 		<div className="user-login-form pb-20 w-3/5">
 			<div className="user-login">
 				<Toaster />
-				<div className="heading text-center text-2xl text-[#3c2f27] font-crimson py-5">
+				<div className="heading text-center text-2xl text-primary font-crimson py-5">
 					<h1>Login</h1>
 				</div>
-				<div className="login-form border-[#b2937e] border rounded-md bg-white">
+				<div className="login-form border-border border rounded-md bg-white">
 					<form onSubmit={handleSubmit(onSubmit)} className="m-5 bg-white">
 						<div className="field-wrapper !mb-6">
 							<label
 								htmlFor="email"
-								className="font-medium font-roboto text-sm pb-0.5 block"
+								className="font-medium font-roboto text-sm pb-0.5 pl-2 block"
 							>
 								Email
+								<span className="font-semibold text-red-700 pl-0.5">*</span>
 							</label>
 							<input
 								type="text"
@@ -99,7 +76,7 @@ function AuthenticationForm() {
 								})}
 							/>
 							{errors.email && (
-								<span className="error-message font-roboto text-sm text-red-700">
+								<span className="error-message font-roboto pl-2 text-sm text-red-700">
 									This field is required
 								</span>
 							)}
@@ -108,9 +85,10 @@ function AuthenticationForm() {
 						<div className="field-wrapper">
 							<label
 								htmlFor="password"
-								className="font-medium font-roboto text-sm pb-0.5 block"
+								className="font-medium font-roboto text-sm pl-2 pb-0.5 block"
 							>
 								Password
+								<span className="font-semibold text-red-700 pl-0.5">*</span>
 							</label>
 							<input
 								type="password"
@@ -118,7 +96,7 @@ function AuthenticationForm() {
 								{...register('password', { required: true })}
 							/>
 							{errors.password && (
-								<span className="error-message font-roboto text-sm text-red-700">
+								<span className="error-message font-roboto pl-2 text-sm text-red-700">
 									This field is required
 								</span>
 							)}
@@ -130,7 +108,7 @@ function AuthenticationForm() {
 							{loading ? (
 								<Button
 									type="submit"
-									className="w-full p-3 mt-4 mb-3 border rounded-none hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2"
+									className="w-full p-3 mt-4 mb-3 border rounded-md hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-primary hover:text-[#faf2ec] flex justify-center items-center gap-2"
 									disabled={true}
 								>
 									<Loader2Icon className="animate-spin mr-1" />
@@ -139,7 +117,7 @@ function AuthenticationForm() {
 							) : (
 								<Button
 									type="submit"
-									className="w-full p-3 mt-4 mb-3 hover:cursor-pointer border rounded-none hover:border-[#3c2f27] hover:bg-[#3c2f27] border-[#3c2f27] bg-transparent text-[#3c2f27] hover:text-[#faf2ec] flex justify-center items-center gap-2"
+									className="w-full hover:cursor-pointer rounded-md p-3 mt-4 mb-3 border border-primary bg-primary text-white font-roboto hover:bg-secondary hover:border-secondary hover:text-background flex justify-center items-center gap-2"
 								>
 									Login
 								</Button>

@@ -1,7 +1,4 @@
 'use client';
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-// export const revalidate = 0;
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useForm } from 'react-hook-form';

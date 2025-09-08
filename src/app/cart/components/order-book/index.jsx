@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { IndianRupee } from 'lucide-react';
+import { IndianRupee, Minus, Plus } from 'lucide-react';
 import axios from 'axios';
 import Link from 'next/link';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -249,7 +249,7 @@ export default function OrderBook() {
 																		{productLoading === product.id ? (
 																			<Button
 																				variant="outline"
-																				className="border-border border rounded-none text-lg text-white bg-primary"
+																				className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
 																			>
 																				<Loader2Icon className="animate-spin" />
 																			</Button>
@@ -262,18 +262,18 @@ export default function OrderBook() {
 																						product.id
 																					)
 																				}
-																				className="border-border border rounded-none text-lg text-white bg-primary"
+																				className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
 																			>
-																				+
+																				<Plus />
 																			</Button>
 																		)}
-																		<span className="px-7 border-border border h-10 text-primary font-semibold text-sm flex items-center border-r-0 border-l-0">
+																		<span className="px-4 h-10 text-primary font-semibold text-sm flex items-center">
 																			{product.quantity}
 																		</span>
 																		{descreaseLoader === product.id ? (
 																			<Button
 																				variant="outline"
-																				className="border-border border rounded-none text-lg text-white bg-primary"
+																				className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
 																			>
 																				<Loader2Icon className="animate-spin " />
 																			</Button>
@@ -286,9 +286,9 @@ export default function OrderBook() {
 																						product.id
 																					)
 																				}
-																				className="border-border border rounded-none text-lg text-white bg-primary"
+																				className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
 																			>
-																				-
+																				<Minus />
 																			</Button>
 																		)}
 																	</div>
@@ -330,7 +330,7 @@ export default function OrderBook() {
 																					product.quantity
 																				)
 																			}
-																			className="px-0 md:justify-end justify-start font-roboto text-sm text-primary border-b border-transparent hover:underline "
+																			className="px-0 md:justify-end justify-start font-roboto text-sm text-primary border-b hover:cursor-pointer border-transparent hover:underline "
 																			variant="#3c2f27"
 																		>
 																			Move to Wishlist
@@ -340,7 +340,7 @@ export default function OrderBook() {
 																	<AlertDialog className="rounded-none">
 																		<AlertDialogTrigger asChild>
 																			<Button
-																				className="mt-[-10px] md:justify-end justify-start font-roboto text-sm text-primary px-0  border-b border-transparent hover:text-primary hover:underline bg-transparent hover:bg-transparent"
+																				className="mt-[-10px] md:justify-end justify-start font-roboto text-sm text-primary px-0  border-b border-transparent hover:text-primary hover:underline bg-transparent hover:bg-transparent hover:cursor-pointer shadow-none"
 																				variant="outline"
 																			>
 																				Delete from cart
@@ -436,7 +436,7 @@ export default function OrderBook() {
 									{isLoading ? (
 										<Button
 											type="submit"
-											className="rounded-none w-full font-roboto bg-primary hover:bg-background hover:text-primary border border-border"
+											className=" w-full bg-primary hover:bg-background hover:text-primary border border-primary rounded-md font-roboto"
 											disabled={true}
 										>
 											<Loader2Icon className="animate-spin mr-1" />
@@ -446,7 +446,7 @@ export default function OrderBook() {
 										<Button
 											type="submit"
 											onClick={handleClick}
-											className="w-full border hover:border-border bg-primary border-border hover:bg-transparent rounded-none hover:text-primary text-[#faf2ec] block text-center"
+											className="w-full border hover:border-border bg-primary border-primary hover:cursor-pointer hover:bg-transparent rounded-md font-roboto hover:text-primary text-[#faf2ec] block text-center"
 										>
 											Proceed to Checkout
 										</Button>

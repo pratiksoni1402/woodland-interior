@@ -1,21 +1,20 @@
 'use client';
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
 
-import axios from 'axios';
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
+import { showErrorToast, showSuccessToast } from '@/lib/toast';
 import { MoonLoader } from 'react-spinners';
-
-import { IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState, use } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
-import LazyImage from '@/app/components/lazy-loading/lazy-image';
 import { useQueryClient } from '@tanstack/react-query';
-import Reviews from '@/app/components/customer-reviews';
-import Image from 'next/image';
+import { IndianRupee, Minus, Plus } from 'lucide-react';
+import { Toaster } from 'react-hot-toast';
 import { Loader2Icon } from 'lucide-react';
+
+import axios from 'axios';
+import LazyImage from '@/app/_lib/utils/lazy-image';
+import Reviews from '@/app/customer-reviews';
+import DeliveryInfo from '@/app/product-detail/components/delivery-info';
 export default function Detail(props) {
 	const params = use(props.params);
 	const queryClient = useQueryClient();
@@ -44,7 +43,6 @@ export default function Detail(props) {
 		queryKey: ['wishlistitems'],
 		queryFn: () =>
 			axios.get('/api/wishlist-items/get-data').then((response) => {
-				console.log(response.data.getallproduct);
 				return response.data.getallproduct;
 			}),
 	});
@@ -93,19 +91,7 @@ export default function Detail(props) {
 		if (count < 10) {
 			setCount((prevCount) => prevCount + 1);
 		} else {
-			toast.error('Only 10 Sets are allowed to buy', {
-				duration: 8000,
-				style: {
-					border: '1px solid #3c2f27',
-					padding: '16px',
-					color: '#faf2ec',
-					backgroundColor: '#3c2f27',
-				},
-				iconTheme: {
-					primary: '#faf2ec',
-					secondary: '#3c2f27',
-				},
-			});
+			showErrorToast('Only 10 Sets are allowed to buy');
 		}
 	};
 	// End
@@ -128,23 +114,10 @@ export default function Detail(props) {
 			})
 			.then(() => {
 				queryClient.invalidateQueries('wishlistcount');
-				toast.success('Product Added to wishlist', {
-					duration: 3000,
-					style: {
-						border: '1px solid #3c2f27',
-						padding: '16px',
-						color: '#faf2ec',
-						backgroundColor: '#3c2f27',
-					},
-					iconTheme: {
-						primary: '#faf2ec',
-						secondary: '#3c2f27',
-					},
-				});
+				showSuccessToast('Product added to wishlist');
 			})
 			.catch((error) => {
-				console.log('Error occured', error);
-				toast.error('Error');
+				showErrorToast('Error');
 			})
 			.finally(() => {
 				setLoading(false);
@@ -163,34 +136,10 @@ export default function Detail(props) {
 			})
 			.then(() => {
 				queryClient.invalidateQueries('totalcount');
-				toast.success('Product Added to cart', {
-					duration: 3000,
-					style: {
-						border: '1px solid #3c2f27',
-						padding: '16px',
-						color: '#faf2ec',
-						backgroundColor: '#3c2f27',
-					},
-					iconTheme: {
-						primary: '#faf2ec',
-						secondary: '#3c2f27',
-					},
-				});
+				showSuccessToast('Product added to cart');
 			})
 			.catch(() => {
-				toast.error('Error', {
-					duration: 3000,
-					style: {
-						border: '1px solid #3c2f27',
-						padding: '16px',
-						color: '#faf2ec',
-						backgroundColor: '#3c2f27',
-					},
-					iconTheme: {
-						primary: '#faf2ec',
-						secondary: '#3c2f27',
-					},
-				});
+				showErrorToast('Error');
 			})
 			.finally(() => {
 				setAdding(false);
@@ -200,7 +149,6 @@ export default function Detail(props) {
 
 	// Remove Product from wishlist
 	const removefromwishlist = (id) => {
-		console.log('this is id', id);
 		axios
 			.post('/api/wishlist-items/delete-item', { id })
 			.then(() => {
@@ -234,17 +182,17 @@ export default function Detail(props) {
 						<div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-7 col-span-12">
 							<div className="right-section">
 								<div className="detail-wrapper">
-									<div className="variation font-roboto text-sm text-[#3c2f27] pb-2">
+									<div className="variation font-roboto text-sm text-primary pb-2">
 										<span className="caption">SKU:</span>
 										<span className="value">{detail?.sku}</span>
 									</div>
-									<div className="product-name text-[#3c2f27] font-semibold font-crimson text-2xl pb-2">
+									<div className="product-name text-primary font-semibold font-crimson text-2xl pb-2">
 										{detail?.name}
 									</div>
-									<div className="description text-[#3c2f27] text-sm pb-2 font-roboto">
+									<div className="description text-primary text-sm pb-2 font-roboto">
 										{detail?.description}
 									</div>
-									<div className="pricing flex items-center  text-[#3c2f27] font-semibold font-crimson text-lg">
+									<div className="pricing flex items-center  text-primary font-semibold font-crimson text-lg">
 										<span>
 											{' '}
 											<IndianRupee width={18} />
@@ -257,7 +205,7 @@ export default function Detail(props) {
 								</div>
 								<div className="actions">
 									<div className="quantity py-3 ">
-										<div className="pb-1 text-xs text-[#3c2f27] font-roboto">
+										<div className="pb-1 text-xs text-primary font-roboto">
 											Quantity:
 										</div>
 										<div>
@@ -267,80 +215,32 @@ export default function Detail(props) {
 											<Button
 												onClick={handleIncrement}
 												variant="outline"
-												className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"
+												className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
 											>
-												+
+												<Plus />
 											</Button>
-											<span className="px-7 border-[#3c2f27] border font-roboto text-[#3c2f27] h-10 flex items-center border-r-0 border-l-0">
+											<span className="px-4 font-roboto font-bold text-primary h-10 flex items-center">
 												{count}
 											</span>
 											<Button
 												onClick={handleDecrement}
 												variant="outline"
-												className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"
+												className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
 											>
-												-
+												<Minus />
 											</Button>
 										</div>
 									</div>
-									<div className="shipping-wrapper py-5">
-										<div className="flex gap-5">
-											<div>
-												<div className="transit flex flex-col justify-center items-center">
-													<span className="p-3  border-2 border-[#3c2f27] rounded-full">
-														<Image
-															src="/uploads/images/shipping-step/in-transit.svg"
-															alt="Transit"
-															className="w-8 h-8"
-															width={20}
-															height={32}
-														/>
-													</span>
-													<span>
-														<Image
-															src="/uploads/images/shipping-step/shipping.svg"
-															alt="Steps"
-															className=" w-4 h-44"
-															width={20}
-															height={50}
-														/>
-													</span>
-												</div>
-											</div>
-											<div className="information">
-												<div className="heading">
-													<h2 className="font-crimson text-[#3c2f27] text-base">
-														FREE 3 DAY SHIPPING
-													</h2>
-													<span className="font-roboto text-[#3c2f27] text-sm">
-														on all India Orders
-													</span>
-												</div>
-												<div className="order mt-6">
-													<h2 className="font-crimson text-[#3c2f27] text-base">
-														ORDER BY:
-													</h2>
-													<span className="font-roboto text-[#3c2f27] text-sm">
-														5PM EST Monday, February 12
-													</span>
-												</div>
-												<div className="order mt-7">
-													<h2 className="font-crimson text-[#3c2f27] text-base">
-														RECEIVE BY:
-													</h2>
-													<span className="font-roboto text-[#3c2f27] text-sm">
-														5PM EST THRUSDAY, February 15
-													</span>
-												</div>
-											</div>
-										</div>
+									<div className="delivery-info">
+										<DeliveryInfo />
 									</div>
+
 									<div className="flex sm:flex-nowrap flex-wrap sm:gap-3 gap-">
 										<div className="cart py-3 w-full">
 											{adding ? (
 												<Button
 													type="submit"
-													className="text-sm w-full text-[#faf2ec] bg-[#3c2f27] rounded-none border"
+													className="text-sm w-full text-[#faf2ec] bg-primary rounded-md border"
 													disabled={true}
 												>
 													<Loader2Icon className="animate-spin mr-1" />
@@ -352,7 +252,7 @@ export default function Detail(props) {
 													onClick={() =>
 														addtocart(detail.id, detail.sku, count)
 													}
-													className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27] rounded-none "
+													className="text-sm w-full font-roboto hover:cursor-pointer text-white bg-primary hover:text-[#faf2ec] hover:bg-secondary border-primary hover:border-secondary rounded-md"
 												>
 													Add To Bag
 												</Button>
@@ -364,7 +264,7 @@ export default function Detail(props) {
 													{loading ? (
 														<Button
 															type="submit"
-															className="w-full mt-4 mb-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex"
+															className="w-full mt-4 mb-3 border hover:border-primary font-roboto bg-secondary-foreground border-secondary-foreground hover:bg-transparent hover:text-primary text-[#faf2ec] text-center flex rounded-md"
 															disabled={true}
 														>
 															<Loader2Icon className="animate-spin mr-1" />
@@ -374,7 +274,7 @@ export default function Detail(props) {
 														<Button
 															variant="outline"
 															onClick={() => removefromwishlist(wishlistid.id)}
-															className="text-sm w-full hover:text-[#3c2f27] bg-[#3c2f27] text-[#faf2ec] hover:bg-transparent border-[#3c2f27]  rounded-none "
+															className="text-sm w-full hover:text-primary font-roboto bg-secondary-foreground text-[#faf2ec] hover:bg-transparent border-secondary-foreground hover:cursor-pointer rounded-md "
 														>
 															Remove from Wishlist
 														</Button>
@@ -385,7 +285,7 @@ export default function Detail(props) {
 													{loading ? (
 														<Button
 															type="submit"
-															className="w-full border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] text-center flex"
+															className="w-full border hover:border-primary bg-primary border-primary hover:bg-transparent hover:text-primary text-[#faf2ec] text-center flex"
 															disabled={true}
 														>
 															<Loader2Icon className="animate-spin mr-1" />
@@ -397,7 +297,7 @@ export default function Detail(props) {
 															onClick={() =>
 																addtowishlist(detail.id, detail.sku)
 															}
-															className="text-sm w-full text-[#3c2f27] hover:bg-[#3c2f27] hover:text-[#faf2ec] bg-transparent border-[#3c2f27]  rounded-none "
+															className="text-sm w-full font-roboto text-primary hover:bg-secondary hover:text-[#faf2ec] bg-transparent border-primary hover:border-secondary hover:cursor-pointer rounded-md "
 														>
 															Add To Wishlist
 														</Button>

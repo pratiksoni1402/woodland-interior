@@ -114,10 +114,10 @@
     --popover-foreground: 0 0% 3.9%;
 
     --primary: #3c2f27;
-    --primary-foreground: #faf2ec;
+    --primary-foreground: #efc8b3;
 
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary: #7f5539;
+    --secondary-foreground: #88664a;
 
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
@@ -968,7 +968,7 @@ textarea:focus {
   --primary-foreground: #efc8b3;
 
   --secondary: #7f5539;
-  --secondary-foreground: #382c23;
+  --secondary-foreground: #88664a;
 
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);

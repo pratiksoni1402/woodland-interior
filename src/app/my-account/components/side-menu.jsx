@@ -1,7 +1,7 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import Logout from '@/app/components/logout';
+import Logout from '@/app/auth/logout';
 import { ChevronRight } from 'lucide-react';
 
 export default function SideMenu() {

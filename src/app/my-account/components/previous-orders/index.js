@@ -7,7 +7,6 @@ import {
 	TableBody,
 	TableCaption,
 	TableCell,
-	TableFooter,
 	TableHead,
 	TableHeader,
 	TableRow,
@@ -31,7 +30,6 @@ export default function OrderHistory() {
 				}),
 	});
 
-	// Assuming receipt.order_date is a string representing the timestamp, e.g., "2024-02-27T10:12:44.830Z"
 	const orderDate = orders?.order_date;
 	if (orderDate) {
 		const date = new Date(orderDate);

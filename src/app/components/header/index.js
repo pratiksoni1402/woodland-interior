@@ -18,7 +18,7 @@ import WishlistLink from '@/app/components/header/wishlist-link';
 import UserAccountLink from '@/app/components/header/user';
 const Navbar = () => {
 	return (
-		<div className="navigation-bar  bg-primary h-[75px] py-4 sticky top-0 z-10">
+		<div className="navigation-bar  bg-background h-[75px] py-4 sticky top-0 z-10">
 			<div className=" container navbar-wrapper flex justify-between items-center ">
 				<div className="logo">
 					<Link href="/">
@@ -37,7 +37,7 @@ const Navbar = () => {
 							<NavigationMenuItem>
 								<NavigationMenuLink
 									asChild
-									className="text-lg hover:bg-[#faf2ec]"
+									className="text-lg hover:bg-background focus:bg-background"
 								>
 									<Link href="/">Home</Link>
 								</NavigationMenuLink>
@@ -46,7 +46,7 @@ const Navbar = () => {
 								<NavigationMenuTrigger className="bg-transparent hover:bg-transparent hover:cursor-pointer font-crimson font-medium text-lg leading-7">
 									Shop
 								</NavigationMenuTrigger>
-								<NavigationMenuContent className="bg-[#faf2ec]">
+								<NavigationMenuContent className="bg-background">
 									<ul className="nested-list  py-2 w-40">
 										<li>
 											<Link href="/shop/bedroom">Bedroom</Link>
@@ -66,7 +66,7 @@ const Navbar = () => {
 							<NavigationMenuItem>
 								<NavigationMenuLink
 									asChild
-									className="text-lg hover:bg-[#faf2ec]"
+									className="text-lg hover:bg-background focus:bg-background"
 								>
 									<Link href="/our-values">Our Values</Link>
 								</NavigationMenuLink>
@@ -74,7 +74,7 @@ const Navbar = () => {
 							<NavigationMenuItem>
 								<NavigationMenuLink
 									asChild
-									className="text-lg leading-7 hover:bg-primary-foreground hover:bg-[#faf2ec]"
+									className="text-lg leading-7 hover:bg-background focus:bg-background"
 								>
 									<Link href="/contact">Contact</Link>
 								</NavigationMenuLink>

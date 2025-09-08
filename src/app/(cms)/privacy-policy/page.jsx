@@ -1,14 +1,14 @@
 export default function Policy() {
 	return (
-		<div className="privacy-policy-page bg-[#faf2ec] border-t border-[#b2937e]">
+		<div className="privacy-policy-page bg-background border-t border-border">
 			<div className="container">
 				<div className="page-heading pt-3 pb-5">
-					<h1 className="text-4xl font-crimson text-[#3c2f27] text-center">
+					<h1 className="text-4xl font-crimson text-primary text-center">
 						Privacy Policy
 					</h1>
 				</div>
 				<div className="policy pb-10">
-					<div className="block-one pb-5 text-sm text-[#3c2f27] font-roboto">
+					<div className="block-one pb-5 text-sm text-primary font-roboto">
 						<p className="pb-3">
 							Thank you for visiting Woodland Interiors. This Privacy Policy
 							explains how we collect, use, disclose, and safeguard your
@@ -27,8 +27,8 @@ export default function Policy() {
 							Site after the date such revised Privacy Policy is posted.
 						</p>
 					</div>
-					<div className="block-two pb-5 text-sm text-[#3c2f27] font-roboto">
-						<h2 className="text-xl pb-3 font-crimson text-[#3c2f27] font-semibold">
+					<div className="block-two pb-5 text-sm text-primary font-roboto">
+						<h2 className="text-xl pb-3 font-crimson text-primary font-semibold">
 							Collection of Information
 						</h2>
 						<p className="pb-3">
@@ -55,8 +55,8 @@ export default function Policy() {
 							the Site.
 						</p>
 					</div>
-					<div className="block-three pb-5 text-sm text-[#3c2f27] font-roboto">
-						<h2 className="text-xl pb-3 font-crimson text-[#3c2f27] font-semibold">
+					<div className="block-three pb-5 text-sm text-primary font-roboto">
+						<h2 className="text-xl pb-3 font-crimson text-primary font-semibold">
 							Use of Your Information
 						</h2>
 						<div>We may use the information we collect from you to:</div>
@@ -72,8 +72,8 @@ export default function Policy() {
 							</li>
 						</ul>
 					</div>
-					<div className="block-four pb-5 text-sm text-[#3c2f27] font-roboto">
-						<h2 className="text-xl pb-3 font-crimson text-[#3c2f27] font-semibold">
+					<div className="block-four pb-5 text-sm text-primary font-roboto">
+						<h2 className="text-xl pb-3 font-crimson text-primary font-semibold">
 							Sharing of Your Information
 						</h2>
 						<p className="pb-3">
@@ -95,8 +95,8 @@ export default function Policy() {
 							hosting services, customer service, and marketing assistance.
 						</p>
 					</div>
-					<div className="block-five pb-5 text-sm text-[#3c2f27] font-roboto">
-						<h2 className="text-xl pb-3 font-crimson text-[#3c2f27] font-semibold">
+					<div className="block-five pb-5 text-sm text-primary font-roboto">
+						<h2 className="text-xl pb-3 font-crimson text-primary font-semibold">
 							Security of Your Information
 						</h2>
 						<p className="pb-3">

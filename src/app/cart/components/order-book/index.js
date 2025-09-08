@@ -23,7 +23,7 @@ import { MoonLoader } from 'react-spinners';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
-export default function Cart() {
+export default function OrderBook() {
 	let totalPrice = 0;
 	let subtotal = 0;
 	let taxrate = 9;
@@ -58,9 +58,9 @@ export default function Cart() {
 
 	if (totalproducts?.length === 0) {
 		return (
-			<div className="w-full h-screen bg-[#faf2ec] mt-[-70px] flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
+			<div className="w-full h-screen bg-background mt-[-70px] flex-col font-crimson text-4xl text-primary flex items-center justify-center">
 				<h1 className="sm:text-4xl text-2x">Your Cart is empty</h1>
-				<div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] text-[#faf2ec] mt-5 border border-[#3c2f27]">
+				<div className="shop-now text-base py-3 px-5 hover:bg-background hover:text-primary hover:cursor-pointer bg-background text-primary mt-5 border border-border">
 					<Link href="/shop/bedroom">SHOP NOW</Link>
 				</div>
 			</div>
@@ -69,7 +69,7 @@ export default function Cart() {
 
 	if (!totalproducts) {
 		return (
-			<div className="loading h-screen bg-[#faf2ec] w-full flex justify-center items-center">
+			<div className="loading h-screen bg-background w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
 			</div>
 		);
@@ -193,12 +193,12 @@ export default function Cart() {
 	};
 
 	return (
-		<div className="cart-items bg-[#faf2ec] pt-5 pb-10">
+		<div className="cart-items bg-background pt-5 pb-10">
 			<div className="container">
 				<div className="grid grid-cols-12 gap-5">
 					<div className="lg:col-span-9 col-span-12">
 						<div className="product-wrapper">
-							<div className="heading pb-3 sm:text-4xl text-xl font-crimson border-b border-[#b2937e]  text-[#3c2f27]">
+							<div className="heading pb-3 sm:text-4xl text-xl font-crimson border-b border-border  text-primary">
 								Items in your cart
 							</div>
 							<div className="grid grid-col-1">
@@ -213,7 +213,7 @@ export default function Cart() {
 												(subtotal = totalPrice - taxamount * 2),
 												(
 													<div
-														className="product py-10 border-b border-[#b2937e]"
+														className="product py-10 border-b border-border"
 														key={product.id}
 													>
 														<div className="grid grid-cols-12 gap-3">
@@ -228,13 +228,13 @@ export default function Cart() {
 															</div>
 															<div className="xl:col-span-7 lg:col-span-7 md:col-span-6 col-span-12">
 																<div className="description">
-																	<div className="title text-[#3c2f27] font-semibold font-crimson text-xl pb-3">
+																	<div className="title text-primary font-semibold font-crimson text-xl pb-3">
 																		{product.products.name}
 																	</div>
-																	<div className="description text-[#4b4537] font-roboto text-sm pb-3">
+																	<div className="description text-primary font-roboto text-sm pb-3">
 																		{product.products.description}
 																	</div>
-																	<div className="constant  text-[#4b4537] font-roboto text-sm pb-3">
+																	<div className="constant  text-primary font-roboto text-sm pb-3">
 																		SKU:{' '}
 																		<span className="variation font-semibold">
 																			{product.sku}
@@ -242,14 +242,14 @@ export default function Cart() {
 																	</div>
 																</div>
 																<div className="quantity py-3 ">
-																	<div className="pb-1 text-xs text-[#3c2f27] font-roboto">
+																	<div className="pb-1 text-xs text-primary font-roboto">
 																		Quantity:
 																	</div>
 																	<div className="flex items-center">
 																		{productLoading === product.id ? (
 																			<Button
 																				variant="outline"
-																				className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"
+																				className="border-border border rounded-none text-lg text-white bg-primary"
 																			>
 																				<Loader2Icon className="animate-spin" />
 																			</Button>
@@ -262,18 +262,18 @@ export default function Cart() {
 																						product.id
 																					)
 																				}
-																				className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"
+																				className="border-border border rounded-none text-lg text-white bg-primary"
 																			>
 																				+
 																			</Button>
 																		)}
-																		<span className="px-7 border-[#3c2f27] border h-10 text-[#3c2f27] font-semibold text-sm flex items-center border-r-0 border-l-0">
+																		<span className="px-7 border-border border h-10 text-primary font-semibold text-sm flex items-center border-r-0 border-l-0">
 																			{product.quantity}
 																		</span>
 																		{descreaseLoader === product.id ? (
 																			<Button
 																				variant="outline"
-																				className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"
+																				className="border-border border rounded-none text-lg text-white bg-primary"
 																			>
 																				<Loader2Icon className="animate-spin " />
 																			</Button>
@@ -286,7 +286,7 @@ export default function Cart() {
 																						product.id
 																					)
 																				}
-																				className="border-[#3c2f27] border rounded-none text-lg text-white bg-[#3c2f27]"
+																				className="border-border border rounded-none text-lg text-white bg-primary"
 																			>
 																				-
 																			</Button>
@@ -296,24 +296,24 @@ export default function Cart() {
 															</div>
 															<div className="xl:col-span-2 lg:col-span-2 md:col-span-2 col-span-12">
 																<div className="amount flex md:justify-end justify-start text-sm items-center">
-																	<div className="constant font-roboto text-[#3c2f27] font-semibold">
+																	<div className="constant font-roboto text-primary font-semibold">
 																		<IndianRupee size={14} />
 																	</div>
-																	<div className="variation font-roboto text-[#3c2f27] font-semibold">
+																	<div className="variation font-roboto text-primary font-semibold">
 																		{product.products.price * product.quantity}
 																	</div>
 																</div>
 																<div className="actions flex flex-col justify-end md:pt-20 pt-5">
 																	<Link
 																		href={`/product-detail/${product.productid}`}
-																		className="md:text-end text-left font-roboto text-sm font-medium text-[#3c2f27] border-b border-transparent hover:underline "
+																		className="md:text-end text-left font-roboto text-sm font-medium text-primary border-b border-transparent hover:underline "
 																	>
 																		View Detail
 																	</Link>
 
 																	{towishlist === product.id ? (
 																		<Button
-																			className="px-0 md:justify-end justify-start font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline "
+																			className="px-0 md:justify-end justify-start font-roboto text-sm text-primary border-b border-transparent hover:underline "
 																			variant="#3c2f27"
 																			disabled={true}
 																		>
@@ -330,7 +330,7 @@ export default function Cart() {
 																					product.quantity
 																				)
 																			}
-																			className="px-0 md:justify-end justify-start font-roboto text-sm text-[#3c2f27] border-b border-transparent hover:underline "
+																			className="px-0 md:justify-end justify-start font-roboto text-sm text-primary border-b border-transparent hover:underline "
 																			variant="#3c2f27"
 																		>
 																			Move to Wishlist
@@ -340,13 +340,13 @@ export default function Cart() {
 																	<AlertDialog className="rounded-none">
 																		<AlertDialogTrigger asChild>
 																			<Button
-																				className="mt-[-10px] md:justify-end justify-start font-roboto text-sm text-[#3c2f27] px-0  border-b border-transparent hover:text-[#3c2f27] hover:underline bg-transparent hover:bg-transparent"
+																				className="mt-[-10px] md:justify-end justify-start font-roboto text-sm text-primary px-0  border-b border-transparent hover:text-primary hover:underline bg-transparent hover:bg-transparent"
 																				variant="outline"
 																			>
 																				Delete from cart
 																			</Button>
 																		</AlertDialogTrigger>
-																		<AlertDialogContent className="bg-[#faf2ec]">
+																		<AlertDialogContent className="bg-background">
 																			<AlertDialogHeader>
 																				<AlertDialogTitle>
 																					Remove Product?
@@ -357,12 +357,12 @@ export default function Cart() {
 																				</AlertDialogDescription>
 																			</AlertDialogHeader>
 																			<AlertDialogFooter>
-																				<AlertDialogCancel className="hover:duration-300 rounded-none bg-transparent text-[#3c2f27] border-[#3c2f27] hover:bg-[#b2937e] hover:border-[#b2937e] hover:text-[white]">
+																				<AlertDialogCancel className="hover:duration-300 rounded-none bg-transparent text-primary border-border hover:bg-[#b2937e] hover:border-border hover:text-[white]">
 																					Cancel
 																				</AlertDialogCancel>
 																				<AlertDialogAction
 																					onClick={() => cnfdelete(product.id)}
-																					className="hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-[#3c2f27]"
+																					className="hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-primary"
 																				>
 																					{loading ? (
 																						<div className="flex flex-row items-start justify-center">
@@ -390,12 +390,12 @@ export default function Cart() {
 					</div>
 					<div className="lg:col-span-3 col-span-12">
 						<div className="order-summary-wrapper sticky top-20 mt-[53px]">
-							<div className="wrapper border border-[#b2937e] p-4">
-								<div className="heading font-roboto border-b border-[#b2937e] text-center py-5 text-[#3c2f27] font-semibold">
+							<div className="wrapper border border-border p-4">
+								<div className="heading font-roboto border-b border-border text-center py-5 text-primary font-semibold">
 									Summary
 								</div>
 								<div className="calculation">
-									<div className="sub-total pt-3 flex justify-between px-2 text-sm font-roboto text-[#4b4537]">
+									<div className="sub-total pt-3 flex justify-between px-2 text-sm font-roboto text-primary">
 										<div>Sub-Total:</div>
 										<div className="flex items-center">
 											<span className="">
@@ -404,7 +404,7 @@ export default function Cart() {
 											<span>{subtotal}</span>
 										</div>
 									</div>
-									<div className="sub-total flex py-2 justify-between px-2 text-sm font-roboto text-[#4b4537]">
+									<div className="sub-total flex py-2 justify-between px-2 text-sm font-roboto text-primary">
 										<div>Central GST:</div>
 										<div className="flex items-center">
 											<span className="">
@@ -413,7 +413,7 @@ export default function Cart() {
 											<span>{taxamount}</span>
 										</div>
 									</div>
-									<div className="sub-total flex pb-3 justify-between text-sm px-2 font-roboto text-[#4b4537]">
+									<div className="sub-total flex pb-3 justify-between text-sm px-2 font-roboto text-primary">
 										<div>State GST:</div>
 										<div className="flex items-center">
 											<span className="">
@@ -422,7 +422,7 @@ export default function Cart() {
 											<span>{taxamount}</span>
 										</div>
 									</div>
-									<div className="total-price flex font-semibold pt-3 pb-5 border-t border-[#b2937e] justify-between px-2 font-roboto text-[#4b4537] text-sm">
+									<div className="total-price flex font-semibold pt-3 pb-5 border-t border-border justify-between px-2 font-roboto text-primary text-sm">
 										<div>Total:</div>
 										<div className="flex items-center">
 											<span className="svg-strking">
@@ -436,7 +436,7 @@ export default function Cart() {
 									{isLoading ? (
 										<Button
 											type="submit"
-											className="rounded-none w-full font-roboto bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]"
+											className="rounded-none w-full font-roboto bg-primary hover:bg-background hover:text-primary border border-border"
 											disabled={true}
 										>
 											<Loader2Icon className="animate-spin mr-1" />
@@ -446,7 +446,7 @@ export default function Cart() {
 										<Button
 											type="submit"
 											onClick={handleClick}
-											className="w-full border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent rounded-none hover:text-[#3c2f27] text-[#faf2ec] block text-center"
+											className="w-full border hover:border-border bg-primary border-border hover:bg-transparent rounded-none hover:text-primary text-[#faf2ec] block text-center"
 										>
 											Proceed to Checkout
 										</Button>

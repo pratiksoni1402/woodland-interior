@@ -1,9 +1,8 @@
-
-import Cart from "./../components/order-book"
-export default function Cartdata() {
-  return (
-    <div className="cart-data">
-        <Cart />
-    </div>
-  )
+import OrderBook from './components/order-book';
+export default function Cart() {
+	return (
+		<div className="cart-data">
+			<OrderBook />
+		</div>
+	);
 }

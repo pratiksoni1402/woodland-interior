@@ -15,7 +15,7 @@ export default function OrderDetails() {
 	const [showForm, setShowForm] = useState(false);
 	const [animation, setAnimation] = useState(false);
 
-	const methods = useForm(); // ✅ useForm defined here
+	const methods = useForm();
 
 	const handleSwitchToggle = () => {
 		setShowForm(!showForm);
@@ -54,7 +54,7 @@ export default function OrderDetails() {
 
 					<Button
 						type="submit"
-						className="rounded-none w-full font-roboto bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border border-[#3c2f27]"
+						className=" w-full font-roboto bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border hover:cursor-pointer border-[#3c2f27] rounded-md"
 						disabled={animation}
 					>
 						{animation && <Loader2Icon className="animate-spin mr-1" />}

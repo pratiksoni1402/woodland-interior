@@ -7,9 +7,6 @@ export default function CustomService() {
 						Tailor-made pieces for homes, places and spaces
 					</span>
 				</div>
-				{/* <div className='visit-us'>
-            <Link href='/bespoke'>our custom-made service</Link>
-          </div> */}
 			</div>
 			<div
 				className="dine-room d-block"

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 export default function ExpertTeam() {
 	return (
-		<section className="our-showcase our-expert bg-[#faf2ec] pb-10">
+		<section className="our-showcase our-expert pb-10">
 			<div className="content-wrapper">
 				<div className="grid lg:grid-cols-3 sm:grid-cols-1 ">
 					<div className="description flex flex-col justify-center px-4 py-4 lg:order-1 order-2">

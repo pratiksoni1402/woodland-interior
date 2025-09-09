@@ -957,7 +957,7 @@ textarea:focus {
 
 :root {
   --radius: 0.625rem;
-  --background: #faf2ec;
+  --background: #ffffff;
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);

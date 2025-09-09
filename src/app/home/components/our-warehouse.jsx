@@ -1,6 +1,6 @@
 export default function OurWarehouse() {
 	return (
-		<section className="our-showcase bg-[#faf2ec] pt-5">
+		<section className="our-showcase pt-5">
 			<div className="content-wrapper">
 				<div className="grid lg:grid-cols-3 sm:grid-cols-1 ">
 					<div className="content col-span-2">

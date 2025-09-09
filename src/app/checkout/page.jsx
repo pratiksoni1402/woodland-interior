@@ -12,7 +12,7 @@ export default async function Checkout() {
 	}
 
 	return (
-		<div className="checkout-page pb-10 border-t border-border">
+		<div className=" pb-10 border-t border-border">
 			<div className="container">
 				<div className="heading text-center pt-5 pb-10 font-crimson text-primary text-4xl">
 					Secure Checkout

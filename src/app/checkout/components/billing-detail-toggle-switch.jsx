@@ -3,17 +3,17 @@ import { Label } from '@/components/ui/label';
 
 export default function BillingDetailToggleSwitch({ show, onToggle }) {
 	return (
-		<div>
+		<div className="mt-6">
 			<div>
-				<Label htmlFor="" className="text-sm font-roboto text-[#3c2f27]">
-					Is Billing detail Same as Shipping detail ?
+				<Label htmlFor="" className="text-sm font-roboto text-primary">
+					Is Billing detail same as shipping detail ?
 				</Label>
 			</div>
-			<div className="flex items-center font-roboto text-sm py-3 text-[#3c2f27]">
+			<div className="flex items-center font-roboto text-sm py-3 text-primary">
 				<span>Yes</span>
 				<Switch
 					id="airplane-mode"
-					className="mx-2"
+					className="mx-2 hover:cursor-pointer border-primary bg-primary"
 					checked={show}
 					onClick={onToggle}
 				/>

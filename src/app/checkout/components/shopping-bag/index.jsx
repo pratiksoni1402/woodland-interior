@@ -40,7 +40,8 @@ export default function ShoppingBag() {
 						(productlist) => (
 							(grandtotal += productlist.products.price * productlist.quantity),
 							(taxamount = (grandtotal * 9) / 100),
-							(subtotal = grandtotal - taxamount * 2)(
+							(subtotal = grandtotal - taxamount * 2),
+							(
 								<div
 									className="product border-t border-[#b2937e] py-5 px-3"
 									key={productlist.id}

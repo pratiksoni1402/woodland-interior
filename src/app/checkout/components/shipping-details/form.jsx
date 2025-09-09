@@ -37,6 +37,7 @@ export default function ShippingDetailsForm() {
 						<span className="font-semibold text-red-700 pl-0.5">*</span>
 					</label>
 					<input
+						id="fname"
 						type="text"
 						{...register('shipping_first_name', {
 							required: true,

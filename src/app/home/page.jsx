@@ -5,7 +5,7 @@ import OurWarehouse from '@/app/home/components/our-warehouse';
 import Visitshop from '@/app/home/components/visit-us';
 export default function Homepage() {
 	return (
-		<div className="homepage">
+		<div className="homepage bg-background">
 			<MainBanner />
 
 			<Visitshop />

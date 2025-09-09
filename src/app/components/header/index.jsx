@@ -49,16 +49,18 @@ const Navbar = () => {
 								<NavigationMenuContent className="bg-background">
 									<ul className="nested-list  py-2 w-40">
 										<li>
-											<Link href="/shop/bedroom">Bedroom</Link>
+											<Link href="/products?category=bedroom">Bedroom</Link>
 										</li>
 										<li>
-											<Link href="/shop/dining-tables">Dining Tables</Link>
+											<Link href="/products?category=dining-tables">
+												Dining Tables
+											</Link>
 										</li>
 										<li>
-											<Link href="/shop/sofa-sets">Sofa Sets</Link>
+											<Link href="/products?category=sofa-sets">Sofa Sets</Link>
 										</li>
 										<li>
-											<Link href="/shop/outdoor">Outdoor</Link>
+											<Link href="/products?category=outdoor">Outdoor</Link>
 										</li>
 									</ul>
 								</NavigationMenuContent>

@@ -1,34 +1,15 @@
 'use client';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import { IndianRupee } from 'lucide-react';
 import axios from 'axios';
 import Link from 'next/link';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
-import {
-	AlertDialog,
-	AlertDialogAction,
-	AlertDialogCancel,
-	AlertDialogContent,
-	AlertDialogDescription,
-	AlertDialogFooter,
-	AlertDialogHeader,
-	AlertDialogTitle,
-	AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
+
 import { useState } from 'react';
-import { ClipLoader } from 'react-spinners';
-import {
-	Card,
-	CardAction,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from '@/components/ui/card';
+
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 export default function UsersWishlist() {
 	const queryClient = useQueryClient();
 	const [toCart, setToCart] = useState(null);
@@ -54,7 +35,7 @@ export default function UsersWishlist() {
 			<div className="bg-[#faf2ec] py-20 flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
 				<h1 className="l">Your Wishlist is empty</h1>
 				<div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] text-[#faf2ec] mt-5 border border-[#3c2f27]">
-					<Link href="/shop/bedroom">SHOP NOW</Link>
+					<Link href="/products?category=bedroom">SHOP NOW</Link>
 				</div>
 			</div>
 		);

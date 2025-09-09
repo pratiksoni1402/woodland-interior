@@ -25,7 +25,7 @@ const footer = () => {
 									</li>
 									<li>
 										<Link
-											href="/shop/sofa-sets"
+											href="/src/app/product-listing/sofa-sets"
 											className="make-bold-props"
 											title="Shop"
 										>

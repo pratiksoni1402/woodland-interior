@@ -1,30 +1,35 @@
 'use client';
-import { use } from 'react';
+
 import { useQuery } from '@tanstack/react-query';
 import { MoonLoader } from 'react-spinners';
 
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
 import { IndianRupee } from 'lucide-react';
-
 import Link from 'next/link';
 import axios from 'axios';
 import LazyImage from '@/app/_lib/utils/lazy-image';
-export default function ProductListing(props) {
-	const params = use(props.params);
+import { useSearchParams } from 'next/navigation';
+import Count from '@/app/products/components/product-count/count';
+import Categories from '@/app/products/components/product-categories/categories';
+import SortByFilter from '@/app/products/components/filters/sort-by/sort-by';
+export default function GetProducts() {
+	const params = useSearchParams();
+	const slug = params.get('category');
 
 	// Fetching All Products
 	const { data: allproducts } = useQuery({
-		queryKey: ['product-list'],
+		queryKey: ['product-list', slug],
 		queryFn: () =>
-			axios.get(`/api/product-listing?slug=${params.slug}`).then((response) => {
+			axios.get(`/api/product-listing?slug=${slug}`).then((response) => {
 				return response.data.productlist;
 			}),
 	});
 	// End
 
+	console.log('all pro', allproducts);
 	if (!allproducts) {
 		return (
-			<div className="loading h-screen bg-[#faf2ec] w-full flex justify-center items-center">
+			<div className="loading h-screen bg-background w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
 			</div>
 		);
@@ -33,21 +38,14 @@ export default function ProductListing(props) {
 	return (
 		<div className="bedroom-products-page bg-background border-t border-border">
 			<div className="container">
-				<div className="total-products text-center border border-x-0 border-[#b2937e] py-3 my-3">
-					{allproducts &&
-						allproducts.map((counting, index) => (
-							<div key={index}>
-								<span className="font-crimson font-semibold text-base text-[#3c2f27]">
-									<span>Showing</span>
-									<span className="px-1">{counting.products.length}</span>
-									<span>of</span>
-									<span className="px-1">{counting.products.length}</span>
-									<span>Products</span>
-								</span>
-							</div>
-						))}
+				<div className="pt-10 pb-4">
+					<Categories />
 				</div>
-				<div className="product-listing-section py-10">
+				<div className="flex justify-center gap-5">
+					<Count />
+					<SortByFilter />
+				</div>
+				<div className="product-listing-section pb-10 pt-2">
 					<div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-5">
 						{allproducts &&
 							allproducts.map(

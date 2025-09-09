@@ -1,16 +1,16 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { use } from 'react';
 import { useSearchParams } from 'next/navigation';
-export default function Count(props) {
-	const params = use(props) || '';
-	console.log(params);
+export default function Count() {
+	const params = useSearchParams();
+	const slug = params.get('category');
+
 	// Fetching All Products
 	const { data: allproducts } = useQuery({
-		queryKey: ['product-list'],
+		queryKey: ['product-list', slug],
 		queryFn: () =>
-			axios.get(`/api/product-listing?slug=bedroom`).then((response) => {
+			axios.get(`/api/product-listing?slug=${slug}`).then((response) => {
 				return response.data.productlist;
 			}),
 	});

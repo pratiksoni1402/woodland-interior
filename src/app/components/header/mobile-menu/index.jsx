@@ -84,7 +84,7 @@ export default function MobileMenu() {
 															color="#3c2f27"
 														/>
 														<Link
-															href="/shop/bedroom"
+															href="/src/app/product-listing/bedroom"
 															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
 														>
 															Bedroom
@@ -96,7 +96,7 @@ export default function MobileMenu() {
 															color="#3c2f27"
 														/>
 														<Link
-															href="/shop/dining-tables"
+															href="/src/app/product-listing/dining-tables"
 															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
 														>
 															Dining Tables
@@ -105,7 +105,7 @@ export default function MobileMenu() {
 													<DropdownMenuItem>
 														<Sofa className="mr-2 h-4 w-4" color="#3c2f27" />
 														<Link
-															href="/shop/sofa-sets"
+															href="/src/app/product-listing/sofa-sets"
 															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
 														>
 															Sofa Sets
@@ -117,7 +117,7 @@ export default function MobileMenu() {
 															color="#3c2f27"
 														/>
 														<Link
-															href="/shop/outdoor"
+															href="/src/app/product-listing/outdoor"
 															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
 														>
 															Outdoor

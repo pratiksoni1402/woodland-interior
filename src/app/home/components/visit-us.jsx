@@ -8,7 +8,7 @@ export default function Visitshop() {
 				</div>
 				<div className="visit-store text-center mt-8">
 					<Link
-						href="/shop/bedroom"
+						href="/src/app/product-listing/bedroom"
 						className="inline-block no-underline rounded-none text-primary font-roboto py-3 px-6 text-sm bg-transparent border border-border hover:text-white hover:border hover:border-primary hover:duration-300 hover:bg-primary"
 					>
 						VISIT SHOP

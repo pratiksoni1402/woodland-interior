@@ -33,7 +33,7 @@ model Credentials {
   phonenumber    String?  @db.VarChar(20)
   pincode        Int?     @db.Int
   sessionid      String   @db.VarChar(200)
-  session_email  String?  @db.VarChar(100) @unique
+  session_email  String?  @unique @db.VarChar(100)
   createdon      DateTime @default(now())
 
   @@map("customers")
@@ -67,7 +67,7 @@ model Category {
   image    String     @db.VarChar(50)
   products Products[]
 
-  @@map("product-categories")
+  @@map("categories")
 }
 
 // End

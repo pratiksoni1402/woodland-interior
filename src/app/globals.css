@@ -476,15 +476,15 @@ textarea:focus {
 /* Shipping Details Form */
 
 .shipping-details-form form input[type=text] {
-  @apply w-full p-3 border border-[#b2937e] rounded-none outline-hidden shadow-none font-roboto text-primary
+  @apply w-full p-3 border border-border rounded-md outline-hidden shadow-none font-roboto text-primary !h-10
 }
 
 .shipping-details-form form input[type=text]:focus {
-  @apply border border-primary
+  @apply border border-primary rounded-md
 }
 
 .shipping-details-form form select {
-  @apply h-12 border border-[#b2937e] bg-white px-3 w-full text-primary font-roboto rounded-none outline-hidden shadow-none
+  @apply border border-border bg-white px-3 w-full text-primary font-roboto rounded-md outline-hidden shadow-none !h-10
 }
 
 .shipping-details-form form select:focus {

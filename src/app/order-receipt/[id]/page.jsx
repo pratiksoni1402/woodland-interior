@@ -17,9 +17,11 @@ import {
 import { MoonLoader } from 'react-spinners';
 import { IndianRupee } from 'lucide-react';
 export default function Orderreceipt(props) {
+	let formattedTime;
+	let formattedDate;
+
 	const params = use(props.params);
 	const { id } = params;
-	console.log('kdjhsdfsd', typeof id);
 	const { data: receipt } = useQuery({
 		queryKey: ['orderreceipt'],
 		queryFn: () =>
@@ -42,12 +44,13 @@ export default function Orderreceipt(props) {
 	}
 
 	const orderDate = receipt?.order_date;
+
 	if (orderDate) {
 		const date = new Date(orderDate);
 
 		// Format the date
-		let formattedDate = `${date.toLocaleDateString()}`;
-		let formattedTime = `${date.toLocaleTimeString()}`;
+		formattedDate = `${date.toLocaleDateString()}`;
+		formattedTime = `${date.toLocaleTimeString()}`;
 	}
 
 	const name =

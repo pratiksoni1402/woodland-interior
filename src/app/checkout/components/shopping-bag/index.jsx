@@ -5,15 +5,11 @@ import axios from 'axios';
 import { IndianRupee } from 'lucide-react';
 import { MoonLoader } from 'react-spinners';
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
-export default function Shoppingbag() {
+export default function ShoppingBag() {
 	let grandtotal = 0;
 	let taxamount = 0;
 	let subtotal = 0;
-	const {
-		isPending,
-		data: cartdata,
-		error,
-	} = useQuery({
+	const { data: cartdata } = useQuery({
 		queryKey: ['cart-items'],
 		queryFn: () =>
 			axios
@@ -44,8 +40,7 @@ export default function Shoppingbag() {
 						(productlist) => (
 							(grandtotal += productlist.products.price * productlist.quantity),
 							(taxamount = (grandtotal * 9) / 100),
-							(subtotal = grandtotal - taxamount * 2),
-							(
+							(subtotal = grandtotal - taxamount * 2)(
 								<div
 									className="product border-t border-[#b2937e] py-5 px-3"
 									key={productlist.id}

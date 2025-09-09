@@ -23,6 +23,7 @@ import { MoonLoader } from 'react-spinners';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
+import { showErrorToast } from '@/lib/toast';
 export default function OrderBook() {
 	let totalPrice = 0;
 	let subtotal = 0;
@@ -168,19 +169,7 @@ export default function OrderBook() {
 					setDecreaseLoader(false);
 				});
 		} else {
-			toast.error('Minimum quantity should be 1', {
-				duration: 3000,
-				style: {
-					border: '1px solid #3c2f27',
-					padding: '8px',
-					color: '#faf2ec',
-					backgroundColor: '#3c2f27',
-				},
-				iconTheme: {
-					primary: '#faf2ec',
-					secondary: '#3c2f27',
-				},
-			});
+			showErrorToast('Minimum quantity should be 1');
 		}
 	};
 

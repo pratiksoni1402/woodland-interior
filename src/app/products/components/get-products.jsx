@@ -41,7 +41,7 @@ export default function GetProducts() {
 				<div className="pt-10 pb-4">
 					<Categories />
 				</div>
-				<div className="flex justify-center gap-5">
+				<div className="flex justify-center gap-5 items-center text-center border border-x-0 border-border py-3 my-3">
 					<Count />
 					<SortByFilter />
 				</div>

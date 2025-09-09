@@ -16,7 +16,7 @@ export default function Count() {
 	});
 	// End
 	return (
-		<div className="total-products text-center border border-x-0 border-border py-3 my-3">
+		<div className="total-products">
 			{allproducts &&
 				allproducts.map((counting, index) => (
 					<div key={index}>

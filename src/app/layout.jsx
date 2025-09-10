@@ -1,5 +1,6 @@
 import { ROBOTO, CRIMSON } from './fonts';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 
 import Header from './components/header';
 import Footer from './components/footer';
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
 					speed={200}
 					shadow="0 0 10px #ffffff,0 0 5px #ffffff"
 				/>
+				<Analytics />
 			</body>
 		</html>
 	);

@@ -18,7 +18,7 @@ import WishlistLink from '@/app/components/header/wishlist-link';
 import UserAccountLink from '@/app/components/header/user';
 const Navbar = () => {
 	return (
-		<div className="navigation-bar  bg-background h-[75px] py-4 sticky top-0 z-10">
+		<div className="navigation-bar  bg-background h-14 py-1.5 sticky top-0 z-10">
 			<div className=" container navbar-wrapper flex justify-between items-center ">
 				<div className="logo">
 					<Link href="/">

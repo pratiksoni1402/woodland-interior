@@ -62,6 +62,7 @@ model Category {
   id       Int        @id @default(autoincrement())
   name     String     @db.VarChar(50)
   slug     String     @db.VarChar(50)
+  category String     @db.VarChar(50)
   heading  String     @db.VarChar(100)
   intro    String     @db.Text
   image    String     @db.VarChar(50)

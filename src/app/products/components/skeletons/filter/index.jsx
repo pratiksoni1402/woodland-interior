@@ -2,7 +2,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export default function ProductsHeaderSkeleton() {
 	return (
-		<div className="flex items-center justify-between border-t border-b border-[#cbb3a7] py-2">
+		<div className="flex items-center justify-between border-t border-b border-[#cbb3a7] py-7 h-[62px]">
 			{/* Left side - product count */}
 			<div className="flex items-center gap-2">
 				<Skeleton className="h-4 w-[70px]" /> {/* Showing */}

@@ -1,40 +1,52 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import ProductSkeleton from '@/app/products/components/skeletons/products/skeleton';
+import { useSearchParams } from 'next/navigation';
+
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
 import { IndianRupee } from 'lucide-react';
+
 import Link from 'next/link';
 import axios from 'axios';
-import LazyImage from '@/app/_lib/utils/lazy-image';
-import { useSearchParams } from 'next/navigation';
-import Count from '@/app/products/components/product-count/count';
-import Categories from '@/app/products/components/product-categories/categories';
-import SortByFilter from '@/app/products/components/filters/sort-by/sort-by';
 
+import LazyImage from '@/app/_lib/utils/lazy-image';
+import Count from '@/app/products/components/product-count/count';
+import SortByFilter from '@/app/products/components/filters/sort-by/sort-by';
+import ProductsHeaderSkeleton from '@/app/products/components/skeletons/filter';
+import Categories from '@/app/products/components/product-categories/categories';
+import ProductSkeleton from '@/app/products/components/skeletons/products/skeleton';
 export default function GetProducts() {
 	const params = useSearchParams();
 	const slug = params.get('category');
+	const price = params.get('price');
 
 	// Fetching All Products
 	const { data: allproducts } = useQuery({
-		queryKey: ['product-list', slug],
+		queryKey: ['product-list', slug, price],
 		queryFn: async () => {
-			const response = await axios.get(`/api/product-listing?slug=${slug}`);
+			const response = await axios.get(
+				`/api/product-listing?slug=${slug || ''}&price=${price || ''}`
+			);
 			return response.data.productlist;
 		},
 	});
-	console.log('list', allproducts);
+
 	return (
 		<div className="bedroom-products-page bg-background border-t border-border">
 			<div className="container">
 				<div className=" pb-4">
 					<Categories />
 				</div>
-				<div className="flex justify-center gap-5 items-center text-center border border-x-0 border-border py-3 my-3">
-					<Count />
-					<SortByFilter />
-				</div>
+				{!allproducts ? (
+					<div className="py-3">
+						<ProductsHeaderSkeleton />
+					</div>
+				) : (
+					<div className="flex justify-between gap-5 items-center text-center border border-x-0 border-border py-3 my-3">
+						<Count />
+						<SortByFilter />
+					</div>
+				)}
 				<div className="product-listing-section pb-10 pt-2">
 					<div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-5">
 						{!allproducts ? (

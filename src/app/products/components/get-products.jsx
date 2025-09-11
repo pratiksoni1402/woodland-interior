@@ -32,7 +32,7 @@ export default function GetProducts() {
 	});
 
 	return (
-		<div className="bedroom-products-page bg-background">
+		<div className="">
 			<div className="container">
 				<div className=" pb-4">
 					<Categories />

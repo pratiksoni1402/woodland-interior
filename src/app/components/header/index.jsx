@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import React from 'react';
-import SearchInput from '@/app/components/header/search-bar';
+import SearchInput from '@/app/search/components/search-input';
 import {
 	NavigationMenu,
 	NavigationMenuContent,

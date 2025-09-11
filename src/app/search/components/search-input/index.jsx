@@ -4,12 +4,13 @@ import { Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-
+import { useRouter } from 'next/navigation';
 export default function SearchInput({
 	placeholder = 'Search...',
 	onSearch,
 	className,
 }) {
+	const router = useRouter();
 	const {
 		register,
 		handleSubmit,
@@ -21,8 +22,7 @@ export default function SearchInput({
 	const query = watch('query');
 
 	const onSubmit = (data) => {
-		console.log('Search query:', data.query);
-		onSearch?.(data.query);
+		router.push(`/search?keyword=${data.query}`);
 	};
 
 	const clearSearch = () => {

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Link from 'next/link';
-import { Heart } from 'lucide-react';
+import HeartIcon from '@/icons/wishlist';
 export default function WishlistLink() {
 	const { data: wishlistTotal } = useQuery({
 		queryKey: ['wishlistcount'],
@@ -17,9 +17,9 @@ export default function WishlistLink() {
 	});
 	return (
 		<Link href="/wishlist" className="relative">
-			<Heart />
+			<HeartIcon />
 			{wishlistTotal > 0 ? (
-				<div className="absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]">
+				<div className="absolute text-sm text-center top-[1px] right-0.5 w-5 h-5 ">
 					{wishlistTotal}
 				</div>
 			) : (

@@ -77,7 +77,7 @@ const Footer = () => {
 								key={i}
 								className="col lg:order-2 md:order-1 sm:order-1 order-1"
 							>
-								<div className="text-primary text-sm font-roboto">
+								<div className="text-primary text-sm font-roboto pt-4">
 									<h2 className="pb-2 font-semibold">{group.title}</h2>
 									<ul>
 										{group.links.map((link, j) => (

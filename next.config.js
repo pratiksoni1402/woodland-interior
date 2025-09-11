@@ -15,6 +15,7 @@ const nextConfig = {
 				pathname: '/categories/**',
 			},
 		],
+		qualities: [100],
 	},
 };
 

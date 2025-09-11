@@ -23,7 +23,7 @@ export default function UserAccountLink() {
 
 	return (
 		<div>
-			{sessionData && sessionData.user_details ? ( // Check if sessionData and user_details are not null/undefined
+			{sessionData && sessionData.user_details ? (
 				<Link href="/my-account">
 					<Avatar className="text-[#3c2f27]">
 						<AvatarFallback className="font-roboto border p-[2px] text-sm">
@@ -34,7 +34,7 @@ export default function UserAccountLink() {
 				</Link>
 			) : (
 				<Link href="/auth">
-					<CircleUserRound />
+					<CircleUserRound size={32} />
 				</Link>
 			)}
 		</div>

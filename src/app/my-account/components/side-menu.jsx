@@ -8,7 +8,7 @@ export default function SideMenu() {
 	const userMenu = [
 		{
 			name: 'My Profile',
-			url: '/my-account/my-profile',
+			url: '/my-account',
 			icon: <ChevronRight />,
 		},
 		{
@@ -36,7 +36,7 @@ export default function SideMenu() {
 						key={index}
 						href={menuItems.url}
 						className={`flex py-1 justify-between items-center mb-3 px-2 border border-transparent rounded-md 
-    				${menuItems.url === pathName ? 'bg-[#3c2f27] text-white' : 'hover:bg-gray-100'}
+    				${menuItems.url === pathName ? 'bg-primary text-white' : 'hover:bg-primary hover:text-white'}
   `}
 					>
 						<span>{menuItems.name}</span>

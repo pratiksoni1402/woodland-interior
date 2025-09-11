@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
 				</QueryClientProvider>
 				<SpeedInsights />
 				<NextTopLoader
-					color="#6E6E6E"
+					color="#3c2f27"
 					initialPosition={0.08}
 					crawlSpeed={200}
 					height={4}

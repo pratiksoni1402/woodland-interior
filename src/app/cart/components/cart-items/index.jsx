@@ -217,8 +217,7 @@ export default function CartItems() {
 																			{product.sku}
 																		</span>
 																	</div>
-																</div>
-																;{' '}
+																</div>{' '}
 																<div className="quantity py-3 ">
 																	<div className="pb-1 text-xs text-primary font-roboto">
 																		Quantity:

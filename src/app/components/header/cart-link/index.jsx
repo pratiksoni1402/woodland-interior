@@ -22,7 +22,7 @@ export default function CartLink() {
 		<Link href="/cart" className="relative">
 			<ShoppingBagIcon />
 			{count > 0 ? (
-				<div className="absolute text-sm text-center top-1 right-[3px] text-primary w-5 h-5">
+				<div className="absolute text-sm font-roboto text-center top-1.5 right-[3px] text-primary w-5 h-5">
 					{count}
 				</div>
 			) : (

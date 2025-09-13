@@ -28,29 +28,19 @@ import { TentTree } from 'lucide-react';
 import CartLink from '@/app/components/header/cart-link';
 import WishlistLink from '@/app/components/header/wishlist-link';
 import UserAccountLink from '@/app/components/header/user';
+import HamburgerMenuIcon from '@/icons/hamburger-menu';
 export default function MobileMenu() {
 	return (
 		<div className="mobile-menu-wrapper">
 			<div className="inner-content-wrapper flex items-center">
-				<div className="inner-wrapper flex">
-					<div className="pr-4">
-						<WishlistLink />
-					</div>
-					<div className="pr-4">
-						<CartLink />
-					</div>
-					<div className="pr-4">
-						<UserAccountLink />
-					</div>
-				</div>
 				<div className="side-menu">
 					<Sheet className="">
 						<SheetTrigger asChild>
 							<Button variant="outline triger-button" className="px-0">
-								<Menu />
+								<HamburgerMenuIcon size={32} />
 							</Button>
 						</SheetTrigger>
-						<SheetContent className="bg-[#faf2ec]">
+						<SheetContent className="">
 							<SheetHeader className="border-b border-[#3c2f27]">
 								<SheetTitle className="font-crimson sm:text-2xl text-lg text-[#3c2f27] pt-4 pb-2">
 									Woodland Interiors
@@ -84,7 +74,7 @@ export default function MobileMenu() {
 															color="#3c2f27"
 														/>
 														<Link
-															href="/src/app/product-listing/bedroom"
+															href="/products?category=bedroom"
 															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
 														>
 															Bedroom
@@ -96,7 +86,7 @@ export default function MobileMenu() {
 															color="#3c2f27"
 														/>
 														<Link
-															href="/src/app/product-listing/dining-tables"
+															href="/products?category=dining-tables"
 															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
 														>
 															Dining Tables
@@ -105,7 +95,7 @@ export default function MobileMenu() {
 													<DropdownMenuItem>
 														<Sofa className="mr-2 h-4 w-4" color="#3c2f27" />
 														<Link
-															href="/src/app/product-listing/sofa-sets"
+															href="/products?category=sofa-sets"
 															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
 														>
 															Sofa Sets
@@ -117,7 +107,7 @@ export default function MobileMenu() {
 															color="#3c2f27"
 														/>
 														<Link
-															href="/src/app/product-listing/outdoor"
+															href="/products?category=outdoor"
 															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
 														>
 															Outdoor
@@ -144,6 +134,9 @@ export default function MobileMenu() {
 											Contact
 										</Link>
 									</div>
+								</div>
+								<div className="pr-4">
+									<UserAccountLink />
 								</div>
 							</div>
 							<SheetFooter></SheetFooter>

@@ -19,18 +19,23 @@ import Logo from '@/icons/header-logo';
 const Navbar = () => {
 	return (
 		<div className="navigation-bar  bg-background h-14 py-1.5 sticky top-0 z-10 border-b border-border">
-			<div className=" container navbar-wrapper grid lg:grid-cols-3 justify-between items-center ">
-				<div className="">
+			<div className=" container navbar-wrapper flex justify-between items-center ">
+				<div>
+					<div className="mobile-menu lg:hidden md:block sm:block">
+						<MobileMenu />
+					</div>
+				</div>
+				<div className="flex-1">
 					<SearchInput />
 				</div>
 
-				<div className="flex justify-center">
+				<div className="flex justify-center flex-none">
 					<Link href="/" className="logo w-[60px] h-12 mt-[-3px]">
 						<Logo width={70} height={70} />
 					</Link>
 				</div>
 
-				<div>
+				<div className="flex-1 justify-end flex">
 					<div className="menu lg:block md:hidden sm:hidden hidden">
 						<NavigationMenu>
 							<NavigationMenuList>
@@ -102,7 +107,10 @@ const Navbar = () => {
 						</NavigationMenu>
 					</div>
 					<div className="mobile-menu lg:hidden md:block sm:block">
-						<MobileMenu />
+						<div className="flex items-center justify-end gap-4">
+							<WishlistLink />
+							<CartLink />
+						</div>
 					</div>
 				</div>
 			</div>

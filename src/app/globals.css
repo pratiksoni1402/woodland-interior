@@ -908,6 +908,12 @@ textarea:focus {
 
 /* End */
 
+/*Side menu*/
+.lucide-menu svg{
+  @apply w-8 h-8
+}
+/*End*/
+
 .make-bold-props {
   @apply before:block
   before:content-[attr(title)]

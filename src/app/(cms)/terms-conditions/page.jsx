@@ -1,6 +1,6 @@
 export default function Terms() {
 	return (
-		<div className="terms-condition-page bg-background border-t border-border">
+		<div className="terms-condition-page bg-background">
 			<div className="container">
 				<div className="page-heading pt-3 pb-5">
 					<h1 className=" text-4xl font-crimson text-primary text-center">

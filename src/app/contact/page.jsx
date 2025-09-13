@@ -1,7 +1,7 @@
 import ContactForm from './component/form';
 const ContactPage = () => {
 	return (
-		<div className="contact-page pb-20 border-t border-[#b2937e]">
+		<div className="contact-page pb-20">
 			<div className="heading container text-center py-5 text-4xl text-[#3c2f27]">
 				<h1 className="font-crimson ">Contact Me</h1>
 				<p className="text-base text-[#3c2f27] pt-4 lg:w-1/2 md:w-3/4 w-full mx-auto text-justify font-roboto">

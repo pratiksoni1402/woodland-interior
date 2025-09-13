@@ -3,9 +3,7 @@ import { Suspense } from 'react';
 export default function ProductListing() {
 	return (
 		<Suspense>
-			<div>
-				<GetProducts />
-			</div>
+			<GetProducts />
 		</Suspense>
 	);
 }

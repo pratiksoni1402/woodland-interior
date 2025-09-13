@@ -23,7 +23,7 @@ export default async function UserProfileLayout({ children }) {
 					</div>
 				</div>
 
-				<div className="col-span-9">
+				<div className="col-span-9 min-h-[calc(100vh-300px)]">
 					<div>{children}</div>
 				</div>
 			</div>

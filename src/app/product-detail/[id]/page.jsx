@@ -162,7 +162,7 @@ export default function Detail(props) {
 	// End
 
 	return (
-		<div className="product-detail-page bg-[#faf2ec] border-t border-[#b2937e]">
+		<div className="product-detail-page ">
 			<div className="container">
 				<div className="product-wrapper py-10">
 					<div className="grid grid-cols-12 gap-7">

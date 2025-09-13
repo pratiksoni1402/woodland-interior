@@ -24,7 +24,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
 import { showErrorToast } from '@/lib/toast';
-export default function OrderBook() {
+export default function CartItems() {
 	let totalPrice = 0;
 	let subtotal = 0;
 	let taxrate = 9;
@@ -62,7 +62,7 @@ export default function OrderBook() {
 			<div className="w-full h-screen bg-background mt-[-70px] flex-col font-crimson text-4xl text-primary flex items-center justify-center">
 				<h1 className="sm:text-4xl text-2x">Your Cart is empty</h1>
 				<div className="shop-now text-base py-3 px-5 hover:bg-background hover:text-primary hover:cursor-pointer bg-background text-primary mt-5 border border-border">
-					<Link href="/src/app/product-listing/bedroom">SHOP NOW</Link>
+					<Link href="/products?category=bedroom">SHOP NOW</Link>
 				</div>
 			</div>
 		);
@@ -132,19 +132,7 @@ export default function OrderBook() {
 					setProductLoading(false);
 				});
 		} else {
-			toast.error('Only 10 Prodcuts are allowed to buy', {
-				duration: 3000,
-				style: {
-					border: '1px solid #3c2f27',
-					padding: '8px',
-					color: '#faf2ec',
-					backgroundColor: '#3c2f27',
-				},
-				iconTheme: {
-					primary: '#faf2ec',
-					secondary: '#3c2f27',
-				},
-			});
+			showErrorToast('Only 10 Prodcuts are allowed to buy');
 		}
 	};
 	// End
@@ -230,6 +218,7 @@ export default function OrderBook() {
 																		</span>
 																	</div>
 																</div>
+																;{' '}
 																<div className="quantity py-3 ">
 																	<div className="pb-1 text-xs text-primary font-roboto">
 																		Quantity:

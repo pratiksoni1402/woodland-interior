@@ -3,7 +3,7 @@ export const fetchCache = 'force-no-store';
 // export const revalidate = 0;
 export default function ChangeLogs() {
 	return (
-		<div className="change-logs-page bg-background border-t border-border">
+		<div className="change-logs-page bg-background">
 			<div className="container">
 				<div className="content-wrapper pb-10">
 					<section>

@@ -1,5 +1,6 @@
 import { ROBOTO, CRIMSON } from './fonts';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 
 import Header from './components/header';
 import Footer from './components/footer';
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
 				</QueryClientProvider>
 				<SpeedInsights />
 				<NextTopLoader
-					color="#6E6E6E"
+					color="#3c2f27"
 					initialPosition={0.08}
 					crawlSpeed={200}
 					height={4}
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
 					speed={200}
 					shadow="0 0 10px #ffffff,0 0 5px #ffffff"
 				/>
+				<Analytics />
 			</body>
 		</html>
 	);

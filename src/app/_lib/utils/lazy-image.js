@@ -5,7 +5,7 @@ export default function LazyImage({
 	src,
 	blurSrc,
 	alt,
-	quality = 80,
+	quality = 100,
 	noImageSrc = '/images/no-image.jpg',
 	style = {},
 	objectFit,

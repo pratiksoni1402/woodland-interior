@@ -59,7 +59,7 @@ export default function Product() {
 
 	if (!allproducts) {
 		return (
-			<div className="loading h-screen bg-[#faf2ec] w-full flex justify-center items-center">
+			<div className="loading h-screen w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
 			</div>
 		);
@@ -106,7 +106,7 @@ export default function Product() {
 	// End
 
 	return (
-		<div className="product-wrapper bg-[#faf2ec] pt-5 pb-10">
+		<div className="product-wrapper  pt-5 pb-10">
 			<div className="container">
 				<div className="heading font-crimson sm:text-4xl text-xl text-[#3c2f27] pb-5">
 					<h1>Your Wishlist</h1>

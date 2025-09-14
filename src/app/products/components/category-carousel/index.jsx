@@ -42,7 +42,7 @@ export default function CategoriesCarousel() {
 			{/* Heading */}
 			{activeCategory && (
 				<div className="pb-4">
-					<h1 className="text-center font-crimson text-xl text-primary">
+					<h1 className="text-center font-semibold font-crimson text-2xl text-primary">
 						{activeCategory.heading}
 					</h1>
 				</div>
@@ -96,8 +96,8 @@ export default function CategoriesCarousel() {
 							</CarouselItem>
 						))}
 					</CarouselContent>
-					<CarouselPrevious className="-left-12" />
-					<CarouselNext className="-right-12" />
+					<CarouselPrevious className="-left-12 top-[42%]" />
+					<CarouselNext className="-right-12 top-[42%]" />
 				</Carousel>
 			</div>
 		</div>

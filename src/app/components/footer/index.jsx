@@ -67,7 +67,7 @@ const Footer = () => {
 						<div className="col lg:order-1 md:order-2 sm:order-2 order-2">
 							{/* Large size */}
 							<div className="text-center">
-								<WoodlandLogo width={200} height={260} />
+								<WoodlandLogo width={140} height={200} />
 							</div>
 						</div>
 

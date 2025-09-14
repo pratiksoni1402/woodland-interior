@@ -15,6 +15,7 @@ import SortByFilter from '@/app/products/components/filters/sort-by/sort-by';
 import ProductsHeaderSkeleton from '@/app/products/components/skeletons/filter';
 import Categories from '@/app/products/components/product-categories/categories';
 import ProductSkeleton from '@/app/products/components/skeletons/products/skeleton';
+import CategoriesCarousel from '@/app/products/components/category-carousel';
 export default function GetProducts() {
 	const params = useSearchParams();
 	const slug = params.get('category');
@@ -35,14 +36,19 @@ export default function GetProducts() {
 		<div className="">
 			<div className="container">
 				<div className=" pb-4">
-					<Categories />
+					<div className="sm:block hidden">
+						<Categories />
+					</div>
+					<div className="sm:hidden block mt-3">
+						<CategoriesCarousel />
+					</div>
 				</div>
 				{!allproducts ? (
 					<div className="py-3">
 						<ProductsHeaderSkeleton />
 					</div>
 				) : (
-					<div className="flex justify-between gap-5 items-center text-center border border-x-0 border-border py-3 my-3">
+					<div className="flex justify-between sm:flex-row flex-col sm:gap-5 gap-2 items-center text-center border border-x-0 border-border sm:py-3 pb-3 pt-1 my-3">
 						<Count />
 						<SortByFilter />
 					</div>
@@ -59,7 +65,7 @@ export default function GetProducts() {
 									<Link
 										href={`/product-detail/${product.id}`}
 										key={product.id}
-										className="my-4 group"
+										className="sm:my-4 my-0 group"
 									>
 										<div className="product-image overflow-hidden relative sm:h-[300px] h-[200px]">
 											<LazyImage

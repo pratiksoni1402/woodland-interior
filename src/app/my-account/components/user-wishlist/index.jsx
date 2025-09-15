@@ -32,9 +32,9 @@ export default function UsersWishlist() {
 	console.log(allproducts);
 	if (allproducts?.length === 0) {
 		return (
-			<div className=" py-20 flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
+			<div className=" py-20 flex-col font-crimson text-4xl text-primary flex items-center justify-center">
 				<h1 className="l">Your Wishlist is empty</h1>
-				<div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] text-[#faf2ec] mt-5 border border-[#3c2f27]">
+				<div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-primary hover:cursor-pointer bg-primary text-[#faf2ec] mt-5 border border-primary">
 					<Link href="/products?category=bedroom">SHOP NOW</Link>
 				</div>
 			</div>
@@ -84,46 +84,44 @@ export default function UsersWishlist() {
 	return (
 		<div className="product-wrapper  pb-20" style={{ minHeight: '500px' }}>
 			<div className="container">
-				<div className="my-items">
+				<div className="my-items flex gap-2 flex-wrap">
 					<Toaster />
 					{allproducts?.map((product) => (
-						<Link
-							href={`/product-detail/${product.productid}`}
-							key={product.id}
-							className="block w-max"
-						>
-							<Card className="!w-96">
-								<CardContent>
-									<div>
-										<Image
-											src={`${BLOB_BASE_URL}/${product.products.image}`}
-											alt={product.products.name}
-											height={250}
-											width={250}
-											className=" w-full"
-										/>
-									</div>
-								</CardContent>
-								<CardFooter>
-									<div className="flex flex-col">
-										<div className="title text-[#3c2f27] leading-6 font-semibold font-crimson text-xl pb-3">
-											{product.products.name}
+						<div key={product.id}>
+							<Link
+								href={`/product-detail/${product.productid}`}
+								className="block w-max"
+							>
+								<Card className="!w-80 py-3">
+									<CardContent className="px-3">
+										<div>
+											<Image
+												src={`${BLOB_BASE_URL}/${product.products.image}`}
+												alt={product.products.name}
+												height={250}
+												width={250}
+												className=" w-full rounded-md"
+											/>
 										</div>
-										<div className="amount flex justify-center items-center">
-											<div className="constant font-roboto text-[#3c2f27] font-semibold">
-												<IndianRupee width={17} />
+									</CardContent>
+									<CardFooter>
+										<div className="flex gap-4">
+											<div className="title text-primary leading-5 font-semibold font-crimson text-base pb-3">
+												{product.products.name}
 											</div>
-											<div className="variation font-roboto text-[#3c2f27] font-semibold">
-												{product.products.price}
+											<div className="amount flex justify-center items-center">
+												<div className="constant font-roboto text-primary font-semibold">
+													<IndianRupee width={17} />
+												</div>
+												<div className="variation font-roboto text-primary font-semibold">
+													{product.products.price}
+												</div>
 											</div>
 										</div>
-									</div>
-									{/*<div className="description text-[#4b4537] font-roboto text-sm pb-3">*/}
-									{/*	{product.products.description}*/}
-									{/*</div>*/}
-								</CardFooter>
-							</Card>
-						</Link>
+									</CardFooter>
+								</Card>
+							</Link>
+						</div>
 					))}
 				</div>
 			</div>

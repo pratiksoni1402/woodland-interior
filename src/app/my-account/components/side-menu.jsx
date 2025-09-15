@@ -35,7 +35,7 @@ export default function SideMenu() {
 					<Link
 						key={index}
 						href={menuItems.url}
-						className={`flex py-1 justify-between items-center px-2 border border-transparent rounded-md lg:text-base lg:leading-7 text-sm leading-[18px] w-full
+						className={`flex py-1 lg:justify-between md:justify-center sm:justify-center items-center px-2 border border-transparent rounded-md lg:text-base lg:leading-7 text-sm leading-[18px] w-full
     				${menuItems.url === pathName ? 'bg-primary text-white' : 'hover:bg-primary hover:text-white'}
   `}
 					>

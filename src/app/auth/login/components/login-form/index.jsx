@@ -50,7 +50,7 @@ function AuthenticationForm() {
 	};
 
 	return (
-		<div className="user-login-form pb-20 w-3/5">
+		<div className="user-login-form sm:pb-20 pb-0 lg:w-3/5 w-full">
 			<div className="user-login">
 				<Toaster />
 				<div className="heading text-center text-2xl text-primary font-crimson py-5">

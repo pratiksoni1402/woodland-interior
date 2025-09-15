@@ -16,14 +16,14 @@ export default async function UserProfileLayout({ children }) {
 				<h1 className="capitalize md:text-4xl text-2xl">{greetingMessage}</h1>
 			</div>
 
-			<div className="grid grid-cols-12 gap-5">
-				<div className="col-span-3 self-start">
-					<div className="sticky top-5 font-crimson text-lg">
+			<div className="grid grid-cols-12 gap-5 mb-20">
+				<div className="lg:col-span-3 col-span-12 self-start lg:order-1 order-2 !sticky bg-white top-20 bottom-0">
+					<div className="font-crimson text-lg ">
 						<SideMenu />
 					</div>
 				</div>
 
-				<div className="col-span-9 min-h-[calc(100vh-300px)]">
+				<div className="lg:col-span-9 col-span-12 min-h-[calc(100vh-300px)] lg:order-2 order-1">
 					<div>{children}</div>
 				</div>
 			</div>

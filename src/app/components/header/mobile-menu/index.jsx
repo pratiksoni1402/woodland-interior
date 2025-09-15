@@ -21,10 +21,16 @@ import {
 	SheetClose,
 } from '@/components/ui/sheet';
 
-import { BedDouble, DoorClosed, Sofa, TentTree } from 'lucide-react';
+import {
+	BedDouble,
+	ChevronDown,
+	DoorClosed,
+	Menu,
+	Sofa,
+	TentTree,
+} from 'lucide-react';
 
 import UserAccountLink from '@/app/components/header/user';
-import HamburgerMenuIcon from '@/icons/hamburger-menu';
 
 export default function MobileMenu() {
 	const [open, setOpen] = useState(false);
@@ -35,14 +41,17 @@ export default function MobileMenu() {
 				<div className="side-menu">
 					<Sheet open={open} onOpenChange={setOpen}>
 						<SheetTrigger asChild>
-							<Button variant="outline triger-button" className="px-0">
-								<HamburgerMenuIcon size={32} />
+							<Button
+								variant="outline triger-button"
+								className="!p-0 hover:cursor-pointer"
+							>
+								<Menu color="#3c2f27" />
 							</Button>
 						</SheetTrigger>
 
 						<SheetContent>
-							<SheetHeader className="border-b border-[#3c2f27]">
-								<SheetTitle className="font-crimson sm:text-2xl text-lg text-[#3c2f27] pt-4 pb-2">
+							<SheetHeader className="border-b border-primary">
+								<SheetTitle className="font-crimson sm:text-2xl text-lg text-primary pt-4 pb-2">
 									Woodland Interiors
 								</SheetTitle>
 							</SheetHeader>
@@ -50,7 +59,7 @@ export default function MobileMenu() {
 							<div className="sheet-body pt-2 font-crimson border-b">
 								<div className="nav-list">
 									{/* Home */}
-									<div className="pb-2 px-4 text-lg text-[#3c2f27]">
+									<div className="pb-2 px-4 text-lg text-primary">
 										<SheetClose asChild>
 											<Link
 												href="/"
@@ -67,12 +76,13 @@ export default function MobileMenu() {
 											<DropdownMenuTrigger asChild>
 												<Button
 													variant="outline"
-													className="pb-1 text-sm font-roboto text-[#3c2f27] bg-transparent border-0 mt-[-13px] hover:bg-transparent group hover:underline font-normal transition duration-500"
+													className="pb-1 text-sm font-roboto text-primary bg-transparent border-0 mt-[-13px] hover:bg-transparent group hover:underline font-normal transition duration-500 shadow-none hover:cursor-pointer ml-1"
 												>
 													Shop
+													<ChevronDown />
 												</Button>
 											</DropdownMenuTrigger>
-											<DropdownMenuContent className="w-48 bg-[#faf2ec] rounded-none left-[-20px] top-[-10px] fixed">
+											<DropdownMenuContent className="w-48 rounded-md left-[-20px] top-[-10px] fixed">
 												<DropdownMenuGroup>
 													<DropdownMenuItem>
 														<BedDouble
@@ -81,7 +91,7 @@ export default function MobileMenu() {
 														/>
 														<Link
 															href="/products?category=bedroom"
-															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
+															className="group text-primary text-sm font-roboto hover:underline transition duration-500"
 															onClick={() => setOpen(false)}
 														>
 															Bedroom
@@ -95,7 +105,7 @@ export default function MobileMenu() {
 														/>
 														<Link
 															href="/products?category=dining-tables"
-															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
+															className="group text-primary text-sm font-roboto hover:underline transition duration-500"
 															onClick={() => setOpen(false)}
 														>
 															Dining Tables
@@ -106,7 +116,7 @@ export default function MobileMenu() {
 														<Sofa className="mr-2 h-4 w-4" color="#3c2f27" />
 														<Link
 															href="/products?category=sofa-sets"
-															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
+															className="group text-primary text-sm font-roboto hover:underline transition duration-500"
 															onClick={() => setOpen(false)}
 														>
 															Sofa Sets
@@ -120,7 +130,7 @@ export default function MobileMenu() {
 														/>
 														<Link
 															href="/products?category=outdoor"
-															className="group text-[#3c2f27] text-sm font-roboto hover:underline transition duration-500"
+															className="group text-primary text-sm font-roboto hover:underline transition duration-500"
 															onClick={() => setOpen(false)}
 														>
 															Outdoor
@@ -132,7 +142,7 @@ export default function MobileMenu() {
 									</div>
 
 									{/* Our Values */}
-									<div className="pb-1 px-4 text-lg text-[#3c2f27]">
+									<div className="pb-1 px-4 text-lg text-primary">
 										<SheetClose asChild>
 											<Link
 												href="/our-values"
@@ -144,7 +154,7 @@ export default function MobileMenu() {
 									</div>
 
 									{/* Contact */}
-									<div className="pb-2 px-4 text-lg text-[#3c2f27]">
+									<div className="pb-2 px-4 text-lg text-primary">
 										<SheetClose asChild>
 											<Link
 												href="/contact"

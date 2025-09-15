@@ -96,8 +96,8 @@ export default function CategoriesCarousel() {
 							</CarouselItem>
 						))}
 					</CarouselContent>
-					<CarouselPrevious className="-left-12 top-[42%]" />
-					<CarouselNext className="-right-12 top-[42%]" />
+					<CarouselPrevious className="-left-12 top-[42%] text-primary hover:cursor-pointer" />
+					<CarouselNext className="-right-12 top-[42%] text-primary hover:cursor-pointer" />
 				</Carousel>
 			</div>
 		</div>

@@ -30,7 +30,7 @@ const Navbar = () => {
 				</div>
 
 				<div className="flex justify-center flex-none">
-					<Link href="/" className="logo w-[60px] h-12 mt-[-3px]">
+					<Link href="/" className="logo w-[60px] h-12 mt-[-3px] sm:mr-0 mr-8">
 						<Logo width={70} height={70} />
 					</Link>
 				</div>

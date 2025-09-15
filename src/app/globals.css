@@ -909,8 +909,8 @@ textarea:focus {
 /* End */
 
 /*Side menu*/
-.lucide-menu svg{
-  @apply w-8 h-8
+.lucide-menu{
+  @apply !w-5 !h-5
 }
 /*End*/
 

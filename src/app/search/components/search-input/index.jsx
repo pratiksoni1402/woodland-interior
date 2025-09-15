@@ -45,10 +45,10 @@ export default function SearchInput({ placeholder = 'Search...', className }) {
 				type="button"
 				variant="outline"
 				size="sm"
-				className="lg:hidden h-8 w-8 p-0 bg-transparent border-0 shadow-none"
+				className="lg:hidden h-10 w-10 p-0 bg-transparent border-0 shadow-none hover:cursor-pointer hover:bg-white"
 				onClick={toggleSearch}
 			>
-				<Search className="h-5 w-5" />
+				<Search className="!h-5 !w-5" color="#3c2f27" />
 				<span className="sr-only">Search</span>
 			</Button>
 
@@ -56,7 +56,7 @@ export default function SearchInput({ placeholder = 'Search...', className }) {
 				className={cn(
 					'lg:block', // Always show on lg+ screens
 					isExpanded ? 'block' : 'hidden', // Show/hide based on state on smaller screens
-					'absolute lg:relative top-0 right-0 lg:top-auto lg:right-auto',
+					'absolute lg:relative top-8 left-2 right-0 lg:top-auto lg:right-auto',
 					'w-64 lg:w-auto z-10'
 				)}
 			>

@@ -86,7 +86,7 @@ export default function CategoriesCarousel() {
 									</div>
 									<div
 										className={clsx(
-											'text-center text-sm mt-2 truncate pl-2',
+											'text-center text-sm mt-2 truncate pl-2 text-primary',
 											slug === category.slug && 'font-semibold'
 										)}
 									>

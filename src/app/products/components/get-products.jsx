@@ -56,7 +56,7 @@ export default function GetProducts() {
 				<div className="product-listing-section pb-10 pt-2">
 					<div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-5">
 						{!allproducts ? (
-							<div className="lg:col-span-4 md:col-span-3 sm:col-span-2 col-end-2">
+							<div className="lg:col-span-4 md:col-span-3 sm:col-span-2 col-span-2">
 								<ProductSkeleton />
 							</div>
 						) : (

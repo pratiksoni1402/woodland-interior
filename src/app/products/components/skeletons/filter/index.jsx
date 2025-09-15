@@ -14,8 +14,7 @@ export default function ProductsHeaderSkeleton() {
 
 			{/* Right side - Sort By dropdown */}
 			<div className="flex items-center gap-2">
-				<Skeleton className="h-4 w-[50px]" /> {/* Sort By text */}
-				<Skeleton className="h-8 w-[120px] rounded-md" /> {/* dropdown */}
+				<Skeleton className="h-8 w-[180px] rounded-md" /> {/* dropdown */}
 			</div>
 		</div>
 	);

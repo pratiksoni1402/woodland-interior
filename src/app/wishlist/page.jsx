@@ -51,7 +51,7 @@ export default function Product() {
 			<div className="w-full h-screen bg-[#faf2ec] mt-[-70px] flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
 				<h1 className="sm:text-4xl text-2x">Your Wishlist is empty</h1>
 				<div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] text-[#faf2ec] mt-5 border border-[#3c2f27]">
-					<Link href="/src/app/product-listing/bedroom">SHOP NOW</Link>
+					<Link href="/products?category=bedroom">SHOP NOW</Link>
 				</div>
 			</div>
 		);

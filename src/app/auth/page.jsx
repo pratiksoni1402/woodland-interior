@@ -4,7 +4,7 @@ import SignUp from '@/app/auth/register/page';
 export default function Auth() {
 	return (
 		<div className="container">
-			<div className="flex gap-4">
+			<div className="flex gap-4 sm:flex-nowrap flex-wrap">
 				<div className="w-full flex items-center justify-center">
 					<Login />
 				</div>

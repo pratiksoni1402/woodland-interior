@@ -40,18 +40,18 @@ export function SignupForm() {
 		}
 	};
 	return (
-		<div className="user-registration-form-wrapper pb-12 w-3/5">
+		<div className="user-registration-form-wrapper pb-12 lg:w-3/5 w-full">
 			<div className="user-registration">
 				<Toaster />
-				<div className="heading text-center text-2xl text-[#3c2f27] font-crimson py-5">
+				<div className="heading text-center text-2xl text-primary font-crimson py-5">
 					<h1> Signup </h1>
 				</div>
-				<div className="register-form">
+				<div className="register-form text-primary">
 					<form
 						onSubmit={handleSubmit(onSubmit)}
 						className=" border border-border rounded-md bg-white p-5"
 					>
-						<div className="flex gap-3">
+						<div className="flex sm:gap-3 gap-0 sm:flex-nowrap flex-wrap">
 							<div className="field-wrapper">
 								<label
 									htmlFor="firstName"

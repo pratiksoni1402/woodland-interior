@@ -31,6 +31,7 @@ import {
 } from 'lucide-react';
 
 import UserAccountLink from '@/app/components/header/user';
+import Logout from '@/app/auth/logout';
 
 export default function MobileMenu() {
 	const [open, setOpen] = useState(false);
@@ -172,6 +173,9 @@ export default function MobileMenu() {
 									</div>
 								</SheetClose>
 							</div>
+							<SheetClose className="fixed bottom-0 w-[240px]">
+								<Logout />
+							</SheetClose>
 
 							<SheetFooter />
 						</SheetContent>

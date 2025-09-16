@@ -82,7 +82,7 @@ export default function UserProfile() {
 		<div className="user-profile-component ">
 			<div className="content-wrapper">
 				<Toaster />
-				<div className="form-wrapper flex justify-center">
+				<div className="form-wrapper flex justify-center text-primary">
 					<form
 						onSubmit={handleSubmit(onSubmit)}
 						className=" lg:w-3/4 w-full border border-[#b2937e] rounded-md p-4 bg-white"
@@ -91,7 +91,7 @@ export default function UserProfile() {
 							<div className="field-wrapper w-full">
 								<label
 									htmlFor="fname"
-									className="text-sm font-roboto pl-2 pr-0.5"
+									className="text-sm font-roboto pl-2 pr-0.5 font-medium"
 								>
 									First Name
 								</label>
@@ -111,7 +111,7 @@ export default function UserProfile() {
 							<div className="field-wrapper w-full">
 								<label
 									htmlFor="lname"
-									className="text-sm font-roboto pl-2 pr-0.5"
+									className="text-sm font-roboto pl-2 pr-0.5 font-medium"
 								>
 									Last Name
 								</label>
@@ -131,7 +131,10 @@ export default function UserProfile() {
 						</div>
 
 						<div className="field-wrapper">
-							<label htmlFor="add1" className="text-sm font-roboto pl-2 pr-0.5">
+							<label
+								htmlFor="add1"
+								className="text-sm font-roboto pl-2 pr-0.5 font-medium"
+							>
 								Address Line 1
 							</label>
 							<span className="font-semibold text-red-700">*</span>
@@ -147,7 +150,10 @@ export default function UserProfile() {
 							)}
 						</div>
 						<div className="field-wrapper">
-							<label htmlFor="add2" className="text-sm font-roboto pl-2 pr-0.5">
+							<label
+								htmlFor="add2"
+								className="text-sm font-roboto pl-2 pr-0.5 font-medium"
+							>
 								Address Line 2
 							</label>
 							<input
@@ -167,7 +173,7 @@ export default function UserProfile() {
 							<div className="mb-3">
 								<label
 									htmlFor="country"
-									className="text-sm font-roboto pl-2 pr-0.5"
+									className="text-sm font-roboto pl-2 pr-0.5 font-medium"
 								>
 									Country
 								</label>
@@ -196,7 +202,7 @@ export default function UserProfile() {
 							<div className="field-wrapper">
 								<label
 									htmlFor="state"
-									className="text-sm font-roboto pl-2 pr-0.5"
+									className="text-sm font-roboto pl-2 pr-0.5 font-medium"
 								>
 									State
 								</label>
@@ -216,7 +222,7 @@ export default function UserProfile() {
 							<div className="field-wrapper">
 								<label
 									htmlFor="city"
-									className="text-sm font-roboto pl-2 pr-0.5"
+									className="text-sm font-roboto pl-2 pr-0.5 font-medium"
 								>
 									City
 								</label>
@@ -238,7 +244,7 @@ export default function UserProfile() {
 								<div className="field-wrapper">
 									<label
 										htmlFor="pincode"
-										className="text-sm font-roboto pl-2 pr-0.5"
+										className="text-sm font-roboto pl-2 pr-0.5 font-medium"
 									>
 										Pincode
 									</label>
@@ -260,7 +266,7 @@ export default function UserProfile() {
 								<div className="field-wrapper">
 									<label
 										htmlFor="phone"
-										className="text-sm font-roboto pl-2 pr-0.5"
+										className="text-sm font-roboto pl-2 pr-0.5 font-medium"
 									>
 										Phone Number
 									</label>
@@ -278,7 +284,7 @@ export default function UserProfile() {
 								</div>
 							</div>
 						</div>
-						<div className="text-center pt-4 flex justify-center">
+						<div className="text-center pt-4 flex justify-center font-roboto tracking-wide">
 							{isLoading ? (
 								<Button
 									type="submit"
@@ -291,7 +297,7 @@ export default function UserProfile() {
 							) : (
 								<Button
 									type="submit"
-									className="w-36 rounded-md my-3 border hover:border-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] block text-center"
+									className="w-36 rounded-md my-3 border hover:border-secondary hover:cursor-pointer bg-[#3c2f27] border-[#3c2f27] hover:bg-secondary hover:text-white text-[#faf2ec] block text-center"
 								>
 									Update Profile
 								</Button>

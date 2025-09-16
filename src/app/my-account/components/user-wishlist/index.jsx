@@ -9,7 +9,6 @@ import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
 
 import { useState } from 'react';
 
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
 export default function UsersWishlist() {
 	const queryClient = useQueryClient();
 	const [toCart, setToCart] = useState(null);
@@ -82,48 +81,44 @@ export default function UsersWishlist() {
 	// End
 
 	return (
-		<div className="product-wrapper  pb-20" style={{ minHeight: '500px' }}>
-			<div className="container">
-				<div className="my-items flex gap-2 flex-wrap">
-					<Toaster />
-					{allproducts?.map((product) => (
-						<div key={product.id}>
-							<Link
-								href={`/product-detail/${product.productid}`}
-								className="block w-max"
-							>
-								<Card className="!w-80 py-3">
-									<CardContent className="px-3">
-										<div>
-											<Image
-												src={`${BLOB_BASE_URL}/${product.products.image}`}
-												alt={product.products.name}
-												height={250}
-												width={250}
-												className=" w-full rounded-md"
-											/>
+		<div className="product-wrapper  pb-20">
+			<div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 sm:gap-5 gap-2">
+				<Toaster />
+				{allproducts?.map((product) => (
+					<div key={product.id} className="group">
+						<Link
+							href={`/product-detail/${product.productid}`}
+							className="block"
+						>
+							<div>
+								<div className="overflow-hidden">
+									<Image
+										src={`${BLOB_BASE_URL}/${product.products.image}`}
+										alt={product.products.name}
+										height={250}
+										width={250}
+										className=" w-full group-hover:scale-125 transition-transform duration-300"
+									/>
+								</div>
+								<div>
+									<div className="flex gap-2 flex-col m-2 font-roboto text-sm">
+										<div className="title text-primary text-center leading-5 group-hover:font-semibold">
+											{product.products.name}
 										</div>
-									</CardContent>
-									<CardFooter>
-										<div className="flex gap-4">
-											<div className="title text-primary leading-5 font-semibold font-crimson text-base pb-3">
-												{product.products.name}
+										<div className="amount flex justify-center items-center">
+											<div className="constant font-roboto text-primary font-semibold">
+												<IndianRupee width={17} />
 											</div>
-											<div className="amount flex justify-center items-center">
-												<div className="constant font-roboto text-primary font-semibold">
-													<IndianRupee width={17} />
-												</div>
-												<div className="variation font-roboto text-primary font-semibold">
-													{product.products.price}
-												</div>
+											<div className="variation font-roboto text-primary font-semibold">
+												{product.products.price}
 											</div>
 										</div>
-									</CardFooter>
-								</Card>
-							</Link>
-						</div>
-					))}
-				</div>
+									</div>
+								</div>
+							</div>
+						</Link>
+					</div>
+				))}
 			</div>
 		</div>
 	);

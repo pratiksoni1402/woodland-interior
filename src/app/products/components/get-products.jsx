@@ -16,7 +16,6 @@ import ProductsHeaderSkeleton from '@/app/products/components/skeletons/filter';
 import Categories from '@/app/products/components/product-categories/categories';
 import ProductSkeleton from '@/app/products/components/skeletons/products/skeleton';
 import CategoriesCarousel from '@/app/products/components/category-carousel';
-import WishlistDark from '@/icons/wishlist-dark';
 export default function GetProducts() {
 	const params = useSearchParams();
 	const slug = params.get('category');
@@ -76,9 +75,6 @@ export default function GetProducts() {
 												height={427}
 												className="group-hover:scale-125 transition-transform duration-300 sm:w-[427px] sm:h-[427px] w-[227px] h-[227px]"
 											/>
-											<div className="absolute right-1 top-1">
-												<WishlistDark />
-											</div>
 										</div>
 										<div className="detail text-center text-sm text-[#3c2f27] font-roboto group-hover:text-[#3c2f27] group-hover:font-bold transition duration-150">
 											<div className="p-2 sm:text-sm text-xs">

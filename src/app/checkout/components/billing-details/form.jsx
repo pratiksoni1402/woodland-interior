@@ -25,8 +25,8 @@ export default function BillingDetailForm() {
 	// End
 
 	return (
-		<div className="billing-detail-form">
-			<div className="heading text-left pb-3 mt-4 font-crimson text-[#3c2f27] text-2xl">
+		<div className="billing-detail-form text-primary">
+			<div className="heading text-left pb-3 mt-4 font-crimson text-2xl">
 				Billing Details
 			</div>
 

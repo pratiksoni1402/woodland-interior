@@ -26,7 +26,7 @@ export default function ShippingDetailsForm() {
 	// End
 
 	return (
-		<div className="shipping-detail-form">
+		<div className="shipping-detail-form text-primary">
 			<div className="flex gap-5">
 				<div className="field-wrapper w-full">
 					<label

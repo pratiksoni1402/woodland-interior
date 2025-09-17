@@ -239,7 +239,7 @@ export default function CartItems() {
 																						product.id
 																					)
 																				}
-																				className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
+																				className="border-primary hover:cursor-pointer border text-lg bg-primary text-white hover:text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-secondary hover:border-secondary"
 																			>
 																				<Plus />
 																			</Button>
@@ -250,7 +250,7 @@ export default function CartItems() {
 																		{descreaseLoader === product.id ? (
 																			<Button
 																				variant="outline"
-																				className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
+																				className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-secondary hover:border-secondary"
 																			>
 																				<Loader2Icon className="animate-spin " />
 																			</Button>
@@ -263,7 +263,7 @@ export default function CartItems() {
 																						product.id
 																					)
 																				}
-																				className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
+																				className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-secondary hover:border-secondary hover:text-white"
 																			>
 																				<Minus />
 																			</Button>
@@ -333,13 +333,13 @@ export default function CartItems() {
 																					product from your cart!
 																				</AlertDialogDescription>
 																			</AlertDialogHeader>
-																			<AlertDialogFooter>
-																				<AlertDialogCancel className="hover:duration-300 rounded-none bg-transparent text-primary border-border hover:bg-[#b2937e] hover:border-border hover:text-[white]">
+																			<AlertDialogFooter className="!font-roboto font-sm font-medium">
+																				<AlertDialogCancel className="hover:duration-300 rounded-none bg-transparent text-primary border-border  hover:border-secondary hover:text-[white] hover:bg-secondary hover:cursor-pointer">
 																					Cancel
 																				</AlertDialogCancel>
 																				<AlertDialogAction
 																					onClick={() => cnfdelete(product.id)}
-																					className="hover:duration-300 rounded-none bg-[#b2937e] text-white hover:bg-primary"
+																					className="hover:duration-300 rounded-none bg-primary text-white hover:bg-secondary hover:cursor-pointer"
 																				>
 																					{loading ? (
 																						<div className="flex flex-row items-start justify-center">
@@ -367,12 +367,12 @@ export default function CartItems() {
 					</div>
 					<div className="lg:col-span-3 col-span-12">
 						<div className="order-summary-wrapper sticky top-20 mt-[53px]">
-							<div className="wrapper border border-border p-4">
-								<div className="heading font-roboto border-b border-border text-center py-5 text-primary font-semibold">
+							<div className="wrapper border border-border p-4 font-roboto text-sm text-primary">
+								<div className="heading border-b border-border text-center py-5 font-semibold">
 									Summary
 								</div>
-								<div className="calculation">
-									<div className="sub-total pt-3 flex justify-between px-2 text-sm font-roboto text-primary">
+								<div className="calculation ">
+									<div className="sub-total pt-3 flex justify-between px-2">
 										<div>Sub-Total:</div>
 										<div className="flex items-center">
 											<span className="">
@@ -381,7 +381,7 @@ export default function CartItems() {
 											<span>{subtotal}</span>
 										</div>
 									</div>
-									<div className="sub-total flex py-2 justify-between px-2 text-sm font-roboto text-primary">
+									<div className="sub-total flex py-2 justify-between px-2">
 										<div>Central GST:</div>
 										<div className="flex items-center">
 											<span className="">
@@ -390,7 +390,7 @@ export default function CartItems() {
 											<span>{taxamount}</span>
 										</div>
 									</div>
-									<div className="sub-total flex pb-3 justify-between text-sm px-2 font-roboto text-primary">
+									<div className="sub-total flex pb-3 justify-between text-sm px-2">
 										<div>State GST:</div>
 										<div className="flex items-center">
 											<span className="">
@@ -399,7 +399,7 @@ export default function CartItems() {
 											<span>{taxamount}</span>
 										</div>
 									</div>
-									<div className="total-price flex font-semibold pt-3 pb-5 border-t border-border justify-between px-2 font-roboto text-primary text-sm">
+									<div className="total-price flex font-semibold pt-3 pb-5 border-t border-border justify-between px-2">
 										<div>Total:</div>
 										<div className="flex items-center">
 											<span className="svg-strking">
@@ -409,11 +409,11 @@ export default function CartItems() {
 										</div>
 									</div>
 								</div>
-								<div className="place-order text-center w-full ">
+								<div className="place-order text-center w-full font-roboto font-sm">
 									{isLoading ? (
 										<Button
 											type="submit"
-											className=" w-full bg-primary hover:bg-background hover:text-primary border border-primary rounded-md font-roboto"
+											className=" w-full bg-primary hover:bg-background hover:text-primary border border-primary rounded-md"
 											disabled={true}
 										>
 											<Loader2Icon className="animate-spin mr-1" />
@@ -423,7 +423,7 @@ export default function CartItems() {
 										<Button
 											type="submit"
 											onClick={handleClick}
-											className="w-full border hover:border-border bg-primary border-primary hover:cursor-pointer hover:bg-transparent rounded-md font-roboto hover:text-primary text-[#faf2ec] block text-center"
+											className="w-full border hover:border-border bg-primary border-primary hover:cursor-pointer hover:bg-secondary rounded-md text-white  block text-center"
 										>
 											Proceed to Checkout
 										</Button>

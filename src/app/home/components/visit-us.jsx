@@ -9,9 +9,9 @@ export default function Visitshop() {
 				<div className="visit-store text-center mt-8">
 					<Link
 						href="/products?category=bedroom"
-						className="inline-block no-underline rounded-none text-primary font-roboto py-3 px-6 text-sm bg-transparent border border-border hover:text-white hover:border hover:border-primary hover:duration-300 hover:bg-primary"
+						className="inline-block no-underline rounded-none font-roboto py-3 px-6 text-sm bg-primary border border-primary text-white hover:border-secondary hover:duration-300 hover:bg-secondary"
 					>
-						VISIT SHOP
+						Shop Now
 					</Link>
 				</div>
 			</section>

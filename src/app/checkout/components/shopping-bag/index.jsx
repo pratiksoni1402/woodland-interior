@@ -77,7 +77,7 @@ export default function ShoppingBag() {
 											</div>
 										</div>
 										<div className="col-span-2">
-											<div className="flex pricing text-xs text-right items-center justify-end text-primary font-semibold ">
+											<div className="flex pricing text-sm text-right items-center justify-end text-primary font-semibold ">
 												<div className="inline">
 													<IndianRupee width={14} />
 												</div>
@@ -98,7 +98,7 @@ export default function ShoppingBag() {
 						<div className="heading font-roboto border-b border-border text-center py-5 text-primary font-semibold">
 							Summary
 						</div>
-						<div className="calculation p-4">
+						<div className="calculation p-4 font-semibold">
 							<div className="sub-total flex pb-2 justify-between font-roboto text-primary text-sm">
 								<div>Sub-Total:</div>
 								<div className="flex items-center">

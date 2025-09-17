@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@reference "./../../../globals.css"
+
+  .contact-page{
+    @apply bg-teal-700
+  }

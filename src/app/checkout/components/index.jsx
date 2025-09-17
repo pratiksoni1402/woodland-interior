@@ -35,7 +35,7 @@ export default function OrderDetails() {
 
 	return (
 		<div className="shipping-details-form">
-			<div className="heading text-left pb-3 font-crimson text-[#3c2f27] text-2xl">
+			<div className="heading text-left pb-3 font-crimson text-primary text-2xl">
 				Shipping Detail
 			</div>
 
@@ -54,7 +54,7 @@ export default function OrderDetails() {
 
 					<Button
 						type="submit"
-						className=" w-full font-roboto bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] border hover:cursor-pointer border-[#3c2f27] rounded-md"
+						className=" w-full text-white font-roboto bg-primary hover:bg-secondary hover:text-white border hover:cursor-pointer border-primary rounded-md hover:border-secondary"
 						disabled={animation}
 					>
 						{animation && <Loader2Icon className="animate-spin mr-1" />}

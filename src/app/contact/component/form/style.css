@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @reference "./../../../globals.css"
 
-  .contact-page{
-    @apply bg-teal-700
-  }
+.contact-page{
+  @apply !font-roboto !text-primary
+}
+

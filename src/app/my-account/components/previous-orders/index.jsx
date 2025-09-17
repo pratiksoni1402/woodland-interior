@@ -48,24 +48,24 @@ export default function OrderHistory() {
 						<div className="order-wrapper">
 							<div className="orders ">
 								<Table>
-									<TableCaption className="pb-5 font-roboto text-vase text-[#3c2f27]">
+									<TableCaption className="pb-5 font-roboto text-vase text-primary">
 										A list of your Previous Orders.
 									</TableCaption>
 									<TableHeader>
 										<TableRow className=" border-b border-[#b2937e]">
-											<TableHead className="text-[#3c2f27] text-center font-semibold font-roboto whitespace-nowrap">
+											<TableHead className="text-primary text-center font-semibold font-roboto whitespace-nowrap">
 												Order ID
 											</TableHead>
-											<TableHead className="text-[#3c2f27] text-center font-semibold font-roboto whitespace-nowrap">
+											<TableHead className="text-primary text-center font-semibold font-roboto whitespace-nowrap">
 												Total Amount
 											</TableHead>
-											<TableHead className="text-[#3c2f27] text-center font-semibold font-roboto whitespace-nowrap">
+											<TableHead className="text-primary text-center font-semibold font-roboto whitespace-nowrap">
 												Payment Method
 											</TableHead>
-											<TableHead className="text-[#3c2f27] text-center font-semibold font-roboto whitespace-nowrap">
+											<TableHead className="text-primary text-center font-semibold font-roboto whitespace-nowrap">
 												Order Date & Time
 											</TableHead>
-											<TableHead className="text-[#3c2f27] text-center font-semibold font-roboto whitespace-nowrap">
+											<TableHead className="text-primary text-center font-semibold font-roboto whitespace-nowrap">
 												Action
 											</TableHead>
 										</TableRow>
@@ -76,10 +76,10 @@ export default function OrderHistory() {
 												key={invoice.id}
 												className=" border-b border-[#b2937e]"
 											>
-												<TableCell className="text-center text-[#3c2f27] font-roboto">
+												<TableCell className="text-center text-primary font-roboto">
 													{invoice.id}
 												</TableCell>
-												<TableCell className="text-center text-[#3c2f27] font-roboto">
+												<TableCell className="text-center text-primary font-roboto">
 													<div className="flex items-center justify-center">
 														<span className="">
 															<IndianRupee width={14} />
@@ -87,16 +87,16 @@ export default function OrderHistory() {
 														<span>{invoice?.total}</span>
 													</div>
 												</TableCell>
-												<TableCell className="text-center text-[#3c2f27] font-roboto">
+												<TableCell className="text-center text-primary font-roboto">
 													{invoice.payment_mode}
 												</TableCell>
-												<TableCell className="text-center  text-[#3c2f27] font-roboto whitespace-nowrap">
+												<TableCell className="text-center  text-primary font-roboto whitespace-nowrap">
 													{invoice.order_date}
 												</TableCell>
-												<TableCell className="text-center  text-[#3c2f27] font-roboto">
+												<TableCell className="text-center  text-primary font-roboto">
 													<Link
 														href={`/previous-orders/${invoice.id}`}
-														className="border border-[#3c2f27] bg-[#3c2f27] p-2 text-[#faf2ec] font-crimson text-sm hover:text-[#3c2f27] hover:bg-white whitespace-nowrap"
+														className="border border-primary bg-primary p-2 text-white hover:border-secondary font-crimson text-sm hover:text-white font-roboto hover:bg-secondary whitespace-nowrap"
 													>
 														View Detail
 													</Link>

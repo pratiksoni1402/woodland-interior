@@ -35,7 +35,7 @@ export default function UserAccountLink() {
 					</Link>
 				) : (
 					<Link href="/auth">
-						<CircleUserRound size={32} />
+						<CircleUserRound size={26} />
 					</Link>
 				)}
 			</div>

@@ -61,8 +61,8 @@ export default function CartItems() {
 		return (
 			<div className="w-full h-screen bg-background mt-[-70px] flex-col font-crimson text-4xl text-primary flex items-center justify-center">
 				<h1 className="sm:text-4xl text-2x">Your Cart is empty</h1>
-				<div className="shop-now text-base py-3 px-5 hover:bg-background hover:text-primary hover:cursor-pointer bg-background text-primary mt-5 border border-border">
-					<Link href="/products?category=bedroom">SHOP NOW</Link>
+				<div className="shop-now text-sm py-3 px-5 hover:bg-secondary font-roboto hover:text-white hover:cursor-pointer bg-primary text-white mt-5 border border-primary hover:border-border">
+					<Link href="/products?category=bedroom">Shop Now</Link>
 				</div>
 			</div>
 		);

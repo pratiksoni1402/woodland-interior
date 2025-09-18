@@ -2,7 +2,8 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Link from 'next/link';
-import { ShoppingCart } from 'lucide-react';
+import ShoppingBagIcon from '@/icons/shopping-bag';
+
 export default function CartLink() {
 	const { data: count } = useQuery({
 		queryKey: ['totalcount'],
@@ -16,15 +17,23 @@ export default function CartLink() {
 					console.log(error);
 				}),
 	});
+
 	return (
 		<Link href="/cart" className="relative">
-			<ShoppingCart />
 			{count > 0 ? (
-				<div className="absolute text-[10px] text-center top-[-10px] right-[-9px] bg-[#3c2f27] text-white rounded-full w-5 h-5 p-[3px]">
-					{count}
+				<div>
+					<ShoppingBagIcon color="#3c2f27" fill="#3c2f27" stroke="#3c2f27" />
+					<div className="absolute text-[10px] font-roboto text-center top-[7px] right-[3px] text-white w-5 h-5">
+						{count}
+					</div>
 				</div>
 			) : (
-				''
+				<div>
+					<ShoppingBagIcon color="#3c2f27" fill="#ffffff" stroke="#3c2f27" />
+					<div className="absolute text-[10px] font-roboto text-center top-2 right-[3px] text-primary w-5 h-5">
+						{count}
+					</div>
+				</div>
 			)}
 		</Link>
 	);

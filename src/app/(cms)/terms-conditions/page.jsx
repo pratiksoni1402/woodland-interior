@@ -1,14 +1,14 @@
 export default function Terms() {
 	return (
-		<div className="terms-condition-page bg-[#faf2ec] border-t border-[#b2937e]">
+		<div className="terms-condition-page bg-background">
 			<div className="container">
 				<div className="page-heading pt-3 pb-5">
-					<h1 className=" text-4xl font-crimson text-[#3c2f27] text-center">
+					<h1 className=" text-4xl font-crimson text-primary text-center">
 						Terms & Condition
 					</h1>
 				</div>
 				<div className="terms-condition pb-10">
-					<div className="block-one pb-5 text-sm text-[#3c2f27] font-roboto">
+					<div className="block-one pb-5 text-sm text-primary font-roboto">
 						<p className="pb-3">
 							Welcome to Woodland Interiors! These terms and conditions outline
 							the rules and regulations for the use of Woodland Interiors
@@ -40,8 +40,8 @@ export default function Terms() {
 						</p>
 					</div>
 					<div className="block-two">
-						<div className="cookies pb-5 text-sm text-[#3c2f27] font-roboto">
-							<h2 className=" text-xl pb-1 font-crimson font-semibold text-[#3c2f27]">
+						<div className="cookies pb-5 text-sm text-primary font-roboto">
+							<h2 className=" text-xl pb-1 font-crimson font-semibold text-primary">
 								Cookies
 							</h2>
 
@@ -58,8 +58,8 @@ export default function Terms() {
 								partners may also use cookies.
 							</p>
 						</div>
-						<div className="license pb-5 text-sm text-[#3c2f27] font-roboto">
-							<h2 className=" text-xl pb-1 font-crimson font-semibold text-[#3c2f27]">
+						<div className="license pb-5 text-sm text-primary font-roboto">
+							<h2 className=" text-xl pb-1 font-crimson font-semibold text-primary">
 								License
 							</h2>
 							<p className="pb-3">
@@ -82,8 +82,8 @@ export default function Terms() {
 								<li>Redistribute content from Woodland Interiors</li>
 							</ul>
 						</div>
-						<div className="content-hyperlinking pb-5 text-sm text-[#3c2f27] font-roboto">
-							<h2 className=" text-xl pb-1 font-crimson font-semibold text-[#3c2f27]">
+						<div className="content-hyperlinking pb-5 text-sm text-primary font-roboto">
+							<h2 className=" text-xl pb-1 font-crimson font-semibold text-primary">
 								Hyperlinking to our Content
 							</h2>
 							<div>
@@ -171,9 +171,9 @@ export default function Terms() {
 							</div>
 						</div>
 					</div>
-					<div className="block-three pb-5 text-sm text-[#3c2f27] font-roboto">
+					<div className="block-three pb-5 text-sm text-primary font-roboto">
 						<div className="iframe">
-							<h2 className=" text-xl pb-1 font-crimson font-semibold text-[#3c2f27]">
+							<h2 className=" text-xl pb-1 font-crimson font-semibold text-primary">
 								iFrame
 							</h2>
 							<p className="pb-3">
@@ -183,8 +183,8 @@ export default function Terms() {
 							</p>
 						</div>
 
-						<div className="content-liability pb-2 text-sm text-[#3c2f27] font-roboto">
-							<h2 className=" text-xl pb-1 font-crimson font-semibold text-[#3c2f27]">
+						<div className="content-liability pb-2 text-sm text-primary font-roboto">
+							<h2 className=" text-xl pb-1 font-crimson font-semibold text-primary">
 								Content Liability
 							</h2>
 							<p className="pb-3">
@@ -197,8 +197,8 @@ export default function Terms() {
 							</p>
 						</div>
 
-						<div className="rights pb-5 text-sm text-[#3c2f27] font-roboto">
-							<h2 className=" text-xl pb-1 font-crimson font-semibold text-[#3c2f27]">
+						<div className="rights pb-5 text-sm text-primary font-roboto">
+							<h2 className=" text-xl pb-1 font-crimson font-semibold text-primary">
 								Reservation of Rights
 							</h2>
 							<p>
@@ -212,8 +212,8 @@ export default function Terms() {
 							</p>
 						</div>
 
-						<div className="link-removal pb-5 text-sm text-[#3c2f27] font-roboto">
-							<h2 className=" text-xl pb-1 font-crimson font-semibold text-[#3c2f27]">
+						<div className="link-removal pb-5 text-sm text-primary font-roboto">
+							<h2 className=" text-xl pb-1 font-crimson font-semibold text-primary">
 								Removal of links from our website
 							</h2>
 							<p className="pb-3">
@@ -229,8 +229,8 @@ export default function Terms() {
 								the material on the website is kept up to date.
 							</p>
 						</div>
-						<div className="disclaimer pb-5 text-sm text-[#3c2f27] font-roboto">
-							<h2 className=" text-xl pb-1 font-crimson font-semibold text-[#3c2f27]">
+						<div className="disclaimer pb-5 text-sm text-primary font-roboto">
+							<h2 className=" text-xl pb-1 font-crimson font-semibold text-primary">
 								Disclaimer
 							</h2>
 							<p>

@@ -1,16 +1,13 @@
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-// export const revalidate = 0;
+import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
-import SwiperSlider from '../app/components/swiper-slider';
-import Visitshop from './_component';
 export default function Home() {
 	return (
 		<div className="homepage">
 			{/* Banner Section */}
 			<section className="banner-wrapper mt-0">
 				<div className="content-wrapper relative">
-					<div className="banner-title text-white z-1 xl:text-5xl md:text-[55px] text-2xl">
+					<div className="banner-title text-white z-[1] xl:text-5xl md:text-[55px] text-2xl">
 						<h1 className="tracking-wide md:leading-[60px] leading-6">
 							Crafted Excellence in Wood:
 						</h1>
@@ -33,12 +30,26 @@ export default function Home() {
 
 			{/* Timber description  section */}
 			<section className="timber-furniture">
-				<Visitshop />
+				<div className="visit-shop">
+					<section className="timber-furniture md:py-16 py-5">
+						<div className="product-description font-crimson text-center md:text-4xl md:leading-10 text-2xl leading-7 text-primary">
+							Crafted Elegance: Timber Furniture for Timeless Spaces
+						</div>
+						<div className="visit-store text-center pt-6">
+							<Link
+								href="/products?category=bedroom"
+								className="font-roboto py-3 px-6 text-sm bg-primary text-white border border-primary hover:border-secondary hover:bg-secondary"
+							>
+								Shop Now
+							</Link>
+						</div>
+					</section>
+				</div>
 			</section>
 			{/*End*/}
 
 			{/* Our Warehouse */}
-			<section className="our-showcase bg-[#faf2ec] pt-5">
+			<section className="our-showcase pt-5">
 				<div className="content-wrapper">
 					<div className="grid lg:grid-cols-3 sm:grid-cols-1 ">
 						<div className="content col-span-2">
@@ -49,11 +60,11 @@ export default function Home() {
 							></video>
 						</div>
 						<div className="description flex flex-col justify-center px-4 py-4">
-							<div className="title text-[#3c2f27] text-3xl font-medium py-3 font-crimson">
+							<div className="title text-primary text-3xl font-medium py-3 font-crimson">
 								Our Warehouse
 							</div>
 							<div className="detail">
-								<p className="text-justify text-[#3c2f27] font-roboto">
+								<p className="text-justify text-primary font-roboto sm:text-base text-sm">
 									Welcome to our furniture haven, where we merge artistry,
 									comfort, and functionality to create pieces that transform
 									spaces into living experiences. Discover our curated
@@ -71,15 +82,15 @@ export default function Home() {
 			{/* End */}
 
 			{/* Our Experts */}
-			<section className="our-showcase our-expert bg-[#faf2ec] pb-10">
+			<section className="our-showcase our-expert pb-10">
 				<div className="content-wrapper">
 					<div className="grid lg:grid-cols-3 sm:grid-cols-1 ">
 						<div className="description flex flex-col justify-center px-4 py-4 lg:order-1 order-2">
-							<div className="title text-[#3c2f27] text-3xl font-medium py-3 font-crimson">
+							<div className="title text-primary text-3xl font-medium py-3 font-crimson">
 								Our Experts Team
 							</div>
 							<div className="detail">
-								<p className="text-justify text-[#3c2f27] font-roboto">
+								<p className="text-justify text-primary font-roboto sm:text-base text-sm">
 									At <span className="brand-name">Woodland Interiors</span>, we
 									take pride in curating a team of seasoned experts who breathe
 									life into furniture design. Our experts are not just skilled
@@ -108,19 +119,11 @@ export default function Home() {
 			</section>
 			{/* End */}
 
-			{/* Image Carousal Start */}
-			<section className=" image-carousal">
-				<div className="slider">
-					<SwiperSlider />
-				</div>
-			</section>
-			{/* End */}
-
 			{/* Custom service start */}
 			<section className="custom-service">
 				<div className="description">
 					<div className="tagline md:text-[50px] md:leading-[50px] text-[24px] leading-7">
-						<span className="font-crimson text-[#faf2ec] px-2 md:text-4xl text-2xl">
+						<span className="font-crimson text-white px-2 md:text-4xl text-2xl">
 							Tailor-made pieces for homes, places and spaces
 						</span>
 					</div>

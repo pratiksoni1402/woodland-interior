@@ -2,7 +2,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export default function ProductSkeleton() {
 	return (
-		<div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 sm:gap-5 gap-1">
+		<div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-5">
 			{Array.from({ length: 8 }).map((_, index) => (
 				<div key={index} className="sm:mt-3 mt-2 mb-5 w-full">
 					<div>

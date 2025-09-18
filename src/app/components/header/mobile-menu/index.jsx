@@ -51,13 +51,13 @@ export default function MobileMenu() {
 						</SheetTrigger>
 
 						<SheetContent>
-							<SheetHeader className="border-b border-primary">
+							<SheetHeader className="border-b border-border">
 								<SheetTitle className="font-crimson sm:text-2xl text-lg text-primary pt-4 pb-2">
 									Woodland Interiors
 								</SheetTitle>
 							</SheetHeader>
 
-							<div className="sheet-body pt-2 font-crimson border-b">
+							<div className="sheet-body pb-5 font-crimson border-b">
 								<div className="nav-list">
 									{/* Home */}
 									<div className="pb-2 px-4 text-lg text-primary">
@@ -173,11 +173,12 @@ export default function MobileMenu() {
 									</div>
 								</SheetClose>
 							</div>
-							<SheetClose className="fixed bottom-0 w-[240px]">
-								<Logout />
-							</SheetClose>
 
-							<SheetFooter />
+							<SheetFooter className="p-0">
+								<SheetClose>
+									<Logout />
+								</SheetClose>
+							</SheetFooter>
 						</SheetContent>
 					</Sheet>
 				</div>

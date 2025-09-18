@@ -13,11 +13,7 @@ import {
 } from '@/components/ui/table';
 import { IndianRupee } from 'lucide-react';
 export default function OrderHistory() {
-	const {
-		isPending,
-		data: orders,
-		isError,
-	} = useQuery({
+	const { data: orders } = useQuery({
 		queryKey: ['totalOrders'],
 		queryFn: () =>
 			axios
@@ -29,16 +25,6 @@ export default function OrderHistory() {
 					console.log('Error Occured', error);
 				}),
 	});
-
-	const orderDate = orders?.order_date;
-	if (orderDate) {
-		const date = new Date(orderDate);
-
-		// Format the date
-		var formattedDate = `${date.toLocaleDateString()}`;
-		console.log('Local Date', formattedDate);
-		var formattedTime = `${date.toLocaleTimeString()}`;
-	}
 
 	return (
 		<div className="wishlist-component sm:flex block sm:justify-center overflow-x-auto">
@@ -52,7 +38,7 @@ export default function OrderHistory() {
 										A list of your Previous Orders.
 									</TableCaption>
 									<TableHeader>
-										<TableRow className=" border-b border-[#b2937e]">
+										<TableRow className=" border-b border-border">
 											<TableHead className="text-primary text-center font-semibold font-roboto whitespace-nowrap">
 												Order ID
 											</TableHead>
@@ -70,39 +56,51 @@ export default function OrderHistory() {
 											</TableHead>
 										</TableRow>
 									</TableHeader>
-									<TableBody className="bg-white">
-										{orders?.map((invoice) => (
-											<TableRow
-												key={invoice.id}
-												className=" border-b border-[#b2937e]"
-											>
-												<TableCell className="text-center text-primary font-roboto">
-													{invoice.id}
-												</TableCell>
-												<TableCell className="text-center text-primary font-roboto">
-													<div className="flex items-center justify-center">
-														<span className="">
-															<IndianRupee width={14} />
-														</span>
-														<span>{invoice?.total}</span>
-													</div>
-												</TableCell>
-												<TableCell className="text-center text-primary font-roboto">
-													{invoice.payment_mode}
-												</TableCell>
-												<TableCell className="text-center  text-primary font-roboto whitespace-nowrap">
-													{invoice.order_date}
-												</TableCell>
-												<TableCell className="text-center  text-primary font-roboto">
-													<Link
-														href={`/previous-orders/${invoice.id}`}
-														className="border border-primary bg-primary p-2 text-white hover:border-secondary font-crimson text-sm hover:text-white font-roboto hover:bg-secondary whitespace-nowrap"
-													>
-														View Detail
-													</Link>
-												</TableCell>
-											</TableRow>
-										))}
+									<TableBody>
+										{orders?.map((invoice) => {
+											const orderDate = invoice?.order_date;
+											let formattedDate = '';
+											let formattedTime = '';
+
+											if (orderDate) {
+												const date = new Date(orderDate);
+												formattedDate = date.toLocaleDateString();
+												formattedTime = date.toLocaleTimeString();
+											}
+
+											return (
+												<TableRow
+													key={invoice.id}
+													className=" border-b border-border odd:bg-secondary/10"
+												>
+													<TableCell className="text-center text-primary font-roboto">
+														{invoice.id}
+													</TableCell>
+													<TableCell className="text-center text-primary font-roboto">
+														<div className="flex items-center justify-center">
+															<span>
+																<IndianRupee width={14} />
+															</span>
+															<span>{invoice?.total}</span>
+														</div>
+													</TableCell>
+													<TableCell className="text-center text-primary font-roboto">
+														{invoice.payment_mode}
+													</TableCell>
+													<TableCell className="text-center text-primary font-roboto whitespace-nowrap">
+														{formattedDate} {formattedTime}
+													</TableCell>
+													<TableCell className="text-center text-primary font-roboto">
+														<Link
+															href={`/previous-orders/${invoice.id}`}
+															className="border border-primary bg-primary p-2 text-white hover:border-secondary text-sm hover:text-white font-roboto hover:bg-secondary rounded-md whitespace-nowrap"
+														>
+															View Detail
+														</Link>
+													</TableCell>
+												</TableRow>
+											);
+										})}
 									</TableBody>
 								</Table>
 							</div>

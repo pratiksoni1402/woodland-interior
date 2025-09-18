@@ -8,6 +8,58 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Loader2Icon } from 'lucide-react';
 import { showErrorToast, showSuccessToast } from '@/lib/toast';
 
+function FormField({
+	id,
+	label,
+	required,
+	register,
+	errors,
+	placeholder,
+	type = 'text',
+	...rest
+}) {
+	return (
+		<div className="field-wrapper w-full">
+			<label
+				htmlFor={id}
+				className="text-sm font-roboto pl-2 pr-0.5 font-medium"
+			>
+				{label}
+			</label>
+			{required && <span className="font-semibold text-red-700">*</span>}
+			<input
+				id={id}
+				type={type}
+				placeholder={placeholder}
+				{...register(id, required ? { required: true } : {})}
+				{...rest}
+			/>
+			{errors[id] && (
+				<span className="error-message font-roboto pl-2 text-sm text-red-700">
+					This field is required
+				</span>
+			)}
+		</div>
+	);
+}
+
+function SubmitButton({ isLoading, children }) {
+	return (
+		<Button
+			type="submit"
+			className={`w-36 rounded-md my-3 border ${
+				isLoading
+					? 'bg-primary border-primary text-white'
+					: 'bg-primary border-primary hover:bg-secondary hover:border-secondary hover:text-white text-white hover:cursor-pointer'
+			}`}
+			disabled={isLoading}
+		>
+			{isLoading && <Loader2Icon className="animate-spin mr-1" />}
+			{children}
+		</Button>
+	);
+}
+
 export default function UserProfile() {
 	const [isLoading, setLoading] = useState(false);
 	const {
@@ -17,66 +69,40 @@ export default function UserProfile() {
 		formState: { errors },
 	} = useForm();
 	const queryClient = useQueryClient();
-	// Get Countries
+
+	// 🔹 Get Countries
 	const { data: countries } = useQuery({
 		queryKey: ['list'],
-		queryFn: () =>
-			axios
-				.get('/api/get-countries')
-				.then((response) => {
-					return response.data.countriesList;
-				})
-				.catch((error) => {
-					console.log('Error', error);
-				}),
+		queryFn: async () => {
+			const { data } = await axios.get('/api/get-countries');
+			return data.countriesList;
+		},
 	});
-	// End
 
-	// Get customer profile data based on session
-	const { data: customer } = useQuery({
+	useQuery({
 		queryKey: ['profiledata'],
-		queryFn: () =>
-			axios
-				.get('/api/get-customer-profile')
-				.then((response) => {
-					setValue('firstname', response.data.getprofile.firstname);
-					setValue('lastname', response.data.getprofile.lastname);
-					setValue('email', response.data.getprofile.email);
-					setValue('addresslineone', response.data.getprofile.addresslineone);
-					setValue('addresslinetwo', response.data.getprofile.addresslinetwo);
-					setValue('country', response.data.getprofile.country);
-					setValue('state', response.data.getprofile.state);
-					setValue('city', response.data.getprofile.city);
-					setValue('pincode', response.data.getprofile.pincode);
-					setValue('phonenumber', response.data.getprofile.phonenumber);
-
-					return response.data.getprofile;
-				})
-				.catch((error) => {
-					console.log('Error fetching profile', error);
-					throw error;
-				}),
+		queryFn: async () => {
+			const { data } = await axios.get('/api/get-customer-profile');
+			Object.keys(data.getprofile).forEach((key) =>
+				setValue(key, data.getprofile[key])
+			);
+			return data.getprofile;
+		},
+		onError: () => showErrorToast('Error fetching profile'),
 	});
-	//End
 
-	//Update user profile
-	const onSubmit = (data) => {
+	const onSubmit = async (formData) => {
 		setLoading(true);
-		axios
-			.put('/api/customer-profile', data)
-			.then(() => {
-				showSuccessToast('Profile updated successfully');
-				queryClient.invalidateQueries('profiledata');
-			})
-			.catch((error) => {
-				console.log('Error occured', error);
-				showErrorToast('Error while updating profile');
-			})
-			.finally(() => {
-				setLoading(false);
-			});
+		try {
+			await axios.put('/api/customer-profile', formData);
+			showSuccessToast('Profile updated successfully');
+			queryClient.invalidateQueries(['profiledata']);
+		} catch (error) {
+			showErrorToast('Error while updating profile');
+		} finally {
+			setLoading(false);
+		}
 	};
-	// End
 
 	return (
 		<div className="user-profile-component ">
@@ -85,89 +111,42 @@ export default function UserProfile() {
 				<div className="form-wrapper flex justify-center text-primary">
 					<form
 						onSubmit={handleSubmit(onSubmit)}
-						className=" lg:w-3/4 w-full border border-[#b2937e] rounded-md p-4 bg-white"
+						className="lg:w-3/4 w-full border border-[#b2937e] rounded-md p-4 bg-white"
 					>
+						{/* Name */}
 						<div className="flex sm:flex-nowrap flex-wrap sm:gap-5">
-							<div className="field-wrapper w-full">
-								<label
-									htmlFor="fname"
-									className="text-sm font-roboto pl-2 pr-0.5 font-medium"
-								>
-									First Name
-								</label>
-								<span className="font-semibold text-red-700">*</span>
-								<input
-									id="fname"
-									type="text"
-									placeholder="John"
-									{...register('firstname', { required: true, maxLength: 80 })}
-								/>
-								{errors.firstname && (
-									<span className="error-message font-roboto pl-2 text-sm text-red-700">
-										This field is required
-									</span>
-								)}
-							</div>
-							<div className="field-wrapper w-full">
-								<label
-									htmlFor="lname"
-									className="text-sm font-roboto pl-2 pr-0.5 font-medium"
-								>
-									Last Name
-								</label>
-								<span className="font-semibold text-red-700">*</span>
-								<input
-									id="lname"
-									type="text"
-									placeholder="Doe"
-									{...register('lastname', { required: true, maxLength: 100 })}
-								/>
-								{errors.lastname && (
-									<span className="error-message font-roboto pl-2 text-sm text-red-700">
-										This field is required
-									</span>
-								)}
-							</div>
+							<FormField
+								id="firstname"
+								label="First Name"
+								required
+								register={register}
+								errors={errors}
+								placeholder="John"
+							/>
+							<FormField
+								id="lastname"
+								label="Last Name"
+								required
+								register={register}
+								errors={errors}
+								placeholder="Doe"
+							/>
 						</div>
 
-						<div className="field-wrapper">
-							<label
-								htmlFor="add1"
-								className="text-sm font-roboto pl-2 pr-0.5 font-medium"
-							>
-								Address Line 1
-							</label>
-							<span className="font-semibold text-red-700">*</span>
-							<input
-								id="add1"
-								type="text"
-								{...register('addresslineone', { required: true })}
-							/>
-							{errors.addresslineone && (
-								<span className="error-message font-roboto pl-2 text-sm text-red-700">
-									This field is required
-								</span>
-							)}
-						</div>
-						<div className="field-wrapper">
-							<label
-								htmlFor="add2"
-								className="text-sm font-roboto pl-2 pr-0.5 font-medium"
-							>
-								Address Line 2
-							</label>
-							<input
-								id="add2"
-								type="text"
-								placeholder="Optional"
-								{...register('addresslinetwo', {})}
-							/>
-							{errors.addresslinetwo && (
-								<span className="error-message font-roboto pl-2 text-sm text-red-700">
-									This field is required
-								</span>
-							)}
-						</div>
+						<FormField
+							id="addresslineone"
+							label="Address Line 1"
+							required
+							register={register}
+							errors={errors}
+						/>
+						<FormField
+							id="addresslinetwo"
+							label="Address Line 2"
+							register={register}
+							errors={errors}
+							placeholder="Optional"
+						/>
 
 						<div className="grid sm:grid-cols-3 grid-cols-1 sm:gap-3 gap-0 items-center">
 							<div className="mb-3">
@@ -183,9 +162,7 @@ export default function UserProfile() {
 									{...register('country', { required: true })}
 									className="w-full mb-0"
 								>
-									<option value="" disabled>
-										Select Country
-									</option>
+									<option value="">Select Country</option>
 									{countries?.map((country) => (
 										<option key={country.id} value={country.name}>
 											{country.name}
@@ -198,110 +175,41 @@ export default function UserProfile() {
 									</span>
 								)}
 							</div>
-
-							<div className="field-wrapper">
-								<label
-									htmlFor="state"
-									className="text-sm font-roboto pl-2 pr-0.5 font-medium"
-								>
-									State
-								</label>
-								<span className="font-semibold text-red-700">*</span>
-								<input
-									id="state"
-									type="text"
-									{...register('state', { required: true })}
-								/>
-								{errors.state && (
-									<span className="error-message font-roboto pl-2 text-sm text-red-700">
-										This field is required
-									</span>
-								)}
-							</div>
-
-							<div className="field-wrapper">
-								<label
-									htmlFor="city"
-									className="text-sm font-roboto pl-2 pr-0.5 font-medium"
-								>
-									City
-								</label>
-								<span className="font-semibold text-red-700">*</span>
-								<input
-									id="city"
-									type="text"
-									{...register('city', { required: true })}
-								/>
-								{errors.city && (
-									<span className="error-message font-roboto pl-2 text-sm text-red-700">
-										This field is required
-									</span>
-								)}
-							</div>
+							<FormField
+								id="state"
+								label="State"
+								required
+								register={register}
+								errors={errors}
+							/>
+							<FormField
+								id="city"
+								label="City"
+								required
+								register={register}
+								errors={errors}
+							/>
 						</div>
-						<div className="grid grid-cols-2 sm:gap-3 gap-0">
-							<div className="sm:col-span-1 col-span-2">
-								<div className="field-wrapper">
-									<label
-										htmlFor="pincode"
-										className="text-sm font-roboto pl-2 pr-0.5 font-medium"
-									>
-										Pincode
-									</label>
-									<span className="font-semibold text-red-700">*</span>
-									<input
-										id="pincode"
-										type="text"
-										{...register('pincode', { required: true })}
-									/>
-									{errors.city && (
-										<span className="error-message font-roboto pl-2 text-sm text-red-700">
-											This field is required
-										</span>
-									)}
-								</div>
-							</div>
 
-							<div className="sm:col-span-1 col-span-2">
-								<div className="field-wrapper">
-									<label
-										htmlFor="phone"
-										className="text-sm font-roboto pl-2 pr-0.5 font-medium"
-									>
-										Phone Number
-									</label>
-									<span className="font-semibold text-red-700">*</span>
-									<input
-										id="phone"
-										type="text"
-										{...register('phonenumber', { required: true })}
-									/>
-									{errors.city && (
-										<span className="error-message pl-2 font-roboto text-sm text-red-700">
-											This field is required
-										</span>
-									)}
-								</div>
-							</div>
+						<div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-3 gap-0">
+							<FormField
+								id="pincode"
+								label="Pincode"
+								required
+								register={register}
+								errors={errors}
+							/>
+							<FormField
+								id="phonenumber"
+								label="Phone Number"
+								required
+								register={register}
+								errors={errors}
+							/>
 						</div>
+
 						<div className="text-center pt-4 flex justify-center font-roboto tracking-wide">
-							{isLoading ? (
-								<Button
-									type="submit"
-									className="w-36 rounded-md my-3 border hover:border-[#3c2f27] bg-[#3c2f27] border-[#3c2f27] hover:bg-transparent hover:text-[#3c2f27] text-[#faf2ec] flex text-center"
-									disabled={true}
-								>
-									<Loader2Icon className="animate-spin mr-1" />
-									Update Profile
-								</Button>
-							) : (
-								<Button
-									type="submit"
-									className="w-36 rounded-md my-3 border hover:border-secondary hover:cursor-pointer bg-[#3c2f27] border-[#3c2f27] hover:bg-secondary hover:text-white text-[#faf2ec] block text-center"
-								>
-									Update Profile
-								</Button>
-							)}
+							<SubmitButton isLoading={isLoading}>Update Profile</SubmitButton>
 						</div>
 					</form>
 				</div>

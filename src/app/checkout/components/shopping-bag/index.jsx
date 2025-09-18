@@ -30,7 +30,7 @@ export default function ShoppingBag() {
 		);
 	}
 	return (
-		<div className="shopping-bag border border-border rounded-md mt-[45px] font-roboto text-primary">
+		<div className="shopping-bag border border-border rounded-md sm:mt-[45px] mt-5 font-roboto text-primary">
 			<div className="heading text-center py-3 text-xl">Your cart items</div>
 			<div className="product-wrapper">
 				{cartdata &&

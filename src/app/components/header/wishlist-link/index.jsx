@@ -17,13 +17,20 @@ export default function WishlistLink() {
 	});
 	return (
 		<Link href="/wishlist" className="relative">
-			<HeartIcon />
 			{wishlistTotal > 0 ? (
-				<div className="absolute text-[10px] font-roboto text-center top-[5px] right-0.5 w-5 h-5 ">
-					{wishlistTotal}
+				<div>
+					<HeartIcon fill="#3c2f27" />
+					<div className="absolute text-[10px] font-roboto text-center text-white top-[5px] right-0.5 w-5 h-5 ">
+						{wishlistTotal}
+					</div>
 				</div>
 			) : (
-				''
+				<div>
+					<HeartIcon fill="#ffffff" />
+					<div className="absolute text-[10px] font-roboto text-center text-primary top-[5px] right-0.5 w-5 h-5 ">
+						{wishlistTotal}
+					</div>
+				</div>
 			)}
 		</Link>
 	);

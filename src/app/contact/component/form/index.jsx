@@ -8,7 +8,6 @@ import { Loader2Icon } from 'lucide-react';
 import { showSuccessToast } from '@/lib/toast';
 import { showErrorToast } from '@/lib/toast';
 
-import './style.css';
 const ContactForm = () => {
 	const {
 		register,
@@ -39,7 +38,10 @@ const ContactForm = () => {
 		<div className="contact-form">
 			<Toaster />
 			<div className="form-wrapper">
-				<form onSubmit={handleSubmit(onSubmit)} className="form">
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					className="bg-white border border-[#b2937e] sm:p-5 p-2.5 rounded-md"
+				>
 					<div className="flex sm:flex-nowrap flex-wrap sm:gap-5">
 						<div className="field-wrapper w-full">
 							<label

@@ -48,10 +48,10 @@ export default function Product() {
 
 	if (allproducts?.length === 0) {
 		return (
-			<div className="w-full h-screen bg-[#faf2ec] mt-[-70px] flex-col font-crimson text-4xl text-primary flex items-center justify-center">
+			<div className="w-full h-screen mt-[-70px] flex-col font-crimson text-4xl text-primary flex items-center justify-center">
 				<h1 className="sm:text-4xl text-2x">Your Wishlist is empty</h1>
-				<div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-primary hover:cursor-pointer bg-primary text-[#faf2ec] mt-5 border border-primary">
-					<Link href="/products?category=bedroom">SHOP NOW</Link>
+				<div className="py-3 px-5 text-white font-roboto text-sm hover:cursor-pointer bg-primary mt-5 border border-primary hover:bg-secondary hover:border-secondary">
+					<Link href="/products?category=bedroom">Shop Now</Link>
 				</div>
 			</div>
 		);

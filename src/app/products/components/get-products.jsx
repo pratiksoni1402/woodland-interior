@@ -44,7 +44,7 @@ export default function GetProducts() {
 					</div>
 				</div>
 				{!allproducts ? (
-					<div className="py-3">
+					<div className="text-center sm:py-3 pb-3 pt-1 my-3">
 						<ProductsHeaderSkeleton />
 					</div>
 				) : (

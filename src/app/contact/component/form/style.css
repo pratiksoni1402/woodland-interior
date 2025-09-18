@@ -1,7 +1,0 @@
-@import "tailwindcss";
-@reference "./../../../globals.css"
-
-.contact-page{
-  @apply !font-roboto !text-primary
-}
-

@@ -211,11 +211,11 @@ export default function Detail(props) {
 										<div>
 											<Toaster />
 										</div>
-										<div className="flex items-center">
+										<div className="flex items-center ">
 											<Button
 												onClick={handleIncrement}
 												variant="outline"
-												className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
+												className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-secondary hover:border-secondary hover:text-white"
 											>
 												<Plus />
 											</Button>
@@ -225,7 +225,7 @@ export default function Detail(props) {
 											<Button
 												onClick={handleDecrement}
 												variant="outline"
-												className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-background hover:border-border"
+												className="border-primary hover:cursor-pointer border text-lg bg-primary text-white w-[26px] h-[26px] rounded-full px-0 py-0 hover:bg-secondary hover:border-secondary hover:text-white"
 											>
 												<Minus />
 											</Button>

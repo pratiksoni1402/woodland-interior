@@ -908,6 +908,21 @@ textarea:focus {
 
 /* End */
 
+/*Side menu*/
+.lucide-menu{
+  @apply !w-5 !h-5
+}
+/*End*/
+
+/*Listing page swiper*/
+/*.swiper .swiper-wrapper{*/
+/*  @apply flex justify-center !gap-5*/
+/*}*/
+/*.swiper .swiper-wrapper .swiper-slide{*/
+/*  @apply w-max*/
+/*}*/
+/*End*/
+
 .make-bold-props {
   @apply before:block
   before:content-[attr(title)]

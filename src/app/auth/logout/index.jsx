@@ -54,12 +54,12 @@ export default function Logout() {
 	};
 
 	return (
-		<div className="logout-button">
+		<div className="lg:mt-7 mt-0 font-roboto text-base font-medium !text-primary lg:leading-7 leading-[18px] !w-full">
 			{isLoading ? (
 				<Button
 					type="submit"
 					onClick={handlelogout}
-					className="rounded-none bg-[#3c2f27] hover:bg-[#faf2ec] hover:text-[#3c2f27] hover: border hover:border-[#3c2f27]"
+					className="bg-secondary border-secondary text-white"
 					disabled={true}
 				>
 					<Loader2Icon className="animate-spin mr-1" />
@@ -69,7 +69,7 @@ export default function Logout() {
 				<Button
 					type="submit"
 					onClick={handlelogout}
-					className="bg-transparent hover:bg-transparent rounded-none text-black font-crimson text-lg px-0 border-none shadow-none font-normal outline-none hover:underline cursor-pointer"
+					className="bg-white w-full hover:bg-primary rounded-md px-0 border border-border shadow-none outline-none hover:cursor-pointer text-primary font-medium hover:bg-secondary hover:border-secondary hover:text-white"
 				>
 					Logout
 				</Button>

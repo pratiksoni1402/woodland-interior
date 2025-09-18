@@ -29,22 +29,22 @@ export default function SideMenu() {
 	];
 	const pathName = usePathname();
 	return (
-		<div className="h-full">
-			<div className="flex flex-col border border-primary p-5 rounded-md">
+		<div className="h-full text-primary font-roboto text-sm font-medium">
+			<div className="flex lg:flex-col flex-row border border-border lg:p-3 p-0 rounded-md lg:justify-start justify-evenly">
 				{userMenu.map((menuItems, index) => (
 					<Link
 						key={index}
 						href={menuItems.url}
-						className={`flex py-1 justify-between items-center mb-3 px-2 border border-transparent rounded-md 
-    				${menuItems.url === pathName ? 'bg-primary text-white' : 'hover:bg-primary hover:text-white'}
+						className={`flex py-1 my-1 lg:justify-between md:justify-center sm:justify-center items-center px-2 border border-transparent rounded-md lg:leading-7 w-full
+    				${menuItems.url === pathName ? 'bg-primary text-white' : 'hover:bg-secondary hover:text-white'}
   `}
 					>
 						<span>{menuItems.name}</span>
-						<span>{menuItems.icon}</span>
+						<span className="lg:inline hidden">{menuItems.icon}</span>
 					</Link>
 				))}
 
-				<div className="flex justify-between items-center mb-3 px-2 border border-transparent rounded-md hover:bg-gray-100">
+				<div className="lg:block hidden">
 					<Logout />
 				</div>
 			</div>

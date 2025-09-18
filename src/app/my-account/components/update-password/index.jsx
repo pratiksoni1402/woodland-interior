@@ -61,13 +61,13 @@ export default function UpdateUserPassword() {
 				<Toaster />
 				<form
 					onSubmit={handleSubmit(onSubmit)}
-					className="border border-[#b2937e] rounded-md"
+					className="border border-[#b2937e] rounded-md text-primary"
 				>
 					<div className="p-5">
 						<div className="field-wrapper relative">
 							<label
 								htmlFor="oldpass"
-								className="text-sm font-roboto pl-2 pr-0.5"
+								className="text-sm font-roboto pl-2 pr-0.5 font-semibold"
 							>
 								Old Password
 							</label>
@@ -93,7 +93,7 @@ export default function UpdateUserPassword() {
 						<div className="field-wrapper relative">
 							<label
 								htmlFor="newpass"
-								className="text-sm font-roboto pl-2 pr-0.5"
+								className="text-sm font-roboto pl-2 pr-0.5 font-semibold"
 							>
 								New Password
 							</label>
@@ -119,7 +119,7 @@ export default function UpdateUserPassword() {
 						<div className="field-wrapper relative">
 							<label
 								htmlFor="cnfpass"
-								className="text-sm font-roboto pl-2 pr-0.5"
+								className="text-sm font-roboto pl-2 pr-0.5 font-semibold"
 							>
 								Confirm Password
 							</label>
@@ -133,7 +133,7 @@ export default function UpdateUserPassword() {
 							/>
 							<Toggle
 								onClick={handleCnfPasswordVisibility}
-								className="absolute right-1 top-6.5 hover:cursor-pointer hover:bg-white"
+								className="absolute right-1 top-6.5 hover:cursor-pointer hover:bg-white data-[state='on']:bg-white"
 							>
 								{showCnfPassword ? <Eye /> : <EyeOff />}
 							</Toggle>

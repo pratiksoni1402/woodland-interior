@@ -23,20 +23,29 @@ export default function UserAccountLink() {
 
 	return (
 		<div>
-			{sessionData && sessionData.user_details ? (
-				<Link href="/my-account">
-					<Avatar className="text-[#3c2f27]">
-						<AvatarFallback className="font-roboto border p-[2px] text-sm">
-							{sessionData.user_details?.firstname?.charAt(0)}
-							{sessionData.user_details?.lastname?.charAt(0)}
-						</AvatarFallback>
-					</Avatar>
-				</Link>
-			) : (
-				<Link href="/auth">
-					<CircleUserRound size={32} />
-				</Link>
-			)}
+			<div className="lg:block md:hidden sm:hidden hidden">
+				{sessionData && sessionData.user_details ? (
+					<Link href="/my-account">
+						<Avatar className="text-[#3c2f27]">
+							<AvatarFallback className="font-roboto border p-[2px] text-sm">
+								{sessionData.user_details?.firstname?.charAt(0)}
+								{sessionData.user_details?.lastname?.charAt(0)}
+							</AvatarFallback>
+						</Avatar>
+					</Link>
+				) : (
+					<Link href="/auth">
+						<CircleUserRound size={26} />
+					</Link>
+				)}
+			</div>
+			<div className="lg:hidden md:block sm:block block font-roboto text-sm text-primary pl-4 hover:underline">
+				{sessionData && sessionData.user_details ? (
+					<Link href="/my-account">My Account</Link>
+				) : (
+					<Link href="/auth">Login/Signup</Link>
+				)}
+			</div>
 		</div>
 	);
 }

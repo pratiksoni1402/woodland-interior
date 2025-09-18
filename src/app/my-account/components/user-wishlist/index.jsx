@@ -9,7 +9,6 @@ import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
 
 import { useState } from 'react';
 
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
 export default function UsersWishlist() {
 	const queryClient = useQueryClient();
 	const [toCart, setToCart] = useState(null);
@@ -32,9 +31,9 @@ export default function UsersWishlist() {
 	console.log(allproducts);
 	if (allproducts?.length === 0) {
 		return (
-			<div className=" py-20 flex-col font-crimson text-4xl text-[#3c2f27] flex items-center justify-center">
+			<div className=" py-20 flex-col font-crimson text-4xl text-primary flex items-center justify-center">
 				<h1 className="l">Your Wishlist is empty</h1>
-				<div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-[#3c2f27] hover:cursor-pointer bg-[#3c2f27] text-[#faf2ec] mt-5 border border-[#3c2f27]">
+				<div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-primary hover:cursor-pointer bg-primary text-[#faf2ec] mt-5 border border-primary">
 					<Link href="/products?category=bedroom">SHOP NOW</Link>
 				</div>
 			</div>
@@ -82,50 +81,44 @@ export default function UsersWishlist() {
 	// End
 
 	return (
-		<div className="product-wrapper  pb-20" style={{ minHeight: '500px' }}>
-			<div className="container">
-				<div className="my-items">
-					<Toaster />
-					{allproducts?.map((product) => (
+		<div className="product-wrapper  pb-20">
+			<div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 sm:gap-5 gap-2">
+				<Toaster />
+				{allproducts?.map((product) => (
+					<div key={product.id} className="group">
 						<Link
 							href={`/product-detail/${product.productid}`}
-							key={product.id}
-							className="block w-max"
+							className="block"
 						>
-							<Card className="!w-96">
-								<CardContent>
-									<div>
-										<Image
-											src={`${BLOB_BASE_URL}/${product.products.image}`}
-											alt={product.products.name}
-											height={250}
-											width={250}
-											className=" w-full"
-										/>
-									</div>
-								</CardContent>
-								<CardFooter>
-									<div className="flex flex-col">
-										<div className="title text-[#3c2f27] leading-6 font-semibold font-crimson text-xl pb-3">
+							<div>
+								<div className="overflow-hidden">
+									<Image
+										src={`${BLOB_BASE_URL}/${product.products.image}`}
+										alt={product.products.name}
+										height={250}
+										width={250}
+										className=" w-full group-hover:scale-125 transition-transform duration-300"
+									/>
+								</div>
+								<div>
+									<div className="flex gap-2 flex-col m-2 font-roboto text-sm">
+										<div className="title text-primary text-center leading-5 group-hover:font-semibold">
 											{product.products.name}
 										</div>
 										<div className="amount flex justify-center items-center">
-											<div className="constant font-roboto text-[#3c2f27] font-semibold">
+											<div className="constant font-roboto text-primary font-semibold">
 												<IndianRupee width={17} />
 											</div>
-											<div className="variation font-roboto text-[#3c2f27] font-semibold">
+											<div className="variation font-roboto text-primary font-semibold">
 												{product.products.price}
 											</div>
 										</div>
 									</div>
-									{/*<div className="description text-[#4b4537] font-roboto text-sm pb-3">*/}
-									{/*	{product.products.description}*/}
-									{/*</div>*/}
-								</CardFooter>
-							</Card>
+								</div>
+							</div>
 						</Link>
-					))}
-				</div>
+					</div>
+				))}
 			</div>
 		</div>
 	);

@@ -30,7 +30,7 @@ export default function BillingDetailForm() {
 				Billing Details
 			</div>
 
-			<div className="flex gap-5">
+			<div className="flex sm:gap-5 gap-0 sm:flex-row flex-col">
 				<div className="field-wrapper w-full">
 					<label
 						htmlFor="fname"
@@ -215,7 +215,7 @@ export default function BillingDetailForm() {
 				</div>
 			</div>
 
-			<div className="flex gap-5">
+			<div className="flex sm:gap-5 gap-0 sm:flex-row flex-col">
 				<div className="field-wrapper w-full">
 					<label
 						htmlFor="pincode"

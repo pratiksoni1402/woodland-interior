@@ -69,7 +69,7 @@ export default function Logout() {
 				<Button
 					type="submit"
 					onClick={handlelogout}
-					className="bg-white w-full hover:bg-primary rounded-md px-0 border border-border shadow-none outline-none hover:cursor-pointer text-primary font-medium hover:bg-secondary hover:border-secondary hover:text-white"
+					className="bg-white w-full lg:rounded-md rounded-none px-0 border border-border lg:border-x border-x-0 shadow-none outline-none hover:cursor-pointer text-primary font-medium hover:bg-secondary hover:border-secondary hover:text-white"
 				>
 					Logout
 				</Button>

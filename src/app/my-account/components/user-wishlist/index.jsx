@@ -31,10 +31,10 @@ export default function UsersWishlist() {
 	console.log(allproducts);
 	if (allproducts?.length === 0) {
 		return (
-			<div className=" py-20 flex-col font-crimson text-4xl text-primary flex items-center justify-center">
-				<h1 className="l">Your Wishlist is empty</h1>
-				<div className="shop-now text-base py-3 px-5 hover:bg-[#faf2ec] hover:text-primary hover:cursor-pointer bg-primary text-[#faf2ec] mt-5 border border-primary">
-					<Link href="/products?category=bedroom">SHOP NOW</Link>
+			<div className=" py-20 flex-col font-crimson  text-primary flex items-center justify-center">
+				<h1 className="sm:text-4xl text-xl">Your Wishlist is empty</h1>
+				<div className="shop-now text-sm font-roboto py-3 px-5 hover:bg-secondary text-white hover:cursor-pointer bg-primary hover:border-secondary mt-5 border border-primary">
+					<Link href="/products?category=bedroom">Shop Now</Link>
 				</div>
 			</div>
 		);

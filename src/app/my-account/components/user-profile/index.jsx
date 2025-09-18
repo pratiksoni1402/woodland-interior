@@ -191,7 +191,7 @@ export default function UserProfile() {
 							/>
 						</div>
 
-						<div className="grid grid-cols-2 sm:gap-3 gap-0">
+						<div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-3 gap-0">
 							<FormField
 								id="pincode"
 								label="Pincode"

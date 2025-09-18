@@ -174,7 +174,7 @@ export default function MobileMenu() {
 								</SheetClose>
 							</div>
 
-							<SheetFooter className="px-0">
+							<SheetFooter className="p-0">
 								<SheetClose>
 									<Logout />
 								</SheetClose>

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Loader2Icon } from 'lucide-react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { showSuccessToast } from '@/lib/toast';
 export default function Logout() {
 	const [isLoading, setLoading] = useState();
 	const router = useRouter();
@@ -16,7 +17,6 @@ export default function Logout() {
 			axios
 				.get('/api/get-sessiondata')
 				.then((response) => {
-					console.log('data', response.data.getSessionData);
 					return response.data.getSessionData;
 				})
 				.catch((error) => {
@@ -29,19 +29,7 @@ export default function Logout() {
 			.post('/api/logout-user')
 			.then(() => {
 				router.push('/');
-				toast.success('Logged out', {
-					duration: 1000,
-					style: {
-						border: '1px solid #3c2f27',
-						padding: '8px',
-						color: '#faf2ec',
-						backgroundColor: '#3c2f27',
-					},
-					iconTheme: {
-						primary: '#faf2ec',
-						secondary: '#3c2f27',
-					},
-				});
+				showSuccessToast('Logged Out');
 				queryClient.invalidateQueries('checkSession');
 			})
 			.catch((error) => {
@@ -53,13 +41,14 @@ export default function Logout() {
 			});
 	};
 
+	if (!sessionData?.user_details) return null;
 	return (
 		<div className="lg:mt-7 mt-0 font-roboto text-base font-medium !text-primary lg:leading-7 leading-[18px] !w-full">
 			{isLoading ? (
 				<Button
 					type="submit"
 					onClick={handlelogout}
-					className="bg-secondary border-secondary text-white"
+					className="bg-secondary border-secondary text-white w-full"
 					disabled={true}
 				>
 					<Loader2Icon className="animate-spin mr-1" />

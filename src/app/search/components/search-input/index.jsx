@@ -57,7 +57,7 @@ export default function SearchInput({ placeholder = 'Search...', className }) {
 					'lg:block', // Always show on lg+ screens
 					isExpanded ? 'block' : 'hidden', // Show/hide based on state on smaller screens
 					'absolute lg:relative top-8 left-2 right-0 lg:top-auto lg:right-auto',
-					'w-64 lg:w-auto z-10'
+					'w-64 z-10'
 				)}
 			>
 				<form onSubmit={handleSubmit(onSubmit)} className="relative">

@@ -7,12 +7,12 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
 export default function SortByFilter() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
-
+	const pathName = usePathname();
 	// Get price param from URL
 	const priceParam = searchParams.get('price');
 
@@ -22,7 +22,7 @@ export default function SortByFilter() {
 
 		// Build URL
 		const queryString = params.toString();
-		router.push(`/products${queryString ? `?${queryString}` : ''}`);
+		router.push(`${pathName}${queryString ? `?${queryString}` : ''}`);
 	};
 
 	return (

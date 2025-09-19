@@ -3,7 +3,7 @@ import SortByFilter from '@/app/products/components/filters/sort-by/sort-by';
 import ProductsHeaderSkeleton from '@/app/products/components/skeletons/filter';
 import ProductSkeleton from '@/app/products/components/skeletons/products/skeleton';
 import CategoriesSkeleton from '@/app/products/components/skeletons/categories';
-export default function ProductsFallback() {
+export function ProductsFallback() {
 	return (
 		<div className="">
 			<div className="container">

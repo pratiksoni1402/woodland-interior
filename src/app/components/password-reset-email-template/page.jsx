@@ -44,7 +44,9 @@ export default function PasswordResetEmailTemplate({
 											<span className="w-5 h-5 bg-accent text-accent-foreground rounded-full text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-semibold">
 												1
 											</span>
-											<span>Click the "Reset Password" button below</span>
+											<span>
+												Click the &#34;Reset Password&#34; button below
+											</span>
 										</li>
 										<li className="flex items-start gap-2">
 											<span className="w-5 h-5 bg-accent text-accent-foreground rounded-full text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-semibold">
@@ -90,9 +92,9 @@ export default function PasswordResetEmailTemplate({
 										Security Notice
 									</p>
 									<p className="text-muted-foreground leading-relaxed">
-										If you didn't request this password reset, please ignore
-										this email. Your password will remain unchanged. This link
-										will expire in 15 minutes for your security.
+										If you didn&apos;t request this password reset, please
+										ignore this email. Your password will remain unchanged. This
+										link will expire in 15 minutes for your security.
 									</p>
 								</div>
 							</div>

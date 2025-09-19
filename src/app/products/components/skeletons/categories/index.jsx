@@ -21,12 +21,6 @@ export default function CategoriesSkeleton() {
 						</div>
 					</div>
 				))}
-				{/*<div className="sm:hidden block absolute top-1/2">*/}
-				{/*	<div className="flex justify-between">*/}
-				{/*		<Skeleton className="w-8 h-8 rounded-full" />*/}
-				{/*		<Skeleton className="w-8 h-8 rounded-full" />*/}
-				{/*	</div>*/}
-				{/*</div>*/}
 			</div>
 		</div>
 	);

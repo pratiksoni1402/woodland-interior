@@ -13,8 +13,9 @@ import { Loader2Icon } from 'lucide-react';
 
 import axios from 'axios';
 import LazyImage from '@/app/_lib/utils/lazy-image';
-import Reviews from '@/app/customer-reviews';
+import Reviews from '@/app/customer-reviews/page';
 import DeliveryInfo from '@/app/product-detail/components/delivery-info';
+
 export default function Detail(props) {
 	const params = use(props.params);
 	const queryClient = useQueryClient();
@@ -117,7 +118,7 @@ export default function Detail(props) {
 				showSuccessToast('Product added to wishlist');
 			})
 			.catch((error) => {
-				showErrorToast('Error');
+				showErrorToast('Error', error);
 			})
 			.finally(() => {
 				setLoading(false);

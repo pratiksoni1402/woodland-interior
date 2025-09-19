@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { ProductsFallback } from '@/app/products/components/skeletons/fallback';
 
 export const metadata = {
-	title: 'Browse our wide range of products and shop the best deals today.',
+	title: 'Bedroom Furniture | Dining Tables | Sofa sets | Outdoor Furniture',
 };
 
 export default function ProductListing() {

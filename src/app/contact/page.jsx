@@ -1,7 +1,15 @@
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-export const revalidate = 0;
 import ContactForm from './component/form';
+
+export const metadata = {
+	title: 'Contact Us | Woodland Interiors',
+	description:
+		'Get in touch with Woodland Interiors for inquiries, support, or feedback. Reach us via phone, email, or visit our office.',
+	robots: {
+		index: true, // allow indexing
+		follow: true, // allow crawling links
+	},
+};
+
 const ContactPage = () => {
 	return (
 		<div className="contact-page pb-20">

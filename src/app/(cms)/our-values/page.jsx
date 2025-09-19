@@ -1,3 +1,13 @@
+export const metadata = {
+	title: 'Our Values | Woodland Interiors',
+	description:
+		'Discover the core values that guide Woodland Interiors — quality craftsmanship, sustainability, and a passion for creating elegant home décor.',
+	robots: {
+		index: true, // allow indexing
+		follow: true, // allow crawling
+	},
+};
+
 export default function Stories() {
 	return (
 		<div className="stories bg-background">

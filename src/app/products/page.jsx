@@ -8,13 +8,7 @@ export const metadata = {
 
 export default function ProductListing() {
 	return (
-		<Suspense
-			fallback={
-				<div>
-					<ProductsFallback />
-				</div>
-			}
-		>
+		<Suspense>
 			<GetProducts />
 		</Suspense>
 	);

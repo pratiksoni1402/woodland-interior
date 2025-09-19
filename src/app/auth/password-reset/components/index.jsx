@@ -1,10 +1,12 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import axios from 'axios';
+import { Loader2Icon } from 'lucide-react';
 export function PasswordResetForm() {
+	const [isProcessing, setIsProcessing] = useState(false);
 	const {
 		register,
 		handleSubmit,
@@ -12,6 +14,7 @@ export function PasswordResetForm() {
 	} = useForm();
 
 	const onSubmit = async (data) => {
+		setIsProcessing(true);
 		try {
 			const response = await axios.post('/api/forgot-password', data);
 			if (response.data.type === 'success') {
@@ -22,6 +25,7 @@ export function PasswordResetForm() {
 		} catch (error) {
 			console.error(error.response?.data || error.message);
 		}
+		setIsProcessing(false);
 	};
 
 	return (
@@ -64,12 +68,19 @@ export function PasswordResetForm() {
 					)}
 
 					<div className="flex justify-center mt-5">
-						<Button
-							type="submit"
-							className="bg-primary text-white hover:bg-secondary hover:text-white hover:cursor-pointer"
-						>
-							Submit
-						</Button>
+						{
+							<Button
+								type="submit"
+								className="bg-primary text-white hover:bg-secondary hover:text-white hover:cursor-pointer"
+							>
+								{isProcessing && (
+									<span className="animate-spin">
+										<Loader2Icon />
+									</span>
+								)}{' '}
+								Submit
+							</Button>
+						}
 					</div>
 				</form>
 			</div>

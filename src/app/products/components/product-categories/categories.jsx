@@ -53,10 +53,10 @@ export default function Categories() {
 					>
 						<div
 							className={clsx(
-								'rounded-md p-2 border-2',
+								'rounded-xl p-1.5 border-2',
 								slug === category.slug
-									? 'border-border'
-									: 'border-transparent hover:border-border'
+									? 'border-border mb-1'
+									: 'border-transparent hover:border-border mb-1'
 							)}
 						>
 							<div className="relative h-[100px] w-[100px] overflow-hidden rounded-md">
@@ -69,7 +69,12 @@ export default function Categories() {
 								/>
 							</div>
 						</div>
-						<div className={clsx(slug === category.slug && 'font-semibold')}>
+						<div
+							className={clsx(
+								slug === category.slug && 'font-semibold',
+								'group-hover:font-semibold'
+							)}
+						>
 							{category.name}
 						</div>
 					</Link>

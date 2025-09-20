@@ -20,7 +20,7 @@ export default function GetProducts() {
 	const params = useSearchParams();
 	const slug = params.get('category');
 	const price = params.get('price');
-
+	console.log('price filter', price);
 	// Fetching All Products
 	const { data: allproducts } = useQuery({
 		queryKey: ['product-list', slug, price],
@@ -44,7 +44,7 @@ export default function GetProducts() {
 					</div>
 				</div>
 				{!allproducts ? (
-					<div className="text-center sm:py-3 pb-3 pt-1 my-3">
+					<div className="text-center pb-3 pt-1 my-3">
 						<ProductsHeaderSkeleton />
 					</div>
 				) : (

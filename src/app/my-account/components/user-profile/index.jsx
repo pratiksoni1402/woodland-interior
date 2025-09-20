@@ -111,7 +111,7 @@ export default function UserProfile() {
 				<div className="form-wrapper flex justify-center text-primary">
 					<form
 						onSubmit={handleSubmit(onSubmit)}
-						className="lg:w-3/4 w-full border border-[#b2937e] rounded-md p-4 bg-white"
+						className=" w-full border border-[#b2937e] rounded-md px-4 pt-4 pb-0 bg-white"
 					>
 						{/* Name */}
 						<div className="flex sm:flex-nowrap flex-wrap sm:gap-5">

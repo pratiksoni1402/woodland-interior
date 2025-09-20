@@ -4,9 +4,9 @@ export default function ProductSkeleton() {
 	return (
 		<div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-5">
 			{Array.from({ length: 8 }).map((_, index) => (
-				<div key={index} className="sm:mt-3 mt-2 mb-5 w-full">
+				<div key={index} className="sm:mt-1 mt-2 mb-5 w-full">
 					<div>
-						<Skeleton className="sm:h-80 h-52 w-full" />
+						<Skeleton className="sm:h-80 h-52 w-full rounded-none" />
 					</div>
 					<div className="py-3">
 						<Skeleton className="h-4 w-full" />

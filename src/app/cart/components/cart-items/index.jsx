@@ -176,7 +176,7 @@ export default function CartItems() {
 					<div className="lg:col-span-9 col-span-12">
 						<div className="product-wrapper">
 							<div className="heading pb-3 sm:text-4xl text-xl font-crimson border-b border-border  text-primary">
-								Items in your cart
+								Your Cart
 							</div>
 							<div className="grid grid-col-1">
 								<div className="col">

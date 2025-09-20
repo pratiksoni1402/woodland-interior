@@ -1,16 +1,6 @@
 import Image from 'next/image';
 import { REVIEW_MEDIA_URL } from '@/app/_lib/constants/images';
 
-export const metadata = {
-	title: 'Customer Reviews | Woodland Interiors',
-	description:
-		'Read genuine customer reviews and ratings for Woodland Interiors products. Discover what our customers love about our furniture and decor.',
-	robots: {
-		index: true, // allow indexing
-		follow: true, // allow crawling links
-	},
-};
-
 export default function Reviews() {
 	const customerReviews = [
 		{

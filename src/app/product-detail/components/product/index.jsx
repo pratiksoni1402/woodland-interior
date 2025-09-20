@@ -2,7 +2,6 @@
 
 import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
 import { showErrorToast, showSuccessToast } from '@/lib/toast';
-import { MoonLoader } from 'react-spinners';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState, use } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -14,11 +13,9 @@ import axios from 'axios';
 import LazyImage from '@/app/_lib/utils/lazy-image';
 import Reviews from '@/app/customer-reviews/page';
 import DeliveryInfo from '@/app/product-detail/components/delivery-info';
-import FallbackUi from '@/app/product-detail/components/skeleton';
 
 export default function ProductDetails({ data }) {
-	const product = { ...data };
-	console.log('pd image', product.image);
+	const product = data;
 	const queryClient = useQueryClient();
 	const [count, setCount] = useState(1);
 	const [price, setPrice] = useState();
@@ -58,19 +55,20 @@ export default function ProductDetails({ data }) {
 
 	// Updating Price Based on Product Quantity
 	useEffect(() => {
-		const price = product?.price * count;
-		setPrice(price);
-	}, [count, product]);
+		if (product?.price) {
+			setPrice(product.price * count);
+		}
+	}, [count, product?.price]);
 	// End
 
 	// Display spinner Until Data is Getting Ready
-	// if (!product) {
-	// 	return (
-	// 		<div className="loading h-screen bg-background w-full flex justify-center items-center">
-	// 			<MoonLoader color="#3c2f27" />
-	// 		</div>
-	// 	);
-	// }
+	if (!product) {
+		return (
+			<div className="loading h-screen bg-background w-full flex justify-center items-center">
+				<MoonLoader color="#3c2f27" />
+			</div>
+		);
+	}
 	// End
 
 	// Increasing Product Quantity
@@ -151,7 +149,6 @@ export default function ProductDetails({ data }) {
 	return (
 		<div className="product-detail-page ">
 			<div className="container">
-				<FallbackUi data={product} />
 				<div className="product-wrapper py-10">
 					<div className="grid grid-cols-12 gap-7">
 						<Toaster />

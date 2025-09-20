@@ -1,8 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
-}
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'dlpegx7tp67ftrd7.public.blob.vercel-storage.com',
+				port: '',
+				pathname: '/products/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'dlpegx7tp67ftrd7.public.blob.vercel-storage.com',
+				port: '',
+				pathname: '/categories/**',
+			},
+		],
+		qualities: [100],
+	},
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

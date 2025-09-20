@@ -1,16 +1,105 @@
 /* End */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+@plugin 'tailwindcss-animate';
 
-* {
-  @apply m-0 p-0 box-border
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-light: var(--light);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --font-crimson: var(--font-crimson);
+  --font-roboto: var(--font-roboto);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer utilities {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
 }
 
 @layer base {
@@ -25,10 +114,10 @@ html {
     --popover-foreground: 0 0% 3.9%;
 
     --primary: #3c2f27;
-    --primary-foreground: #faf2ec;
+    --primary-foreground: #efc8b3;
 
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary: #7f5539;
+    --secondary-foreground: #88664a;
 
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
@@ -39,7 +128,7 @@ html {
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 89.8%;
+    --border: #b2937e;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
 
@@ -48,7 +137,7 @@ html {
     --light: #54595f;
     --dark: #7f5539;
 
-    --theme: #ddb892;
+    --theme: #ffffff;
 
   }
 
@@ -83,7 +172,6 @@ html {
   }
 }
 
-
 @layer base {
   * {
     @apply border-border;
@@ -94,36 +182,33 @@ html {
   }
 }
 
+.container-fluid{
+  @apply px-5 w-full
+}
+
 /* width */
 ::-webkit-scrollbar {
-  width: 11px;
+  @apply w-2
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #3c2f27;
+  @apply bg-primary
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #b2937e;
-  border-radius: 5px;
+  @apply bg-primary-foreground rounded-sm
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #b2937e;
+  @apply bg-[#b2937e]
 }
-
-/* Global */
-/* button{
-  @apply h-12
-} */
-/* End */
 
 /* Navigation Styling */
 .navigation-bar .navbar-wrapper .menu nav ul li {
-  @apply text-[#3c2f27] font-crimson
+  @apply text-primary font-crimson
 }
 
 .navigation-bar .navbar-wrapper .menu nav ul li a {
@@ -139,11 +224,11 @@ html {
 }
 
 .navigation-bar .navbar-wrapper .menu nav ul li:hover {
-  @apply text-[#3c2f27] cursor-pointer duration-300
+  @apply text-primary cursor-pointer duration-300
 }
 
 .navigation-bar .navbar-wrapper .menu nav ul li button {
-  @apply p-0 bg-transparent text-[#3c2f27] font-normal
+  @apply p-0 bg-transparent text-primary font-normal
 }
 
 .navbar-expand-lg .navbar-nav a {
@@ -154,7 +239,7 @@ html {
   content: '';
   display: block;
   height: 2px;
-  width: 0px;
+  width: 0;
   background-color: #3c2f27;
   transition: width 0.3s ease, transform 0.3s ease;
   transform-origin: left center;
@@ -169,19 +254,19 @@ html {
 }
 
 .navbar .nav .nav-links-dropdown:hover .dropdown-menu {
-  @apply block bg-[#faf2ec] rounded-none w-48 border border-[#b2937e]
+  @apply block bg-primary-foreground rounded-none w-48 border border-[#b2937e]
 }
 
 .navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item {
-  @apply text-[#3c2f27] font-crimson text-base leading-7
+  @apply text-primary font-crimson text-base leading-7
 }
 
 .navbar .nav .nav-links-dropdown .dropdown-menu .dropdown-item:hover {
-  @apply bg-transparent text-[#3c2f27]
+  @apply bg-transparent text-primary
 }
 
 .navbar .navbar-toggler {
-  @apply pl-4 text-lg leading-3 text-[#3c2f27] bg-transparent border-none transition-none
+  @apply pl-4 text-lg leading-3 text-primary bg-transparent border-none transition-none
 }
 
 .navbar .navbar-toggler:focus {
@@ -214,7 +299,6 @@ html {
   }
 }
 
-
 /* Our experts section Styling */
 .homepage .our-expert .content-wrapper .showcase img {
   width: 100% !important;
@@ -246,72 +330,50 @@ html {
 }
 
 .homepage .custom-service .description .visit-us a:hover {
-  @apply text-[#3c2f27] bg-[#faf2ec]
+  @apply text-primary bg-[#faf2ec]
 }
 
 /* End */
 
-/* Product Showcase Section  */
-.visit-shop .timber-furniture {
-  @apply bg-[#faf2ec]
-}
-
-.visit-shop .timber-furniture .product-description {
-  @apply font-crimson text-[#3c2f27]
-}
-
-.visit-shop .timber-furniture .visit-store {
-  @apply mt-8
-}
-
-.visit-shop .timber-furniture .visit-store a {
-  @apply inline-block no-underline rounded-none text-[#3c2f27] font-roboto
-}
-
-.visit-shop .timber-furniture .visit-store a:hover {
-  @apply text-[#faf2ec] bg-[#3c2f27] border border-[#3c2f27] duration-300
-}
-
-/* Product Description Section end  */
-
 /* User Profile Component */
-.user-profile-component .content-wrapper {
-  @apply mt-5
-}
 
 .user-profile-component .content-wrapper .form-wrapper form .field-wrapper {
-  @apply mb-2
+  @apply mb-3
 }
 
 .user-profile-component .content-wrapper .form-wrapper form input {
-  @apply w-full mt-[10px] h-12 px-3 outline-0 border border-[#b2937e] rounded-none font-roboto
+  @apply w-full h-10 px-3 outline-0 border border-[#b2937e] rounded-md font-roboto text-sm
 }
 
 .user-profile-component .content-wrapper .form-wrapper form input:focus {
-  @apply rounded-none border border-[#3c2f27]
+  @apply rounded-md border border-primary
 }
 
 .user-profile-component .content-wrapper .form-wrapper form select {
-  @apply h-12 my-3 border border-[#b2937e] bg-white px-3
+  @apply h-10 rounded-md hover:!cursor-pointer !text-sm border border-[#b2937e] bg-white px-3
 }
 
 .user-profile-component .content-wrapper .form-wrapper form select:focus {
-  @apply border border-[#3c2f27] outline-0
+  @apply border border-primary outline-0
 }
 
 /* End */
 
 /* Password Reset  */
 .change-password-form .form-wrapper form .field-wrapper {
-  @apply mb-2
+  @apply mb-3
 }
 
 .change-password-form .form-wrapper form input[type="password"] {
-  @apply w-full mt-[10px] h-12 px-3 border border-[#b2937e] outline-0
+  @apply w-full h-10 px-3 border rounded-md border-[#b2937e] outline-0
+}
+
+.change-password-form .form-wrapper form input[type="text"] {
+  @apply w-full h-10 px-3 border border-[#b2937e] outline-0 rounded-md
 }
 
 .change-password-form .form-wrapper form input[type="password"]:focus {
-  @apply border border-[#3c2f27] outline-0
+  @apply border border-primary outline-0 rounded-md
 }
 
 /* End */
@@ -323,11 +385,11 @@ html {
 }
 
 .image-carousel .carousel-heading {
-  @apply font-crimson text-[#3c2f27] pt-[30px] pb-5 px-0
+  @apply font-crimson text-primary pt-[30px] pb-5 px-0
 }
 
 .image-carousel .carousel .title {
-  @apply font-roboto text-sm text-[#3c2f27] leading-7 pt-1 pb-12 px-0
+  @apply font-roboto text-sm text-primary leading-7 pt-1 pb-12 px-0
 }
 
 .image-carousel .carousel .product-swiper .swiper-wrapper {
@@ -356,64 +418,23 @@ html {
 }
 
 .image-carousel .carousel .swiper-pagination .swiper-pagination-bullet-active {
-  @apply bg-[#3c2f27]
+  @apply text-primary
 }
 
 /* End */
 
-/* Tabbing Swiper */
-
-.tabbing-actions .swiper .swiper-wrapper .edit-profile {
-  @apply !w-[100px] !mr-0
-}
-
-.tabbing-actions .swiper .swiper-wrapper .edit-profile div {
-  @apply !p-0
-}
-
-.tabbing-actions .swiper .swiper-wrapper .my-wishlist {
-  @apply !w-[100px] !mr-2
-}
-
-.tabbing-actions .swiper .swiper-wrapper .order-history {
-  @apply !w-[115px] !mr-2
-}
-
-.tabbing-actions .swiper .swiper-wrapper .chng-password {
-  @apply !w-[130px] !mr-2
-}
-
-.tabbing-actions .swiper .swiper-wrapper .acc-delete {
-  @apply !w-[160px] !mr-0
-}
-
-.tabbing-actions .swiper .swiper-wrapper .manage-addresses {
-  @apply !w-[160px] !mr-0
-}
-
-.tabbing-actions .swiper .swiper-wrapper .browsing-history {
-  @apply !w-[160px] !mr-0
-}
-
-.tabbing-actions .swiper .swiper-wrapper .swiper-slide-active {
-  @apply !w-[0px] !mr-0
-}
-
-.tabbing-actions .swiper .swiper-wrapper .swiper-slide-next {
-  @apply !w-[0px] !mr-0
-}
 
 /* End */
 
 /* Contact Form */
 .contact-page .content-wrapper .form-wrapper form input,
 textarea {
-  @apply w-full py-2 mx-0 h-10 border border-[#b2937e] rounded-none outline-0 px-3 font-roboto
+  @apply w-full py-2 mx-0 border border-[#b2937e] rounded-md outline-0 px-3 font-roboto
 }
 
 .contact-page .content-wrapper .form-wrapper form input:focus,
 textarea:focus {
-  @apply border border-[#3c2f27] px-3
+  @apply border border-primary px-3
 }
 
 .contact-page .content-wrapper .form-wrapper form .field-wrapper {
@@ -424,15 +445,15 @@ textarea:focus {
 
 /* User Register  Form */
 .user-registration .register-form form .field-wrapper {
-  @apply mb-3
+  @apply mb-3 w-full
 }
 
 .user-registration .register-form form input {
-  @apply w-full py-3 border border-[#b2937e] rounded-none px-3 outline-none bg-white font-roboto
+  @apply w-full py-3 border border-[#b2937e] h-10 text-sm rounded-md px-3 outline-hidden bg-white font-roboto
 }
 
 .user-registration .register-form form input:focus {
-  @apply outline-none border border-[#3c2f27] duration-300 px-3 bg-white
+  @apply outline-hidden border border-primary duration-300 px-3 bg-white
 }
 
 /* End */
@@ -443,11 +464,11 @@ textarea:focus {
 }
 
 .user-login .login-form form input {
-  @apply w-full border border-[#b2937e] rounded-none p-3 outline-none bg-white font-roboto
+  @apply w-full border border-[#b2937e] h-10 text-sm rounded-md p-3 outline-hidden bg-white font-roboto
 }
 
 .user-login .login-form form input:focus {
-  @apply outline-none border border-[#3c2f27] duration-300 px-3 bg-white
+  @apply outline-hidden border border-primary duration-300 px-3 bg-white
 }
 
 /* End */
@@ -455,23 +476,23 @@ textarea:focus {
 /* Shipping Details Form */
 
 .shipping-details-form form input[type=text] {
-  @apply w-full p-3 border border-[#b2937e] rounded-none outline-none shadow-none font-roboto text-[#3c2f27]
+  @apply w-full p-3 border border-border rounded-md outline-hidden shadow-none font-roboto text-primary !h-10
 }
 
 .shipping-details-form form input[type=text]:focus {
-  @apply border border-[#3c2f27]
+  @apply border border-primary rounded-md
 }
 
 .shipping-details-form form select {
-  @apply h-12 border border-[#b2937e] bg-white px-3 w-full text-[#3c2f27] font-roboto rounded-none outline-none shadow-none 
+  @apply border border-border bg-white px-3 w-full text-primary font-roboto rounded-md outline-hidden shadow-none !h-10
 }
 
 .shipping-details-form form select:focus {
-  @apply border border-[#3c2f27]
+  @apply border border-primary
 }
 
 .shipping-details-form .data-\[state\=checked\]\:bg-primary[data-state=checked] {
-  @apply bg-[#3c2f27]
+  @apply text-primary
 }
 
 .shipping-details-form form .payment-method {
@@ -494,7 +515,6 @@ textarea:focus {
   @apply hidden
 }
 
-
 .shipping-details-form form .payment-method div .custom-radio {
   @apply block w-4 h-4 border-2 border-[#ccc] rounded-full relative mr-1 hover:bg-primary p-1
 }
@@ -515,12 +535,12 @@ textarea:focus {
 }
 
 .change-password-form .form-wrapper form input:focus {
-  @apply outline-1 outline-[#3c2f27] rounded-none
+  @apply outline-1 outline-primary rounded-none
 }
 
 /* Customer Reviews */
 .customer-reviews .tab-button button {
-  @apply bg-[#3c2f27] rounded-none text-base font-crimson font-semibold text-white
+  @apply text-primary rounded-none text-base font-crimson font-semibold
 }
 
 .customer-reviews .reviews-wrapper .review {
@@ -551,7 +571,7 @@ textarea:focus {
 }
 
 .stories .browse-by-category .inspiration {
-  @apply text-center font-crimson text-2xl leading-10 text-[#3c2f27]
+  @apply text-center font-crimson text-2xl leading-10 text-primary
 }
 
 .stories .browse-by-category .heading {
@@ -587,7 +607,7 @@ textarea:focus {
 }
 
 .stories .product-listing .product-wrapper .image .case-studies {
-  @apply absolute right-5 top-5 font-roboto text-xs leading-4 border border-[#3c2f27] py-2 px-4 bg-[#faf2ec] rounded-3xl
+  @apply absolute right-5 top-5 font-roboto text-xs leading-4 border border-primary py-2 px-4 bg-[#faf2ec] rounded-3xl
 }
 
 .stories .product-listing .product-wrapper .content-wrapper {
@@ -599,7 +619,7 @@ textarea:focus {
 }
 
 .stories .product-listing .product-wrapper .content-wrapper .read-more {
-  @apply font-roboto font-bold text-sm tracking-tight leading-6 text-[#3c2f27] py-3 px-5
+  @apply font-roboto font-bold text-sm tracking-tight leading-6 text-primary py-3 px-5
 }
 
 /* End */
@@ -673,7 +693,7 @@ textarea:focus {
 }
 
 .stories .newsletter .content-wrapper .right-section .wrapper .subscribe button:hover {
-  @apply text-white bg-[#3c2f27] border border-[#3c2f27]
+  @apply text-white bg-primary border border-primary
 }
 
 @media(max-width:992px) {
@@ -693,7 +713,6 @@ textarea:focus {
 
 /* End */
 
-
 /*  */
 .about-us .banner-image-wrapper {
   @apply relative
@@ -704,94 +723,62 @@ textarea:focus {
 }
 
 .about-us .banner-image-wrapper .hero-text {
-  position: absolute;
-  bottom: 10%;
-  z-index: 10;
+  @apply absolute bottom-[10%] z-10
 }
 
 .about-us .banner-image-wrapper .hero-text p {
-  margin-bottom: 0;
-  font-family: minion-pro-display;
-  font-size: 32px;
-  font-size: 38px;
-  color: white;
+  @apply mb-0 text-4xl text-white
 }
 
 /*  */
 .about-us .about-company-location {
-  background-color: #faf2ec;
-  padding: 50px 0;
+  @apply bg-primary-foreground py-12 px-0
 }
 
 .about-us .about-company-location .content-wrapper span {
-  font-size: 30px;
-  display: block;
-  font-family: minion-pro-display;
-  color: #54595f;
+  @apply text-3xl block text-light
 }
 
 .about-us .about-company-location .detail-wrapper .about-company p {
-  font-size: 18px;
-  line-height: 28px;
-  color: #54595f;
-  font-family: minion-pro;
-  padding: 15px 0;
-  margin-bottom: 0;
-
+  @apply text-lg leading-7 text-light py-4 px-0 mb-0
 }
 
 .about-us .about-company-location .explore-more button {
-  border: 1px solid black;
-  padding: 12px 24px;
-  font-family: minion-pro;
-  font-size: 15px;
-  letter-spacing: 0.4px;
-  line-height: 15px;
-  text-transform: uppercase;
-  color: black;
-  background-color: transparent;
+  @apply border border-black py-3 px-6 text-sm tracking-wide leading-4 uppercase text-black bg-transparent
 }
 
 .about-us .about-company-location .explore-more button:hover {
-  background-color: #3c2f27;
-  color: white;
-  transition: .4s;
+  @apply bg-primary text-white duration-500
 }
-
 
 /*  */
 .about-us .banner .video {
-  width: 50%;
-  display: inherit;
+  @apply w-1/2
 }
 
 .about-us .banner .video video {
-  width: 100%;
+ @apply w-1/2
 }
 
 .about-us .banner .image {
-  width: 50%;
-  display: inherit;
+  @apply w-1/2
 }
 
 .about-us .banner .image img {
-  width: 100%;
+  @apply w-full
 }
 
 @media(max-width:576px) {
   .about-us .banner {
-    display: flex !important;
-    flex-wrap: wrap;
-    flex-direction: column;
+    @apply flex! flex-wrap flex-col
   }
 
   .about-us .banner .video {
-    width: 100%;
-    display: block;
+    @apply w-full block
   }
 
   .about-us .banner .image {
-    width: 100%;
+    @apply w-full
   }
 
 }
@@ -799,98 +786,78 @@ textarea:focus {
 /*  */
 
 .about-us .work-showcase {
-  background-color: #faf2ec;
+  @apply bg-primary-foreground;
 }
 
 .about-us .work-showcase .video-wrapper {
-  display: inherit;
-
+  @apply divide-inherit
 }
 
 .about-us .work-showcase .video-wrapper video {
-  width: 100%;
+  @apply w-full
 }
 
 /*  */
 .about-us .westbury {
-  background-color: #3c2f27;
+  @apply bg-primary
 }
 
 .about-us .westbury .content-wrapper .left-section {
-  width: 60%;
-  display: flex;
-  align-items: center;
+  @apply w-3/5 flex items-center
 }
 
 .about-us .westbury .content-wrapper .left-section .fairer-hills {
-  width: 65%;
-  margin: auto;
+  @apply w-[65%] m-auto
 }
 
 .about-us .westbury .content-wrapper .left-section .fairer-hills p {
-  font-family: minion-pro;
-  font-size: 30px;
-  line-height: 45px;
-  color: white;
+  @apply text-3xl leading-[45px] text-white
 }
 
 .about-us .westbury .content-wrapper .left-section .fairer-hills span {
-  font-family: minion-pro;
-  font-size: 18px;
-  line-height: 28px;
-  color: white;
+  @apply text-lg leading-7 text-white
 }
 
 .about-us .westbury .content-wrapper .right-section {
-  width: 40%;
+  @apply w-2/5
 }
 
 .about-us .westbury .content-wrapper .right-section .westbury-white-horse {
-  width: 75%;
+  @apply w-3/4
 }
 
 @media(max-width:992px) {
   .about-us .westbury .content-wrapper .left-section .fairer-hills p {
-    font-family: minion-pro;
-    font-size: 18px;
-    line-height: 26px;
-    color: white;
+    @apply text-lg leading-7 text-white
   }
 }
 
 @media(max-width:576px) {
   .about-us .westbury .content-wrapper .left-section {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    order: 2;
+    @apply w-full flex items-center order-2
   }
 
   .about-us .westbury .content-wrapper .left-section .fairer-hills {
-    width: 100%;
-    padding: 20px;
+    @apply w-full p-5
   }
 
   .about-us .westbury .content-wrapper .right-section {
-    width: 100%;
-    order: 1;
+    @apply w-full order-1
   }
 
   .about-us .westbury .content-wrapper .right-section .westbury-white-horse {
-    width: 100%;
+    @apply w-full
   }
 
   .about-us .westbury .content-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    @apply flex flex-wrap flex-col
   }
 
 }
 
 /* Old Map */
 .about-us .old-navigation-map {
-  position: relative;
+  @apply relative
 }
 
 .about-us .old-navigation-map .hero-image {
@@ -898,56 +865,41 @@ textarea:focus {
 }
 
 .about-us .old-navigation-map .heading {
-  position: absolute;
-  top: 15%;
-  width: 100%;
+  @apply absolute top-[15%] w-full
 }
 
 .about-us .old-navigation-map .heading span {
-  font-family: minion-pro-display;
-  font-size: 34px;
-  line-height: 34px;
-  display: block;
-  text-align: center;
-  color: white;
+  @apply text-3xl leading-9 block text-center text-white
 }
 
 .about-us .old-navigation-map .firms-promise {
-  position: absolute;
-  bottom: 10%;
-  width: 100%;
+  @apply absolute bottom-[10%] w-full
 }
 
 .about-us .old-navigation-map .firms-promise .left-section p,
 .right-section p {
-  font-family: minion-pro;
-  font-size: 18px;
-  line-height: 28px;
-  color: white;
-  margin-bottom: 20px;
+  @apply text-lg leading-7 text-white mb-5
 }
 
 /* End */
 .svg-stroking svg {
-  stroke-width: 3px;
-
+  @apply stroke-2
 }
-
 
 /* Upper Footer Styling */
 .footer-section footer .upper-footer ul li a {
-  @apply leading-6 text-[#3c2f27]
+  @apply leading-6 text-primary
 }
 
 .footer-section footer .upper-footer ul li a:hover {
-  @apply text-[#3c2f27] font-semibold
+  @apply text-primary font-semibold
 }
 
 /* End */
 
 /* Lower Footer */
 .footer-section footer .lower-footer .lower-footer-wrapper div {
-  @apply text-[#3c2f27] text-xs
+  @apply text-primary text-xs
 }
 
 .footer-section footer .lower-footer .lower-footer-wrapper div a:hover {
@@ -956,6 +908,21 @@ textarea:focus {
 
 /* End */
 
+/*Side menu*/
+.lucide-menu{
+  @apply !w-5 !h-5
+}
+/*End*/
+
+/*Listing page swiper*/
+/*.swiper .swiper-wrapper{*/
+/*  @apply flex justify-center !gap-5*/
+/*}*/
+/*.swiper .swiper-wrapper .swiper-slide{*/
+/*  @apply w-max*/
+/*}*/
+/*End*/
+
 .make-bold-props {
   @apply before:block
   before:content-[attr(title)]
@@ -963,4 +930,127 @@ textarea:focus {
   before:font-bold
   before:overflow-hidden
   before:invisible;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #ffffff;
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+
+  --primary: #3c2f27;
+  --primary-foreground: #efc8b3;
+
+  --secondary: #7f5539;
+  --secondary-foreground: #88664a;
+
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #b2937e;
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --light: #54595f;
+  --dark: #7f5539;
+
+  --theme: #ffffff;
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

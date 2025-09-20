@@ -13,6 +13,7 @@ import axios from 'axios';
 import LazyImage from '@/app/_lib/utils/lazy-image';
 import Reviews from '@/app/customer-reviews/page';
 import DeliveryInfo from '@/app/product-detail/components/delivery-info';
+import { MoonLoader } from 'react-spinners';
 
 export default function ProductDetails({ data }) {
 	const product = data;

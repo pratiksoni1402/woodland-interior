@@ -1,3 +1,13 @@
+export const metadata = {
+	title: 'Privacy Policy | Woodland Interiors',
+	description:
+		'Read the Woodland Interiors Privacy Policy to learn how we collect, use, and protect your personal information when you shop with us.',
+	robots: {
+		index: true, // allow indexing (trust & transparency)
+		follow: true, // allow crawling
+	},
+};
+
 export default function Policy() {
 	return (
 		<div className="privacy-policy-page bg-background">

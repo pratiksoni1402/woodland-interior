@@ -39,6 +39,18 @@ model Credentials {
   @@map("customers")
 }
 
+// Password Reset
+
+model Passwordreset {
+  id        Int      @id @default(autoincrement())
+  email     String   @db.VarChar(100)
+  token     String   @db.VarChar(255)
+  expiresAt DateTime @db.DateTime()
+  createdAt DateTime @default(now()) @db.Timestamp()
+
+  @@map("password_reset")
+}
+
 // All products
 model Products {
   id          Int         @id @default(autoincrement())

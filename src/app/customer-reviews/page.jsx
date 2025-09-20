@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { REVIEW_MEDIA_URL } from '@/app/_lib/constants/images';
+
 export default function Reviews() {
 	const customerReviews = [
 		{

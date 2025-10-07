@@ -1,12 +1,15 @@
-import { Resend } from 'resend';
 import crypto from 'crypto';
 import prisma from '@/db';
-import { NextResponse } from 'next/server';
-import PasswordResetEmailTemplate from '@/app/components/password-reset-email-template/page';
+import PasswordResetEmailTemplate from '@/app/components/password-reset-email-template';
+
+import { Resend } from 'resend';
+import { NextRequest, NextResponse } from 'next/server';
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 let success = 'success';
 let fail = 'error';
-export async function POST(req) {
+
+export async function POST(req: NextRequest) {
 	const { email } = await req.json();
 	console.log('email in server', email);
 

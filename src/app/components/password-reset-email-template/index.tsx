@@ -2,11 +2,17 @@ import { Lock, Mail, Shield } from 'lucide-react';
 import WoodlandLogo from '@/icons/footer-logo';
 import React from 'react';
 
+interface PasswordResetEmailTemplateProps {
+	resetLink: string;
+	firstName: string;
+	lastName: string;
+}
+
 export default function PasswordResetEmailTemplate({
 	resetLink,
 	firstName,
 	lastName,
-}) {
+}: PasswordResetEmailTemplateProps) {
 	return (
 		<div className="min-h-screen bg-border/25 pb-12 pt-3">
 			<div className="container mx-auto px-4">

@@ -28,10 +28,10 @@ const errorToast = {
 	},
 };
 
-export function showSuccessToast(message) {
+export function showSuccessToast(message: string) {
 	toast.success(message, successToast);
 }
 
-export function showErrorToast(message) {
+export function showErrorToast(message: string) {
 	toast.error(message, errorToast);
 }

@@ -14,7 +14,11 @@ export const metadata = {
 	description: 'One stop for all home interior',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	return (
 		<html lang="en">
 			<body className={`${CRIMSON.variable} ${ROBOTO.variable}`}>

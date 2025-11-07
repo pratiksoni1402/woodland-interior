@@ -92,7 +92,7 @@ export default function Aboutus() {
 						src="/uploads/images/about/about-page-video.mp4"
 						autoPlay
 						loop
-						type="video/mp4"
+						typeof="video/mp4"
 					></video>
 				</div>
 				<div className="image ">
@@ -154,7 +154,7 @@ export default function Aboutus() {
 									src="/uploads/images/about/about-page-video.mp4"
 									autoPlay
 									loop
-									type="video/mp4"
+									typeof="video/mp4"
 								></video>
 							</div>
 						</div>

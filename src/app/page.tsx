@@ -16,6 +16,7 @@ export default function Home() {
 						<h1 className="tracking-wide md:leading-[60px] leading-6">
 							Crafted Excellence in Wood:
 						</h1>
+
 						<h2 className="tracking-wide "> Where Nature Meets Artistry</h2>
 					</div>
 					<div

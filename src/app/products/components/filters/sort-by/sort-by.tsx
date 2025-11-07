@@ -16,7 +16,7 @@ export default function SortByFilter() {
 	// Get price param from URL
 	const priceParam = searchParams.get('price');
 
-	const handleSortChange = (value) => {
+	const handleSortChange = (value: string) => {
 		const params = new URLSearchParams(searchParams);
 		value === 'reset' ? params.delete('price') : params.set('price', value);
 
@@ -31,7 +31,7 @@ export default function SortByFilter() {
 				<SelectTrigger className="w-[180px] hover:cursor-pointer font-roboto">
 					<SelectValue placeholder="Sort By:" />
 				</SelectTrigger>
-				<SelectContent>
+				<SelectContent className="">
 					<SelectItem value="hightolow" className="hover:cursor-pointer">
 						Price: High to Low
 					</SelectItem>

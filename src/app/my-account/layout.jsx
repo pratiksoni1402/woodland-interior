@@ -9,6 +9,7 @@ export default async function UserProfileLayout({ children }) {
 	if (!session?.user_details) {
 		return redirect('/auth/login');
 	}
+
 	const greetingMessage = getGreetingMessage();
 	return (
 		<div className="container-fluid">

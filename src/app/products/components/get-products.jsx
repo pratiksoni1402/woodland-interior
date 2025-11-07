@@ -16,11 +16,12 @@ import ProductsHeaderSkeleton from '@/app/products/components/skeletons/filter';
 import Categories from '@/app/products/components/product-categories/categories';
 import ProductSkeleton from '@/app/products/components/skeletons/products/skeleton';
 import CategoriesCarousel from '@/app/products/components/category-carousel';
+
 export default function GetProducts() {
 	const params = useSearchParams();
 	const slug = params.get('category');
 	const price = params.get('price');
-	console.log('price filter', price);
+
 	// Fetching All Products
 	const { data: allproducts } = useQuery({
 		queryKey: ['product-list', slug, price],

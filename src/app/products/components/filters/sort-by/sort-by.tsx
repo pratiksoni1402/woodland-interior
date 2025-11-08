@@ -27,7 +27,7 @@ export default function SortByFilter() {
 
 	return (
 		<div>
-			<Select onValueChange={handleSortChange} value={priceParam || undefined}>
+			<Select onValueChange={handleSortChange} value={priceParam || ''}>
 				<SelectTrigger className="w-[180px] hover:cursor-pointer font-roboto">
 					<SelectValue placeholder="Sort By:" />
 				</SelectTrigger>

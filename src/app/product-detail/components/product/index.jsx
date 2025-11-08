@@ -10,11 +10,11 @@ import { IndianRupee, Minus, Plus } from 'lucide-react';
 import { Toaster } from 'react-hot-toast';
 import { Loader2Icon } from 'lucide-react';
 import axios from 'axios';
-import LazyImage from '@/app/_lib/utils/lazy-image';
+
 import Reviews from '@/app/customer-reviews/page';
 import DeliveryInfo from '@/app/product-detail/components/delivery-info';
 import { MoonLoader } from 'react-spinners';
-
+import Image from 'next/image';
 export default function ProductDetails({ data }) {
 	const product = data;
 	const queryClient = useQueryClient();
@@ -155,12 +155,15 @@ export default function ProductDetails({ data }) {
 						<Toaster />
 						<div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-5 col-span-12">
 							<div className="left-section">
-								<div className="product-image  relative lg:h-[600px] h-[427px]">
-									<LazyImage
+								<div className="product-image relative ">
+									<Image
 										src={`${BLOB_BASE_URL}/${product.image}`}
 										alt={product.name}
-										width={427}
-										height={427}
+										width={227}
+										height={227}
+										quality={100}
+										loading={'lazy'}
+										className="max-w-full min-w-full"
 									/>
 								</div>
 							</div>

@@ -39,7 +39,7 @@
 		"declarationMap": true,
 		// Stricter Typechecking Options
 		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": true,
+		"exactOptionalPropertyTypes": false,
 		// Style Options
 		// "noImplicitReturns": true,
 		// "noImplicitOverride": true,
@@ -65,7 +65,7 @@
 		"src/app/products/components/get-products.jsx",
 		"src/app/my-account/layout.jsx",
 		"src/app/my-account/layout.jsx",
-		"src/app/contact/component/form/index.jsx"
+		"src/app/contact/component/form/index"
 	],
 	"exclude": ["node_modules"]
 }

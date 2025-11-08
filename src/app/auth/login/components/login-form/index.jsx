@@ -28,7 +28,7 @@ function AuthenticationForm() {
 	const onSubmit = async (data) => {
 		setLoading(true);
 		try {
-			await axios.post('/api/login-user', data);
+			await axios.post('/api/auth/login', data);
 
 			const redirect = searchParam.get('redirect');
 			router.push(redirect === '/checkout' ? '/checkout' : '/my-account');

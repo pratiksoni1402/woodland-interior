@@ -1,6 +1,7 @@
 import prisma from '@/db';
+import type { ContactUsFormType } from '@/app/contact-us/form/schema';
 
-export async function submitUserQuery(formData: any) {
+export async function submitUserQuery(formData: ContactUsFormType) {
 	const submitUserRequest = await prisma.userquery.create({
 		data: {
 			firstname: formData.firstName,

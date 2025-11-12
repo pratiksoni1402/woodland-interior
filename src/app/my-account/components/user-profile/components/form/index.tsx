@@ -21,7 +21,7 @@ import {
 	SelectValue,
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-
+import './style.css';
 export function UserProfileForm() {
 	const form = useForm({
 		resolver: zodResolver(UserProfileFormSchema),
@@ -41,36 +41,40 @@ export function UserProfileForm() {
 	const onSubmit = () => {};
 
 	return (
-		<div>
+		<div className="user-profile-form">
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)}>
 					<div>
-						<FormField
-							name="firstName"
-							control={form.control}
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>First name</FormLabel>
-									<FormControl>
-										<Input placeholder="John" {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							name="lastName"
-							control={form.control}
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Last name</FormLabel>
-									<FormControl>
-										<Input placeholder="Doe" {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
+						<div className="form-fields">
+							<div className="field-wrapper">
+								<FormField
+									name="firstName"
+									control={form.control}
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>First name</FormLabel>
+											<FormControl>
+												<Input placeholder="John" {...field} />
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+							</div>
+							<FormField
+								name="lastName"
+								control={form.control}
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Last name</FormLabel>
+										<FormControl>
+											<Input placeholder="Doe" {...field} />
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+						</div>
 						<FormField
 							control={form.control}
 							name="addressLineOne"

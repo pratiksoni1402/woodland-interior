@@ -1,71 +1,82 @@
 {
-	// Visit https://aka.ms/tsconfig to read more about this file
-	"compilerOptions": {
-		"target": "ES2017",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"noEmit": true,
-		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "bundler",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"jsx": "preserve",
-		"incremental": true,
-		"plugins": [
-			{
-				"name": "next"
-			}
-		],
-		"paths": {
-			"@/*": ["./src/*"],
-			"@public": ["./public/*"]
-		},
-		// File Layout
-		// "rootDir": "./src",
-		// "outDir": "./dist",
-		// Environment Settings
-		// See also https://aka.ms/tsconfig/module
-		"types": [],
-		// For Node.js:
-		// "lib": ["esnext"],
-		// "types": ["node"],
-		// and npm install -D @types/node
-		// Other Outputs
-		"sourceMap": true,
-		"declaration": true,
-		"declarationMap": true,
-		// Stricter Typechecking Options
-		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": false,
-		// Style Options
-		// "noImplicitReturns": true,
-		// "noImplicitOverride": true,
-		// "noUnusedLocals": true,
-		// "noUnusedParameters": true,
-		// "noFallthroughCasesInSwitch": true,
-		// "noPropertyAccessFromIndexSignature": true,
-		// Recommended Options
-		//"jsx": "react-jsx",
-		"verbatimModuleSyntax": true,
-		"noUncheckedSideEffectImports": true,
-		"moduleDetection": "force"
-	},
-	"include": [
-		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		".next/types/**/*.ts",
-		"src/db/index.js",
-		"src/lib/session.js",
-		"src/icons/wishlist.jsx",
-		"src/app/products/components/product-count/count.jsx",
-		"src/app/products/components/get-products.jsx",
-		"src/app/my-account/layout.jsx",
-		"src/app/my-account/layout.jsx",
-		"src/app/contact/component/form/index"
-	],
-	"exclude": ["node_modules"]
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@public": [
+        "./public/*"
+      ]
+    },
+    // File Layout
+    // "rootDir": "./src",
+    // "outDir": "./dist",
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+    "types": [],
+    // For Node.js:
+    // "lib": ["esnext"],
+    // "types": ["node"],
+    // and npm install -D @types/node
+    // Other Outputs
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": false,
+    // Style Options
+    // "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+    // Recommended Options
+    //"jsx": "react-jsx",
+    "verbatimModuleSyntax": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/db/index.js",
+    "src/lib/session.js",
+    "src/icons/wishlist.jsx",
+    "src/app/products/components/product-count/count.jsx",
+    "src/app/products/components/get-products.jsx",
+    "src/app/my-account/layout.jsx",
+    "src/app/my-account/layout.jsx",
+    "src/app/contact/component/form/index",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

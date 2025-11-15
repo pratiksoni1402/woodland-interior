@@ -1,7 +1,7 @@
 import ProductDetails from '@/app/product-detail/components/product';
 
 export async function generateMetadata({ params }) {
-	const { id } = params;
+	const { id } = await params;
 	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 	const res = await fetch(`${baseUrl}api/product-detail/${id}`);

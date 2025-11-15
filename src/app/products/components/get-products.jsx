@@ -8,19 +8,20 @@ import { IndianRupee } from 'lucide-react';
 
 import Link from 'next/link';
 import axios from 'axios';
+import Image from 'next/image';
 
-import LazyImage from '@/app/_lib/utils/lazy-image';
 import Count from '@/app/products/components/product-count/count';
 import SortByFilter from '@/app/products/components/filters/sort-by/sort-by';
 import ProductsHeaderSkeleton from '@/app/products/components/skeletons/filter';
 import Categories from '@/app/products/components/product-categories/categories';
 import ProductSkeleton from '@/app/products/components/skeletons/products/skeleton';
 import CategoriesCarousel from '@/app/products/components/category-carousel';
+
 export default function GetProducts() {
 	const params = useSearchParams();
 	const slug = params.get('category');
 	const price = params.get('price');
-	console.log('price filter', price);
+
 	// Fetching All Products
 	const { data: allproducts } = useQuery({
 		queryKey: ['product-list', slug, price],
@@ -68,9 +69,11 @@ export default function GetProducts() {
 										className="sm:my-4 my-0 group"
 									>
 										<div className="product-image overflow-hidden relative sm:h-[300px] h-[200px]">
-											<LazyImage
+											<Image
 												src={`${BLOB_BASE_URL}/${product.image}`}
-												alt={product.name}
+												blurDataURL={`${BLOB_BASE_URL}/${product.image}`}
+												alt={product.name || 'Product Image'}
+												loading={'lazy'}
 												width={427}
 												height={427}
 												className="group-hover:scale-125 transition-transform duration-300 sm:w-[427px] sm:h-[427px] w-[227px] h-[227px]"

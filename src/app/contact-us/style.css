@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* Contact Form */
+.contact-page .content-wrapper .form-wrapper form input,
+textarea {
+  @apply w-full py-2 mx-0 border border-[#b2937e] rounded-md outline-0 px-3 font-roboto
+}
+
+.contact-page .content-wrapper .form-wrapper form input:focus,
+textarea:focus {
+  @apply border border-primary px-3
+}
+
+.contact-page .content-wrapper .form-wrapper form .field-wrapper {
+  @apply mb-3 block
+}

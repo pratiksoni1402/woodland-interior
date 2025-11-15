@@ -86,7 +86,7 @@ export function SignupForm() {
 
 		try {
 			setLoading(true);
-			const response = await axios.post('/api/register-user', data);
+			const response = await axios.post('/api/auth/register', data);
 
 			if (response.data.successMessage) {
 				router.push('/my-account');

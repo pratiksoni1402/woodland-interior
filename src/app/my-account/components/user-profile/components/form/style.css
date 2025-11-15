@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.user-profile-form{
+  @apply bg-red-500
+}
+
+.user-profile-form .form-fields .field-wrapper{
+@apply flex gap-5
+}

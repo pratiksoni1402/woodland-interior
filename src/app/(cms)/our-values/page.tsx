@@ -16,7 +16,7 @@ export default function Stories() {
 				<div
 					className="banner-image"
 					style={{
-						backgroundImage: "url('/uploads/images/our-values/banner.avif')",
+						backgroundImage: "url('/uploads/images/our-values/banner.jpg')",
 						width: '100%',
 						height: '85vh',
 						marginTop: '-80px',
@@ -91,7 +91,7 @@ export default function Stories() {
 				<div
 					className="banner-image"
 					style={{
-						backgroundImage: "url('/uploads/images/our-values/too-good.avif')",
+						backgroundImage: "url('/uploads/images/our-values/too-good.jpg')",
 						width: '100%',
 						height: '85vh',
 
@@ -160,7 +160,7 @@ export default function Stories() {
 					className="banner-image"
 					style={{
 						backgroundImage:
-							"url('/uploads/images/our-values/good-together.avif')",
+							"url('/uploads/images/our-values/good-together.jpg')",
 						width: '100%',
 						height: '85vh',
 						backgroundPosition: 'center',
@@ -193,8 +193,7 @@ export default function Stories() {
 				<div
 					className="banner-image"
 					style={{
-						backgroundImage:
-							"url('/uploads/images/our-values/our-values.avif')",
+						backgroundImage: "url('/uploads/images/our-values/our-values.jpg')",
 						width: '100%',
 						height: '85vh',
 						backgroundPosition: 'center',

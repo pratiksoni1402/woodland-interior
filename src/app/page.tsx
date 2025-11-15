@@ -1,11 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: 'Woodland Interiors',
 	description: 'One stop for all you home interior needs',
 };
+
 export default function Home() {
 	return (
 		<div className="homepage">
@@ -16,13 +18,18 @@ export default function Home() {
 						<h1 className="tracking-wide md:leading-[60px] leading-6">
 							Crafted Excellence in Wood:
 						</h1>
-
 						<h2 className="tracking-wide "> Where Nature Meets Artistry</h2>
+						<Link
+							href="/products?category=sofa-sets"
+							className="font-roboto py-3 px-6 text-sm bg-white hover:text-white text-primary border border-primary hover:border-secondary hover:bg-secondary"
+						>
+							Shop Now
+						</Link>
 					</div>
 					<div
 						className="banner w-full"
 						style={{
-							height: '70vh',
+							height: 'calc(100vh - 56px)',
 							width: '100%',
 							backgroundImage: 'url("/uploads/images/homepage/banner.jpg")',
 							backgroundSize: 'cover',
@@ -59,11 +66,13 @@ export default function Home() {
 				<div className="content-wrapper">
 					<div className="grid lg:grid-cols-3 sm:grid-cols-1 ">
 						<div className="content col-span-2">
-							<video
-								src="/uploads/images/homepage/warehouse-detail.mp4"
-								autoPlay
-								loop
-							></video>
+							<Image
+								src="/uploads/images/homepage/warehouse.jpg"
+								alt=""
+								width={500}
+								height={500}
+								className="w-full"
+							/>
 						</div>
 						<div className="description flex flex-col justify-center px-4 py-4">
 							<div className="title text-primary text-3xl font-medium py-3 font-crimson">

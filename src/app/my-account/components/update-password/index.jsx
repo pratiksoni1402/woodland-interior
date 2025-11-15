@@ -70,7 +70,7 @@ export default function UpdateUserPassword() {
 
 		try {
 			setLoading(true);
-			const response = await axios.post('/api/update-password', data);
+			const response = await axios.post('/api/auth/update-password', data);
 
 			if (response.data.messageSuccess) {
 				showSuccessToast(response.data.messageSuccess);

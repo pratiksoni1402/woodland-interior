@@ -26,7 +26,7 @@ export default function Logout() {
 	const handlelogout = () => {
 		setLoading(true);
 		axios
-			.post('/api/logout-user')
+			.post('/api/auth/logout')
 			.then(() => {
 				router.push('/');
 				showSuccessToast('Logged Out');

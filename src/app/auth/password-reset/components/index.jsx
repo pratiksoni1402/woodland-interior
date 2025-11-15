@@ -16,7 +16,7 @@ export function PasswordResetForm() {
 	const onSubmit = async (data) => {
 		setIsProcessing(true);
 		try {
-			const response = await axios.post('/api/forgot-password', data);
+			const response = await axios.post('/api/auth/forgot-password', data);
 			if (response.data.type === 'success') {
 				toast.success(response.data.message);
 			} else {

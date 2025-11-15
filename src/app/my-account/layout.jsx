@@ -9,9 +9,10 @@ export default async function UserProfileLayout({ children }) {
 	if (!session?.user_details) {
 		return redirect('/auth/login');
 	}
+
 	const greetingMessage = getGreetingMessage();
 	return (
-		<div className="container-fluid">
+		<div className="xl:container container-fluid">
 			<div className="heading text-center font-crimson text-[#3c2f27] text-3xl py-5">
 				<h1 className="capitalize md:text-4xl text-2xl">{greetingMessage}</h1>
 			</div>

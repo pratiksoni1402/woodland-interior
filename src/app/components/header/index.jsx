@@ -72,20 +72,12 @@ const Navbar = () => {
 										</ul>
 									</NavigationMenuContent>
 								</NavigationMenuItem>
-								{/*<NavigationMenuItem>*/}
-								{/*	<NavigationMenuLink*/}
-								{/*		asChild*/}
-								{/*		className="text-lg hover:bg-background focus:bg-background"*/}
-								{/*	>*/}
-								{/*		<Link href="/our-values">Our Values</Link>*/}
-								{/*	</NavigationMenuLink>*/}
-								{/*</NavigationMenuItem>*/}
 								<NavigationMenuItem>
 									<NavigationMenuLink
 										asChild
 										className="text-lg leading-7 hover:bg-background focus:bg-background"
 									>
-										<Link href="/contact">Contact</Link>
+										<Link href="/contact-us">Contact</Link>
 									</NavigationMenuLink>
 								</NavigationMenuItem>
 								<NavigationMenuItem>

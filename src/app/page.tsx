@@ -1,12 +1,12 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import type { Metadata } from 'next';
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
 	title: 'Woodland Interiors',
 	description: 'One stop for all you home interior needs',
-};
+}
 
 export default function Home() {
 	return (
@@ -161,5 +161,5 @@ export default function Home() {
 			</section>
 			{/* End */}
 		</div>
-	);
+	)
 }

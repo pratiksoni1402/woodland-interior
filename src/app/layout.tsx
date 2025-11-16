@@ -1,25 +1,27 @@
-import { ROBOTO, CRIMSON } from './fonts';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Analytics } from '@vercel/analytics/next';
-import { Toaster } from '@/components/ui/sonner';
-import type { Metadata } from 'next';
+import React from 'react'
+import type { Metadata } from 'next'
 
-import Header from './components/header';
-import Footer from './components/footer';
-import QueryClientProvider from '@/provider/query-client';
-import NextTopLoader from 'nextjs-toploader';
-import './globals.css';
-import React from 'react';
+import { ROBOTO, CRIMSON } from './fonts'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/next'
+import { Toaster } from '@/components/ui/sonner'
+
+import Header from './_components/header'
+import Footer from './_components/footer'
+import QueryClientProvider from '@/provider/query-client'
+import NextTopLoader from 'nextjs-toploader'
+
+import './globals.css'
 
 export const metadata: Metadata = {
 	title: 'Woodland Interiors',
 	description: 'One stop for all home interior',
-};
+}
 
 export default function RootLayout({
 	children,
 }: {
-	children: React.ReactNode;
+	children: React.ReactNode
 }) {
 	return (
 		<html lang="en">
@@ -45,5 +47,5 @@ export default function RootLayout({
 				<Analytics />
 			</body>
 		</html>
-	);
+	)
 }

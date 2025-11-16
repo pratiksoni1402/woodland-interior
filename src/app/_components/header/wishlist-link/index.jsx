@@ -1,7 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import Link from 'next/link';
-import HeartIcon from '@/icons/wishlist';
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import Link from 'next/link'
+import HeartIcon from '@/icons/wishlist'
 export default function WishlistLink() {
 	const { data: wishlistTotal } = useQuery({
 		queryKey: ['wishlistcount'],
@@ -9,12 +9,12 @@ export default function WishlistLink() {
 			axios
 				.get('/api/wishlist-items/get-count')
 				.then((response) => {
-					return response.data.totalcount;
+					return response.data.totalcount
 				})
 				.catch((error) => {
-					console.log('Error in count', error);
+					console.log('Error in count', error)
 				}),
-	});
+	})
 	return (
 		<Link href="/wishlist" className="relative">
 			{wishlistTotal > 0 ? (
@@ -25,13 +25,8 @@ export default function WishlistLink() {
 					</div>
 				</div>
 			) : (
-				<div>
-					<HeartIcon fill="#ffffff" />
-					<div className="absolute text-[10px] font-roboto text-center text-primary top-[5px] right-0.5 w-5 h-5 ">
-						{wishlistTotal}
-					</div>
-				</div>
+				<HeartIcon fill="#ffffff" />
 			)}
 		</Link>
-	);
+	)
 }

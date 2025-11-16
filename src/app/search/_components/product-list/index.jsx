@@ -30,7 +30,7 @@ export default function ProductList() {
 	return (
 		<div className="container">
 			<div className="product-listing-section pb-10 pt-2">
-				<div className="sm:py-3 py-0">
+				<div className="sm:py-3 py-0 text-primary">
 					<h1 className="text-center font-crimson sm:text-4xl text-2xl">
 						Search
 					</h1>

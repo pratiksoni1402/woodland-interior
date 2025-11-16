@@ -1,5 +1,5 @@
-import UpdateUserPassword from '../components/update-password';
+import UpdateUserPassword from '../_components/update-password'
 
 export default function UpdatePassword() {
-	return <UpdateUserPassword />;
+	return <UpdateUserPassword />
 }

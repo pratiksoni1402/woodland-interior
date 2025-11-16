@@ -1,14 +1,14 @@
-import OrderDetails from './components';
-import ShoppingBag from './components/shopping-bag';
+import OrderDetails from './_components'
+import ShoppingBag from './_components/shopping-bag'
 
-import { getSession } from '@/lib/session';
-import { redirect } from 'next/navigation';
+import { getSession } from '@/lib/session'
+import { redirect } from 'next/navigation'
 
 export default async function Checkout() {
-	const session = await getSession();
+	const session = await getSession()
 
 	if (!session?.user_details) {
-		return redirect('/auth?redirect=/checkout');
+		return redirect('/auth?redirect=/checkout')
 	}
 
 	return (
@@ -31,5 +31,5 @@ export default async function Checkout() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

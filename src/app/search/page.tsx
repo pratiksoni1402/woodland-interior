@@ -1,6 +1,6 @@
-import ProductList from '@/app/search/components/product-list';
-import { FallbackSkeleton } from '@/app/search/components/fallback';
-import { Suspense } from 'react';
+import ProductList from '@/app/search/_components/product-list'
+import { FallbackSkeleton } from '@/app/search/_components/fallback'
+import { Suspense } from 'react'
 export default function SearchProducts() {
 	return (
 		<Suspense
@@ -12,5 +12,5 @@ export default function SearchProducts() {
 		>
 			<ProductList />
 		</Suspense>
-	);
+	)
 }

@@ -1,16 +1,16 @@
-import { getGreetingMessage } from '@/app/my-account/components/greetings';
-import SideMenu from '@/app/my-account/components/side-menu';
+import { getGreetingMessage } from '@/app/my-account/_components/greetings'
+import SideMenu from '@/app/my-account/_components/side-menu'
 
-import React from 'react';
-import { getSession } from '@/lib/session';
-import { redirect } from 'next/navigation';
+import React from 'react'
+import { getSession } from '@/lib/session'
+import { redirect } from 'next/navigation'
 export default async function UserProfileLayout({ children }) {
-	const session = await getSession();
+	const session = await getSession()
 	if (!session?.user_details) {
-		return redirect('/auth/login');
+		return redirect('/auth/login')
 	}
 
-	const greetingMessage = getGreetingMessage();
+	const greetingMessage = getGreetingMessage()
 	return (
 		<div className="xl:container container-fluid">
 			<div className="heading text-center font-crimson text-[#3c2f27] text-3xl py-5">
@@ -29,5 +29,5 @@ export default async function UserProfileLayout({ children }) {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
+import React from 'react'
+import Image from 'next/image'
 
 export const metadata = {
 	title: 'About Us | Woodland Interiors',
@@ -9,7 +9,7 @@ export const metadata = {
 		index: true, // allow indexing
 		follow: true, // allow crawling
 	},
-};
+}
 
 export default function Aboutus() {
 	return (
@@ -230,5 +230,5 @@ export default function Aboutus() {
 				</div>
 			</section>
 		</div>
-	);
+	)
 }

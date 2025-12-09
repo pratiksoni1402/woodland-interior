@@ -1,1 +1,1 @@
-Node Version -> 22.18.0
+Node Version -> 24.11.1

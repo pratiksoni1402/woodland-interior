@@ -3,10 +3,10 @@ export const metadata = {
 	description:
 		'Discover the core values that guide Woodland Interiors — quality craftsmanship, sustainability, and a passion for creating elegant home décor.',
 	robots: {
-		index: true, // allow indexing
-		follow: true, // allow crawling
+		index: true,
+		follow: true,
 	},
-};
+}
 
 export default function Stories() {
 	return (
@@ -226,5 +226,5 @@ export default function Stories() {
 				</div>
 			</section>
 		</div>
-	);
+	)
 }

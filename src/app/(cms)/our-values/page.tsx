@@ -1,4 +1,6 @@
-export const metadata = {
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
 	title: 'Our Values | Woodland Interiors',
 	description:
 		'Discover the core values that guide Woodland Interiors — quality craftsmanship, sustainability, and a passion for creating elegant home décor.',

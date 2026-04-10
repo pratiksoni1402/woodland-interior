@@ -15,12 +15,12 @@ export async function generateMetadata({ params }) {
 
 export default async function ProductDetailPage({ params }) {
 	const { id } = await params
-	console.log('dfdd', id)
+
 	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 	//Fetch Product Detail
 	const res = await fetch(`${baseUrl}api/product-detail/${id}`)
 	const { productDetail } = await res.json()
-	console.log('server pd', productDetail.name)
+
 	return (
 		<div>
 			<ProductDetails data={productDetail} />

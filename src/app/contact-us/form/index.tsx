@@ -1,6 +1,6 @@
-'use client';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+'use client'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import {
 	Form,
 	FormField,
@@ -8,19 +8,19 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from '@/components/ui/form';
-import { Button } from '@/components/ui/button';
-import { Loader2Icon } from 'lucide-react';
-import { SubmitUserQuery } from '@/app/contact-us/actions/submit-action';
+} from '@/components/ui/form'
+import { Button } from '@/components/ui/button'
+import { Loader2Icon } from 'lucide-react'
+import { SubmitUserQuery } from '@/app/contact-us/actions/submit-action'
 import {
 	contactUsFormSchema,
 	type ContactUsFormType,
-} from '@/app/contact-us/form/schema';
-import { toast } from 'sonner';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+} from '@/app/contact-us/form/schema'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 
 export function ContactForm() {
 	const form = useForm<ContactUsFormType>({
@@ -33,26 +33,26 @@ export function ContactForm() {
 			subject: '',
 			message: '',
 		},
-	});
+	})
 
 	// Submit user query action
 	const onSubmit = async (data: z.infer<typeof contactUsFormSchema>) => {
 		try {
-			setLoading(true);
-			const response = await SubmitUserQuery(data);
-			console.log('response', response);
+			setLoading(true)
+			const response = await SubmitUserQuery(data)
+
 			if (response.success) {
-				form.reset();
-				toast[response.message.type](response.message.content);
+				form.reset()
+				toast[response.message.type](response.message.content)
 			}
 		} catch (error) {
-			toast.error('Please try again ');
+			toast.error('Please try again ')
 		} finally {
-			setLoading(false);
+			setLoading(false)
 		}
-	};
+	}
 	// End
-	const [isLoading, setLoading] = useState(false);
+	const [isLoading, setLoading] = useState(false)
 
 	return (
 		<div className="contact-form">
@@ -150,5 +150,5 @@ export function ContactForm() {
 				</Form>
 			</div>
 		</div>
-	);
+	)
 }

@@ -38,7 +38,6 @@ export default function ProductDetails({ data }) {
 		queryKey: ['totalcount'],
 		queryFn: () =>
 			axios.get('/api/cart-items/get-count').then((response) => {
-				console.log(response.data.productcount)
 				return response.data.productcount
 			}),
 	})
@@ -49,7 +48,6 @@ export default function ProductDetails({ data }) {
 		queryKey: ['wishlistcount'],
 		queryFn: () =>
 			axios.get('/api/wishlist-items/get-count').then((response) => {
-				console.log(response.data.totalcount)
 				return response.data.totalcount
 			}),
 	})
@@ -162,7 +160,7 @@ export default function ProductDetails({ data }) {
 										width={227}
 										height={227}
 										quality={100}
-										loading={'lazy'}
+										loading={'eager'}
 										className="max-w-full min-w-full"
 									/>
 								</div>

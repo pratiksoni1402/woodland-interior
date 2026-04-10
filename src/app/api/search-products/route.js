@@ -1,11 +1,10 @@
-import prisma from '@/db';
+import prisma from '@/db'
 
 export async function POST(request) {
 	try {
-		const body = await request.json();
-		const { searchKeyword, filterByPrice } = body;
-		console.log('SK', searchKeyword);
-		console.log('FBP', filterByPrice);
+		const body = await request.json()
+		const { searchKeyword, filterByPrice } = body
+
 		// Example body:
 		// { "searchKeyword": "chair", "filterByPrice": "hightolow" }
 
@@ -23,13 +22,13 @@ export async function POST(request) {
 					: filterByPrice === 'lowtohigh'
 						? { price: 'asc' }
 						: undefined, // 👈 no sorting if "reset" or not passed
-		});
+		})
 
-		return Response.json({ searchProducts });
+		return Response.json({ searchProducts })
 	} catch (error) {
-		console.error('Search Error:', error);
+		console.error('Search Error:', error)
 		return new Response(JSON.stringify({ error: 'Something went wrong' }), {
 			status: 500,
-		});
+		})
 	}
 }

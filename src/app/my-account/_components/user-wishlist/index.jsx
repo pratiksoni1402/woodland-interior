@@ -1,18 +1,18 @@
-'use client';
-import Image from 'next/image';
-import { IndianRupee } from 'lucide-react';
-import axios from 'axios';
-import Link from 'next/link';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Toaster } from 'react-hot-toast';
-import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
+'use client'
+import Image from 'next/image'
+import { IndianRupee } from 'lucide-react'
+import axios from 'axios'
+import Link from 'next/link'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { Toaster } from 'react-hot-toast'
+import { BLOB_BASE_URL } from '@/app/_lib/constants/blob'
 
-import { useState } from 'react';
+import { useState } from 'react'
 
 export default function UsersWishlist() {
-	const queryClient = useQueryClient();
-	const [toCart, setToCart] = useState(null);
-	const [itemDelete, setItemDelte] = useState(null);
+	const queryClient = useQueryClient()
+	const [toCart, setToCart] = useState(null)
+	const [itemDelete, setItemDelte] = useState(null)
 
 	// Get all products from wishlist table
 	const { data: allproducts } = useQuery({
@@ -21,14 +21,14 @@ export default function UsersWishlist() {
 			axios
 				.get('/api/wishlist-items/get-data')
 				.then((response) => {
-					return response.data.getallproduct;
+					return response.data.getallproduct
 				})
 				.catch((error) => {
-					console.log('Error Occured', error);
+					console.log('Error Occured', error)
 				}),
-	});
+	})
 	// End
-	console.log(allproducts);
+
 	if (allproducts?.length === 0) {
 		return (
 			<div className=" py-20 flex-col font-crimson  text-primary flex items-center justify-center">
@@ -37,30 +37,30 @@ export default function UsersWishlist() {
 					<Link href="/products?category=bedroom">Shop Now</Link>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	// Delete product from wishlist table
 	const deleteproduct = (id) => {
-		setItemDelte(id);
+		setItemDelte(id)
 		axios
 			.post('/api/wishlist-items/delete-item', { id })
 			.then(() => {
-				queryClient.invalidateQueries('productlist');
+				queryClient.invalidateQueries('productlist')
 			})
 			.catch((error) => {
-				console.log('Error Occured while deleting product', error);
+				console.log('Error Occured while deleting product', error)
 			})
 			.finally(() => {
-				queryClient.invalidateQueries('productlist');
-				setItemDelte(false);
-			});
-	};
+				queryClient.invalidateQueries('productlist')
+				setItemDelte(false)
+			})
+	}
 	// End
 
 	// Move product to Cart Table
 	const movetocart = (productid, quantity, sku, id) => {
-		setToCart(id);
+		setToCart(id)
 		axios
 			.post('/api/cart-items/from-wishlist', {
 				productid,
@@ -68,16 +68,16 @@ export default function UsersWishlist() {
 				sku,
 			})
 			.then(() => {
-				deleteproduct(id);
+				deleteproduct(id)
 			})
 			.catch((error) => {
-				console.log('Error', error);
+				console.log('Error', error)
 			})
 			.finally(() => {
-				queryClient.invalidateQueries('productlist');
-				setToCart(false);
-			});
-	};
+				queryClient.invalidateQueries('productlist')
+				setToCart(false)
+			})
+	}
 	// End
 
 	return (
@@ -121,5 +121,5 @@ export default function UsersWishlist() {
 				))}
 			</div>
 		</div>
-	);
+	)
 }

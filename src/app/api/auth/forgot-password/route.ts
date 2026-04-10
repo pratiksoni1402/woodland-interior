@@ -11,11 +11,10 @@ let fail = 'error'
 
 export async function POST(req: NextRequest) {
 	const { email } = await req.json()
-	console.log('email in server', email)
 
 	// 1. Check if user exists
 	const user = await prisma.credentials.findFirst({ where: { email } })
-	console.log('fetched email', user)
+
 	if (!user) {
 		return NextResponse.json({
 			type: fail,

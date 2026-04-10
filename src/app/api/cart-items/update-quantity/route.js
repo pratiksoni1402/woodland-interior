@@ -1,19 +1,18 @@
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-export const revalidate = 0;
-import prisma from "@/db";
-export async function PUT(request){
-    let bodydata = await request.json()
-    console.log("This is body data", bodydata)
-    const updatequantity = await prisma.cartitems.update({
-        where:{
-            id: bodydata.id,
-        },
-        data:{
-            quantity: bodydata.quantity,
-        }
-    })
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+export const revalidate = 0
+import prisma from '@/db'
+export async function PUT(request) {
+	let bodydata = await request.json()
 
-    console.log("Hello from update quantity", {updatequantity})
-    return Response.json({updatequantity})
+	const updatequantity = await prisma.cartitems.update({
+		where: {
+			id: bodydata.id,
+		},
+		data: {
+			quantity: bodydata.quantity,
+		},
+	})
+
+	return Response.json({ updatequantity })
 }

@@ -1,17 +1,17 @@
 // api/cart-items/set-data/route.js
 
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-export const revalidate = 0;
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+export const revalidate = 0
 
-import prisma from '@/db';
-import { getSessionId } from '@/lib/session';
+import prisma from '@/db'
+import { getSessionId } from '@/lib/session'
 
 export async function POST(request) {
-	const sessionid = await getSessionId();
-	const requestdata = await request.json();
+	const sessionid = await getSessionId()
+	const requestdata = await request.json()
 
-	const { id, sku, quantity } = requestdata;
+	const { id, sku, quantity } = requestdata
 
 	// Check if product already exists in the cart for this session
 	const existingItem = await prisma.cartitems.findFirst({
@@ -20,9 +20,9 @@ export async function POST(request) {
 			sku: sku,
 			sessionid: sessionid,
 		},
-	});
+	})
 
-	let cartItem;
+	let cartItem
 
 	if (existingItem) {
 		// ✅ Update the quantity
@@ -31,7 +31,7 @@ export async function POST(request) {
 			data: {
 				quantity: existingItem.quantity + quantity,
 			},
-		});
+		})
 	} else {
 		// ✅ Insert new item
 		cartItem = await prisma.cartitems.create({
@@ -41,9 +41,8 @@ export async function POST(request) {
 				quantity: quantity,
 				sessionid: sessionid,
 			},
-		});
+		})
 	}
 
-	console.log('Cart updated', { cartItem });
-	return Response.json({ cartItem });
+	return Response.json({ cartItem })
 }

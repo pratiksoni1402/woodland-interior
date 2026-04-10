@@ -1,18 +1,18 @@
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-export const revalidate = 0;
-import prisma from "@/db";
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+export const revalidate = 0
+import prisma from '@/db'
 export async function POST(request, props) {
-    const params = await props.params;
-    console.log("this is server isde params", {params})
-    const orderReceipt = await prisma.orders.findUnique({
-        where:{
-            id: parseInt(params.orderid),
-        },
-        include:{
-            orderitems: true,
-        },
-    })
-    console.log("This is the receipt", {orderReceipt});
-    return Response.json({orderReceipt});
+	const params = await props.params
+
+	const orderReceipt = await prisma.orders.findUnique({
+		where: {
+			id: parseInt(params.orderid),
+		},
+		include: {
+			orderitems: true,
+		},
+	})
+
+	return Response.json({ orderReceipt })
 }

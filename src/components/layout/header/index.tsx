@@ -12,9 +12,9 @@ import {
 } from '@/components/ui/navigation-menu'
 
 import MobileMenu from './mobile-menu'
-import CartLink from '@/app/_components/header/cart-link'
-import WishlistLink from '@/app/_components/header/wishlist-link'
-import UserAccountLink from '@/app/_components/header/user'
+import CartLink from './cart-link'
+import WishlistLink from './wishlist-link'
+import UserAccountLink from './user'
 import Logo from '@/icons/header-logo'
 const Navbar = () => {
 	return (
@@ -26,7 +26,7 @@ const Navbar = () => {
 					</div>
 				</div>
 				<div className="flex-1">
-					<SearchInput />
+					<SearchInput className="" />
 				</div>
 
 				<div className="flex justify-center flex-none">

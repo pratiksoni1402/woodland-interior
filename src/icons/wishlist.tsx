@@ -1,4 +1,18 @@
-const HeartIcon = ({ size = 24, color = '#3c2f27', fill, className = '' }) => {
+import type { SVGProps } from 'react';
+
+export interface HeartIconProps extends SVGProps<SVGSVGElement> {
+	size?: number;
+	color?: string;
+	fill?: string;
+	className?: string;
+}
+
+const HeartIcon = ({
+	size = 24,
+	color = '#3c2f27',
+	fill,
+	className = '',
+}: HeartIconProps) => {
 	return (
 		<svg
 			width={`${size}px`}

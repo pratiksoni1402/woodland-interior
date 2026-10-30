@@ -30,7 +30,7 @@ import {
 	TentTree,
 } from 'lucide-react'
 
-import UserAccountLink from '@/app/_components/header/user'
+import UserAccountLink from '../user'
 import Logout from '@/app/auth/logout'
 
 export default function MobileMenu() {
@@ -43,8 +43,8 @@ export default function MobileMenu() {
 					<Sheet open={open} onOpenChange={setOpen}>
 						<SheetTrigger asChild>
 							<Button
-								variant="outline triger-button"
-								className="!p-0 hover:cursor-pointer"
+								variant="outline"
+								className="triger-button !p-0 hover:cursor-pointer"
 							>
 								<Menu color="#3c2f27" />
 							</Button>

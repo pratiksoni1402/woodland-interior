@@ -6,8 +6,8 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/next'
 import { Toaster } from '@/components/ui/sonner'
 
-import Header from './_components/header'
-import Footer from './_components/footer'
+import Header from './../components/layout/header'
+import Footer from '../components/layout/footer'
 import QueryClientProvider from '@/provider/query-client'
 import NextTopLoader from 'nextjs-toploader'
 

@@ -1,4 +1,12 @@
 import { cn } from '@/lib/utils';
+import type { SVGProps } from 'react';
+
+export interface ShoppingBagIconProps extends SVGProps<SVGSVGElement> {
+	size?: number;
+	className?: string;
+	fill?: string;
+	stroke?: string;
+}
 
 export const ShoppingBagIcon = ({
 	size = 26,
@@ -6,7 +14,7 @@ export const ShoppingBagIcon = ({
 	fill,
 	stroke,
 	...props
-}) => {
+}: ShoppingBagIconProps) => {
 	return (
 		<svg
 			width={size}

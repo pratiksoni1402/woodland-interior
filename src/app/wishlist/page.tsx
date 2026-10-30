@@ -1,10 +1,10 @@
-import type { Metadata } from 'next'
-import WishlistItems from '@/app/wishlist/_components'
+import type { Metadata } from 'next';
+import { WishlistView } from '@/features/wishlist';
 
 export const metadata: Metadata = {
 	title: 'Wishlist | Woodland Interiors',
-}
+};
 
-export default function Wislist() {
-	return <WishlistItems />
+export default function Wishlist() {
+	return <WishlistView />;
 }

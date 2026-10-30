@@ -1,4 +1,5 @@
-import UsersWishlist from '../_components/user-wishlist'
+import { WishlistView } from '@/features/wishlist';
+
 export default function MyWishlist() {
-	return <UsersWishlist />
+	return <WishlistView title="My Wishlist" emptyPaddingClass="py-20" />;
 }

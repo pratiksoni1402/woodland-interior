@@ -1,10 +1,10 @@
-'use client';
-import { use } from 'react';
-import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
+'use client'
+import { use } from 'react'
+import { BLOB_BASE_URL } from '@/lib/blob'
 
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import Image from 'next/image';
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import Image from 'next/image'
 
 import {
 	Table,
@@ -13,64 +13,64 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from '@/components/ui/table';
-import { MoonLoader } from 'react-spinners';
-import { IndianRupee } from 'lucide-react';
+} from '@/components/ui/table'
+import { MoonLoader } from 'react-spinners'
+import { IndianRupee } from 'lucide-react'
 export default function Orderreceipt(props) {
-	let formattedTime;
-	let formattedDate;
+	let formattedTime
+	let formattedDate
 
-	const params = use(props.params);
-	const { id } = params;
+	const params = use(props.params)
+	const { id } = params
 	const { data: receipt } = useQuery({
 		queryKey: ['orderreceipt'],
 		queryFn: () =>
 			axios
 				.post(`/api/order-receipt/${params['id']}`)
 				.then((response) => {
-					return response.data.orderReceipt;
+					return response.data.orderReceipt
 				})
 				.catch((error) => {
-					console.log('Error generated', error);
+					console.log('Error generated', error)
 				}),
-	});
+	})
 
 	if (!receipt) {
 		return (
 			<div className="loading h-screen  w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
 			</div>
-		);
+		)
 	}
 
-	const orderDate = receipt?.order_date;
+	const orderDate = receipt?.order_date
 
 	if (orderDate) {
-		const date = new Date(orderDate);
+		const date = new Date(orderDate)
 
 		// Format the date
-		formattedDate = `${date.toLocaleDateString()}`;
-		formattedTime = `${date.toLocaleTimeString()}`;
+		formattedDate = `${date.toLocaleDateString()}`
+		formattedTime = `${date.toLocaleTimeString()}`
 	}
 
 	const name =
 		(receipt?.shipping_first_name ?? '') +
 		' ' +
-		(receipt?.shipping_last_name ?? '');
+		(receipt?.shipping_last_name ?? '')
 	const billingName =
 		(receipt?.billing_first_name ?? receipt?.shipping_first_name) +
 		' ' +
-		(receipt?.billing_last_name ?? receipt?.shipping_last_name);
+		(receipt?.billing_last_name ?? receipt?.shipping_last_name)
 	const billingAddress =
-		receipt?.billing_address_one ?? receipt?.shipping_address_one;
-	const billingCountry = receipt?.billing_country ?? receipt?.shipping_country;
-	const billingState = receipt?.billing_state ?? receipt?.shipping_state;
-	const billingCity = receipt?.billing_city ?? receipt?.shipping_city;
-	const billingPincode = receipt?.billing_pincode ?? receipt?.shipping_pincode;
+		receipt?.billing_address_one ?? receipt?.shipping_address_one
+	const billingCountry = receipt?.billing_country ?? receipt?.shipping_country
+	const billingState = receipt?.billing_state ?? receipt?.shipping_state
+	const billingCity = receipt?.billing_city ?? receipt?.shipping_city
+	const billingPincode = receipt?.billing_pincode ?? receipt?.shipping_pincode
 	const billingLandmark =
-		receipt?.billing_landmark ?? receipt?.shipping_landmark;
+		receipt?.billing_landmark ?? receipt?.shipping_landmark
 	const billingPhoneNumber =
-		receipt?.billing_phone_number ?? receipt?.shipping_phone_number;
+		receipt?.billing_phone_number ?? receipt?.shipping_phone_number
 	return (
 		<div className="order-receipt pb-20">
 			<div className="container">
@@ -338,5 +338,5 @@ export default function Orderreceipt(props) {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

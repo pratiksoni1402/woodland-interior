@@ -1,6 +1,6 @@
 'use client'
 
-import { BLOB_BASE_URL } from '@/app/_lib/constants/blob'
+import { BLOB_BASE_URL } from '@/lib/blob'
 import { showErrorToast, showSuccessToast } from '@/lib/toast'
 import { Button } from '@/components/ui/button'
 import { useEffect, useState } from 'react'

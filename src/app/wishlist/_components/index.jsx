@@ -1,14 +1,14 @@
-'use client';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
-import { IndianRupee } from 'lucide-react';
-import axios from 'axios';
-import Link from 'next/link';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Toaster } from 'react-hot-toast';
-import { MoonLoader } from 'react-spinners';
-import { Loader2Icon } from 'lucide-react';
+'use client'
+import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { BLOB_BASE_URL } from '@/lib/blob'
+import { IndianRupee } from 'lucide-react'
+import axios from 'axios'
+import Link from 'next/link'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { Toaster } from 'react-hot-toast'
+import { MoonLoader } from 'react-spinners'
+import { Loader2Icon } from 'lucide-react'
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -19,13 +19,13 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
-import { useState } from 'react';
+} from '@/components/ui/alert-dialog'
+import { useState } from 'react'
 
 export default function WishlistItems() {
-	const queryClient = useQueryClient();
-	const [toCart, setToCart] = useState(null);
-	const [itemDelete, setItemDelte] = useState(null);
+	const queryClient = useQueryClient()
+	const [toCart, setToCart] = useState(null)
+	const [itemDelete, setItemDelte] = useState(null)
 
 	// Get all products from wishlist table
 
@@ -35,12 +35,12 @@ export default function WishlistItems() {
 			axios
 				.get('/api/wishlist-items/get-data')
 				.then((response) => {
-					return response.data.getallproduct;
+					return response.data.getallproduct
 				})
 				.catch((error) => {
-					console.log(error);
+					console.log(error)
 				}),
-	});
+	})
 	// End
 
 	if (allproducts?.length === 0) {
@@ -51,7 +51,7 @@ export default function WishlistItems() {
 					<Link href="/products?category=bedroom">Shop Now</Link>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	if (!allproducts) {
@@ -59,30 +59,30 @@ export default function WishlistItems() {
 			<div className="loading h-screen w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
 			</div>
-		);
+		)
 	}
 
 	// Delete product from wishlist table
 	const deleteproduct = (id) => {
-		setItemDelte(id);
+		setItemDelte(id)
 		axios
 			.post('/api/wishlist-items/delete-item', { id })
 			.then(() => {
-				queryClient.invalidateQueries('productlist');
+				queryClient.invalidateQueries('productlist')
 			})
 			.catch((error) => {
-				console.log('Error Occured while deleting product', error);
+				console.log('Error Occured while deleting product', error)
 			})
 			.finally(() => {
-				queryClient.invalidateQueries('productlist');
-				setItemDelte(false);
-			});
-	};
+				queryClient.invalidateQueries('productlist')
+				setItemDelte(false)
+			})
+	}
 	// End
 
 	// Move product to Cart Table
 	const movetocart = (productid, quantity, sku, id) => {
-		setToCart(id);
+		setToCart(id)
 		axios
 			.post('/api/cart-items/from-wishlist', {
 				productid,
@@ -90,16 +90,16 @@ export default function WishlistItems() {
 				sku,
 			})
 			.then(() => {
-				deleteproduct(id);
+				deleteproduct(id)
 			})
 			.catch((error) => {
-				console.log('Error', error);
+				console.log('Error', error)
 			})
 			.finally(() => {
-				queryClient.invalidateQueries('productlist');
-				setToCart(false);
-			});
-	};
+				queryClient.invalidateQueries('productlist')
+				setToCart(false)
+			})
+	}
 	// End
 
 	return (
@@ -225,5 +225,5 @@ export default function WishlistItems() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

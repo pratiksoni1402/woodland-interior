@@ -6,12 +6,12 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from '@/components/ui/carousel'
-import { CATEGORY_MEDIA_BASE_URL } from '@/app/_lib/constants/blob'
+import { CATEGORY_MEDIA_BASE_URL } from '@/lib/blob'
 import { useSearchParams } from 'next/navigation'
 import { useQuery } from '@tanstack/react-query'
 
 import Link from 'next/link'
-import LazyImage from '@/app/_lib/utils/lazy-image'
+import LazyImage from '@/lib/lazy-image'
 import axios from 'axios'
 import CategoriesSkeleton from '@/app/products/_components/skeletons/categories'
 import clsx from 'clsx'

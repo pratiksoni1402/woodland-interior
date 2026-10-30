@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 import prisma from '@/db'
-import PasswordResetEmailTemplate from '@/app/_components/password-reset-email-template'
+import PasswordResetEmailTemplate from '@/components/email-template/password-reset-email-template'
 
 import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'

@@ -2,14 +2,14 @@
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
 
-import { BLOB_BASE_URL } from '@/app/_lib/constants/blob'
+import { BLOB_BASE_URL } from '@/lib/blob'
 import { IndianRupee } from 'lucide-react'
 
 import axios from 'axios'
 import Link from 'next/link'
 
 import ProductSkeleton from '@/app/products/_components/skeletons/products/skeleton'
-import LazyImage from '@/app/_lib/utils/lazy-image'
+import LazyImage from '@/lib/lazy-image'
 import SortByFilter from '@/app/products/_components/filters/sort-by/sort-by'
 import ProductsHeaderSkeleton from '@/app/products/_components/skeletons/filter'
 

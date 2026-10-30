@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
 
-import { BLOB_BASE_URL } from '@/app/_lib/constants/blob'
+import { BLOB_BASE_URL } from '@/lib/blob'
 import { IndianRupee } from 'lucide-react'
 
 import Link from 'next/link'

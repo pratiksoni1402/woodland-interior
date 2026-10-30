@@ -1,9 +1,9 @@
-'use client';
-import { use } from 'react';
-import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
+'use client'
+import { use } from 'react'
+import { BLOB_BASE_URL } from '@/lib/blob'
 
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 // export const revalidate = 0;
 import {
 	Table,
@@ -12,62 +12,62 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from '@/components/ui/table';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import Image from 'next/image';
-import { MoonLoader } from 'react-spinners';
-import { IndianRupee } from 'lucide-react';
+} from '@/components/ui/table'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import Image from 'next/image'
+import { MoonLoader } from 'react-spinners'
+import { IndianRupee } from 'lucide-react'
 export default function Previousorders(props) {
-	const params = use(props.params);
+	const params = use(props.params)
 	const { data: getDetail } = useQuery({
 		queryKey: ['orderData'],
 		queryFn: () =>
 			axios
 				.get(`/api/previous-orders/${params['id']}`)
 				.then((response) => {
-					return response.data.orderDetail;
+					return response.data.orderDetail
 				})
 				.catch((error) => {
-					console.log('Error Occured while fetching detail', error);
+					console.log('Error Occured while fetching detail', error)
 				}),
-	});
+	})
 
-	const orderDate = getDetail?.order_date;
+	const orderDate = getDetail?.order_date
 	if (orderDate) {
-		const date = new Date(orderDate);
+		const date = new Date(orderDate)
 
 		// Format the date
-		var formattedDate = `${date.toLocaleDateString()}`;
-		var formattedTime = `${date.toLocaleTimeString()}`;
+		var formattedDate = `${date.toLocaleDateString()}`
+		var formattedTime = `${date.toLocaleTimeString()}`
 	}
 
 	const name =
 		(getDetail?.shipping_first_name ?? '') +
 		' ' +
-		(getDetail?.shipping_last_name ?? '');
+		(getDetail?.shipping_last_name ?? '')
 	const billingName =
 		(getDetail?.billing_first_name ?? getDetail?.shipping_first_name) +
 		' ' +
-		(getDetail?.billing_last_name ?? getDetail?.shipping_last_name);
+		(getDetail?.billing_last_name ?? getDetail?.shipping_last_name)
 	const billingAddress =
-		getDetail?.billing_address_one ?? getDetail?.shipping_address_one;
+		getDetail?.billing_address_one ?? getDetail?.shipping_address_one
 	const billingCountry =
-		getDetail?.billing_country ?? getDetail?.shipping_country;
-	const billingState = getDetail?.billing_state ?? getDetail?.shipping_state;
-	const billingCity = getDetail?.billing_city ?? getDetail?.shipping_city;
+		getDetail?.billing_country ?? getDetail?.shipping_country
+	const billingState = getDetail?.billing_state ?? getDetail?.shipping_state
+	const billingCity = getDetail?.billing_city ?? getDetail?.shipping_city
 	const billingPincode =
-		getDetail?.billing_pincode ?? getDetail?.shipping_pincode;
+		getDetail?.billing_pincode ?? getDetail?.shipping_pincode
 	const billingLandmark =
-		getDetail?.billing_landmark ?? getDetail?.shipping_landmark;
+		getDetail?.billing_landmark ?? getDetail?.shipping_landmark
 	const billingPhoneNumber =
-		getDetail?.billing_phone_number ?? getDetail?.shipping_phone_number;
+		getDetail?.billing_phone_number ?? getDetail?.shipping_phone_number
 	if (!getDetail) {
 		return (
 			<div className="loading h-screen w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
 			</div>
-		);
+		)
 	}
 	return (
 		<div className="order-receipt pb-20">
@@ -337,5 +337,5 @@ export default function Previousorders(props) {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

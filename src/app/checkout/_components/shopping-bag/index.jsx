@@ -1,33 +1,33 @@
-'use client';
-import Image from 'next/image';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import { IndianRupee } from 'lucide-react';
-import { MoonLoader } from 'react-spinners';
-import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
+'use client'
+import Image from 'next/image'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import { IndianRupee } from 'lucide-react'
+import { MoonLoader } from 'react-spinners'
+import { BLOB_BASE_URL } from '@/lib/blob'
 export default function ShoppingBag() {
-	let grandtotal = 0;
-	let taxamount = 0;
-	let subtotal = 0;
+	let grandtotal = 0
+	let taxamount = 0
+	let subtotal = 0
 	const { data: cartdata } = useQuery({
 		queryKey: ['cart-items'],
 		queryFn: () =>
 			axios
 				.get('/api/cart-items/get-data')
 				.then((response) => {
-					return response.data.cartdata;
+					return response.data.cartdata
 				})
 				.catch((error) => {
-					console.log('Error', error);
+					console.log('Error', error)
 				}),
-	});
+	})
 
 	if (!cartdata) {
 		return (
 			<div className="loading h-screen  w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
 			</div>
-		);
+		)
 	}
 	return (
 		<div className="shopping-bag border border-border rounded-md sm:mt-[45px] mt-5 font-roboto text-primary">
@@ -140,5 +140,5 @@ export default function ShoppingBag() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

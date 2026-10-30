@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import { REVIEW_MEDIA_URL } from '@/app/_lib/constants/images';
+import Image from 'next/image'
+import { REVIEW_MEDIA_URL } from '@/lib/images'
 
 export default function Reviews() {
 	const customerReviews = [
@@ -57,7 +57,7 @@ export default function Reviews() {
 			description: `I amm extremely satisfied with my purchase from Woodland Interiors. The dresser I ordered is not only stylish but also incredibly functional. The customer service was excellent, and I wouldn't hesitate to shop here again.`,
 			image: 'female-avatar.jpg',
 		},
-	];
+	]
 	return (
 		<div className="customer-reviews">
 			<div className="grid grid-cols-12">
@@ -92,5 +92,5 @@ export default function Reviews() {
 				<div className="lg:col-span-6 md:col-span-4 sm:col-span-12 col-span-12"></div>
 			</div>
 		</div>
-	);
+	)
 }

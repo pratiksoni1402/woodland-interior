@@ -5,7 +5,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Toaster } from 'react-hot-toast'
-import { BLOB_BASE_URL } from '@/app/_lib/constants/blob'
+import { BLOB_BASE_URL } from '@/lib/blob'
 
 import { useState } from 'react'
 

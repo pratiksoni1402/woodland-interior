@@ -1,12 +1,12 @@
-'use client';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { IndianRupee, Minus, Plus } from 'lucide-react';
-import axios from 'axios';
-import Link from 'next/link';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Toaster } from 'react-hot-toast';
-import { Loader2Icon } from 'lucide-react';
+'use client'
+import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { IndianRupee, Minus, Plus } from 'lucide-react'
+import axios from 'axios'
+import Link from 'next/link'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { Toaster } from 'react-hot-toast'
+import { Loader2Icon } from 'lucide-react'
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -17,25 +17,25 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
-import toast from 'react-hot-toast';
-import { MoonLoader } from 'react-spinners';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { BLOB_BASE_URL } from '@/app/_lib/constants/blob';
-import { showErrorToast } from '@/lib/toast';
+} from '@/components/ui/alert-dialog'
+import toast from 'react-hot-toast'
+import { MoonLoader } from 'react-spinners'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { BLOB_BASE_URL } from '@/lib/blob'
+import { showErrorToast } from '@/lib/toast'
 export default function CartItems() {
-	let totalPrice = 0;
-	let subtotal = 0;
-	let taxrate = 9;
-	let taxamount = (totalPrice * taxrate) / 100;
-	const [loading, setLoading] = useState(false);
-	const [productLoading, setProductLoading] = useState(null);
-	const [descreaseLoader, setDecreaseLoader] = useState(null);
-	const [towishlist, setToWishlist] = useState(null);
-	const queryClient = useQueryClient();
-	const [isLoading, setIsLoading] = useState(false);
-	const router = useRouter();
+	let totalPrice = 0
+	let subtotal = 0
+	let taxrate = 9
+	let taxamount = (totalPrice * taxrate) / 100
+	const [loading, setLoading] = useState(false)
+	const [productLoading, setProductLoading] = useState(null)
+	const [descreaseLoader, setDecreaseLoader] = useState(null)
+	const [towishlist, setToWishlist] = useState(null)
+	const queryClient = useQueryClient()
+	const [isLoading, setIsLoading] = useState(false)
+	const router = useRouter()
 
 	//Get All Products from Cart Table
 	const {
@@ -48,13 +48,13 @@ export default function CartItems() {
 			axios
 				.get('/api/cart-items/get-data')
 				.then((response) => {
-					return response.data.cartdata;
+					return response.data.cartdata
 				})
 				.catch((error) => {
-					console.error('Error fetching data:', error);
-					throw error;
+					console.error('Error fetching data:', error)
+					throw error
 				}),
-	});
+	})
 	// End
 
 	if (totalproducts?.length === 0) {
@@ -65,7 +65,7 @@ export default function CartItems() {
 					<Link href="/products?category=bedroom">Shop Now</Link>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	if (!totalproducts) {
@@ -73,28 +73,28 @@ export default function CartItems() {
 			<div className="loading h-screen bg-background w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
 			</div>
-		);
+		)
 	}
 
 	// Delete Product From Cart Table
 	function cnfdelete(id) {
-		setLoading(true);
+		setLoading(true)
 		axios
 			.post('/api/cart-items/delete-item', { id })
 			.then((response) => {})
 			.catch((error) => {
-				console.log('Error occured', error);
+				console.log('Error occured', error)
 			})
 			.finally(() => {
-				setLoading(false);
-				queryClient.invalidateQueries('product');
-			});
+				setLoading(false)
+				queryClient.invalidateQueries('product')
+			})
 	}
 	// End
 
 	// Move to wishlist
 	const movetowishlist = (productid, sku, id, quantity) => {
-		setToWishlist(id);
+		setToWishlist(id)
 		axios
 			.post('/api/wishlist-items/from-cart', {
 				productid,
@@ -102,72 +102,72 @@ export default function CartItems() {
 				quantity,
 			})
 			.then((response) => {
-				cnfdelete(id);
+				cnfdelete(id)
 			})
 			.catch((error) => {})
 			.finally(() => {
-				queryClient.invalidateQueries('product');
-				setToWishlist(false);
-			});
-	};
+				queryClient.invalidateQueries('product')
+				setToWishlist(false)
+			})
+	}
 	// End
 
 	// Increase Quantity
 	const increasequantity = (quantity, id) => {
 		if (quantity < 10) {
-			const updatequantity = quantity + 1;
-			setProductLoading(id);
+			const updatequantity = quantity + 1
+			setProductLoading(id)
 			axios
 				.put('/api/cart-items/update-quantity', {
 					quantity: updatequantity,
 					id,
 				})
 				.then((response) => {
-					queryClient.invalidateQueries('product');
+					queryClient.invalidateQueries('product')
 				})
 				.catch((error) => {
-					console.log('Error while updating quantity', error);
+					console.log('Error while updating quantity', error)
 				})
 				.finally(() => {
-					setProductLoading(false);
-				});
+					setProductLoading(false)
+				})
 		} else {
-			showErrorToast('Only 10 Prodcuts are allowed to buy');
+			showErrorToast('Only 10 Prodcuts are allowed to buy')
 		}
-	};
+	}
 	// End
 
 	// Decrease Quantity
 	const decreasequantity = (quantity, id) => {
 		if (quantity > 1) {
-			const changequantity = quantity - 1;
-			setDecreaseLoader(id);
+			const changequantity = quantity - 1
+			setDecreaseLoader(id)
 			axios
 				.put('/api/cart-items/update-quantity', {
 					quantity: changequantity,
 					id,
 				})
 				.then((response) => {
-					queryClient.invalidateQueries('product');
+					queryClient.invalidateQueries('product')
 				})
 				.catch((error) => {
-					console.log('Error', error);
+					console.log('Error', error)
 				})
 				.finally(() => {
-					setDecreaseLoader(false);
-				});
+					setDecreaseLoader(false)
+				})
 		} else {
-			showErrorToast('Minimum quantity should be 1');
+			showErrorToast('Minimum quantity should be 1')
 		}
-	};
+	}
 
 	const handleClick = () => {
-		setIsLoading(true);
+		setIsLoading(true)
 		setTimeout(() => {
-			setIsLoading(true);
-			router.push('/checkout');
-		}, 1000); // Show loader for 1 second
-	};
+			setIsLoading(true)
+			router.push('/checkout')
+		}, 1000) // Show loader for 1 second
+	}
 
 	return (
 		<div className="cart-items bg-background pt-5 pb-10">
@@ -435,5 +435,5 @@ export default function CartItems() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

@@ -5,7 +5,7 @@ export async function GET(request) {
 	const price = searchParams.get('price')
 	let productlist = await prisma.category.findMany({
 		where: {
-			slug: slug,
+			...(slug ? { slug } : {}),
 		},
 		include: {
 			products: {

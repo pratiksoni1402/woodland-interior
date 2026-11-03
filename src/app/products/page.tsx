@@ -1,6 +1,5 @@
-import GetProducts from '@/app/products/_components/get-products'
 import { Suspense } from 'react'
-import { ProductsFallback } from '@/app/products/_components/skeletons/fallback'
+import { ProductsFallback, ProductsView } from '@/features/products'
 
 export const metadata = {
 	title: 'Bedroom Furniture | Dining Tables | Sofa sets | Outdoor Furniture',
@@ -8,14 +7,8 @@ export const metadata = {
 
 export default function ProductListing() {
 	return (
-		<Suspense
-			fallback={
-				<div>
-					<ProductsFallback />
-				</div>
-			}
-		>
-			<GetProducts />
+		<Suspense fallback={<ProductsFallback />}>
+			<ProductsView />
 		</Suspense>
 	)
 }

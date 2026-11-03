@@ -1,4 +1,9 @@
 'use client'
+
+import Link from 'next/link'
+import clsx from 'clsx'
+import LazyImage from '@/lib/lazy-image'
+import { CATEGORY_MEDIA_BASE_URL } from '@/lib/blob'
 import {
 	Carousel,
 	CarouselContent,
@@ -6,40 +11,21 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from '@/components/ui/carousel'
-import { CATEGORY_MEDIA_BASE_URL } from '@/lib/blob'
-import { useSearchParams } from 'next/navigation'
-import { useQuery } from '@tanstack/react-query'
+import type { ProductCategory } from '../types'
 
-import Link from 'next/link'
-import LazyImage from '@/lib/lazy-image'
-import axios from 'axios'
-import CategoriesSkeleton from '@/app/products/_components/skeletons/categories'
-import clsx from 'clsx'
-
-// Query function
-const fetchCategories = async () => {
-	const res = await axios.get('/api/get-categories')
-	return res.data
+interface CategoriesCarouselProps {
+	categories: ProductCategory[]
+	slug: string | null
 }
 
-export default function CategoriesCarousel() {
-	const params = useSearchParams()
-	const slug = params.get('category')
-
-	const { data: categories = [], isLoading } = useQuery({
-		queryKey: ['categories'],
-		queryFn: fetchCategories,
-		staleTime: 1000 * 60 * 5,
-	})
-
-	if (isLoading) return <CategoriesSkeleton />
-
-	// Find active category once
-	const activeCategory = categories.find((c) => c.slug === slug)
+export function CategoriesCarousel({
+	categories,
+	slug,
+}: CategoriesCarouselProps) {
+	const activeCategory = categories.find((category) => category.slug === slug)
 
 	return (
 		<div>
-			{/* Heading */}
 			{activeCategory && (
 				<div className="pb-4">
 					<h1 className="text-center font-semibold font-crimson text-2xl text-primary">
@@ -47,7 +33,6 @@ export default function CategoriesCarousel() {
 					</h1>
 				</div>
 			)}
-
 			<div className="relative px-12">
 				<Carousel
 					className="w-full"
@@ -78,8 +63,6 @@ export default function CategoriesCarousel() {
 											<LazyImage
 												src={`${CATEGORY_MEDIA_BASE_URL}/${category.image}`}
 												alt={category.name}
-												width={100}
-												height={100}
 												className="group-hover:scale-125 transition-transform duration-300 w-[100px] h-[100px] object-cover"
 											/>
 										</div>

@@ -1,40 +1,21 @@
 'use client'
 
-import { CATEGORY_MEDIA_BASE_URL } from '@/lib/blob'
-import { useSearchParams } from 'next/navigation'
-import { useQuery } from '@tanstack/react-query'
-
 import Link from 'next/link'
-import LazyImage from '@/lib/lazy-image'
-import axios from 'axios'
-import CategoriesSkeleton from '@/app/products/_components/skeletons/categories'
 import clsx from 'clsx'
+import LazyImage from '@/lib/lazy-image'
+import { CATEGORY_MEDIA_BASE_URL } from '@/lib/blob'
+import type { ProductCategory } from '../types'
 
-// Query function (defined outside for reusability)
-const fetchCategories = async () => {
-	const res = await axios.get('/api/get-categories')
-	return res.data
+interface CategoriesProps {
+	categories: ProductCategory[]
+	slug: string | null
 }
 
-export default function Categories() {
-	const params = useSearchParams()
-	const slug = params.get('category')
-
-	// Fetching categories from API
-	const { data: categories = [], isLoading } = useQuery({
-		queryKey: ['categories'],
-		queryFn: fetchCategories,
-		staleTime: 1000 * 60 * 5, // 5 min cache
-	})
-
-	if (isLoading) return <CategoriesSkeleton />
-
-	// Find active category once
-	const activeCategory = categories.find((c) => c.slug === slug)
+export function Categories({ categories, slug }: CategoriesProps) {
+	const activeCategory = categories.find((category) => category.slug === slug)
 
 	return (
 		<div>
-			{/* Heading */}
 			{activeCategory && (
 				<div className="pb-4 pt-6">
 					<h1 className="text-center font-crimson text-4xl text-primary">
@@ -42,8 +23,6 @@ export default function Categories() {
 					</h1>
 				</div>
 			)}
-
-			{/* Categories */}
 			<div className="flex gap-7 justify-center text-primary items-center text-center text-sm font-roboto font-normal tracking-wide">
 				{categories.map((category) => (
 					<Link
@@ -63,8 +42,6 @@ export default function Categories() {
 								<LazyImage
 									src={`${CATEGORY_MEDIA_BASE_URL}/${category.image}`}
 									alt={category.name}
-									width={100}
-									height={100}
 									className="group-hover:scale-125 transition-transform duration-300 w-[100px] h-[100px]"
 								/>
 							</div>

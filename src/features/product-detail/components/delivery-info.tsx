@@ -1,32 +1,28 @@
-'use client';
-import Image from 'next/image';
+'use client'
 
-export default function DeliveryInfo() {
-	const today = new Date();
+import Image from 'next/image'
 
-	// Order by = today + 1 day
-	const orderBy = new Date(today);
-	orderBy.setDate(orderBy.getDate() + 1);
+function formatDate(date: Date) {
+	return date.toLocaleDateString('en-US', {
+		weekday: 'long',
+		month: 'long',
+		day: 'numeric',
+	})
+}
 
-	// Receive by = today + 6 days
-	const receiveBy = new Date(today);
-	receiveBy.setDate(receiveBy.getDate() + 6);
+export function DeliveryInfo() {
+	const orderBy = new Date()
+	orderBy.setDate(orderBy.getDate() + 1)
 
-	// Format function
-	const formatDate = (date) => {
-		return date.toLocaleDateString('en-US', {
-			weekday: 'long',
-			month: 'long',
-			day: 'numeric',
-		});
-	};
+	const receiveBy = new Date()
+	receiveBy.setDate(receiveBy.getDate() + 6)
 
 	return (
 		<div className="shipping-wrapper py-5">
 			<div className="flex gap-5">
 				<div>
 					<div className="transit flex flex-col justify-center items-center">
-						<span className="p-3  border-2 border-[#3c2f27] rounded-full">
+						<span className="p-3 border-2 border-[#3c2f27] rounded-full">
 							<Image
 								src="/uploads/images/shipping-step/in-transit.svg"
 								alt="Transit"
@@ -39,7 +35,7 @@ export default function DeliveryInfo() {
 							<Image
 								src="/uploads/images/shipping-step/shipping.svg"
 								alt="Steps"
-								className=" w-4 h-44"
+								className="w-4 h-44"
 								width={20}
 								height={50}
 							/>
@@ -72,5 +68,5 @@ export default function DeliveryInfo() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

@@ -22,3 +22,9 @@ export interface CartTotals {
 	sgst: number;
 	total: number;
 }
+
+export interface AddCartItemInput {
+	id: number;
+	sku: string;
+	quantity: number;
+}

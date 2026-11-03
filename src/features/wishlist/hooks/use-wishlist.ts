@@ -5,7 +5,7 @@ import { apiClient } from '@/lib/api-client'
 import { wishlistKeys } from '../keys/wishlist-keys'
 import { cartKeys } from '@/features/cart/keys/cart-keys'
 import { showErrorToast, showSuccessToast } from '@/lib/toast'
-import type { WishlistItem } from '../types'
+import type { AddWishlistItemInput, WishlistItem } from '../types'
 
 export function useWishlist() {
 	return useQuery({
@@ -49,6 +49,19 @@ export function useWishlistMutations() {
 		},
 	})
 
+	const addItemMutation = useMutation({
+		mutationFn: async (item: AddWishlistItemInput) => {
+			await apiClient.post('/api/wishlist-items/set-data', item)
+		},
+		onSuccess: () => {
+			invalidateWishlist()
+			showSuccessToast('Product added to wishlist')
+		},
+		onError: (error: Error) => {
+			showErrorToast(error.message || 'Failed to add product to wishlist')
+		},
+	})
+
 	const moveToCartMutation = useMutation({
 		mutationFn: async ({
 			id,
@@ -81,6 +94,9 @@ export function useWishlistMutations() {
 	})
 
 	return {
+		addItem: addItemMutation.mutate,
+		removeItem: deleteItemMutation.mutate,
+		isAdding: addItemMutation.isPending,
 		deleteItem: deleteItemMutation.mutateAsync,
 		isDeleting: deleteItemMutation.isPending,
 		moveToCart: moveToCartMutation.mutateAsync,

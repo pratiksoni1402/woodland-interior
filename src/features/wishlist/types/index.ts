@@ -15,3 +15,9 @@ export interface WishlistItem {
 	quantity: number;
 	products: WishlistProduct;
 }
+
+export interface AddWishlistItemInput {
+	id: number;
+	sku: string;
+	quantity: number;
+}

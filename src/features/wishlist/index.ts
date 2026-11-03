@@ -7,4 +7,8 @@ export {
 	useWishlistMutations,
 } from './hooks/use-wishlist'
 export { wishlistKeys } from './keys/wishlist-keys'
-export type { WishlistItem, WishlistProduct } from './types'
+export type {
+	AddWishlistItemInput,
+	WishlistItem,
+	WishlistProduct,
+} from './types'

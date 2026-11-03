@@ -6,4 +6,9 @@ export { CartCheckoutSummary } from './components/cart-checkout-summary'
 export { useCart, useCartCount, useCartMutations } from './hooks/use-cart'
 export { cartKeys } from './keys/cart-keys'
 export { calculateCartTotals } from './utils/calculate-totals'
-export type { CartItem, CartProduct, CartTotals } from './types'
+export type {
+	AddCartItemInput,
+	CartItem,
+	CartProduct,
+	CartTotals,
+} from './types'

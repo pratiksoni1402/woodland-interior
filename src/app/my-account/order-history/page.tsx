@@ -1,5 +1,5 @@
-import OrderHistory from '../_components/previous-orders'
+import { PreviousOrdersView } from '@/features/previous-orders'
 
-export default function PastOrders() {
-	return <OrderHistory />
+export default function OrderHistoryPage() {
+	return <PreviousOrdersView />
 }

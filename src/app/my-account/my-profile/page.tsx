@@ -1,5 +1,5 @@
-import UserProfile from '@/app/my-account/_components/user-profile'
-// import { UserProfileForm } from '@/app/my-account/components/user-profile/components/form';
-export default function MyProfile() {
-	return <UserProfile />
+import { ProfileView } from '@/features/my-account'
+
+export default function MyProfilePage() {
+	return <ProfileView />
 }

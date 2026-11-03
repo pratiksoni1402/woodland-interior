@@ -1,23 +1,35 @@
-'use client';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Button } from '@/components/ui/button';
-import axios from 'axios';
-import { Toaster } from 'react-hot-toast';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Loader2Icon } from 'lucide-react';
-import { showErrorToast, showSuccessToast } from '@/lib/toast';
+'use client'
 
-function FormField({
+import { useEffect } from 'react'
+import {
+	useForm,
+	type FieldErrors,
+	type UseFormRegister,
+} from 'react-hook-form'
+import {
+	useAccountCountries,
+	useAccountProfile,
+	useUpdateAccountProfile,
+} from '../hooks/use-account'
+import type { AccountProfileValues } from '../types'
+
+interface ProfileFieldProps {
+	id: keyof AccountProfileValues
+	label: string
+	register: UseFormRegister<AccountProfileValues>
+	errors: FieldErrors<AccountProfileValues>
+	required?: boolean
+	placeholder?: string
+}
+
+function ProfileField({
 	id,
 	label,
-	required,
 	register,
 	errors,
+	required = false,
 	placeholder,
-	type = 'text',
-	...rest
-}) {
+}: ProfileFieldProps) {
 	return (
 		<div className="field-wrapper w-full">
 			<label
@@ -29,10 +41,9 @@ function FormField({
 			{required && <span className="font-semibold text-red-700">*</span>}
 			<input
 				id={id}
-				type={type}
+				type="text"
 				placeholder={placeholder}
-				{...register(id, required ? { required: true } : {})}
-				{...rest}
+				{...register(id, { required })}
 			/>
 			{errors[id] && (
 				<span className="error-message font-roboto pl-2 text-sm text-red-700">
@@ -40,82 +51,64 @@ function FormField({
 				</span>
 			)}
 		</div>
-	);
+	)
 }
 
-function SubmitButton({ isLoading, children }) {
-	return (
-		<Button
-			type="submit"
-			className={`w-36 rounded-md my-3 border ${
-				isLoading
-					? 'bg-primary border-primary text-white'
-					: 'bg-primary border-primary hover:bg-secondary hover:border-secondary hover:text-white text-white hover:cursor-pointer'
-			}`}
-			disabled={isLoading}
-		>
-			{isLoading && <Loader2Icon className="animate-spin mr-1" />}
-			{children}
-		</Button>
-	);
+const defaultValues: AccountProfileValues = {
+	firstname: '',
+	lastname: '',
+	addresslineone: '',
+	addresslinetwo: '',
+	country: '',
+	state: '',
+	city: '',
+	pincode: '',
+	phonenumber: '',
 }
 
-export default function UserProfile() {
-	const [isLoading, setLoading] = useState(false);
+export function ProfileView() {
+	const { data: countries, isError: countriesError } = useAccountCountries()
+	const { data: profile, isError: profileError } = useAccountProfile()
+	const updateProfile = useUpdateAccountProfile()
 	const {
 		register,
 		handleSubmit,
-		setValue,
+		reset,
 		formState: { errors },
-	} = useForm();
-	const queryClient = useQueryClient();
+	} = useForm<AccountProfileValues>({ defaultValues })
 
-	// 🔹 Get Countries
-	const { data: countries } = useQuery({
-		queryKey: ['list'],
-		queryFn: async () => {
-			const { data } = await axios.get('/api/get-countries');
-			return data.countriesList;
-		},
-	});
+	useEffect(() => {
+		if (!profile) return
 
-	useQuery({
-		queryKey: ['profiledata'],
-		queryFn: async () => {
-			const { data } = await axios.get('/api/get-customer-profile');
-			Object.keys(data.getprofile).forEach((key) =>
-				setValue(key, data.getprofile[key])
-			);
-			return data.getprofile;
-		},
-		onError: () => showErrorToast('Error fetching profile'),
-	});
-
-	const onSubmit = async (formData) => {
-		setLoading(true);
-		try {
-			await axios.put('/api/customer-profile', formData);
-			showSuccessToast('Profile updated successfully');
-			queryClient.invalidateQueries(['profiledata']);
-		} catch (error) {
-			showErrorToast('Error while updating profile');
-		} finally {
-			setLoading(false);
-		}
-	};
+		reset({
+			firstname: profile.firstname,
+			lastname: profile.lastname,
+			addresslineone: profile.addresslineone ?? '',
+			addresslinetwo: profile.addresslinetwo ?? '',
+			country: profile.country ?? '',
+			state: profile.state ?? '',
+			city: profile.city ?? '',
+			pincode: profile.pincode?.toString() ?? '',
+			phonenumber: profile.phonenumber ?? '',
+		})
+	}, [profile, reset])
 
 	return (
-		<div className="user-profile-component ">
+		<div className="user-profile-component">
 			<div className="content-wrapper">
-				<Toaster />
 				<div className="form-wrapper flex justify-center text-primary">
 					<form
-						onSubmit={handleSubmit(onSubmit)}
-						className=" w-full border border-[#b2937e] rounded-md px-4 pt-4 pb-0 bg-white"
+						onSubmit={handleSubmit((values) => updateProfile.mutate(values))}
+						className="w-full border border-[#b2937e] rounded-md px-4 pt-4 pb-0 bg-white"
 					>
-						{/* Name */}
+						{(profileError || countriesError) && (
+							<p role="alert" className="mb-3 text-sm text-red-700">
+								Unable to load your profile information. Please refresh and try
+								again.
+							</p>
+						)}
 						<div className="flex sm:flex-nowrap flex-wrap sm:gap-5">
-							<FormField
+							<ProfileField
 								id="firstname"
 								label="First Name"
 								required
@@ -123,7 +116,7 @@ export default function UserProfile() {
 								errors={errors}
 								placeholder="John"
 							/>
-							<FormField
+							<ProfileField
 								id="lastname"
 								label="Last Name"
 								required
@@ -132,15 +125,14 @@ export default function UserProfile() {
 								placeholder="Doe"
 							/>
 						</div>
-
-						<FormField
+						<ProfileField
 							id="addresslineone"
 							label="Address Line 1"
 							required
 							register={register}
 							errors={errors}
 						/>
-						<FormField
+						<ProfileField
 							id="addresslinetwo"
 							label="Address Line 2"
 							register={register}
@@ -175,14 +167,14 @@ export default function UserProfile() {
 									</span>
 								)}
 							</div>
-							<FormField
+							<ProfileField
 								id="state"
 								label="State"
 								required
 								register={register}
 								errors={errors}
 							/>
-							<FormField
+							<ProfileField
 								id="city"
 								label="City"
 								required
@@ -190,16 +182,15 @@ export default function UserProfile() {
 								errors={errors}
 							/>
 						</div>
-
 						<div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-3 gap-0">
-							<FormField
+							<ProfileField
 								id="pincode"
 								label="Pincode"
 								required
 								register={register}
 								errors={errors}
 							/>
-							<FormField
+							<ProfileField
 								id="phonenumber"
 								label="Phone Number"
 								required
@@ -207,13 +198,18 @@ export default function UserProfile() {
 								errors={errors}
 							/>
 						</div>
-
 						<div className="text-center pt-4 flex justify-center font-roboto tracking-wide">
-							<SubmitButton isLoading={isLoading}>Update Profile</SubmitButton>
+							<button
+								type="submit"
+								disabled={updateProfile.isPending}
+								className="w-36 rounded-md my-3 border bg-primary border-primary text-white hover:bg-secondary hover:border-secondary"
+							>
+								{updateProfile.isPending ? 'Updating...' : 'Update Profile'}
+							</button>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

@@ -13,7 +13,6 @@ export default function SortByFilter() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const pathName = usePathname();
-	// Get price param from URL
 	const priceParam = searchParams.get('price');
 
 	const handleSortChange = (value: string) => {

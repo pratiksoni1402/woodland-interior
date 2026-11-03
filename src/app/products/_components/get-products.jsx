@@ -11,7 +11,7 @@ import axios from 'axios'
 import Image from 'next/image'
 
 import Count from '@/app/products/_components/product-count/count'
-import SortByFilter from '@/app/products/_components/filters/sort-by/sort-by'
+import SortByFilter from '@/components/filters/sort-by-filter'
 import ProductsHeaderSkeleton from '@/app/products/_components/skeletons/filter'
 import Categories from '@/app/products/_components/product-categories/categories'
 import ProductSkeleton from '@/app/products/_components/skeletons/products/skeleton'

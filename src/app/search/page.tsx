@@ -1,16 +1,15 @@
-import ProductList from '@/app/search/_components/product-list'
-import { FallbackSkeleton } from '@/app/search/_components/fallback'
-import { Suspense } from 'react'
+import type { Metadata } from 'next';
+import { SearchLoadingState, SearchView } from '@/features/search';
+import { Suspense } from 'react';
+
+export const metadata: Metadata = {
+	title: 'Search | Woodland Interiors',
+};
+
 export default function SearchProducts() {
 	return (
-		<Suspense
-			fallback={
-				<div>
-					<FallbackSkeleton />
-				</div>
-			}
-		>
-			<ProductList />
+		<Suspense fallback={<SearchLoadingState />}>
+			<SearchView />
 		</Suspense>
-	)
+	);
 }

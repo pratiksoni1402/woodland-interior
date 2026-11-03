@@ -11,13 +11,12 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Loader2Icon } from 'lucide-react'
-import { SubmitUserQuery } from '@/app/contact-us/actions/submit-action'
+import { submitContactQuery } from '../actions/submit-contact-query'
 import {
 	contactUsFormSchema,
 	type ContactUsFormType,
-} from '@/app/contact-us/form/schema'
+} from '../types/contact-us-form'
 import { toast } from 'sonner'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -36,23 +35,29 @@ export function ContactForm() {
 	})
 
 	// Submit user query action
-	const onSubmit = async (data: z.infer<typeof contactUsFormSchema>) => {
+	const onSubmit = async (data: ContactUsFormType) => {
 		try {
-			setLoading(true)
-			const response = await SubmitUserQuery(data)
+			setIsLoading(true)
+			const response = await submitContactQuery(data)
 
 			if (response.success) {
 				form.reset()
-				toast[response.message.type](response.message.content)
+				toast.success(response.message.content)
+			} else {
+				toast.error(response.message.content)
 			}
 		} catch (error) {
-			toast.error('Please try again ')
+			toast.error(
+				error instanceof Error
+					? error.message
+					: 'Unable to submit your message. Please try again.'
+			)
 		} finally {
-			setLoading(false)
+			setIsLoading(false)
 		}
 	}
 	// End
-	const [isLoading, setLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
 
 	return (
 		<div className="contact-form">

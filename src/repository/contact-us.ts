@@ -1,5 +1,5 @@
-import prisma from '@/db';
-import type { ContactUsFormType } from '@/app/contact-us/form/schema';
+import prisma from '@/db'
+import type { ContactUsFormType } from '@/features/contact-us/types/contact-us-form'
 
 export async function submitUserQuery(formData: ContactUsFormType) {
 	const submitUserRequest = await prisma.userquery.create({
@@ -10,7 +10,7 @@ export async function submitUserQuery(formData: ContactUsFormType) {
 			subject: formData.subject,
 			message: formData.message,
 		},
-	});
+	})
 
-	return Response.json({ submitUserRequest });
+	return Response.json({ submitUserRequest })
 }

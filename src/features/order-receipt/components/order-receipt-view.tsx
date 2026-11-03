@@ -1,9 +1,5 @@
 'use client'
-import { use } from 'react'
 import { BLOB_BASE_URL } from '@/lib/blob'
-
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
 import Image from 'next/image'
 
 import {
@@ -16,26 +12,22 @@ import {
 } from '@/components/ui/table'
 import { MoonLoader } from 'react-spinners'
 import { IndianRupee } from 'lucide-react'
-export default function Orderreceipt(props) {
-	let formattedTime
-	let formattedDate
+import { useOrderReceipt } from '../hooks/use-order-receipt'
 
-	const params = use(props.params)
-	const { id } = params
-	const { data: receipt } = useQuery({
-		queryKey: ['orderreceipt'],
-		queryFn: () =>
-			axios
-				.post(`/api/order-receipt/${params['id']}`)
-				.then((response) => {
-					return response.data.orderReceipt
-				})
-				.catch((error) => {
-					console.log('Error generated', error)
-				}),
-	})
+interface OrderReceiptViewProps {
+	orderId: string
+}
 
-	if (!receipt) {
+export function OrderReceiptView({ orderId }: OrderReceiptViewProps) {
+	const {
+		data: receipt,
+		isLoading,
+		isError,
+		error,
+		refetch,
+	} = useOrderReceipt(orderId)
+
+	if (isLoading) {
 		return (
 			<div className="loading h-screen  w-full flex justify-center items-center">
 				<MoonLoader color="#3c2f27" />
@@ -43,34 +35,60 @@ export default function Orderreceipt(props) {
 		)
 	}
 
-	const orderDate = receipt?.order_date
+	if (isError) {
+		return (
+			<div className="container flex min-h-96 flex-col items-center justify-center gap-4 text-center">
+				<p className="text-destructive" role="alert">
+					{error instanceof Error
+						? error.message
+						: 'Unable to load your order receipt.'}
+				</p>
+				<button
+					type="button"
+					className="border border-primary bg-primary px-5 py-2 text-white hover:bg-secondary"
+					onClick={() => void refetch()}
+				>
+					Try again
+				</button>
+			</div>
+		)
+	}
+
+	if (!receipt) {
+		return (
+			<div className="container flex min-h-96 items-center justify-center text-center">
+				<p role="status">We could not find this order receipt.</p>
+			</div>
+		)
+	}
+
+	const orderDate = receipt.order_date
+	let formattedDate = ''
+	let formattedTime = ''
 
 	if (orderDate) {
 		const date = new Date(orderDate)
 
-		// Format the date
-		formattedDate = `${date.toLocaleDateString()}`
-		formattedTime = `${date.toLocaleTimeString()}`
+		formattedDate = date.toLocaleDateString()
+		formattedTime = date.toLocaleTimeString()
 	}
 
 	const name =
-		(receipt?.shipping_first_name ?? '') +
+		(receipt.shipping_first_name ?? '') +
 		' ' +
-		(receipt?.shipping_last_name ?? '')
+		(receipt.shipping_last_name ?? '')
 	const billingName =
-		(receipt?.billing_first_name ?? receipt?.shipping_first_name) +
+		(receipt.billing_first_name ?? receipt.shipping_first_name) +
 		' ' +
-		(receipt?.billing_last_name ?? receipt?.shipping_last_name)
+		(receipt.billing_last_name ?? receipt.shipping_last_name)
 	const billingAddress =
-		receipt?.billing_address_one ?? receipt?.shipping_address_one
-	const billingCountry = receipt?.billing_country ?? receipt?.shipping_country
-	const billingState = receipt?.billing_state ?? receipt?.shipping_state
-	const billingCity = receipt?.billing_city ?? receipt?.shipping_city
-	const billingPincode = receipt?.billing_pincode ?? receipt?.shipping_pincode
-	const billingLandmark =
-		receipt?.billing_landmark ?? receipt?.shipping_landmark
+		receipt.billing_address_one ?? receipt.shipping_address_one
+	const billingCountry = receipt.billing_country ?? receipt.shipping_country
+	const billingState = receipt.billing_state ?? receipt.shipping_state
+	const billingCity = receipt.billing_city ?? receipt.shipping_city
+	const billingPincode = receipt.billing_pincode ?? receipt.shipping_pincode
 	const billingPhoneNumber =
-		receipt?.billing_phone_number ?? receipt?.shipping_phone_number
+		receipt.billing_phone_number ?? receipt.shipping_phone_number
 	return (
 		<div className="order-receipt pb-20">
 			<div className="container">
@@ -88,7 +106,7 @@ export default function Orderreceipt(props) {
 									<div className="col-span-12">
 										<div className="order-status pl-4">
 											<h2 className="text-2xl font-crimson text-[#248232] pb-3">
-												Thanks for your Order, {receipt?.shipping_first_name}
+												Thanks for your Order, {receipt.shipping_first_name}
 											</h2>
 											<p className="text-sm font-roboto text-[#3c2f27]">
 												Tracking information will be emailed as soon as your
@@ -99,7 +117,7 @@ export default function Orderreceipt(props) {
 									<div className="col-span-12">
 										<div className="order-number text-sm pl-4 font-roboto text-[#3c2f27]">
 											<span>Order ID:</span>
-											<span className="font-semibold pl-1">{receipt?.id}</span>
+											<span className="font-semibold pl-1">{receipt.id}</span>
 										</div>
 									</div>
 									<div className="col-span-12">
@@ -119,37 +137,37 @@ export default function Orderreceipt(props) {
 														<div className="address font-roboto text-sm text-[#3c2f27] pl-4">
 															<span className="caption">Address:</span>
 															<span className="value font-semibold pl-1">
-																{receipt?.shipping_address_one}
+																{receipt.shipping_address_one}
 															</span>
 														</div>
 														<div className="state font-roboto text-sm text-[#3c2f27] pl-4">
 															<span className="caption">Country:</span>
 															<span className="value font-semibold pl-1">
-																{receipt?.shipping_country}
+																{receipt.shipping_country}
 															</span>
 														</div>
 														<div className="state font-roboto text-sm text-[#3c2f27] pl-4">
 															<span className="caption">State:</span>
 															<span className="value font-semibold pl-1">
-																{receipt?.shipping_state}
+																{receipt.shipping_state}
 															</span>
 														</div>
 														<div className="city font-roboto text-sm text-[#3c2f27] pl-4">
 															<span className="caption">City:</span>
 															<span className="value font-semibold pl-1">
-																{receipt?.shipping_city}
+																{receipt.shipping_city}
 															</span>
 														</div>
 														<div className="pincode font-roboto text-sm text-[#3c2f27] pl-4">
 															<span className="caption">Pincode:</span>
 															<span className="value font-semibold pl-1">
-																{receipt?.shipping_pincode}
+																{receipt.shipping_pincode}
 															</span>
 														</div>
 														<div className="contact-number font-roboto text-sm text-[#3c2f27] pl-4">
 															<span className="caption">Phone Number:</span>
 															<span className="value font-semibold pl-1">
-																{receipt?.shipping_phone_number}
+																{receipt.shipping_phone_number}
 															</span>
 														</div>
 													</div>
@@ -210,7 +228,7 @@ export default function Orderreceipt(props) {
 														</div>
 														<div className="name font-roboto text-sm text-[#3c2f27] pl-4">
 															<span className="value font-semibold pl-1">
-																{receipt?.payment_mode}
+																{receipt.payment_mode}
 															</span>
 														</div>
 													</div>
@@ -258,36 +276,35 @@ export default function Orderreceipt(props) {
 											</TableRow>
 										</TableHeader>
 										<TableBody className="border-b border-[#e5e5e5]">
-											{receipt?.orderitems &&
-												receipt?.orderitems?.map((products, index) => (
-													<TableRow key={products.id}>
-														<TableCell className="text-[#3c2f27] font-roboto font-semibold text-sm ">
-															{index + 1}
-														</TableCell>
-														<TableCell>
-															<Image
-																src={`${BLOB_BASE_URL}/${products.image}`}
-																alt={products.name}
-																width={75}
-																height={75}
-															/>
-														</TableCell>
-														<TableCell className="text-[#3c2f27] font-roboto font-semibold text-sm whitespace-nowrap">
-															{products?.name}
-														</TableCell>
-														<TableCell className="text-[#3c2f27] font-roboto font-semibold text-sm">
-															{products?.quantity}
-														</TableCell>
-														<TableCell className="text-[#3c2f27] font-roboto font-semibold text-sm text-right">
-															<div className="flex items-center">
-																<span className="">
-																	<IndianRupee width={14} />
-																</span>
-																<span>{products?.total_price}</span>
-															</div>
-														</TableCell>
-													</TableRow>
-												))}
+											{receipt.orderitems.map((products, index) => (
+												<TableRow key={products.id}>
+													<TableCell className="text-[#3c2f27] font-roboto font-semibold text-sm ">
+														{index + 1}
+													</TableCell>
+													<TableCell>
+														<Image
+															src={`${BLOB_BASE_URL}/${products.image}`}
+															alt={products.name}
+															width={75}
+															height={75}
+														/>
+													</TableCell>
+													<TableCell className="text-[#3c2f27] font-roboto font-semibold text-sm whitespace-nowrap">
+														{products?.name}
+													</TableCell>
+													<TableCell className="text-[#3c2f27] font-roboto font-semibold text-sm">
+														{products?.quantity}
+													</TableCell>
+													<TableCell className="text-[#3c2f27] font-roboto font-semibold text-sm text-right">
+														<div className="flex items-center">
+															<span className="">
+																<IndianRupee width={14} />
+															</span>
+															<span>{products?.total_price}</span>
+														</div>
+													</TableCell>
+												</TableRow>
+											))}
 										</TableBody>
 									</Table>
 								</div>
@@ -300,7 +317,7 @@ export default function Orderreceipt(props) {
 											<span className="">
 												<IndianRupee width={14} />
 											</span>
-											<span>{receipt?.subtotal}</span>
+											<span>{receipt.subtotal}</span>
 										</div>
 									</div>
 									<div className="sub-total flex py-2 justify-between px-2 font-roboto text-[#4b4537]">
@@ -309,7 +326,7 @@ export default function Orderreceipt(props) {
 											<span className="">
 												<IndianRupee width={14} />
 											</span>
-											<span>{receipt?.tax_cgst}</span>
+											<span>{receipt.tax_cgst}</span>
 										</div>
 									</div>
 									<div className="sub-total flex pb-3 justify-between px-2 font-roboto text-[#4b4537]">
@@ -318,7 +335,7 @@ export default function Orderreceipt(props) {
 											<span className="">
 												<IndianRupee width={14} />
 											</span>
-											<span>{receipt?.tax_sgst}</span>
+											<span>{receipt.tax_sgst}</span>
 										</div>
 									</div>
 									<div className="total-price flex font-semibold pt-3 pb-5 border-t border-[#b2937e] justify-between px-2 font-roboto text-[#4b4537]">
@@ -327,7 +344,7 @@ export default function Orderreceipt(props) {
 											<span className="svg-stroking">
 												<IndianRupee width={14} />
 											</span>
-											<span>{receipt?.total}</span>
+											<span>{receipt.total}</span>
 										</div>
 									</div>
 								</div>

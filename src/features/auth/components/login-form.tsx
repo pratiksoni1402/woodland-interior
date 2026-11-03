@@ -1,45 +1,35 @@
 'use client'
 
-import React, { Suspense, useState } from 'react'
+import { Suspense, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useQueryClient } from '@tanstack/react-query'
 import { Toaster } from 'react-hot-toast'
+import { EyeIcon, EyeOffIcon, Loader2Icon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Loader2Icon, EyeIcon, EyeOffIcon } from 'lucide-react'
-import { ForgotPasswordLink } from '@/app/auth/login/_components/forgot-password'
 import { showErrorToast } from '@/lib/toast'
+import { useAuthMutations } from '../hooks/use-auth'
+import { ForgotPasswordLink } from './forgot-password-link'
+import type { LoginCredentials } from '../types'
 
 function AuthenticationForm() {
 	const router = useRouter()
-	const searchParam = useSearchParams()
-	const queryClient = useQueryClient()
-
-	const [loading, setLoading] = useState(false)
+	const searchParams = useSearchParams()
+	const { login, isLoggingIn } = useAuthMutations()
 	const [showPassword, setShowPassword] = useState(false)
-
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm()
+	} = useForm<LoginCredentials>()
 
-	const onSubmit = async (data) => {
-		setLoading(true)
-		try {
-			await axios.post('/api/auth/login', data)
-
-			const redirect = searchParam.get('redirect')
-			router.push(redirect === '/checkout' ? '/checkout' : '/my-account')
-
-			queryClient.invalidateQueries({ queryKey: ['checkSession'] })
-		} catch (error) {
-			console.error('Error:', error)
-			showErrorToast('Invalid email or password')
-		} finally {
-			setLoading(false)
-		}
+	const onSubmit = (data: LoginCredentials) => {
+		login(data, {
+			onSuccess: () => {
+				const redirect = searchParams.get('redirect')
+				router.push(redirect === '/checkout' ? '/checkout' : '/my-account')
+			},
+			onError: () => showErrorToast('Invalid email or password'),
+		})
 	}
 
 	return (
@@ -52,7 +42,6 @@ function AuthenticationForm() {
 
 				<div className="login-form border border-border rounded-md bg-white">
 					<form onSubmit={handleSubmit(onSubmit)} className="m-5 bg-white">
-						{/* Email Field */}
 						<div className="field-wrapper !mb-6">
 							<label
 								htmlFor="email"
@@ -61,7 +50,7 @@ function AuthenticationForm() {
 								Email <span className="text-red-700">*</span>
 							</label>
 							<input
-								type="text"
+								type="email"
 								id="email"
 								placeholder="john@example.com"
 								{...register('email', {
@@ -74,12 +63,11 @@ function AuthenticationForm() {
 							/>
 							{errors.email && (
 								<span className="error-message font-roboto pl-2 text-sm text-red-700">
-									{errors.email.message?.toString()}
+									{errors.email.message}
 								</span>
 							)}
 						</div>
 
-						{/* Password Field */}
 						<div className="field-wrapper relative">
 							<label
 								htmlFor="password"
@@ -98,7 +86,7 @@ function AuthenticationForm() {
 								<button
 									type="button"
 									className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-									onClick={() => setShowPassword((prev) => !prev)}
+									onClick={() => setShowPassword((previous) => !previous)}
 								>
 									{showPassword ? (
 										<EyeIcon size={18} />
@@ -109,7 +97,7 @@ function AuthenticationForm() {
 							</div>
 							{errors.password && (
 								<span className="error-message font-roboto pl-2 text-sm text-red-700">
-									{errors.password.message?.toString()}
+									{errors.password.message}
 								</span>
 							)}
 						</div>
@@ -118,18 +106,17 @@ function AuthenticationForm() {
 							<ForgotPasswordLink />
 						</div>
 
-						{/* Submit Button */}
 						<div className="mt-7">
 							<Button
 								type="submit"
-								disabled={loading}
+								disabled={isLoggingIn}
 								className={`w-full rounded-md p-3 mt-4 mb-3 flex justify-center items-center gap-2 font-roboto ${
-									loading
+									isLoggingIn
 										? 'border border-secondary bg-secondary text-white cursor-not-allowed'
 										: 'border border-primary bg-primary text-white hover:bg-secondary hover:border-secondary hover:text-background hover:cursor-pointer'
 								}`}
 							>
-								{loading && <Loader2Icon className="animate-spin mr-1" />}
+								{isLoggingIn && <Loader2Icon className="animate-spin mr-1" />}
 								Login
 							</Button>
 						</div>

@@ -1,32 +1,33 @@
-'use client';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
-import axios from 'axios';
-import { Loader2Icon } from 'lucide-react';
+'use client'
+
+import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
+import { Loader2Icon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useAuthMutations } from '../hooks/use-auth'
+import type { PasswordResetRequest } from '../types'
+
 export function PasswordResetForm() {
-	const [isProcessing, setIsProcessing] = useState(false);
+	const { requestPasswordReset, isRequestingPasswordReset } =
+		useAuthMutations()
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm();
+	} = useForm<PasswordResetRequest>()
 
-	const onSubmit = async (data) => {
-		setIsProcessing(true);
-		try {
-			const response = await axios.post('/api/auth/forgot-password', data);
-			if (response.data.type === 'success') {
-				toast.success(response.data.message);
-			} else {
-				toast.error(response.data.message);
-			}
-		} catch (error) {
-			console.error(error.response?.data || error.message);
-		}
-		setIsProcessing(false);
-	};
+	const onSubmit = (data: PasswordResetRequest) => {
+		requestPasswordReset(data, {
+			onSuccess: (response) => {
+				if (response.type === 'success') {
+					toast.success(response.message)
+				} else {
+					toast.error(response.message)
+				}
+			},
+			onError: () => toast.error('Unable to request a password reset'),
+		})
+	}
 
 	return (
 		<div className="mb-32 text-primary">
@@ -53,6 +54,7 @@ export function PasswordResetForm() {
 					</label>
 					<input
 						className="block border border-border h-8 placeholder:px-1 px-1 rounded-md w-full"
+						id="forgotpass"
 						type="email"
 						placeholder="john@example.com"
 						{...register('email', {
@@ -63,27 +65,26 @@ export function PasswordResetForm() {
 							},
 						})}
 					/>
-					{errors.Email && (
-						<p className=" text-red-700 pt-0.5 pl-1">{errors.Email.message}</p>
+					{errors.email && (
+						<p className="text-red-700 pt-0.5 pl-1">{errors.email.message}</p>
 					)}
 
 					<div className="flex justify-center mt-5">
-						{
-							<Button
-								type="submit"
-								className="bg-primary text-white hover:bg-secondary hover:text-white hover:cursor-pointer"
-							>
-								{isProcessing && (
-									<span className="animate-spin">
-										<Loader2Icon />
-									</span>
-								)}{' '}
-								Submit
-							</Button>
-						}
+						<Button
+							type="submit"
+							disabled={isRequestingPasswordReset}
+							className="bg-primary text-white hover:bg-secondary hover:text-white hover:cursor-pointer"
+						>
+							{isRequestingPasswordReset && (
+								<span className="animate-spin">
+									<Loader2Icon />
+								</span>
+							)}{' '}
+							Submit
+						</Button>
 					</div>
 				</form>
 			</div>
 		</div>
-	);
+	)
 }

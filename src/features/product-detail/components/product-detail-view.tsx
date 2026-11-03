@@ -10,7 +10,7 @@ import { BLOB_BASE_URL } from '@/lib/blob'
 import { showErrorToast } from '@/lib/toast'
 import type { ProductDetail } from '../types'
 import { DeliveryInfo } from './delivery-info'
-import Reviews from '@/app/customer-reviews/page'
+import Reviews from '@/features/customer-reviews/page'
 
 interface ProductDetailViewProps {
 	product: ProductDetail

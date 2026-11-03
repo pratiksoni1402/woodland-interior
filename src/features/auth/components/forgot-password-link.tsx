@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 export function ForgotPasswordLink() {
 	return (
@@ -8,5 +8,5 @@ export function ForgotPasswordLink() {
 		>
 			Forgot Password ?
 		</Link>
-	);
+	)
 }

@@ -1,14 +1,35 @@
-'use client';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
-import { Loader2Icon, EyeIcon, EyeOffIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { showErrorToast } from '@/lib/toast';
-import { Toaster } from 'react-hot-toast';
+'use client'
 
-function FormField({
+import { useState, type ReactNode } from 'react'
+import {
+	useForm,
+	type FieldError,
+	type FieldPath,
+	type RegisterOptions,
+	type UseFormRegister,
+} from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { EyeIcon, EyeOffIcon, Loader2Icon } from 'lucide-react'
+import { Toaster } from 'react-hot-toast'
+import { Button } from '@/components/ui/button'
+import { showErrorToast } from '@/lib/toast'
+import { useAuthMutations } from '../hooks/use-auth'
+import type { SignupCredentials } from '../types'
+
+type SignupField = FieldPath<SignupCredentials>
+
+interface FormFieldProps<TName extends SignupField> {
+	id: TName
+	label: string
+	type?: string
+	register: UseFormRegister<SignupCredentials>
+	rules?: RegisterOptions<SignupCredentials, TName>
+	error?: FieldError
+	placeholder?: string
+	children?: ReactNode
+}
+
+function FormField<TName extends SignupField>({
 	id,
 	label,
 	type = 'text',
@@ -17,7 +38,7 @@ function FormField({
 	error,
 	placeholder,
 	children,
-}) {
+}: FormFieldProps<TName>) {
 	return (
 		<div className="field-wrapper w-full relative">
 			<label
@@ -33,9 +54,9 @@ function FormField({
 					type={type}
 					placeholder={placeholder}
 					{...register(id, rules)}
-					className="w-full pr-10" // space for icon
+					className="w-full pr-10"
 				/>
-				{children /* for icons (like eye toggle) */}
+				{children}
 			</div>
 			{error && (
 				<span className="error-message pl-2 font-roboto text-sm text-red-700">
@@ -43,63 +64,57 @@ function FormField({
 				</span>
 			)}
 		</div>
-	);
+	)
 }
 
-function PasswordField({ id, label, register, rules, error }) {
-	const [visible, setVisible] = useState(false);
+function PasswordField<TName extends SignupField>(props: FormFieldProps<TName>) {
+	const [visible, setVisible] = useState(false)
 
 	return (
 		<FormField
-			id={id}
-			label={label}
+			{...props}
 			type={visible ? 'text' : 'password'}
-			register={register}
-			rules={rules}
-			error={error}
 		>
 			<button
 				type="button"
 				className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-				onClick={() => setVisible((prev) => !prev)}
+				onClick={() => setVisible((previous) => !previous)}
 			>
 				{visible ? <EyeIcon size={18} /> : <EyeOffIcon size={18} />}
 			</button>
 		</FormField>
-	);
+	)
 }
 
 export function SignupForm() {
-	const router = useRouter();
+	const router = useRouter()
+	const { signup, isSigningUp } = useAuthMutations()
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm();
+	} = useForm<SignupCredentials>()
 
-	const [isLoading, setLoading] = useState(false);
-
-	const onSubmit = async (data) => {
+	const onSubmit = (data: SignupCredentials) => {
 		if (data.password !== data.cnfpassword) {
-			return showErrorToast('Password and Confirm Password do not match');
+			showErrorToast('Password and Confirm Password do not match')
+			return
 		}
 
-		try {
-			setLoading(true);
-			const response = await axios.post('/api/auth/register', data);
-
-			if (response.data.successMessage) {
-				router.push('/my-account');
-			} else if (response.data.errorMessage) {
-				showErrorToast(response.data.errorMessage);
-			}
-		} catch (error) {
-			console.error('Registration error', error);
-			showErrorToast('Something went wrong, please try again later.');
-		} finally {
-			setLoading(false);
-		}
-	};
+		signup(data, {
+			onSuccess: (response) => {
+				if (response.successMessage) {
+					router.push('/my-account')
+				} else {
+					showErrorToast(
+						response.errorMessage || 'Registration could not be completed',
+					)
+				}
+			},
+			onError: () =>
+				showErrorToast('Something went wrong, please try again later.'),
+		})
+	}
 
 	return (
 		<div className="user-registration-form-wrapper pb-12 lg:w-3/5 w-full">
@@ -172,19 +187,19 @@ export function SignupForm() {
 
 						<Button
 							type="submit"
-							disabled={isLoading}
+							disabled={isSigningUp}
 							className={`w-full rounded-md p-3 mt-6 flex justify-center items-center gap-2 font-roboto ${
-								isLoading
+								isSigningUp
 									? 'border bg-secondary text-white border-secondary cursor-not-allowed'
 									: 'border bg-primary border-primary text-white hover:bg-secondary hover:border-secondary hover:text-background hover:cursor-pointer'
 							}`}
 						>
-							{isLoading && <Loader2Icon className="animate-spin mr-1" />}
+							{isSigningUp && <Loader2Icon className="animate-spin mr-1" />}
 							Signup
 						</Button>
 					</form>
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ChevronRight } from 'lucide-react'
-import Logout from '@/app/auth/logout'
+import { LogoutButton } from '@/features/auth'
 
 const userMenu = [
 	{ name: 'My Profile', url: '/my-account' },
@@ -38,7 +38,7 @@ export function AccountSideMenu() {
 				))}
 
 				<div className="lg:block hidden">
-					<Logout />
+					<LogoutButton />
 				</div>
 			</div>
 		</div>

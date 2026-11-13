@@ -13,7 +13,14 @@ import NextTopLoader from 'nextjs-toploader'
 
 import './globals.css'
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL
+	? process.env.NEXT_PUBLIC_APP_URL.startsWith('http')
+		? process.env.NEXT_PUBLIC_APP_URL
+		: `https://${process.env.NEXT_PUBLIC_APP_URL}`
+	: 'https://woodland-interior.vercel.app'
+
 export const metadata: Metadata = {
+	metadataBase: new URL(siteUrl),
 	title: 'Woodland Interiors',
 	description: 'One stop for all home interior',
 }

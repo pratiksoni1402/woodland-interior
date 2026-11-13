@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import { useEffect, useState, type CSSProperties } from 'react';
 
 interface LazyImageProps {

@@ -84,5 +84,15 @@
   "overrides": {
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3"
+  },
+  "allowScripts": {
+    "@prisma/client@6.19.0": true,
+    "@prisma/engines@6.19.3": true,
+    "@tailwindcss/oxide@4.1.13": true,
+    "@vercel/speed-insights@1.2.0": true,
+    "bcrypt@6.0.0": true,
+    "prisma@6.19.3": true,
+    "sharp@0.34.5": true,
+    "unrs-resolver@1.11.1": true
   }
 }

@@ -10,7 +10,7 @@ import { BLOB_BASE_URL } from '@/lib/blob'
 import { showErrorToast } from '@/lib/toast'
 import type { ProductDetail } from '../types'
 import { DeliveryInfo } from './delivery-info'
-import Reviews from '@/features/customer-reviews/page'
+import { ReviewSection } from '@/features/reviews'
 
 interface ProductDetailViewProps {
 	product: ProductDetail
@@ -186,7 +186,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
 					</div>
 				</div>
 				<div className="customer-reviews">
-					<Reviews />
+					<ReviewSection productId={product.id} />
 				</div>
 			</div>
 		</div>

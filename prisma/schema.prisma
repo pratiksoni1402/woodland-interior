@@ -63,8 +63,31 @@ model Products {
   category    Category    @relation(fields: [category_id], references: [id])
   Cartitems   Cartitems[]
   wishlist    Wishlist[]
+  reviews     Review[]
 
   @@map("all_products")
+}
+
+// End
+
+// Product Reviews
+model Review {
+  id            Int      @id @default(autoincrement())
+  productId     Int      @db.Int
+  customerEmail String   @db.VarChar(100)
+  customerName  String   @db.VarChar(50)
+  rating        Int      @db.TinyInt
+  title         String   @db.VarChar(100)
+  comment       String   @db.Text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  product Products @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, customerEmail])
+  @@index([productId])
+  @@index([createdAt])
+  @@map("product_reviews")
 }
 
 // End
